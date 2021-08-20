@@ -31,3 +31,29 @@ pipelines:
             - apk add --no-cache bash
             - yarn install --frozen-lockfile
             - npx expo publish --non-interactive
+    SM0G-6-setup-testing:
+        - parallel:
+            - step:
+                name: Test with Jest
+                caches:
+                  - node
+                  - jest
+                script:
+                  - yarn install --frozen-lockfile
+                  - yarn jest
+            - step:
+                name: Lint
+                caches:
+                  - node
+                script:
+                  - yarn install --frozen-lockfile
+                  - yarn lint
+        - step:
+            name: Deploy to Expo
+            deployment: test
+            caches:
+              - node
+            script:
+              - apk add --no-cache bash
+              - yarn install --frozen-lockfile
+              - npx expo publish --non-interactive
