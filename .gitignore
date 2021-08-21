@@ -60,3 +60,6 @@ npm-debug.*
 *.mobileprovision
 *.orig.*
 web-build/
+
+# Vscode
+.vscode/
