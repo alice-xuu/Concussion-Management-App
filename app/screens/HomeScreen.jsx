@@ -11,7 +11,7 @@ function HomeScreen({ navigation }) {
       />
       <Button
         title="Incident Report"
-        onPress={() => navigation.navigate('IncidentReport')}
+        onPress={() => navigation.navigate('RecordIncident')}
       />
     </View>
   );
