@@ -6,7 +6,6 @@ module.exports = {
     'plugin:prettier/recommended',
   ],
   rules: {
-    '@typescript-eslint/no-explicit-any': 'warn',
     'react-native/no-unused-styles': 1,
     'react-native/no-color-literals': 1,
   },
