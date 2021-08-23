@@ -5,6 +5,7 @@ module.exports = {
     'prettier',
     'plugin:prettier/recommended',
   ],
+  parser: '@babel/eslint-parser',
   rules: {
     'react-native/no-unused-styles': 1,
     'react-native/no-color-literals': 1,

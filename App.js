@@ -1,21 +1,28 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import HomeScreen from './app/screens/HomeScreen';
+import DocumentsScreen from './app/screens/DocumentsScreen';
+import RecordIncidentScreen from './app/screens/RecordIncidentScreen';
 
+const RootStack = createNativeStackNavigator();
+
+/**
+ * The entry point for the application.
+ *
+ * Contains the root navigation stack.
+ */
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <RootStack.Navigator initialRouteName="Home">
+        <RootStack.Screen name="Home" component={HomeScreen} />
+        <RootStack.Screen name="Documents" component={DocumentsScreen} />
+        <RootStack.Screen
+          name="RecordIncident"
+          component={RecordIncidentScreen}
+        />
+      </RootStack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
