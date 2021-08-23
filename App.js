@@ -7,6 +7,11 @@ import RecordIncidentScreen from './app/screens/RecordIncidentScreen';
 
 const RootStack = createNativeStackNavigator();
 
+/**
+ * The entry point for the application.
+ *
+ * Contains the root navigation stack.
+ */
 export default function App() {
   return (
     <NavigationContainer>
