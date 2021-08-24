@@ -1,25 +1,34 @@
 import * as React from 'react';
 import { Button, StyleSheet, Text, View, Pressable } from 'react-native';
 
-/**
- * Asks user for details about the concussion and gives a suggestion based on
- * the user's responses.
+/*
+ * Asks user if there is a mechanism of injury
+ * Response; Yes, Maybe/Unsure, No.
  */
 function SingleChoiceQuestionScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text>Record Incident Screen</Text>
+      <Text>
+        Is there a mechanism of injury (a clear way the patient could have been
+        injured)?
+      </Text>
       <Pressable
         style={styles.button}
         onPress={() => navigation.navigate('Result')}
       >
-        <Text style={styles.label}>Result</Text>
+        <Text style={styles.label}>Yes</Text>
       </Pressable>
       <Pressable
         style={styles.button}
-        onPress={() => navigation.navigate('Home')}
+        onPress={() => navigation.navigate('Result')}
       >
-        <Text style={styles.label}>Home</Text>
+        <Text style={styles.label}>MAYBE/UNSURE</Text>
+      </Pressable>
+      <Pressable
+        style={styles.button}
+        onPress={() => navigation.navigate('Result')}
+      >
+        <Text style={styles.label}>NO</Text>
       </Pressable>
     </View>
   );

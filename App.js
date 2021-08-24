@@ -5,6 +5,7 @@ import HomeScreen from './app/screens/HomeScreen';
 import DocumentsScreen from './app/screens/DocumentsScreen';
 import RecordIncidentScreen from './app/screens/RecordIncidentScreen';
 import ResultScreen from './app/screens/ResultScreen';
+import SingleChoiceQuestionScreen from './app/screens/SingleChoiceQuestionScreen';
 
 const RootStack = createNativeStackNavigator();
 
@@ -24,7 +25,10 @@ export default function App() {
           component={RecordIncidentScreen}
         />
         <RootStack.Screen name="Result" component={ResultScreen} />
-        <RootStack.Screen name="Result" component={ResultScreen} />
+        <RootStack.Screen
+          name="SingleChoiceQ"
+          component={SingleChoiceQuestionScreen}
+        />
       </RootStack.Navigator>
     </NavigationContainer>
   );
