@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './app/screens/HomeScreen';
 import DocumentsScreen from './app/screens/DocumentsScreen';
 import RecordIncidentScreen from './app/screens/RecordIncidentScreen';
+import ResultScreen from './app/screens/ResultScreen';
 
 const RootStack = createNativeStackNavigator();
 
@@ -22,6 +23,7 @@ export default function App() {
           name="RecordIncident"
           component={RecordIncidentScreen}
         />
+        <RootStack.Screen name="Result" component={ResultScreen} />
       </RootStack.Navigator>
     </NavigationContainer>
   );

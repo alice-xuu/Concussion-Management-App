@@ -9,8 +9,17 @@ function RecordIncidentScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <Text>Record Incident Screen</Text>
-      <Pressable style={styles.button} onPress={() => navigation.navigate('Home')}>
-        <Text style={styles.text}>Home</Text>
+      <Pressable
+        style={styles.button}
+        onPress={() => navigation.navigate('Result')}
+      >
+        <Text style={styles.label}>Result</Text>
+      </Pressable>
+      <Pressable
+        style={styles.button}
+        onPress={() => navigation.navigate('Home')}
+      >
+        <Text style={styles.label}>Home</Text>
       </Pressable>
     </View>
   );
@@ -26,9 +35,10 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     elevation: 3,
     backgroundColor: 'black',
-    margin: 30,
+    marginHorizontal: 50,
+    marginVertical: 10,
   },
-  text: {
+  label: {
     fontSize: 16,
     lineHeight: 21,
     fontWeight: 'bold',
