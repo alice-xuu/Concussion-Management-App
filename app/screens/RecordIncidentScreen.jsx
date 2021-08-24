@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, StyleSheet, Text, View, Pressable } from 'react-native';
+import { StyleSheet, Text, View, Button, Pressable} from 'react-native';
 
 /**
  * Asks user for details about the concussion and gives a suggestion based on
@@ -11,20 +11,13 @@ function RecordIncidentScreen({ navigation }) {
       <Text>Record Incident Screen</Text>
       <Pressable
         style={styles.button}
-        onPress={() => navigation.navigate('Result')}
+        onPress={() => navigation.navigate('Questions')}
       >
-        <Text style={styles.label}>Result</Text>
-      </Pressable>
-      <Pressable
-        style={styles.button}
-        onPress={() => navigation.navigate('Home')}
-      >
-        <Text style={styles.label}>Home</Text>
+        <Text style={styles.label}>Next</Text>
       </Pressable>
     </View>
   );
 }
-
 const styles = StyleSheet.create({
   button: {
     alignItems: 'center',
@@ -51,5 +44,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
 
 export default RecordIncidentScreen;
