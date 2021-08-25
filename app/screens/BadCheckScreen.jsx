@@ -1,20 +1,28 @@
 import * as React from 'react';
-import { Button, Text, View, StyleSheet, Pressable } from "react-native";
+import { StyleSheet, Text, View, Pressable } from 'react-native';
 
 /**
- * Starting screen that handles navigation to main app flows.
- *
- * @param navigation used to move to the other screens
+ * Shows result and gives a suggestion based on
+ * the user's responses.
  */
-function HomeScreen({ navigation }) {
+function BadCheckScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text>Concussion Check</Text>
+      <Text>Result</Text>
+      <Text style={styles.text}>
+        Your patient needs to go to hospital immediately, please call 000 now.
+      </Text>
       <Pressable
         style={styles.button}
-        onPress={() => navigation.navigate('Record Incident')}
+        onPress={() => navigation.goBack()}
       >
-        <Text style={styles.label}>Start Check</Text>
+        <Text style={styles.label}>Back</Text>
+      </Pressable>
+      <Pressable
+        style={styles.button}
+        onPress={() => navigation.navigate('Home')}
+      >
+        <Text style={styles.label}>Home</Text>
       </Pressable>
     </View>
   );
@@ -29,7 +37,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 32,
     borderRadius: 10,
     elevation: 3,
-    backgroundColor: 'red',
+    backgroundColor: 'black',
     marginHorizontal: 50,
     marginVertical: 10,
   },
@@ -54,4 +62,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeScreen;
+export default BadCheckScreen;
