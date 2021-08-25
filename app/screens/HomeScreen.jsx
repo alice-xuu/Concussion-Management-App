@@ -12,9 +12,9 @@ function HomeScreen({ navigation }) {
       <Text>Concussion Check</Text>
       <Pressable
         style={styles.button}
-        onPress={() => navigation.navigate('Record Incident')}
+        onPress={() => navigation.navigate('Record Incident questionnaire 1')}
       >
-        <Text style={styles.label}>Start Check</Text>
+        <Text style={styles.label}>Record Incident</Text>
       </Pressable>
     </View>
   );
