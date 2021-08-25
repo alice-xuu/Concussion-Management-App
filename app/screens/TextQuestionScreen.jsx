@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, Text, View, TextInput, Button, Pressable, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Pressable, Dimensions } from 'react-native';
 
 /**
  * Asks user for details about the concussion and gives a suggestion based on
@@ -22,7 +22,7 @@ function TextQuestionScreen({ navigation }) {
       />
       <Pressable
         style={styles.button}
-        onPress={() => navigation.navigate('Result')}
+        onPress={() => navigation.navigate('Bad Check')}
       >
         <Text style={styles.label}>Confirm</Text>
       </Pressable>

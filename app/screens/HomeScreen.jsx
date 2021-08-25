@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Text, View, StyleSheet } from 'react-native';
+import { Button, Text, View, StyleSheet, Pressable } from "react-native";
 
 /**
  * Starting screen that handles navigation to main app flows.
@@ -9,20 +9,44 @@ import { Button, Text, View, StyleSheet } from 'react-native';
 function HomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text>Home Screen</Text>
-      <Button
-        title="View Documents"
-        onPress={() => navigation.navigate('Documents')}
-      />
-      <Button
-        title="Incident Report"
-        onPress={() => navigation.navigate('RecordIncident')}
-      />
+      <Text>Concussion Check</Text>
+      <Pressable
+        style={styles.button}
+        onPress={() => navigation.navigate('Record Incident')}
+      >
+        <Text style={styles.label}>Start Check</Text>
+      </Pressable>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  button: {
+    alignItems: 'center',
+    alignSelf: 'stretch',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 10,
+    elevation: 3,
+    backgroundColor: 'red',
+    marginHorizontal: 50,
+    marginVertical: 10,
+  },
+  label: {
+    fontSize: 16,
+    lineHeight: 21,
+    fontWeight: 'bold',
+    letterSpacing: 0.25,
+    color: 'white',
+  },
+  text: {
+    fontSize: 16,
+    lineHeight: 21,
+    letterSpacing: 0.25,
+    marginHorizontal: 50,
+    marginVertical: 10,
+  },
   container: {
     flex: 1,
     alignItems: 'center',

@@ -5,7 +5,7 @@ import { StyleSheet, Text, View, Pressable } from 'react-native';
  * Shows result and gives a suggestion based on
  * the user's responses.
  */
-function ResultScreen({ navigation }) {
+function BadCheckScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <Text>Result</Text>
@@ -62,4 +62,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ResultScreen;
+export default BadCheckScreen;
