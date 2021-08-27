@@ -22,7 +22,7 @@ function TextQuestionScreen({ navigation }) {
       />
       <Pressable
         style={styles.button}
-        onPress={() => navigation.navigate('Bad Check')}
+        onPress={() => navigation.navigate('Check Result')}
       >
         <Text style={styles.label}>Confirm</Text>
       </Pressable>
