@@ -90,33 +90,44 @@ function HomeScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Text>Home Screen</Text>
-      <Button
-        title="View Documents"
-        onPress={() => navigation.navigate('Documents')}
-      />
-      <Button
-        title="Incident Report"
-        onPress={() => navigation.navigate('RecordIncident')}
-      />
-
-      {/*TODO: remove below*/}
-      <Button title="Create Patient" onPress={() => onCreatePatient()} />
-
-      <Text>{firstName + ' ' + lastName}</Text>
-      <Button title="Create Report" onPress={handleCreateReport} />
-      <Text>{reportId}</Text>
-      <Button title="Create Single response" onPress={handleCreateSResponse} />
-      <Button
-        title="Create Multi response"
-        onPress={handleCreateMultiResponse}
-      />
-      <Text>{responses}</Text>
+      <Text>Concussion Check</Text>
+      <Pressable
+        style={styles.button}
+        onPress={() => navigation.navigate('Record Incident')}
+      >
+        <Text style={styles.label}>Start Check</Text>
+      </Pressable>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  button: {
+    alignItems: 'center',
+    alignSelf: 'stretch',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 10,
+    elevation: 3,
+    backgroundColor: 'red',
+    marginHorizontal: 50,
+    marginVertical: 10,
+  },
+  label: {
+    fontSize: 16,
+    lineHeight: 21,
+    fontWeight: 'bold',
+    letterSpacing: 0.25,
+    color: 'white',
+  },
+  text: {
+    fontSize: 16,
+    lineHeight: 21,
+    letterSpacing: 0.25,
+    marginHorizontal: 50,
+    marginVertical: 10,
+  },
   container: {
     flex: 1,
     alignItems: 'center',
