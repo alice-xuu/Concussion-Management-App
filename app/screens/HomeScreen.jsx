@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Text, View, StyleSheet, Pressable } from "react-native";
+import { Button, Text, View, StyleSheet, Pressable } from 'react-native';
 
 /**
  * Starting screen that handles navigation to main app flows.
@@ -12,7 +12,8 @@ function HomeScreen({ navigation }) {
       <Text>Concussion Check</Text>
       <Pressable
         style={styles.button}
-        onPress={() => navigation.navigate('Record Incident')}
+        // onPress={() => navigation.navigate('Record Incident')}
+        onPress={() => navigation.navigate('Questions')}
       >
         <Text style={styles.label}>Start Check</Text>
       </Pressable>

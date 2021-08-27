@@ -11,7 +11,7 @@ function TextQuestionScreen({ navigation }) {
   const [value, onChangeText] = React.useState('');
   return (
     <View style={styles.container}>
-      <Text style={styles.font}> Is there any symptoms for the patients?</Text>
+      <Text style={styles.font}> Is there an alternative explanation for your patient’s symptoms? If yes, please briefly note it down.</Text>
 
       <TextInput
         style={styles.content}
@@ -19,12 +19,14 @@ function TextQuestionScreen({ navigation }) {
         textDecorationLine={'none'}
         value={value}
         multiline={true}
+        numberOfLines={4}
+        textAlignVertical="top"
       />
       <Pressable
         style={styles.button}
-        onPress={() => navigation.navigate('Bad Check')}
+        onPress={() => navigation.navigate('Check Result')}
       >
-        <Text style={styles.label}>Confirm</Text>
+        <Text style={styles.label}>Next</Text>
       </Pressable>
     </View>
   );
@@ -32,24 +34,26 @@ function TextQuestionScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   font: {
-    color: '#000000',
-    fontSize: 17,
-    fontWeight: 'normal',
+    fontSize: 16,
+    lineHeight: 21,
+    letterSpacing: 0.25,
+    marginHorizontal: 50,
+    marginVertical: 10,
   },
   content: {
     maxHeight: 100,
     marginVertical: 20,
-    borderWidth: 1,
-    borderRadius: 20,
-    borderColor: 'grey',
+    borderWidth: 3,
+
+    borderColor: 'black',
     marginBottom: 16,
     paddingLeft: 10,
     padding: 0,
-    width: width - 32,
+    width: width - 40,
   },
   button: {
     alignItems: 'center',
@@ -59,7 +63,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 32,
     borderRadius: 10,
     elevation: 3,
-    backgroundColor: 'black',
+    backgroundColor: 'red',
     marginHorizontal: 50,
     marginVertical: 10,
   },
