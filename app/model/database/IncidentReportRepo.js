@@ -56,7 +56,6 @@ export class IncidentReportRepo {
           reject(new Error(`No single response in report ${reportId}`));
           return;
         }
-        console.log(JSON.stringify(rs.rows._array));
         resolve(rs.rows._array);
       });
     });
