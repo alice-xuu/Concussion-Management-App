@@ -1,6 +1,6 @@
 import { Patient } from './Patient';
 
-export class PatientRepository {
+export class PatientRepo {
   /**
    *
    * @param {DatabaseAdapter} da
@@ -21,7 +21,7 @@ export class PatientRepository {
     const sql = 'INSERT INTO Patient (first_name, last_name) VALUES (?, ?)';
 
     return new Promise((resolve, reject) => {
-      this.da.runSql(sql, [firstName, lastName]).then((rs) => {
+      this.da.runSqlStmt(sql, [firstName, lastName]).then((rs) => {
         resolve(rs.insertId);
       }, reject);
     });
@@ -37,7 +37,7 @@ export class PatientRepository {
     const sql = 'SELECT * FROM Patient WHERE patient_id = ?';
 
     return new Promise((resolve, reject) => {
-      this.da.runSql(sql, [patientId]).then((rs) => {
+      this.da.runSqlStmt(sql, [patientId]).then((rs) => {
         if (rs.rows.length < 1) {
           reject(new Error('No patient with id ' + patientId));
           return;

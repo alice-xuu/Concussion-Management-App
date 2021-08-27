@@ -14,17 +14,17 @@ export class DatabaseAdapter {
 
   /**
    *
-   * @param {string} sql
+   * @param {string} sqlStmt
    * @param {any[]} args
    * @return {Promise<SQLResultSet>}
    */
-  async runSql(sql, args = []) {
+  async runSqlStmt(sqlStmt, args = []) {
     let ret;
     return new Promise((resolve, reject) => {
       this.db.transaction(
         (tx) => {
           tx.executeSql(
-            sql,
+            sqlStmt,
             args,
             (_, rs) => (ret = rs),
             (_, err) => reject(err),
@@ -41,23 +41,19 @@ export class DatabaseAdapter {
    * @return {Promise<DatabaseAdapter>}
    */
   static async initDatabase() {
-    return new Promise((resolve, reject) => {
-      let da = new DatabaseAdapter(SQLite.openDatabase(DB_FILE));
-      da.runSql(TABLES_SQL).then(() => {
-        da.db.exec(
-          [{ sql: 'PRAGMA foreign_keys = ON;', args: [] }],
-          false,
-          (err, rs) => {
-            if (err !== null) {
-              reject(err);
-            }
+    let da = new DatabaseAdapter(SQLite.openDatabase(DB_FILE));
+    let error;
 
-            if (rs !== null) {
-              resolve(da);
-            }
-          },
-        );
-      });
+    for (let tableSql of TABLES_SQL) {
+      await da.runSqlStmt(tableSql);
+    }
+
+    return new Promise((resolve, reject) => {
+      if (error != null) {
+        reject(error);
+      } else {
+        resolve(da);
+      }
     });
   }
 }

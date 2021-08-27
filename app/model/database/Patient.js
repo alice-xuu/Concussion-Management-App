@@ -1,5 +1,7 @@
 /**
- * A User in the database
+ * A User in the database.
+ *
+ * TODO: remove and just use Patient row from db directly
  */
 export class Patient {
   constructor(patientId, firstName, lastName) {
