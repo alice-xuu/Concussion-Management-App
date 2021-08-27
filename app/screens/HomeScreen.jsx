@@ -1,11 +1,8 @@
 import * as React from 'react';
 import { Button, Text, View, StyleSheet } from 'react-native';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { PatientRepository } from '../model/database/PatientRepository';
-import * as SQLite from 'expo-sqlite';
-
-const DB_FILE = 'measurements.db';
-// const db = SQLite.openDatabase(DB_FILE);
+import { DatabaseAdapter } from '../model/database/DatabaseAdapter';
 
 /**
  * Starting screen that handles navigation to main app flows.
@@ -16,43 +13,27 @@ function HomeScreen({ navigation }) {
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
   const [patientRepo, setPatientRepo] = useState(null);
-  const [db, setDb] = useState(SQLite.openDatabase(DB_FILE));
+  const [daState, setDa] = useState(null);
 
-  React.useEffect(() => {
-    console.log('in use effect');
-    db.transaction((tx) => {
-      tx.executeSql(
-        `
-        CREATE TABLE IF NOT EXISTS Patient (
-            patient_id INTEGER PRIMARY KEY,
-            first_name VARCHAR(200),
-            last_name VARCHAR(200)
-        );
-        `,
-        [],
-        () => {
-          console.log('settint patient repo');
-          setPatientRepo(new PatientRepository(db));
-        },
-        (_, err) => console.log(err),
-      );
+  useEffect(() => {
+    DatabaseAdapter.initDatabase().then((da) => {
+      setDa(da);
+      setPatientRepo(new PatientRepository(da));
     });
-  }, [db]);
+  }, []);
 
   const onCreatePatient = () => {
-    console.log('creating patient');
     if (patientRepo != null) {
       const fname = Math.random().toString();
-      console.log('making: ' + fname);
+
       patientRepo.createPatient(fname, 'Smith').then(
         (patientId) => {
-          console.log('patientId: ' + patientId);
           patientRepo.getPatient(patientId).then((patient) => {
             setFirstName(patient.firstName);
             setLastName(patient.lastName);
           });
         },
-        (err) => console.log(err),
+        (err) => console.log('Error: ' + err),
       );
     } else {
       console.log('null patientRepo');
