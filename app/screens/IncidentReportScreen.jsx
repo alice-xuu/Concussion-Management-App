@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, Text, View, Pressable} from 'react-native';
+import { StyleSheet, Text, View, Pressable } from 'react-native';
 
 /**
  * The step after user has done "StartCheck" if it is not a "BadCheck"
@@ -30,6 +30,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-
 
 export default IncidentReportScreen;
