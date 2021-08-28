@@ -14,3 +14,7 @@ web-build/
 
 # JetBrains ide
 .idea/
+
+# databases
+*.sql
+*.db

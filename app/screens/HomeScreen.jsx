@@ -1,10 +1,10 @@
 import * as React from 'react';
 import {
-  View,
   Text,
   SafeAreaView,
   StyleSheet,
   TouchableOpacity,
+  Button,
 } from 'react-native';
 
 /**
@@ -30,6 +30,10 @@ function HomeScreen({ navigation }) {
       </TouchableOpacity>
 
       <Text style={styles.titleText}>Concussion Check</Text>
+      <Button
+        title={'tempButtonToDbSample'}
+        onPress={() => navigation.navigate('Database Sample')}
+      />
     </SafeAreaView>
   );
 }
