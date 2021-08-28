@@ -8,56 +8,89 @@ import { Button, StyleSheet, Text, View, Pressable } from 'react-native';
 function SingleChoiceQuestionScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text>
+      <Text style={styles.text}>
         Is there a mechanism of injury (a clear way the patient could have been
         injured)?
       </Text>
-      <Pressable
-        style={styles.button}
-        onPress={() => navigation.navigate('Result')}
-      >
-        <Text style={styles.label}>Yes</Text>
-      </Pressable>
-      <Pressable
-        style={styles.button}
-        onPress={() => navigation.navigate('Result')}
-      >
-        <Text style={styles.label}>MAYBE/UNSURE</Text>
-      </Pressable>
-      <Pressable
-        style={styles.button}
-        onPress={() => navigation.navigate('Result')}
-      >
-        <Text style={styles.label}>NO</Text>
-      </Pressable>
+
+      <View style={styles.sameRow}>
+        <Pressable
+          style={styles.buttonYes}
+          onPress={() => navigation.navigate('Result')}
+        >
+          <Text style={styles.label}>YES</Text>
+        </Pressable>
+
+        <Pressable
+          style={styles.buttonNo}
+          onPress={() => navigation.navigate('Result')}
+        >
+          <Text style={styles.label}>NO</Text>
+        </Pressable>
+      </View>
+      <View style={styles.sameRow}>
+        <Pressable
+          style={styles.buttonMaybe}
+          onPress={() => navigation.navigate('Result')}
+        >
+          <Text style={styles.label}>MAYBE/UNSURE</Text>
+        </Pressable>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  button: {
-    alignItems: 'center',
-    alignSelf: 'stretch',
+  buttonYes: {
+    width: 125,
+    height: 125,
     justifyContent: 'center',
-    paddingVertical: 12,
-    paddingHorizontal: 32,
-    borderRadius: 10,
-    elevation: 3,
-    backgroundColor: 'black',
-    marginHorizontal: 50,
-    marginVertical: 10,
+    alignItems: 'center',
+    padding: 10,
+    borderRadius: 125,
+    backgroundColor: 'green',
+  },
+  buttonNo: {
+    width: 125,
+    height: 125,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 10,
+    borderRadius: 125,
+    backgroundColor: 'red',
+  },
+  buttonMaybe: {
+    width: 125,
+    height: 125,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 10,
+    borderRadius: 125,
+    backgroundColor: 'orange',
   },
   label: {
-    fontSize: 16,
+    fontSize: 20,
     lineHeight: 21,
     fontWeight: 'bold',
     letterSpacing: 0.25,
-    color: 'white',
+    color: 'black',
   },
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+  },
+
+  sameRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+  },
+
+  text: {
+    fontSize: 30,
+    lineHeight: 30,
+    fontWeight: 'bold',
+    letterSpacing: 0.5,
+    color: 'black',
+    padding: 20,
   },
 });
 
