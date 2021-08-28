@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { Button, Text, View, StyleSheet, Pressable } from "react-native";
+import {
+  View,
+  Text,
+  SafeAreaView,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native';
 
 /**
  * Starting screen that handles navigation to main app flows.
@@ -8,49 +14,72 @@ import { Button, Text, View, StyleSheet, Pressable } from "react-native";
  */
 function HomeScreen({ navigation }) {
   return (
-    <View style={styles.container}>
-      <Text>Concussion Check</Text>
-      <Pressable
-        style={styles.button}
+    <SafeAreaView style={[styles.screen]}>
+      <TouchableOpacity
         onPress={() => navigation.navigate('Record Incident')}
+        style={styles.startCheckButton}
       >
-        <Text style={styles.label}>Start Check</Text>
-      </Pressable>
-    </View>
+        <Text style={styles.startCheckText}>Start Check</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Documents')}
+        style={styles.viewHistoryButton}
+      >
+        <Text style={styles.viewHistoryText}>View History</Text>
+      </TouchableOpacity>
+
+      <Text style={styles.titleText}>Concussion Check</Text>
+    </SafeAreaView>
   );
 }
 
+// https://reactnative.dev/docs/colors
+const title = '#000000';
+const text = '#fff';
+const background = '#fff';
+const buttons = '#fc5c65';
 const styles = StyleSheet.create({
-  button: {
-    alignItems: 'center',
-    alignSelf: 'stretch',
-    justifyContent: 'center',
-    paddingVertical: 12,
-    paddingHorizontal: 32,
-    borderRadius: 10,
-    elevation: 3,
-    backgroundColor: 'red',
-    marginHorizontal: 50,
-    marginVertical: 10,
-  },
-  label: {
-    fontSize: 16,
-    lineHeight: 21,
-    fontWeight: 'bold',
-    letterSpacing: 0.25,
-    color: 'white',
-  },
-  text: {
-    fontSize: 16,
-    lineHeight: 21,
-    letterSpacing: 0.25,
-    marginHorizontal: 50,
-    marginVertical: 10,
-  },
-  container: {
+  screen: {
     flex: 1,
     alignItems: 'center',
+    backgroundColor: background,
     justifyContent: 'center',
+  },
+  startCheckButton: {
+    width: 200,
+    height: 200,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 10,
+    borderRadius: 100,
+    backgroundColor: buttons,
+  },
+  startCheckText: {
+    color: text,
+    fontSize: 26,
+  },
+  titleText: {
+    color: title,
+    fontSize: 30,
+    position: 'absolute',
+    top: 60,
+    fontWeight: 'bold',
+  },
+  viewHistoryButton: {
+    width: 300,
+    height: 50,
+    padding: 10,
+    borderRadius: 100,
+    backgroundColor: buttons,
+    position: 'absolute',
+    bottom: 90,
+  },
+  viewHistoryText: {
+    color: text,
+    fontSize: 22,
+    textAlign: 'center',
+    textAlignVertical: 'center',
   },
 });
 
