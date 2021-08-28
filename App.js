@@ -3,9 +3,15 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './app/screens/HomeScreen';
 import DocumentsScreen from './app/screens/DocumentsScreen';
-import RecordIncidentScreen from './app/screens/RecordIncidentScreen';
-import ResultScreen from './app/screens/ResultScreen';
 import SingleChoiceQuestionScreen from './app/screens/SingleChoiceQuestionScreen';
+import CreateProfileScreen from './app/screens/CreateProfileScreen';
+import IncidentReportScreen from './app/screens/IncidentReportScreen';
+import StartCheckScreen from './app/screens/StartCheckScreen';
+import BadCheckScreen from './app/screens/BadCheckScreen';
+import TextQuestionScreen from './app/screens/TextQuestionScreen';
+import MemoryTestScreen from './app/screens/MemoryTestScreen';
+import ReactionTestScreen from './app/screens/ReactionTestScreen';
+import IncidentReportResultScreen from './app/screens/IncidentReportResultScreen';
 
 const RootStack = createNativeStackNavigator();
 
@@ -21,14 +27,26 @@ export default function App() {
         <RootStack.Screen name="Home" component={HomeScreen} />
         <RootStack.Screen name="Documents" component={DocumentsScreen} />
         <RootStack.Screen
-          name="RecordIncident"
-          component={RecordIncidentScreen}
+          name="Create Profile"
+          component={CreateProfileScreen}
         />
-        <RootStack.Screen name="Result" component={ResultScreen} />
         <RootStack.Screen
           name="SingleChoiceQ"
           component={SingleChoiceQuestionScreen}
         />
+        <RootStack.Screen
+          name="Record Incident"
+          component={IncidentReportScreen}
+        />
+        <RootStack.Screen name="Start Check" component={StartCheckScreen} />
+        <RootStack.Screen name="Questions" component={TextQuestionScreen} />
+        <RootStack.Screen name="Check Result" component={BadCheckScreen} />
+        <RootStack.Screen
+          name="Incident Report Result"
+          component={IncidentReportResultScreen}
+        />
+        <RootStack.Screen name="Memory Test" component={MemoryTestScreen} />
+        <RootStack.Screen name="Reaction Test" component={ReactionTestScreen} />
       </RootStack.Navigator>
     </NavigationContainer>
   );

@@ -1,19 +1,19 @@
 import * as React from 'react';
-import { Button, StyleSheet, Text, View, Pressable } from 'react-native';
+import { StyleSheet, Text, View, Pressable } from 'react-native';
 
 /**
- * Asks user for details about the concussion and gives a suggestion based on
+ * Shows result and gives a suggestion based on
  * the user's responses.
  */
-function RecordIncidentScreen({ navigation }) {
+function BadCheckScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text>Record Incident Screen</Text>
-      <Pressable
-        style={styles.button}
-        onPress={() => navigation.navigate('Result')}
-      >
-        <Text style={styles.label}>Result</Text>
+      <Text>Result</Text>
+      <Text style={styles.text}>
+        Your patient needs to go to hospital immediately, please call 000 now.
+      </Text>
+      <Pressable style={styles.button} onPress={() => navigation.goBack()}>
+        <Text style={styles.label}>Back</Text>
       </Pressable>
       <Pressable
         style={styles.button}
@@ -45,6 +45,13 @@ const styles = StyleSheet.create({
     letterSpacing: 0.25,
     color: 'white',
   },
+  text: {
+    fontSize: 16,
+    lineHeight: 21,
+    letterSpacing: 0.25,
+    marginHorizontal: 50,
+    marginVertical: 10,
+  },
   container: {
     flex: 1,
     alignItems: 'center',
@@ -52,4 +59,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default RecordIncidentScreen;
+export default BadCheckScreen;
