@@ -28,7 +28,7 @@ export default StyleSheet.create({
   },
   buttonText: {
     // consistent with "View History" button on Home screen, i.e. white text in the button
-    color: '#FFFFFFF',
+    color: '#fff',
     fontSize: 22,
     textAlign: 'center',
     textAlignVertical: 'center',

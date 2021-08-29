@@ -1,5 +1,13 @@
 import * as React from 'react';
-import { StyleSheet, Text, View, Pressable } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Pressable,
+  TouchableOpacity,
+} from 'react-native';
+
+import uiStyle from '../components/uiStyle';
 
 /**
  * The screen will be perform memory test.
@@ -9,32 +17,22 @@ import { StyleSheet, Text, View, Pressable } from 'react-native';
  */
 function MemoryTestScreen({ navigation }) {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Instruction</Text>
+    <View style={uiStyle.container}>
+      <Text style={uiStyle.text}>Welcome to the first memory test.</Text>
+      <Text style={uiStyle.text}>
+        You will be presented with three images to remember, you will be tested
+        on these images once now and then again at the end of the other
+        assessments.
+      </Text>
+
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Home')}
+        style={uiStyle.nextButton}
+      >
+        <Text style={uiStyle.buttonText}>Start!</Text>
+      </TouchableOpacity>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  label: {
-    fontSize: 16,
-    lineHeight: 21,
-    fontWeight: 'bold',
-    letterSpacing: 0.25,
-    color: 'white',
-  },
-  text: {
-    fontSize: 16,
-    lineHeight: 21,
-    letterSpacing: 0.25,
-    marginHorizontal: 50,
-    marginVertical: 10,
-  },
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
 
 export default MemoryTestScreen;
