@@ -8,14 +8,16 @@ export default StyleSheet.create({
   },
 
   text: {
-    fontSize: 20,
-    lineHeight: 21,
-    letterSpacing: 0.25,
+    // text for instructions in the concussion check
+    fontSize: 25,
+    lineHeight: 25,
+    letterSpacing: 0.3,
     marginHorizontal: 50,
     marginVertical: 10,
   },
 
   nextButton: {
+    // consistent with "View History" button on Home screen, i.e long red button on bottom
     width: 300,
     height: 50,
     padding: 10,
@@ -25,6 +27,7 @@ export default StyleSheet.create({
     bottom: 90,
   },
   buttonText: {
+    // consistent with "View History" button on Home screen, i.e. white text in the button
     color: '#FFFFFFF',
     fontSize: 22,
     textAlign: 'center',
