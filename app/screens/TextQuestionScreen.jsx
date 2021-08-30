@@ -1,5 +1,12 @@
 import * as React from 'react';
-import { StyleSheet, Text, View, TextInput, Pressable, Dimensions } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  Pressable,
+  Dimensions,
+} from 'react-native';
 
 /**
  * Asks user for details about the concussion and gives a suggestion based on

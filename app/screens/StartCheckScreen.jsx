@@ -12,7 +12,8 @@ function StartCheckScreen({ navigation }) {
     <View style={styles.container}>
       <Text>Post-injury Symptoms</Text>
       <Text style={styles.text}>
-        Does the Patient have any of the following? Please select all that apply.
+        Does the Patient have any of the following? Please select all that
+        apply.
       </Text>
     </View>
   );

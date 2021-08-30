@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './app/screens/HomeScreen';
 import DocumentsScreen from './app/screens/DocumentsScreen';
+import SingleChoiceQuestionScreen from './app/screens/SingleChoiceQuestionScreen';
 import CreateProfileScreen from './app/screens/CreateProfileScreen';
 import IncidentReportScreen from './app/screens/IncidentReportScreen';
 import StartCheckScreen from './app/screens/StartCheckScreen';
@@ -29,6 +30,10 @@ export default function App() {
         <RootStack.Screen
           name="Create Profile"
           component={CreateProfileScreen}
+        />
+        <RootStack.Screen
+          name="SingleChoiceQ"
+          component={SingleChoiceQuestionScreen}
         />
         <RootStack.Screen
           name="Record Incident"
