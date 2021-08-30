@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { useState } from 'react';
+
 import {
   StyleSheet,
   Text,
@@ -9,6 +11,7 @@ import {
 } from 'react-native';
 
 import uiStyle from '../../components/uiStyle';
+import MTImages from '../../../assets/MemoryTestResources/MTImages';
 
 /**
  * The screen will be perform memory test.
@@ -16,73 +19,45 @@ import uiStyle from '../../components/uiStyle';
  * After this test is completed, user needs to navigate to the next test which
  * is Reaction Test.
  */
-function MTTwo({ navigation }) {
-  const images = [
-    {
-      id: 1,
-      src: require('../../../assets/MemoryTestResources/bird.jpg'),
-      title: 'bird',
-    },
-    {
-      id: 2,
-      src: require('../../../assets/MemoryTestResources/clock.jpg'),
-      title: 'clock',
-    },
-    {
-      id: 3,
-      src: require('../../../assets/MemoryTestResources/cup.jpg'),
-      title: 'cup',
-    },
-    {
-      id: 4,
-      src: require('../../../assets/MemoryTestResources/flower.jpg'),
-      title: 'flower',
-    },
-    {
-      id: 5,
-      src: require('../../../assets/MemoryTestResources/fork.jpg'),
-      title: 'fork',
-    },
-    {
-      id: 6,
-      src: require('../../../assets/MemoryTestResources/keys.jpg'),
-      title: 'keys',
-    },
-    {
-      id: 7,
-      src: require('../../../assets/MemoryTestResources/pen.jpg'),
-      title: 'pen',
-    },
-    {
-      id: 8,
-      src: require('../../../assets/MemoryTestResources/scissors.jpg'),
-      title: 'scissors',
-    },
-    {
-      id: 9,
-      src: require('../../../assets/MemoryTestResources/toothbrush.jpg'),
-      title: 'toothbrush',
-    },
-  ];
-  const arr = [];
 
-  function generate3Numbers(arr) {
-    while (arr.length < 8) {
-      const r = Math.floor(Math.random() * 9) + 1;
-      if (arr.indexOf(r) === -1) arr.push(r);
+function MTTwo({ navigation }) {
+  const arr = [];
+  const threeImages = [];
+
+  const [index, setIndex] = useState(0);
+
+  function generate3Images(arr) {
+    while (arr.length < 3) {
+      const r = Math.floor(Math.random() * 8) + 1;
+      if (arr.indexOf(r) === -1) {
+        arr.push(r);
+        threeImages.push(MTImages[r]);
+      }
     }
     return arr;
   }
-  generate3Numbers(arr);
+
+  generate3Images(arr);
+
   return (
     <View style={uiStyle.container}>
-      <Text style={uiStyle.text}>{images[arr[0]].title}</Text>
+      <Text style={uiStyle.text}>{arr}</Text>
+
+      <Text style={uiStyle.text}>{threeImages[index].title}</Text>
       <Image
         style={{ width: 300, height: 300, resizeMode: 'contain' }}
-        source={images[arr[0]].src}
+        source={threeImages[index].src}
       />
       <TouchableOpacity
-        onPress={() => navigation.navigate('Home')}
+        onPress={() => {
+          if (index >= 2) {
+            navigation.navigate('Home');
+          } else {
+            if (index < arr.length - 1) {
+              setIndex(index + 1);
+            }
+          }
+        }}
         style={uiStyle.nextButton}
       >
         <Text style={uiStyle.buttonText}>Next Image</Text>
@@ -90,7 +65,5 @@ function MTTwo({ navigation }) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({});
 
 export default MTTwo;
