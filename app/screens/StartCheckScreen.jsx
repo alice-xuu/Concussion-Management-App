@@ -1,13 +1,18 @@
 import * as React from 'react';
 import { StyleSheet, Text, View, Pressable } from 'react-native';
-
+import uiStyle from '../components/uiStyle';
 /**
  * The start check screen after user pressed start check in the home screen
  * This screen contains the checkboxes of symptoms
  * After user finish ticking the boxes, user can press the "Submit" button and
  * navigate to either "BadCheckScreen" or "IncidentReportScreen".
  */
-function StartCheckScreen({ navigation }) {
+function StartCheckScreen({ navigation, route }) {
+  const screens = route.params.screens;
+  const screenIdx = route.params.screenIdx
+
+  // TODO: add options
+
   return (
     <View style={styles.container}>
       <Text>Post-injury Symptoms</Text>
@@ -15,6 +20,10 @@ function StartCheckScreen({ navigation }) {
         Does the Patient have any of the following? Please select all that
         apply.
       </Text>
+
+      <Pressable style={uiStyle.nextButton} onPress={() => navigation.navigate('Next Steps (IR1)')}>
+        
+      </Pressable>
     </View>
   );
 }
