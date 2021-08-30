@@ -12,12 +12,6 @@ function BadCheckScreen({ navigation }) {
       <Text style={styles.text}>
         Your patient needs to go to hospital immediately, please call 000 now.
       </Text>
-      <Pressable
-        style={styles.button}
-        onPress={() => navigation.navigate('Home')}
-      >
-        <Text style={styles.label}>Home</Text>
-      </Pressable>
     </View>
   );
 }
