@@ -24,12 +24,18 @@ function HomeScreen({ navigation }) {
       </TouchableOpacity>
 
       <TouchableOpacity
+        onPress={() => navigation.navigate('Record Incident questionnaire 1')}
+        style={styles.startCheckButton}
+      >
+        <Text style={styles.startCheckText}>Test button</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
         onPress={() => navigation.navigate('Documents')}
         style={styles.viewHistoryButton}
       >
         <Text style={styles.viewHistoryText}>View History</Text>
       </TouchableOpacity>
-
       <Text style={styles.titleText}>Concussion Check</Text>
       <Button
         title={'tempButtonToDbSample'}

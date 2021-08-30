@@ -12,8 +12,12 @@ import TextQuestionScreen from './app/screens/TextQuestionScreen';
 import MemoryTestScreen from './app/screens/MemoryTestScreen';
 import ReactionTestScreen from './app/screens/ReactionTestScreen';
 import IncidentReportResultScreen from './app/screens/IncidentReportResultScreen';
+
+import CheckListQuestionScreen from './app/screens/ChecklistQuestionScreen';
+
 import SampleDatabaseScreen from './app/screens/SampleDatabaseScreen';
 import NextStepsScreen from './app/screens/NextStepsScreen';
+
 
 const RootStack = createNativeStackNavigator();
 
@@ -34,8 +38,8 @@ export default function App() {
         />
         
         <RootStack.Screen
-          name="Record Incident"
-          component={IncidentReportScreen}
+          name="Record Incident questionnaire 1"
+          component={CheckListQuestionScreen}
         />
         <RootStack.Screen name="Start Check" component={StartCheckScreen} />
         <RootStack.Screen name="Next Steps (IR1)" component={NextStepsScreen} /> {/* IR refers to incident report in the figma */}

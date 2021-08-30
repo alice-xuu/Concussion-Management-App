@@ -5,7 +5,7 @@ import { StyleSheet, Text, View, Pressable } from 'react-native';
  * The screen will ask user to fill in details so their result can be saved in
  * their account.
  */
-function CreateProfileScreen({ navigation }) {
+function CreateProfileScreen() {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>
