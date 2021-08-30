@@ -31,7 +31,7 @@ function SingleChoiceQuestionScreen({ navigation }) {
       <View style={styles.sameRow}>
         <Pressable
           style={styles.buttonMaybe}
-          onPress={() => navigation.navigate('Text Question')}
+          onPress={() => navigation.navigate('Text Question (IR3)')}
         >
           <Text style={styles.label}>MAYBE/UNSURE</Text>
         </Pressable>

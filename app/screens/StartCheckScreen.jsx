@@ -7,9 +7,7 @@ import uiStyle from '../components/uiStyle';
  * After user finish ticking the boxes, user can press the "Submit" button and
  * navigate to either "BadCheckScreen" or "IncidentReportScreen".
  */
-function StartCheckScreen({ navigation, route }) {
-  const screens = route.params.screens;
-  const screenIdx = route.params.screenIdx
+function StartCheckScreen({ navigation }) {
 
   // TODO: add options
 
@@ -22,7 +20,7 @@ function StartCheckScreen({ navigation, route }) {
       </Text>
 
       <Pressable style={uiStyle.nextButton} onPress={() => navigation.navigate('Next Steps (IR1)')}>
-        
+        <Text style={uiStyle.buttonText}>Start</Text>
       </Pressable>
     </View>
   );

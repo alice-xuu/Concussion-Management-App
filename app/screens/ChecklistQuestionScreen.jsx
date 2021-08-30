@@ -136,7 +136,7 @@ function CheckListQuestionScreen({ navigation }) {
       </Text>
       <Pressable
         style={styles.button}
-        onPress={() => navigation.navigate('Record Incident questionnaire 2')}
+        onPress={() => navigation.navigate('Injury Sus (IR5)')}
       >
         <Text style={styles.label}>Submit</Text>
       </Pressable>

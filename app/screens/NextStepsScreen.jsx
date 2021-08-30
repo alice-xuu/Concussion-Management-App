@@ -11,11 +11,11 @@ import uiStyle from '../components/uiStyle';
 
 function NextStepsScreen({ navigation }) {
   return (
-    <SafeAreaView style={[uiStyle.container]}>
+    <SafeAreaView style={uiStyle.container}>
 
-      <TouchableOpacity
+      <TouchableOpacity style={uiStyle.nextButton}
         onPress={() => navigation.navigate('SingleChoiceQ (IR2)')}
-        style={uiStyles.nextButton}
+        
       >
         <Text style={uiStyle.buttonText}>Start</Text>
       </TouchableOpacity>
