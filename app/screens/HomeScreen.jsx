@@ -7,6 +7,7 @@ import {
   Button,
 } from 'react-native';
 
+
 /**
  * Starting screen that handles navigation to main app flows.
  *
@@ -37,6 +38,7 @@ function HomeScreen({ navigation }) {
     </SafeAreaView>
   );
 }
+
 
 // https://reactnative.dev/docs/colors
 const title = '#000000';
