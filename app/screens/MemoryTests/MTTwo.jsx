@@ -24,8 +24,6 @@ function MTTwo({ navigation }) {
   const arr = [];
   const threeImages = [];
 
-  const [index, setIndex] = useState(0);
-
   function generate3Images(arr) {
     while (arr.length < 3) {
       const r = Math.floor(Math.random() * 8) + 1;
@@ -39,28 +37,30 @@ function MTTwo({ navigation }) {
 
   generate3Images(arr);
 
+  const [state, setState] = useState({ index: 0, imgs: threeImages });
+  const { index, imgs } = state;
+
   return (
     <View style={uiStyle.container}>
-      <Text style={uiStyle.text}>{arr}</Text>
-
-      <Text style={uiStyle.text}>{threeImages[index].title}</Text>
+      <Text style={uiStyle.text}>{imgs[index].title}</Text>
       <Image
         style={{ width: 300, height: 300, resizeMode: 'contain' }}
-        source={threeImages[index].src}
+        source={imgs[index].src}
       />
+
       <TouchableOpacity
         onPress={() => {
           if (index >= 2) {
             navigation.navigate('Home');
           } else {
             if (index < arr.length - 1) {
-              setIndex(index + 1);
+              setState({ ...state, index: index + 1 });
             }
           }
         }}
         style={uiStyle.nextButton}
       >
-        <Text style={uiStyle.buttonText}>Next Image</Text>
+        <Text style={uiStyle.buttonText}>Next</Text>
       </TouchableOpacity>
     </View>
   );
