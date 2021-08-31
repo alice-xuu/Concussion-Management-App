@@ -105,13 +105,6 @@ function CheckListQuestionScreen({ navigation }) {
         />
         <Text> Agitation or combativeness</Text>
       </View>
-      <Text>
-        Do you have the first symptom(testing)?: {toggleCheckBox1 ? '✅' : '❌'}
-      </Text>
-      <Text>
-        Do you have the second symptom(testing)?:{' '}
-        {toggleCheckBox2 ? '✅' : '❌'}
-      </Text>
       <Pressable
         style={styles.button}
         onPress={() => navigation.navigate('Injury Sus (IR5)')}
