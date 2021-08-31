@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StyleSheet, Text, View, Pressable } from 'react-native';
-import { CheckBox } from 'react-native-web';
+import CheckBox from '@react-native-community/checkbox';
 import { useState } from 'react';
 
 /**
