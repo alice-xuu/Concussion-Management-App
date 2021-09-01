@@ -42,7 +42,7 @@ function MTTwo({ navigation }) {
 
   return (
     <View style={uiStyle.container}>
-      <Text style={uiStyle.text}>{imgs[index].title}</Text>
+      <Text style={styles.text}>{imgs[index].title}</Text>
       <Image
         style={{ width: 300, height: 300, resizeMode: 'contain' }}
         source={imgs[index].src}
@@ -65,5 +65,15 @@ function MTTwo({ navigation }) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  text: {
+    fontSize: 25,
+    lineHeight: 25,
+    letterSpacing: 0.3,
+    marginHorizontal: 50,
+    marginVertical: 10,
+  },
+});
 
 export default MTTwo;

@@ -111,8 +111,8 @@ const styles = StyleSheet.create({
   },
 
   checkboxBase: {
-    width: 24,
-    height: 24,
+    width: 35,
+    height: 35,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 4,

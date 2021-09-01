@@ -22,7 +22,7 @@ export default StyleSheet.create({
     marginHorizontal: 50,
     marginVertical: 10,
     position: 'absolute',
-    top: 50,
+    top: 20,
   },
 
   nextButton: {
