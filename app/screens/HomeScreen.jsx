@@ -41,6 +41,10 @@ function HomeScreen({ navigation }) {
         title={'tempButtonToDbSample'}
         onPress={() => navigation.navigate('Database Sample')}
       />
+      <Button
+        title={'temp Button To MemoryTest'}
+        onPress={() => navigation.navigate('Memory Test 1')}
+      />
     </SafeAreaView>
   );
 }
