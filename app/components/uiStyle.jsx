@@ -21,6 +21,8 @@ export default StyleSheet.create({
     letterSpacing: 0.3,
     marginHorizontal: 50,
     marginVertical: 10,
+    position: 'absolute',
+    top: 20,
   },
 
   nextButton: {
