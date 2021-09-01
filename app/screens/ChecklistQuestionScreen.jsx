@@ -2,7 +2,6 @@ import * as React from 'react';
 import { StyleSheet, Text, View, Pressable } from 'react-native';
 import { CheckBox } from 'react-native';
 import { useState } from 'react';
-
 /**
  * The screen will ask user for details about concussion in checklist form.
  */
@@ -17,7 +16,53 @@ function CheckListQuestionScreen({ navigation }) {
   const [toggleCheckBox8, setToggleCheckBox8] = useState(false);
   const [toggleCheckBox9, setToggleCheckBox9] = useState(false);
   const [toggleCheckBox10, setToggleCheckBox10] = useState(false);
+  const [incidentRepo, setIncidientRepo] = useState(null);
+  const responses = [];
 
+  const handleCreateMultiResponse = () => {
+    const desc = 'Checklist questionnaire 1';
+
+    function setResponses() {
+      if (toggleCheckBox1 == true) {
+        responses.push(toggleCheckBox1);
+      }
+      if (toggleCheckBox2 == true) {
+        responses.push(toggleCheckBox2);
+      }
+      if (toggleCheckBox3 == true) {
+        responses.push(toggleCheckBox3);
+      }
+      if (toggleCheckBox4 == true) {
+        responses.push(toggleCheckBox4);
+      }
+      if (toggleCheckBox5 == true) {
+        responses.push(toggleCheckBox5);
+      }
+      if (toggleCheckBox6 == true) {
+        responses.push(toggleCheckBox6);
+      }
+      if (toggleCheckBox7 == true) {
+        responses.push(toggleCheckBox7);
+      }
+      if (toggleCheckBox8 == true) {
+        responses.push(toggleCheckBox8);
+      }
+      if (toggleCheckBox9 == true) {
+        responses.push(toggleCheckBox9);
+      }
+      if (toggleCheckBox10 == true) {
+        responses.push(toggleCheckBox10);
+      }
+      return responses;
+    }
+
+    incidentRepo.addMultiResponse(1, desc, responses).then(
+      () => {
+        incidentRepo.getMultiResponses(1).then((mrs) => setResponses());
+      },
+      (err) => console.log(err),
+    );
+  };
   return (
     <View style={styles.container}>
       <Text>
@@ -107,7 +152,10 @@ function CheckListQuestionScreen({ navigation }) {
       </View>
       <Pressable
         style={styles.button}
-        onPress={() => navigation.navigate('Injury Sus (IR5)')}
+        onPress={() => {
+          navigation.navigate('Injury Sus (IR5)');
+          handleCreateMultiResponse();
+        }}
       >
         <Text style={styles.label}>Submit</Text>
       </Pressable>
