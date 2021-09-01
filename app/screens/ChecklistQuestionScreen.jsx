@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { StyleSheet, Text, View, Pressable } from 'react-native';
 import { CheckBox } from 'react-native';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { ReportIdContext } from '../components/GlobalContextProvider';
 /**
  * The screen will ask user for details about concussion in checklist form.
  */
