@@ -3,18 +3,22 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './app/screens/HomeScreen';
 import DocumentsScreen from './app/screens/DocumentsScreen';
+import SingleChoiceQuestionScreen from './app/screens/SingleChoiceQuestionScreen';
 import CreateProfileScreen from './app/screens/CreateProfileScreen';
 import IncidentReportScreen from './app/screens/IncidentReportScreen';
 import StartCheckScreen from './app/screens/StartCheckScreen';
 import BadCheckScreen from './app/screens/BadCheckScreen';
 import TextQuestionScreen from './app/screens/TextQuestionScreen';
-import MTOne from './app/screens/MemoryTests/MTOne';
 import ReactionTestScreen from './app/screens/ReactionTestScreen';
 import IncidentReportResultScreen from './app/screens/IncidentReportResultScreen';
 import SampleDatabaseScreen from './app/screens/SampleDatabaseScreen';
+import MTOne from './app/screens/MemoryTests/MTOne';
 import MTTwo from './app/screens/MemoryTests/MTTwo';
 import MTThree from './app/screens/MemoryTests/MTThree';
 import MTFour from './app/screens/MemoryTests/MTFour';
+import NextStepsScreen from './app/screens/NextStepsScreen';
+import ChecklistQuestionScreen from './app/screens/ChecklistQuestionScreen';
+//import InjurySusScreen from './app/screens/InjurySusScreen';
 
 const RootStack = createNativeStackNavigator();
 
@@ -33,12 +37,31 @@ export default function App() {
           name="Create Profile"
           component={CreateProfileScreen}
         />
+
         <RootStack.Screen
           name="Record Incident"
           component={IncidentReportScreen}
         />
+        <RootStack.Screen
+          name="Record Incident questionnaire 1"
+          component={ChecklistQuestionScreen}
+        />
         <RootStack.Screen name="Start Check" component={StartCheckScreen} />
-        <RootStack.Screen name="Questions" component={TextQuestionScreen} />
+        {/* bracket IR refers to incident report in the figma */}
+        <RootStack.Screen name="Next Steps (IR1)" component={NextStepsScreen} />
+        <RootStack.Screen
+          name="SingleChoiceQ (IR2)"
+          component={SingleChoiceQuestionScreen}
+        />
+        <RootStack.Screen
+          name="Text Question (IR3)"
+          component={TextQuestionScreen}
+        />
+        <RootStack.Screen
+          name="Checklist Question (IR4)"
+          component={ChecklistQuestionScreen}
+        />
+
         <RootStack.Screen name="Check Result" component={BadCheckScreen} />
         <RootStack.Screen
           name="Incident Report Result"

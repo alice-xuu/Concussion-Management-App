@@ -12,20 +12,30 @@ function BadCheckScreen({ navigation }) {
       <Text style={styles.text}>
         Your patient needs to go to hospital immediately, please call 000 now.
       </Text>
-      <Pressable style={styles.button} onPress={() => navigation.goBack()}>
-        <Text style={styles.label}>Back</Text>
-      </Pressable>
+      <Pressable disable={true} style={styles.callSymbol}>
+        <Text style={styles.label}>Call 000</Text>
+     </Pressable>
       <Pressable
         style={styles.button}
-        onPress={() => navigation.navigate('Home')}
+        onPress={() => navigation.navigate('Create Profile')}
       >
-        <Text style={styles.label}>Home</Text>
+        <Text style={styles.label}>Next</Text>
       </Pressable>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  callSymbol: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 100,
+    backgroundColor: 'red',
+    marginHorizontal: 50,
+    marginVertical: 10,
+  },
   button: {
     alignItems: 'center',
     alignSelf: 'stretch',

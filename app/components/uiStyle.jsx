@@ -6,6 +6,13 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  titleText: {
+    color: '#000000',
+    fontSize: 30,
+    position: 'absolute',
+    top: 60,
+    fontWeight: 'bold',
+  },
 
   text: {
     // text for instructions in the concussion check

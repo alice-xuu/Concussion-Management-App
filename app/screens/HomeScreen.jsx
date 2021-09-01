@@ -7,6 +7,7 @@ import {
   Button,
 } from 'react-native';
 
+
 /**
  * Starting screen that handles navigation to main app flows.
  *
@@ -14,7 +15,7 @@ import {
  */
 function HomeScreen({ navigation }) {
   return (
-    <SafeAreaView style={[styles.screen]}>
+    <SafeAreaView style={styles.screen}>
       <TouchableOpacity
         onPress={() => navigation.navigate('Start Check')}
         style={styles.startCheckButton}
@@ -23,12 +24,18 @@ function HomeScreen({ navigation }) {
       </TouchableOpacity>
 
       <TouchableOpacity
+        onPress={() => navigation.navigate('Record Incident questionnaire 1')}
+        style={styles.startCheckButton}
+      >
+        <Text style={styles.startCheckText}>Test button</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
         onPress={() => navigation.navigate('Documents')}
         style={styles.viewHistoryButton}
       >
         <Text style={styles.viewHistoryText}>View History</Text>
       </TouchableOpacity>
-
       <Text style={styles.titleText}>Concussion Check</Text>
       <Button
         title={'tempButtonToDbSample'}
@@ -41,6 +48,7 @@ function HomeScreen({ navigation }) {
     </SafeAreaView>
   );
 }
+
 
 // https://reactnative.dev/docs/colors
 const title = '#000000';

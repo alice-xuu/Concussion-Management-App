@@ -11,6 +11,7 @@
     "prettier": "prettier --write \"**/*.+(js|jsx|json|css|md)\"\n"
   },
   "dependencies": {
+    "@react-native-community/checkbox": "^0.5.8",
     "@react-navigation/native": "^6.0.2",
     "@react-navigation/native-stack": "^6.1.0",
     "expo": "~42.0.1",
@@ -23,7 +24,8 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
     "react-native-safe-area-context": "3.2.0",
     "react-native-screens": "~3.4.0",
-    "react-native-web": "~0.13.12"
+    "react-native-web": "~0.13.12",
+    "react-navigation": "^4.4.4"
   },
   "jest": {
     "preset": "jest-expo"
