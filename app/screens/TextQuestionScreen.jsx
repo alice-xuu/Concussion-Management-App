@@ -31,7 +31,7 @@ function TextQuestionScreen({ navigation }) {
       />
       <Pressable
         style={styles.button}
-        onPress={() => navigation.navigate('Check Result')}
+        onPress={() => navigation.navigate('Checklist Question (IR4)')}
       >
         <Text style={styles.label}>Next</Text>
       </Pressable>

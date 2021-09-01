@@ -13,6 +13,9 @@ import MemoryTestScreen from './app/screens/MemoryTestScreen';
 import ReactionTestScreen from './app/screens/ReactionTestScreen';
 import IncidentReportResultScreen from './app/screens/IncidentReportResultScreen';
 import SampleDatabaseScreen from './app/screens/SampleDatabaseScreen';
+import NextStepsScreen from './app/screens/NextStepsScreen';
+import ChecklistQuestionScreen from './app/screens/ChecklistQuestionScreen';
+//import InjurySusScreen from './app/screens/InjurySusScreen';
 
 const RootStack = createNativeStackNavigator();
 
@@ -31,16 +34,31 @@ export default function App() {
           name="Create Profile"
           component={CreateProfileScreen}
         />
-        <RootStack.Screen
-          name="SingleChoiceQ"
-          component={SingleChoiceQuestionScreen}
-        />
+
         <RootStack.Screen
           name="Record Incident"
           component={IncidentReportScreen}
         />
+        <RootStack.Screen
+          name="Record Incident questionnaire 1"
+          component={ChecklistQuestionScreen}
+        />
         <RootStack.Screen name="Start Check" component={StartCheckScreen} />
-        <RootStack.Screen name="Questions" component={TextQuestionScreen} />
+        {/* brackIR refers to incident report in the figma */}
+        <RootStack.Screen name="Next Steps (IR1)" component={NextStepsScreen} />
+        <RootStack.Screen
+          name="SingleChoiceQ (IR2)"
+          component={SingleChoiceQuestionScreen}
+        />
+        <RootStack.Screen
+          name="Text Question (IR3)"
+          component={TextQuestionScreen}
+        />
+        <RootStack.Screen
+          name="Checklist Question (IR4)"
+          component={ChecklistQuestionScreen}
+        />
+
         <RootStack.Screen name="Check Result" component={BadCheckScreen} />
         <RootStack.Screen
           name="Incident Report Result"

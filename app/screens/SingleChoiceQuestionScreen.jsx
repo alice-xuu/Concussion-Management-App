@@ -16,14 +16,14 @@ function SingleChoiceQuestionScreen({ navigation }) {
       <View style={styles.sameRow}>
         <Pressable
           style={styles.buttonYes}
-          onPress={() => navigation.navigate('Result')}
+          onPress={() => navigation.navigate('Text Question (IR3)')}
         >
           <Text style={styles.label}>YES</Text>
         </Pressable>
 
         <Pressable
           style={styles.buttonNo}
-          onPress={() => navigation.navigate('Result')}
+          onPress={() => navigation.navigate('Text Question (IR3)')}
         >
           <Text style={styles.label}>NO</Text>
         </Pressable>
@@ -31,7 +31,7 @@ function SingleChoiceQuestionScreen({ navigation }) {
       <View style={styles.sameRow}>
         <Pressable
           style={styles.buttonMaybe}
-          onPress={() => navigation.navigate('Result')}
+          onPress={() => navigation.navigate('Text Question (IR3)')}
         >
           <Text style={styles.label}>MAYBE/UNSURE</Text>
         </Pressable>

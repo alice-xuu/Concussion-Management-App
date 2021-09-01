@@ -14,7 +14,7 @@ function BadCheckScreen({ navigation }) {
       </Text>
       <Pressable disable={true} style={styles.callSymbol}>
         <Text style={styles.label}>Call 000</Text>
-      </Pressable>
+     </Pressable>
       <Pressable
         style={styles.button}
         onPress={() => navigation.navigate('Create Profile')}
