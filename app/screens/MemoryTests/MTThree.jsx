@@ -15,19 +15,17 @@ import uiStyle from '../../components/uiStyle.jsx';
  * After this test is completed, user needs to navigate to the next test which
  * is Reaction Test.
  */
-function MemoryTestScreen({ navigation }) {
+function MTThree({ navigation }) {
   return (
     <View style={uiStyle.container}>
-      <Text style={uiStyle.text}>Welcome to the first memory test.</Text>
       <Text style={uiStyle.text}>
-        The patient will be presented with three images to remember, they will
-        be tested on these images once now and then again at the end of the
-        other assessments.
+        Instructions {'\n'}
+        {'\n'}
+        Please pass the phone to your supervisor so they can input the results.
       </Text>
-      <Text style={uiStyle.text}>Pass the phone to the patient.</Text>
 
       <TouchableOpacity
-        onPress={() => navigation.navigate('Memory Test 2/6')}
+        onPress={() => navigation.navigate('Memory Test 4')}
         style={uiStyle.nextButton}
       >
         <Text style={uiStyle.buttonText}>Start!</Text>
@@ -38,4 +36,4 @@ function MemoryTestScreen({ navigation }) {
 
 const styles = StyleSheet.create({});
 
-export default MemoryTestScreen;
+export default MTThree;

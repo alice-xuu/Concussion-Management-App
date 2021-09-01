@@ -51,7 +51,7 @@ function MTTwo({ navigation }) {
       <TouchableOpacity
         onPress={() => {
           if (index >= 2) {
-            navigation.navigate('Home');
+            navigation.navigate('Memory Test 3');
           } else {
             if (index < arr.length - 1) {
               setState({ ...state, index: index + 1 });

@@ -36,7 +36,7 @@ function HomeScreen({ navigation }) {
       />
       <Button
         title={'temp Button To MemoryTest'}
-        onPress={() => navigation.navigate('Memory Test 1/6')}
+        onPress={() => navigation.navigate('Memory Test 1')}
       />
     </SafeAreaView>
   );

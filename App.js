@@ -8,11 +8,13 @@ import IncidentReportScreen from './app/screens/IncidentReportScreen';
 import StartCheckScreen from './app/screens/StartCheckScreen';
 import BadCheckScreen from './app/screens/BadCheckScreen';
 import TextQuestionScreen from './app/screens/TextQuestionScreen';
-import MemoryTestScreen from './app/screens/MemoryTests/MemoryTestScreen';
+import MTOne from './app/screens/MemoryTests/MTOne';
 import ReactionTestScreen from './app/screens/ReactionTestScreen';
 import IncidentReportResultScreen from './app/screens/IncidentReportResultScreen';
 import SampleDatabaseScreen from './app/screens/SampleDatabaseScreen';
 import MTTwo from './app/screens/MemoryTests/MTTwo';
+import MTThree from './app/screens/MemoryTests/MTThree';
+import MTFour from './app/screens/MemoryTests/MTFour';
 
 const RootStack = createNativeStackNavigator();
 
@@ -42,8 +44,11 @@ export default function App() {
           name="Incident Report Result"
           component={IncidentReportResultScreen}
         />
-        <RootStack.Screen name="Memory Test 1/6" component={MemoryTestScreen} />
-        <RootStack.Screen name="Memory Test 2/6" component={MTTwo} />
+        <RootStack.Screen name="Memory Test 1" component={MTOne} />
+        <RootStack.Screen name="Memory Test 2" component={MTTwo} />
+        <RootStack.Screen name="Memory Test 3" component={MTThree} />
+        <RootStack.Screen name="Memory Test 4" component={MTFour} />
+
         <RootStack.Screen name="Reaction Test" component={ReactionTestScreen} />
         <RootStack.Screen
           name="Database Sample"
