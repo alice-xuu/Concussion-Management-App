@@ -23,34 +23,34 @@ function CheckListQuestionScreen({ navigation }) {
     const desc = 'Checklist questionnaire 1';
 
     function setResponses() {
-      if (toggleCheckBox1 == true) {
+      if (toggleCheckBox1 === true) {
         responses.push(toggleCheckBox1);
       }
-      if (toggleCheckBox2 == true) {
+      if (toggleCheckBox2 === true) {
         responses.push(toggleCheckBox2);
       }
-      if (toggleCheckBox3 == true) {
+      if (toggleCheckBox3 === true) {
         responses.push(toggleCheckBox3);
       }
-      if (toggleCheckBox4 == true) {
+      if (toggleCheckBox4 === true) {
         responses.push(toggleCheckBox4);
       }
-      if (toggleCheckBox5 == true) {
+      if (toggleCheckBox5 === true) {
         responses.push(toggleCheckBox5);
       }
-      if (toggleCheckBox6 == true) {
+      if (toggleCheckBox6 === true) {
         responses.push(toggleCheckBox6);
       }
-      if (toggleCheckBox7 == true) {
+      if (toggleCheckBox7 === true) {
         responses.push(toggleCheckBox7);
       }
-      if (toggleCheckBox8 == true) {
+      if (toggleCheckBox8 === true) {
         responses.push(toggleCheckBox8);
       }
-      if (toggleCheckBox9 == true) {
+      if (toggleCheckBox9 === true) {
         responses.push(toggleCheckBox9);
       }
-      if (toggleCheckBox10 == true) {
+      if (toggleCheckBox10 === true) {
         responses.push(toggleCheckBox10);
       }
       return responses;
