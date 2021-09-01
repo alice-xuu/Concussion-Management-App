@@ -17,7 +17,7 @@ function HomeScreen({ navigation }) {
   return (
     <SafeAreaView style={[styles.screen]}>
       <TouchableOpacity
-        onPress={() => navigation.navigate('Start Check')}
+        onPress={() => navigation.navigate('Questions')}
         style={styles.startCheckButton}
       >
         <Text style={styles.startCheckText}>Start Check</Text>

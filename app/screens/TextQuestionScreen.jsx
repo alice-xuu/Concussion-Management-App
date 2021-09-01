@@ -1,12 +1,8 @@
-import * as React from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  Pressable,
-  Dimensions,
-} from 'react-native';
+import * as React from "react";
+import { useEffect, useState } from "react";
+import { Dimensions, Pressable, StyleSheet, Text, TextInput, View } from "react-native";
+import { DatabaseAdapter } from "../model/database/DatabaseAdapter";
+import { IncidentReportRepo } from "../model/database/IncidentReportRepo";
 
 /**
  * Asks user for details about the concussion and gives a suggestion based on
@@ -16,9 +12,33 @@ const width = Dimensions.get('window').width;
 
 function TextQuestionScreen({ navigation }) {
   const [value, onChangeText] = React.useState('');
+  const [incidentRepo, setIncidientRepo] = useState(null);
+  const [responses, setResponses] = useState(null);
+  // const reportId = useState(1);
+  const [reportId] = useState(1);
+  const [, setDa] = useState(null);
+  useEffect(() => {
+    DatabaseAdapter.initDatabase().then((da) => {
+      setDa(da);
+      setIncidientRepo(new IncidentReportRepo(da));
+    });
+  }, []);
+  const handleResponseDescription = () => {
+    const desc = 'text question';
+    incidentRepo.addSingleResponse(reportId, desc, value).then(() => {
+      incidentRepo
+        .getSingleResponses(reportId)
+        .then((sr) => setResponses(JSON.stringify(sr)));
+    });
+  };
+  const myFunction = () => {
+    // navigation.navigate('Check Result');
+    handleResponseDescription();
+  };
   return (
     <View style={styles.container}>
-      <Text style={styles.font}> Is there an alternative explanation for your patient’s symptoms? If yes, please briefly note it down.</Text>
+      <Text style={styles.font}>
+        Is there an alternative explanation for your patient’s symptoms? If yes, please briefly note it down.</Text>
 
       <TextInput
         style={styles.content}
@@ -31,10 +51,14 @@ function TextQuestionScreen({ navigation }) {
       />
       <Pressable
         style={styles.button}
-        onPress={() => navigation.navigate('Check Result')}
+        // onPress={() => navigation.navigate('Check Result')}
+        // onPress={handleCreateSResponse}
+        onPress={myFunction}
       >
         <Text style={styles.label}>Next</Text>
       </Pressable>
+
+
     </View>
   );
 }

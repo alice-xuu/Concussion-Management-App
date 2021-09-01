@@ -1,10 +1,10 @@
-import * as React from 'react';
+import * as React from "react";
+import { useEffect, useState } from "react";
 
-import { DatabaseAdapter } from '../model/database/DatabaseAdapter';
-import { PatientRepo } from '../model/database/PatientRepo';
-import { IncidentReportRepo } from '../model/database/IncidentReportRepo';
-import { useEffect, useState } from 'react';
-import { Button, Text, View } from 'react-native';
+import { DatabaseAdapter } from "../model/database/DatabaseAdapter";
+import { PatientRepo } from "../model/database/PatientRepo";
+import { IncidentReportRepo } from "../model/database/IncidentReportRepo";
+import { Button, onChangeText, Text, TextInput, View } from "react-native";
 
 /**
  * Temporary screen to show/test database functionality.
@@ -98,11 +98,11 @@ export default function SampleDatabaseScreen() {
       <Text>{reportId}</Text>
 
       <Button title="Create Single response" onPress={handleCreateSResponse} />
-
       <Button
         title="Create Multi response"
         onPress={handleCreateMultiResponse}
       />
+
 
       <Text>{responses}</Text>
     </View>

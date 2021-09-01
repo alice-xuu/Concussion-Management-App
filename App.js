@@ -13,6 +13,7 @@ import MemoryTestScreen from './app/screens/MemoryTestScreen';
 import ReactionTestScreen from './app/screens/ReactionTestScreen';
 import IncidentReportResultScreen from './app/screens/IncidentReportResultScreen';
 import SampleDatabaseScreen from './app/screens/SampleDatabaseScreen';
+import CheckListQuestionScreen from './app/screens/ChecklistQuestionScreen';
 
 const RootStack = createNativeStackNavigator();
 
@@ -40,6 +41,7 @@ export default function App() {
           component={IncidentReportScreen}
         />
         <RootStack.Screen name="Start Check" component={StartCheckScreen} />
+        <RootStack.Screen name="CheckList" component={CheckListQuestionScreen} />
         <RootStack.Screen name="Questions" component={TextQuestionScreen} />
         <RootStack.Screen name="Check Result" component={BadCheckScreen} />
         <RootStack.Screen
