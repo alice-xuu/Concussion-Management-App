@@ -1,49 +1,37 @@
 import * as React from 'react';
 
-import { DatabaseAdapter } from '../model/database/DatabaseAdapter';
-import { PatientRepo } from '../model/database/PatientRepo';
-import { IncidentReportRepo } from '../model/database/IncidentReportRepo';
-import { useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import { Button, Text, View } from 'react-native';
+import {
+  IncidentReportRepoContext,
+  PatientContext,
+  PatientRepoContext,
+  ReportIdContext,
+} from '../components/GlobalContextProvider';
 
 /**
  * Temporary screen to show/test database functionality.
  */
 export default function SampleDatabaseScreen() {
-  const [firstName, setFirstName] = useState();
-  const [lastName, setLastName] = useState();
+  // Context variables
+  const [patient, setPatient] = useContext(PatientContext);
+  const [reportId, setReportId] = useContext(ReportIdContext);
+  const patientRepoContext = useContext(PatientRepoContext);
+  const incidentRepoContext = useContext(IncidentReportRepoContext);
 
-  // TODO: move this to a context that is globally accessible
-  const [patientRepo, setPatientRepo] = useState(null);
-  const [, setDa] = useState(null);
-  const [incidentRepo, setIncidientRepo] = useState(null);
-
-  // TODO: remove or move to a context
+  // Local state
   const [responses, setResponses] = useState(null);
-  const [patientIdState, setPatientId] = useState(null);
-  const [reportId, setReportId] = useState(null);
-
-  // TODO: move to context
-  useEffect(() => {
-    DatabaseAdapter.initDatabase().then((da) => {
-      setDa(da);
-      setPatientRepo(new PatientRepo(da));
-      setIncidientRepo(new IncidentReportRepo(da));
-    });
-  }, []);
 
   // TODO: remove
   const onCreatePatient = () => {
-    if (patientRepo != null) {
+    if (patientRepoContext !== null) {
       const fname = Math.random().toString();
 
-      patientRepo.createPatient(fname, 'Smith').then(
+      patientRepoContext.createPatient(fname, 'Smith').then(
         (patientId) => {
-          patientRepo.getPatient(patientId).then((patient) => {
-            setFirstName(patient.firstName);
-            setLastName(patient.lastName);
+          patientRepoContext.getPatient(patientId).then((patientRet) => {
+            setPatient(patientRet);
           });
-          setPatientId(patientId);
         },
         (err) => console.log('Error: ' + err),
       );
@@ -54,15 +42,17 @@ export default function SampleDatabaseScreen() {
 
   // TODO: remove
   const handleCreateReport = () => {
-    incidentRepo.createReport(patientIdState).then((id) => setReportId(id));
+    incidentRepoContext
+      .createReport(patient.patientId)
+      .then((id) => setReportId(id));
   };
 
   // TODO: remove
   const handleCreateSResponse = () => {
     const desc = 'test-response';
     const res = Math.random().toString();
-    incidentRepo.addSingleResponse(reportId, desc, res).then(() => {
-      incidentRepo
+    incidentRepoContext.addSingleResponse(reportId, desc, res).then(() => {
+      incidentRepoContext
         .getSingleResponses(reportId)
         .then((sr) => setResponses(JSON.stringify(sr)));
     });
@@ -71,7 +61,7 @@ export default function SampleDatabaseScreen() {
   // TODO: remove
   const handleCreateMultiResponse = () => {
     const desc = 'test-multi-response';
-    incidentRepo
+    incidentRepoContext
       .addMultiResponse(reportId, desc, [
         Math.random().toString(),
         Math.random().toString(),
@@ -79,7 +69,7 @@ export default function SampleDatabaseScreen() {
       ])
       .then(
         () => {
-          incidentRepo
+          incidentRepoContext
             .getMultiResponses(reportId)
             .then((mrs) => setResponses(JSON.stringify(mrs)));
         },
@@ -91,7 +81,7 @@ export default function SampleDatabaseScreen() {
     <View>
       <Button title="Create Patient" onPress={onCreatePatient} />
 
-      <Text>{firstName + ' ' + lastName}</Text>
+      <Text>{patient.firstName + ' ' + patient.lastName}</Text>
 
       <Button title="Create Report" onPress={handleCreateReport} />
 
