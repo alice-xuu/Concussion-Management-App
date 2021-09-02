@@ -19,14 +19,7 @@ function HomeScreen({ navigation }) {
         onPress={() => navigation.navigate('Start Check')}
         style={styles.startCheckButton}
       >
-        <Text style={styles.startCheckText}>Start Check</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        onPress={() => navigation.navigate('Record Incident questionnaire 1')}
-        style={styles.startCheckButton}
-      >
-        <Text style={styles.startCheckText}>Test button</Text>
+        <Text style={styles.startCheckText}>Start Check test</Text>
       </TouchableOpacity>
 
       <TouchableOpacity

@@ -1,50 +1,135 @@
 import * as React from 'react';
-import { StyleSheet, Text, View, Pressable } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Pressable,
+  TouchableOpacity,
+} from 'react-native';
+import { useContext, useState } from 'react';
+import { Ionicons } from '@expo/vector-icons';
 import uiStyle from '../components/uiStyle';
-/**
- * The start check screen after user pressed start check in the home screen
- * This screen contains the checkboxes of symptoms
- * After user finish ticking the boxes, user can press the "Submit" button and
- * navigate to either "BadCheckScreen" or "IncidentReportScreen".
- */
-function StartCheckScreen({ navigation }) {
 
-  // TODO: add options
+/**
+ * The screen will ask user for details about concussion in checklist form.
+ */
+
+function MyCheckbox() {
+  const [checked, onChange] = useState(false);
+
+  function onCheckmarkPress() {
+    onChange(!checked);
+  }
 
   return (
-    <View style={styles.container}>
-      <Text>Post-injury Symptoms</Text>
-      <Text style={styles.text}>
-        Does the Patient have any of the following? Please select all that
-        apply.
-      </Text>
+    <Pressable
+      style={[styles.checkboxBase, checked && styles.checkboxChecked]}
+      onPress={onCheckmarkPress}
+    >
+      {checked && <Ionicons name="checkmark" size={24} color="black" />}
+    </Pressable>
+  );
+}
 
-      <Pressable style={uiStyle.nextButton} onPress={() => navigation.navigate('Next Steps (IR1)')}>
-        <Text style={uiStyle.buttonText}>Start</Text>
-      </Pressable>
+function StartCheckScreen({ navigation }) {
+  return (
+    <View style={uiStyle.container}>
+      <Text style={uiStyle.text}>
+        Does the patient have any of the following symptoms? Please select all
+        that apply.
+      </Text>
+      <View style={styles.allCheckboxContainer}>
+        <View style={styles.checkboxContainer}>
+          <MyCheckbox />
+          <Text style={styles.checkboxLabel}>{`Neck pain or tenderness`}</Text>
+        </View>
+        <View style={styles.checkboxContainer}>
+          <MyCheckbox />
+          <Text style={styles.checkboxLabel}>{`Double vision`}</Text>
+        </View>
+        <View style={styles.checkboxContainer}>
+          <MyCheckbox />
+          <Text
+            style={styles.checkboxLabel}
+          >{`Weakness or tingling/burning in the arms or legs`}</Text>
+        </View>
+        <View style={styles.checkboxContainer}>
+          <MyCheckbox />
+          <Text
+            style={styles.checkboxLabel}
+          >{`Severe or increasing headache`}</Text>
+        </View>
+        <View style={styles.checkboxContainer}>
+          <MyCheckbox />
+          <Text style={styles.checkboxLabel}>{`Seizures or convulsions`}</Text>
+        </View>
+        <View style={styles.checkboxContainer}>
+          <MyCheckbox />
+          <Text style={styles.checkboxLabel}>{`Loss of consciousness`}</Text>
+        </View>
+        <View style={styles.checkboxContainer}>
+          <MyCheckbox />
+          <Text
+            style={styles.checkboxLabel}
+          >{`Deteriorating conscious state`}</Text>
+        </View>
+        <View style={styles.checkboxContainer}>
+          <MyCheckbox />
+          <Text style={styles.checkboxLabel}>{`Vomiting`}</Text>
+        </View>
+        <View style={styles.checkboxContainer}>
+          <MyCheckbox />
+          <Text style={styles.checkboxLabel}>{`Increasing restlessness`}</Text>
+        </View>
+        <View style={styles.checkboxContainer}>
+          <MyCheckbox />
+          <Text
+            style={styles.checkboxLabel}
+          >{`Agitation or combativeness`}</Text>
+        </View>
+      </View>
+      <Text> </Text>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Home')}
+        style={uiStyle.nextButton}
+      >
+        <Text style={uiStyle.buttonText}>Submit</Text>
+      </TouchableOpacity>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  label: {
-    fontSize: 16,
-    lineHeight: 21,
-    fontWeight: 'bold',
-    letterSpacing: 0.25,
-    color: 'white',
+  allCheckboxContainer: {
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'space-evenly',
   },
-  text: {
-    fontSize: 16,
-    lineHeight: 21,
-    letterSpacing: 0.25,
-    marginHorizontal: 50,
-    marginVertical: 10,
-  },
-  container: {
-    flex: 1,
+  checkboxContainer: {
+    flexDirection: 'row',
     alignItems: 'center',
+    padding: 5,
+  },
+
+  checkboxBase: {
+    width: 35,
+    height: 35,
     justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 4,
+    borderWidth: 2,
+    borderColor: 'black',
+    backgroundColor: 'transparent',
+  },
+
+  checkboxChecked: {
+    backgroundColor: '#C4C4C4',
+  },
+
+  checkboxLabel: {
+    marginLeft: 8,
+    fontWeight: '500',
+    fontSize: 18,
   },
 });
 

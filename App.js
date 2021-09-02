@@ -17,7 +17,7 @@ import MTTwo from './app/screens/MemoryTests/MTTwo';
 import MTThree from './app/screens/MemoryTests/MTThree';
 import MTFour from './app/screens/MemoryTests/MTFour';
 import NextStepsScreen from './app/screens/NextStepsScreen';
-import ChecklistQuestionScreen from './app/screens/ChecklistQuestionScreen';
+import ChecklistQuestionScreen from './app/screens/StartCheckScreen';
 import { GlobalContextProvider } from './app/components/GlobalContextProvider';
 //import InjurySusScreen from './app/screens/InjurySusScreen';
 
@@ -42,10 +42,6 @@ export default function App() {
           <RootStack.Screen
             name="Record Incident"
             component={IncidentReportScreen}
-          />
-          <RootStack.Screen
-            name="Record Incident questionnaire 1"
-            component={ChecklistQuestionScreen}
           />
           <RootStack.Screen name="Start Check" component={StartCheckScreen} />
           {/* bracket IR refers to incident report in the figma */}
