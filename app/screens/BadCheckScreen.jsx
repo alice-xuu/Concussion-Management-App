@@ -35,13 +35,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#ff0000',
     marginVertical: 310,
   },
-  label: {
-    fontSize: 16,
-    lineHeight: 21,
-    fontWeight: 'bold',
-    letterSpacing: 0.25,
-    color: '#fff',
-  },
   text: {
     fontSize: 18,
     lineHeight: 25,
