@@ -90,9 +90,9 @@ function MTFour({ navigation }) {
       </View>
       <TouchableOpacity
         onPress={() => navigation.navigate('Home')}
-        style={uiStyle.nextButton}
+        style={uiStyle.bottomButton}
       >
-        <Text style={uiStyle.buttonText}>Submit</Text>
+        <Text style={uiStyle.buttonLabel}>Submit</Text>
       </TouchableOpacity>
     </View>
   );
