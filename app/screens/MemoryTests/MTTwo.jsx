@@ -58,9 +58,9 @@ function MTTwo({ navigation }) {
             }
           }
         }}
-        style={uiStyle.nextButton}
+        style={uiStyle.bottomButton}
       >
-        <Text style={uiStyle.buttonText}>Next</Text>
+        <Text style={uiStyle.buttonLabel}>Next</Text>
       </TouchableOpacity>
     </View>
   );

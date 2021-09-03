@@ -26,9 +26,9 @@ function MTThree({ navigation }) {
 
       <TouchableOpacity
         onPress={() => navigation.navigate('Memory Test 4')}
-        style={uiStyle.nextButton}
+        style={uiStyle.bottomButton}
       >
-        <Text style={uiStyle.buttonText}>Start!</Text>
+        <Text style={uiStyle.buttonLabel}>Start!</Text>
       </TouchableOpacity>
     </View>
   );
