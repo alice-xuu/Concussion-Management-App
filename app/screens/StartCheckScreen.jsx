@@ -91,9 +91,9 @@ function StartCheckScreen({ navigation }) {
       <Text> </Text>
       <TouchableOpacity
         onPress={() => navigation.navigate('Home')}
-        style={uiStyle.nextButton}
+        style={uiStyle.bottomButton}
       >
-        <Text style={uiStyle.buttonText}>Submit</Text>
+        <Text style={uiStyle.buttonLabel}>Submit</Text>
       </TouchableOpacity>
     </View>
   );
@@ -104,6 +104,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'space-evenly',
+    marginHorizontal: 50,
   },
   checkboxContainer: {
     flexDirection: 'row',

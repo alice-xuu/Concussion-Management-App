@@ -25,20 +25,23 @@ export default StyleSheet.create({
     top: 20,
   },
 
-  nextButton: {
+  bottomButton: {
     // consistent with "View History" button on Home screen, i.e long red button on bottom
     width: 300,
     height: 50,
     padding: 10,
     borderRadius: 100,
-    backgroundColor: '#fc5c65',
+    backgroundColor: '#ff0000',
     position: 'absolute',
+    alignItems: 'center',
+    justifyContent: 'center',
     bottom: 90,
   },
-  buttonText: {
+  buttonLabel: {
     // consistent with "View History" button on Home screen, i.e. white text in the button
     color: '#fff',
-    fontSize: 22,
+    fontSize: 18,
+    fontWeight: 'bold',
     textAlign: 'center',
     textAlignVertical: 'center',
   },
