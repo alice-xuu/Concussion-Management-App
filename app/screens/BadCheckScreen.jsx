@@ -1,71 +1,49 @@
 import * as React from 'react';
-import { StyleSheet, Text, View, Pressable } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
+import uiStyle from '../components/uiStyle';
 /**
- * Shows result and gives a suggestion based on
- * the user's responses.
+ * Shows result for check if patient have any selected non-well symptoms.
  */
 function BadCheckScreen({ navigation }) {
   return (
-    <View style={styles.container}>
-      <Text>Result</Text>
+    <View style={uiStyle.container}>
       <Text style={styles.text}>
         Your patient needs to go to hospital immediately, please call 000 now.
       </Text>
-      <Pressable disable={true} style={styles.callSymbol}>
+      <View style={styles.callSymbol}>
         <Text style={styles.label}>Call 000</Text>
-     </Pressable>
-      <Pressable
-        style={styles.button}
+      </View>
+      <TouchableOpacity
+        style={uiStyle.bottomButton}
         onPress={() => navigation.navigate('Create Profile')}
       >
-        <Text style={styles.label}>Next</Text>
-      </Pressable>
+        <Text style={uiStyle.buttonLabel}>Next</Text>
+      </TouchableOpacity>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   callSymbol: {
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 12,
     paddingHorizontal: 32,
     borderRadius: 100,
-    backgroundColor: 'red',
-    marginHorizontal: 50,
-    marginVertical: 10,
-  },
-  button: {
-    alignItems: 'center',
-    alignSelf: 'stretch',
-    justifyContent: 'center',
-    paddingVertical: 12,
-    paddingHorizontal: 32,
-    borderRadius: 10,
-    elevation: 3,
-    backgroundColor: 'black',
-    marginHorizontal: 50,
-    marginVertical: 10,
-  },
-  label: {
-    fontSize: 16,
-    lineHeight: 21,
-    fontWeight: 'bold',
-    letterSpacing: 0.25,
-    color: 'white',
+    backgroundColor: '#ff0000',
+    marginVertical: 310,
   },
   text: {
-    fontSize: 16,
-    lineHeight: 21,
-    letterSpacing: 0.25,
+    fontSize: 18,
+    lineHeight: 25,
+    letterSpacing: 0.3,
     marginHorizontal: 50,
     marginVertical: 10,
-  },
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    fontWeight: 'bold',
+    position: 'absolute',
+    top: 200,
   },
 });
 
