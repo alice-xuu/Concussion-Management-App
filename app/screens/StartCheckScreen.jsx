@@ -90,7 +90,7 @@ function StartCheckScreen({ navigation }) {
       </View>
       <Text> </Text>
       <TouchableOpacity
-        onPress={() => navigation.navigate('Home')}
+        onPress={() => navigation.navigate('Mechanisms of Injury')}
         style={uiStyle.bottomButton}
       >
         <Text style={uiStyle.buttonLabel}>Submit</Text>
