@@ -19,7 +19,7 @@ import MTFour from './app/screens/MemoryTests/MTFour';
 import NextStepsScreen from './app/screens/NextStepsScreen';
 import ChecklistQuestionScreen from './app/screens/StartCheckScreen';
 import { GlobalContextProvider } from './app/components/GlobalContextProvider';
-import IncidentReportFourScreen from "./app/screens/InicidentReportFourScreen";
+import IncidentReportFourScreen from './app/screens/InicidentReportFourScreen';
 //import InjurySusScreen from './app/screens/InjurySusScreen';
 
 const RootStack = createNativeStackNavigator();
