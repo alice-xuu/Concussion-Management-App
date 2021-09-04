@@ -41,7 +41,63 @@ function IncidentReportFourScreen({ navigation }) {
       <View style={styles.allCheckboxContainer}>
         <View style={styles.checkboxContainer}>
           <MyCheckbox />
-          <Text style={styles.checkboxLabel}>{`Headache`}</Text>
+          <Text
+            style={styles.checkboxLabel}
+          >{`Lying motionless after the event`}</Text>
+        </View>
+        <View style={styles.checkboxContainer}>
+          <MyCheckbox />
+          <Text
+            style={styles.checkboxLabel}
+          >{`Slow to get up after the head knock`}</Text>
+        </View>
+        <View style={styles.checkboxContainer}>
+          <MyCheckbox />
+          <Text
+            style={styles.checkboxLabel}
+          >{`Looks stunned or dazed`}</Text>
+        </View>
+        <View style={styles.checkboxContainer}>
+          <MyCheckbox />
+          <Text
+            style={styles.checkboxLabel}
+          >{`Shows behavioural or personality changes`}</Text>
+        </View>
+        <View style={styles.checkboxContainer}>
+          <MyCheckbox />
+          <Text
+            style={styles.checkboxLabel}
+          >{`Forgets things they normally know`}</Text>
+        </View>
+        <View style={styles.checkboxContainer}>
+          <MyCheckbox />
+          <Text
+            style={styles.checkboxLabel}
+          >{`Disorientation or confusion`}</Text>
+        </View>
+        <View style={styles.checkboxContainer}>
+          <MyCheckbox />
+          <Text
+            style={styles.checkboxLabel}
+          >{`Slowness in responding to questions`}</Text>
+        </View>
+        <View style={styles.checkboxContainer}>
+          <MyCheckbox />
+          <Text
+            style={styles.checkboxLabel}
+          >{`Forgetting what happened before injury(retrograde memory)`}</Text>
+        </View>
+        <View style={styles.checkboxContainer}>
+          <MyCheckbox />
+          <Text
+            style={styles.checkboxLabel}
+          >{`Forgetting what happened after injury`}</Text>
+        </View>
+        <View style={styles.checkboxContainer}>
+          <MyCheckbox />
+          <Text
+            style={styles.checkboxLabel}
+          >{`Stumbling and/or slow labored movements`}</Text>
         </View>
       </View>
       <Text> </Text>
