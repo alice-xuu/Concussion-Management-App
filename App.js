@@ -18,7 +18,8 @@ import MTFour from './app/screens/MemoryTests/MTFour';
 import NextStepsScreen from './app/screens/NextStepsScreen';
 import ChecklistQuestionScreen from './app/screens/StartCheckScreen';
 import { GlobalContextProvider } from './app/components/GlobalContextProvider';
-import MechanismsInjuryScreen from "./app/screens/MechanismsInjuryScreen";
+import IncidentReportFourScreen from './app/screens/InicidentReportFourScreen';
+import MechanismsInjuryScreen from './app/screens/MechanismsInjuryScreen';
 //import InjurySusScreen from './app/screens/InjurySusScreen';
 
 const RootStack = createNativeStackNavigator();
@@ -44,6 +45,10 @@ export default function App() {
             component={MechanismsInjuryScreen}
           />
           <RootStack.Screen name="Start Check" component={StartCheckScreen} />
+          <RootStack.Screen
+            name="Incident report 4"
+            component={IncidentReportFourScreen}
+          />
           {/* bracket IR refers to incident report in the figma */}
           <RootStack.Screen
             name="Next Steps (IR1)"
