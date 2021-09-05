@@ -6,7 +6,7 @@ import uiStyle from '../components/uiStyle';
  * Asks user if there is a mechanism of injury
  * Response; Yes, Maybe/Unsure, No.
  */
-function IncidentReport5Screen({ navigation }) {
+function IncidentReportFiveScreen({ navigation }) {
   return (
     <View style={uiStyle.container}>
       <Text style={uiStyle.text}>
@@ -78,4 +78,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default IncidentReport5Screen;
+export default IncidentReportFiveScreen;

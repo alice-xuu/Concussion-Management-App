@@ -18,7 +18,11 @@ function TextQuestionScreen({ navigation }) {
   const [value, onChangeText] = React.useState('');
   return (
     <View style={styles.container}>
-      <Text style={styles.font}> Is there an alternative explanation for your patient’s symptoms? If yes, please briefly note it down.</Text>
+      <Text style={styles.font}>
+        {' '}
+        Is there an alternative explanation for your patient’s symptoms? If yes,
+        please briefly note it down.
+      </Text>
 
       <TextInput
         style={styles.content}
@@ -31,7 +35,7 @@ function TextQuestionScreen({ navigation }) {
       />
       <Pressable
         style={styles.button}
-        onPress={() => navigation.navigate('Checklist Question (IR4)')}
+        onPress={() => navigation.navigate('Incident report 4')}
       >
         <Text style={styles.label}>Next</Text>
       </Pressable>
