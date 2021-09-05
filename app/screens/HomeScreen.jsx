@@ -41,6 +41,10 @@ function HomeScreen({ navigation }) {
         title={'temp Button To ir5'}
         onPress={() => navigation.navigate('IR 5')}
       />
+      <Button
+        title={'testing for incident report 4'}
+        onPress={() => navigation.navigate('Incident report 4')}
+      />
     </SafeAreaView>
   );
 }

@@ -20,7 +20,7 @@ import ChecklistQuestionScreen from './app/screens/StartCheckScreen';
 import { GlobalContextProvider } from './app/components/GlobalContextProvider';
 import MechanismsInjuryScreen from './app/screens/MechanismsInjuryScreen';
 import IncidentReport5Screen from './app/screens/IncidentReport5Screen';
-//import IncidentReport5Screen from './app/screens/IncidentReport5Screen';
+import IncidentReportFourScreen from './app/screens/InicidentReportFourScreen';
 
 const RootStack = createNativeStackNavigator();
 /**
@@ -45,6 +45,10 @@ export default function App() {
             component={MechanismsInjuryScreen}
           />
           <RootStack.Screen name="Start Check" component={StartCheckScreen} />
+          <RootStack.Screen
+            name="Incident report 4"
+            component={IncidentReportFourScreen}
+          />
           {/* bracket IR refers to incident report in the figma */}
           <RootStack.Screen
             name="Next Steps (IR1)"
