@@ -63,10 +63,7 @@ export default function App() {
             component={ChecklistQuestionScreen}
           />
 
-          <RootStack.Screen
-            name="Incident report 5"
-            component={IncidentReport5Screen}
-          />
+          <RootStack.Screen name="IR 5" component={IncidentReport5Screen} />
 
           <RootStack.Screen name="Check Result" component={BadCheckScreen} />
           <RootStack.Screen
