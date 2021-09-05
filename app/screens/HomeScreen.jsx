@@ -21,7 +21,7 @@ function HomeScreen({ navigation }) {
         onPress={() => navigation.navigate('Start Check')}
         style={styles.startCheckButton}
       >
-        <Text style={styles.startCheckText}>Start Check test</Text>
+        <Text style={styles.startCheckText}>Start Check</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
@@ -30,7 +30,9 @@ function HomeScreen({ navigation }) {
       >
         <Text style={uiStyle.buttonLabel}>View History</Text>
       </TouchableOpacity>
+
       <Text style={styles.titleText}>Concussion Check</Text>
+
       <Button
         title={'tempButtonToCheck Result'}
         onPress={() => navigation.navigate('Check Result')}
