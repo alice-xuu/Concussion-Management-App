@@ -5,7 +5,7 @@ import { Button, StyleSheet, Text, View, Pressable } from 'react-native';
  * Asks user if there is a mechanism of injury
  * Response; Yes, Maybe/Unsure, No.
  */
-function InjurySusScreen({ navigation }) {
+function IncidentReport5Screen({ navigation }) {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>
@@ -28,7 +28,6 @@ function InjurySusScreen({ navigation }) {
           <Text style={styles.label}>NO</Text>
         </Pressable>
       </View>
-
     </View>
   );
 }
@@ -87,4 +86,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default InjurySusScreen;
+export default IncidentReport5Screen;

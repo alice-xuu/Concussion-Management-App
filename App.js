@@ -18,8 +18,9 @@ import MTFour from './app/screens/MemoryTests/MTFour';
 import NextStepsScreen from './app/screens/NextStepsScreen';
 import ChecklistQuestionScreen from './app/screens/StartCheckScreen';
 import { GlobalContextProvider } from './app/components/GlobalContextProvider';
-import MechanismsInjuryScreen from "./app/screens/MechanismsInjuryScreen";
-//import InjurySusScreen from './app/screens/InjurySusScreen';
+import MechanismsInjuryScreen from './app/screens/MechanismsInjuryScreen';
+import IncidentReport5Screen from './app/screens/IncidentReport5Screen';
+//import IncidentReport5Screen from './app/screens/IncidentReport5Screen';
 
 const RootStack = createNativeStackNavigator();
 /**
@@ -60,6 +61,11 @@ export default function App() {
           <RootStack.Screen
             name="Checklist Question (IR4)"
             component={ChecklistQuestionScreen}
+          />
+
+          <RootStack.Screen
+            name="Incident report 5"
+            component={IncidentReport5Screen}
           />
 
           <RootStack.Screen name="Check Result" component={BadCheckScreen} />
