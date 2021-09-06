@@ -55,11 +55,12 @@ function MTFour({ navigation }) {
       //if (!checked) {
       //  removeSelection();
       //}
-      chosenList.push('a');
+
       // insertSelection();
       onChange(!checked);
     }
-    function insertSelection() {
+
+    function insertSelection(selected) {
       // insert selected if not in array, if in array, remove
       var arr = [array.selected]; // make a separate copy of the array
       var index = arr.indexOf('new');
@@ -94,12 +95,36 @@ function MTFour({ navigation }) {
       </Pressable>
     );
   }
+  function onUpdate(name) {
+    let index = chosenList.indexOf(name);
+    if (index === -1) {
+      chosenList.push(name); // if it isn't stored add it to the array
+    } else {
+      chosenList.splice(index, 1); // if it is stored then remove it from the array
+    }
+    return { chosenList };
+  }
 
   const [array, setArray] = useState({ selected: ['test'] });
 
   const chosenList = ['first', 'second'];
 
   function addToList() {}
+
+  function insertSelection(name) {
+    // insert selected if not in array, if in array, remove
+    var arr = [array.selected]; // make a separate copy of the array
+    var index = arr.indexOf(name);
+
+    if (index === -1) {
+      setArray((array) => ({
+        selected: [...array.selected, name],
+      }));
+    } else {
+      arr.splice(index, 1);
+      setArray((array) => ({ selected: [arr] }));
+    }
+  }
 
   return (
     <View style={uiStyle.container}>
@@ -108,60 +133,61 @@ function MTFour({ navigation }) {
       </Text>
       <View style={styles.allCheckboxContainer}>
         <View style={styles.checkboxContainer}>
-          <MyCheckbox choice="bird" />
+          <MyCheckbox onUpdate={onUpdate('bird')} />
           <Text style={styles.checkboxLabel}>{`bird`}</Text>
         </View>
 
         <View style={styles.checkboxContainer}>
-          <MyCheckbox />
+          <MyCheckbox onUpdate={onUpdate('clock')} />
           <Text style={styles.checkboxLabel}>{`clock`}</Text>
         </View>
 
         <View style={styles.checkboxContainer}>
-          <MyCheckbox />
+          <MyCheckbox onUpdate={onUpdate('cup')} />
           <Text style={styles.checkboxLabel}>{`cup`}</Text>
         </View>
 
         <View style={styles.checkboxContainer}>
-          <MyCheckbox />
+          <MyCheckbox onUpdate={onUpdate('flower')} />
           <Text style={styles.checkboxLabel}>{`flower`}</Text>
         </View>
 
         <View style={styles.checkboxContainer}>
-          <MyCheckbox />
+          <MyCheckbox onUpdate={onUpdate('fork')} />
           <Text style={styles.checkboxLabel}>{`fork`}</Text>
         </View>
 
         <View style={styles.checkboxContainer}>
-          <MyCheckbox />
+          <MyCheckbox onUpdate={onUpdate('keys')} />
           <Text style={styles.checkboxLabel}>{`keys`}</Text>
         </View>
 
         <View style={styles.checkboxContainer}>
-          <MyCheckbox />
+          <MyCheckbox onUpdate={onUpdate('pen')} />
           <Text style={styles.checkboxLabel}>{`pen`}</Text>
         </View>
 
         <View style={styles.checkboxContainer}>
-          <MyCheckbox />
+          <MyCheckbox onUpdate={onUpdate('scissors')} />
           <Text style={styles.checkboxLabel}>{`scissors`}</Text>
         </View>
 
         <View style={styles.checkboxContainer}>
-          <MyCheckbox />
+          <MyCheckbox onUpdate={onUpdate('toothbrush')} />
           <Text style={styles.checkboxLabel}>{`toothbrush`}</Text>
         </View>
       </View>
       <TouchableOpacity
         onPress={() => {
-          handleCreateMultiResponse(array.selected);
-          navigation.navigate('Home');
+          handleCreateMultiResponse(chosenList);
+          //navigation.navigate('Home');
         }}
         style={uiStyle.bottomButton}
       >
         <Text style={uiStyle.buttonLabel}>Submit</Text>
       </TouchableOpacity>
-      // TODO: remove
+      <Text>{responses}</Text>
+
       <Text>{array.selected}</Text>
       <Text>{array.selected[0]}</Text>
       <Text>{array.selected[1]}</Text>
