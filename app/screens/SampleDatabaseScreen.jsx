@@ -27,7 +27,7 @@ export default function SampleDatabaseScreen() {
     if (patientRepoContext !== null) {
       const fname = Math.random().toString();
 
-      patientRepoContext.createPatient(fname, 'Smith').then(
+      patientRepoContext.createPatient(fname, 'Smith', 15, 40).then(
         (patientId) => {
           patientRepoContext.getPatient(patientId).then((patientRet) => {
             setPatient(patientRet);
@@ -81,7 +81,15 @@ export default function SampleDatabaseScreen() {
     <View>
       <Button title="Create Patient" onPress={onCreatePatient} />
 
-      <Text>{patient.firstName + ' ' + patient.lastName}</Text>
+      <Text>
+        {patient.firstName +
+          ' ' +
+          patient.lastName +
+          patient.age +
+          ' years old ' +
+          patient.weight +
+          ' kg'}
+      </Text>
 
       <Button title="Create Report" onPress={handleCreateReport} />
 

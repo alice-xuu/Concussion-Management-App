@@ -3,7 +3,9 @@ export const TABLES_SQL = [
 CREATE TABLE IF NOT EXISTS Patient (
     patient_id INTEGER PRIMARY KEY,
     first_name VARCHAR(200),
-    last_name VARCHAR(200)
+    last_name VARCHAR(200),
+    age INTEGER,
+    weight INTEGER
 );`,
   //Instance of an incident report
   `

@@ -14,14 +14,17 @@ export class PatientRepo {
    *
    * @param firstName
    * @param lastName
+   * @param age
+   * @param weight
    * @returns {Promise<number>} a promise of the patientId
    * @throws {SQLError}
    */
-  async createPatient(firstName, lastName) {
-    const sql = 'INSERT INTO Patient (first_name, last_name) VALUES (?, ?)';
+  async createPatient(firstName, lastName, age, weight) {
+    const sql =
+      'INSERT INTO Patient (first_name, last_name, age, weight) VALUES (?, ?, ?, ?)';
 
     return new Promise((resolve, reject) => {
-      this.da.runSqlStmt(sql, [firstName, lastName]).then((rs) => {
+      this.da.runSqlStmt(sql, [firstName, lastName, age, weight]).then((rs) => {
         resolve(rs.insertId);
       }, reject);
     });
@@ -46,13 +49,17 @@ export class PatientRepo {
         if (
           'patient_id' in patient &&
           'first_name' in patient &&
-          'last_name' in patient
+          'last_name' in patient &&
+          'age' in patient &&
+          'weight' in patient
         ) {
           resolve(
             new Patient(
               patient.patient_id,
               patient.first_name,
               patient.last_name,
+              patient.age,
+              patient.weight,
             ),
           );
         } else {
