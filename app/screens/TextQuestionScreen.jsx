@@ -32,7 +32,7 @@ function TextQuestionScreen({ navigation }) {
     });
   };
   const myFunction = () => {
-    // navigation.navigate('Check Result');
+    navigation.navigate('Check Result');
     handleResponseDescription();
   };
   return (
