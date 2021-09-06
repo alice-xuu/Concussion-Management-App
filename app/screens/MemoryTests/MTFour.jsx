@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useState } from 'react';
 
 import {
   StyleSheet,
@@ -12,6 +11,15 @@ import {
 import uiStyle from '../../components/uiStyle.jsx';
 import { Ionicons } from '@expo/vector-icons';
 
+import { useContext, useState } from 'react';
+
+import {
+  IncidentReportRepoContext,
+  PatientContext,
+  PatientRepoContext,
+  ReportIdContext,
+} from '../../components/GlobalContextProvider';
+
 /**
  * The screen will be perform memory test.
  * This is the first test out of the Further Tests
@@ -20,6 +28,27 @@ import { Ionicons } from '@expo/vector-icons';
  */
 
 function MTFour({ navigation }) {
+  // Context variables
+  const [patient, setPatient] = useContext(PatientContext);
+  const [reportId, setReportId] = useContext(ReportIdContext);
+  const patientRepoContext = useContext(PatientRepoContext);
+  const incidentRepoContext = useContext(IncidentReportRepoContext);
+
+  // Local state
+  const [responses, setResponses] = useState(null);
+
+  const handleCreateMultiResponse = (res) => {
+    const desc = 'Memory Test Part 1';
+    incidentRepoContext.addMultiResponse(reportId, desc, res).then(
+      () => {
+        incidentRepoContext
+          .getMultiResponses(reportId)
+          .then((mrs) => setResponses(JSON.stringify(mrs)));
+      },
+      (err) => console.log(err),
+    );
+  };
+
   function MyCheckbox() {
     const [checked, onChange] = useState(false);
     function onCheckmarkPress() {
@@ -68,7 +97,7 @@ function MTFour({ navigation }) {
 
   const [array, setArray] = useState({ selected: ['test'] });
 
-  var chosenList = ['first'];
+  const chosenList = ['first', 'second'];
 
   function addToList() {}
 
@@ -124,7 +153,10 @@ function MTFour({ navigation }) {
         </View>
       </View>
       <TouchableOpacity
-        onPress={() => navigation.navigate('Home')}
+        onPress={() => {
+          handleCreateMultiResponse(array.selected);
+          navigation.navigate('Home');
+        }}
         style={uiStyle.bottomButton}
       >
         <Text style={uiStyle.buttonLabel}>Submit</Text>
