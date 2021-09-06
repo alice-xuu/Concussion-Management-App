@@ -52,39 +52,9 @@ function MTFour({ navigation }) {
 
   const MyCheckbox = (props) => {
     const [checked, onChange] = useState(false);
-    //const name = value.target.value();
     function onCheckmarkPress() {
-      //if (!checked) {
-      //  removeSelection();
-      //}
-
-      // insertSelection();
       onChange(!checked);
       onUpdate(props.value);
-    }
-
-    function insertSelection(selected) {
-      // insert selected if not in array, if in array, remove
-      var arr = [array.selected]; // make a separate copy of the array
-      var index = arr.indexOf('new');
-
-      if (index === -1) {
-        setArray((array) => ({
-          selected: [...array.selected, 'new'],
-        }));
-      } else {
-        arr.splice(index, 1);
-        setArray((array) => ({ selected: [arr] }));
-      }
-    }
-
-    function removeSelection() {
-      var arr = [...array.selected]; // make a separate copy of the array
-      var index = arr.indexOf('try');
-      if (index !== -1) {
-        arr.splice(index, 1);
-        this.setArray({ arr });
-      }
     }
 
     return (
@@ -108,26 +78,7 @@ function MTFour({ navigation }) {
     return { chosenList };
   }
 
-  const [array, setArray] = useState({ selected: ['test'] });
-
   const chosenList = [];
-
-  function addToList() {}
-
-  function insertSelection(name) {
-    // insert selected if not in array, if in array, remove
-    var arr = [array.selected]; // make a separate copy of the array
-    var index = arr.indexOf(name);
-
-    if (index === -1) {
-      setArray((array) => ({
-        selected: [...array.selected, name],
-      }));
-    } else {
-      arr.splice(index, 1);
-      setArray((array) => ({ selected: [arr] }));
-    }
-  }
 
   return (
     <View style={uiStyle.container}>
@@ -190,10 +141,6 @@ function MTFour({ navigation }) {
         <Text style={uiStyle.buttonLabel}>Submit</Text>
       </TouchableOpacity>
       <Text>{responses}</Text>
-
-      <Text>{array.selected}</Text>
-
-      <Text>{chosenList}</Text>
     </View>
   );
 }
