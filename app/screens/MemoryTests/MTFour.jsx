@@ -23,20 +23,31 @@ function MTFour({ navigation }) {
   function MyCheckbox() {
     const [checked, onChange] = useState(false);
     function onCheckmarkPress() {
-      onChange(!checked);
-      if (!checked) {
-        insertSelection();
-      }
       //if (!checked) {
       //  removeSelection();
       //}
+      chosenList.push('a');
+      // insertSelection();
+      onChange(!checked);
     }
     function insertSelection() {
-      setArray((array) => [...array.selected, 'test']);
+      // insert selected if not in array, if in array, remove
+      var arr = [array.selected]; // make a separate copy of the array
+      var index = arr.indexOf('new');
+
+      if (index === -1) {
+        setArray((array) => ({
+          selected: [...array.selected, 'new'],
+        }));
+      } else {
+        arr.splice(index, 1);
+        setArray((array) => ({ selected: [arr] }));
+      }
     }
+
     function removeSelection() {
-      var arr = [...this.array.selected]; // make a separate copy of the array
-      var index = arr.indexOf('test');
+      var arr = [...array.selected]; // make a separate copy of the array
+      var index = arr.indexOf('try');
       if (index !== -1) {
         arr.splice(index, 1);
         this.setArray({ arr });
@@ -57,12 +68,15 @@ function MTFour({ navigation }) {
 
   const [array, setArray] = useState({ selected: ['test'] });
 
+  var chosenList = ['first'];
+
+  function addToList() {}
+
   return (
     <View style={uiStyle.container}>
       <Text style={uiStyle.text}>
         What three images does your patient remember?
       </Text>
-
       <View style={styles.allCheckboxContainer}>
         <View style={styles.checkboxContainer}>
           <MyCheckbox choice="bird" />
@@ -115,8 +129,12 @@ function MTFour({ navigation }) {
       >
         <Text style={uiStyle.buttonLabel}>Submit</Text>
       </TouchableOpacity>
-
+      // TODO: remove
       <Text>{array.selected}</Text>
+      <Text>{array.selected[0]}</Text>
+      <Text>{array.selected[1]}</Text>
+      <Text>{array.selected[2]}</Text>
+      <Text>{chosenList}</Text>
     </View>
   );
 }
