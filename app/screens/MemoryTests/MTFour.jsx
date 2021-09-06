@@ -134,6 +134,7 @@ function MTFour({ navigation }) {
       <TouchableOpacity
         onPress={() => {
           handleCreateMultiResponse(chosenList);
+          navigation.navigate('Home');
         }}
         style={uiStyle.bottomButton}
       >
