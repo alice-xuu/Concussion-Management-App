@@ -18,24 +18,45 @@ import { Ionicons } from '@expo/vector-icons';
  * After this test is completed, user needs to navigate to the next test which
  * is Reaction Test.
  */
-function MyCheckbox() {
-  const [checked, onChange] = useState(false);
-
-  function onCheckmarkPress() {
-    onChange(!checked);
-  }
-
-  return (
-    <Pressable
-      style={[styles.checkboxBase, checked && styles.checkboxChecked]}
-      onPress={onCheckmarkPress}
-    >
-      {checked && <Ionicons name="checkmark" size={24} color="black" />}
-    </Pressable>
-  );
-}
 
 function MTFour({ navigation }) {
+  function MyCheckbox() {
+    const [checked, onChange] = useState(false);
+    function onCheckmarkPress() {
+      onChange(!checked);
+      if (!checked) {
+        insertSelection();
+      }
+      //if (!checked) {
+      //  removeSelection();
+      //}
+    }
+    function insertSelection() {
+      setArray((array) => [...array.selected, 'test']);
+    }
+    function removeSelection() {
+      var arr = [...this.array.selected]; // make a separate copy of the array
+      var index = arr.indexOf('test');
+      if (index !== -1) {
+        arr.splice(index, 1);
+        this.setArray({ arr });
+      }
+    }
+
+    return (
+      <Pressable
+        style={[styles.checkboxBase, checked && styles.checkboxChecked]}
+        onPress={() => {
+          onCheckmarkPress();
+        }}
+      >
+        {checked && <Ionicons name="checkmark" size={24} color="black" />}
+      </Pressable>
+    );
+  }
+
+  const [array, setArray] = useState({ selected: ['test'] });
+
   return (
     <View style={uiStyle.container}>
       <Text style={uiStyle.text}>
@@ -44,7 +65,7 @@ function MTFour({ navigation }) {
 
       <View style={styles.allCheckboxContainer}>
         <View style={styles.checkboxContainer}>
-          <MyCheckbox />
+          <MyCheckbox choice="bird" />
           <Text style={styles.checkboxLabel}>{`bird`}</Text>
         </View>
 
@@ -94,6 +115,8 @@ function MTFour({ navigation }) {
       >
         <Text style={uiStyle.buttonLabel}>Submit</Text>
       </TouchableOpacity>
+
+      <Text>{array.selected}</Text>
     </View>
   );
 }
