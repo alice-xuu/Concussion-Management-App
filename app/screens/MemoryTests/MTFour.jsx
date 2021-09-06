@@ -68,6 +68,8 @@ function MTFour({ navigation }) {
       </Pressable>
     );
   };
+
+  // updates const list when onCheckmarkPress() is called
   function onUpdate(name) {
     let index = chosenList.indexOf(name);
     if (index === -1) {
