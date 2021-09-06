@@ -1,4 +1,24 @@
 export const TABLES_SQL = [
+  //TODO: remove
+  `
+DROP TABLE IF EXISTS Patient;
+  `,
+  //TODO: remove
+  `
+DROP TABLE IF EXISTS IncidentReport;
+  `,
+  //TODO: remove
+  `
+DROP TABLE IF EXISTS MultiResponse;
+  `,
+  //TODO: remove
+  `
+DROP TABLE IF EXISTS MultiResponsePart;
+  `,
+  //TODO: remove
+  `
+DROP TABLE IF EXISTS SingleResponse;
+  `,
   `
 CREATE TABLE IF NOT EXISTS Patient (
     patient_id INTEGER PRIMARY KEY,
