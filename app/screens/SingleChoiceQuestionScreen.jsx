@@ -71,6 +71,7 @@ function SingleChoiceQuestionScreen({ navigation }) {
           <Text style={styles.label}>MAYBE/UNSURE</Text>
         </Pressable>
       </View>
+      <Text>{responses}</Text>
     </View>
   );
 }
