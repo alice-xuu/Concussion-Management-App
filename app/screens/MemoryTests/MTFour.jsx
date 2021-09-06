@@ -19,6 +19,7 @@ import {
   PatientRepoContext,
   ReportIdContext,
 } from '../../components/GlobalContextProvider';
+import * as target from 'react-native';
 
 /**
  * The screen will be perform memory test.
@@ -49,8 +50,9 @@ function MTFour({ navigation }) {
     );
   };
 
-  function MyCheckbox() {
+  const MyCheckbox = (props) => {
     const [checked, onChange] = useState(false);
+    //const name = value.target.value();
     function onCheckmarkPress() {
       //if (!checked) {
       //  removeSelection();
@@ -58,6 +60,7 @@ function MTFour({ navigation }) {
 
       // insertSelection();
       onChange(!checked);
+      onUpdate(props.value);
     }
 
     function insertSelection(selected) {
@@ -94,7 +97,7 @@ function MTFour({ navigation }) {
         {checked && <Ionicons name="checkmark" size={24} color="black" />}
       </Pressable>
     );
-  }
+  };
   function onUpdate(name) {
     let index = chosenList.indexOf(name);
     if (index === -1) {
@@ -107,7 +110,7 @@ function MTFour({ navigation }) {
 
   const [array, setArray] = useState({ selected: ['test'] });
 
-  const chosenList = ['first', 'second'];
+  const chosenList = [];
 
   function addToList() {}
 
@@ -133,47 +136,47 @@ function MTFour({ navigation }) {
       </Text>
       <View style={styles.allCheckboxContainer}>
         <View style={styles.checkboxContainer}>
-          <MyCheckbox onUpdate={onUpdate('bird')} />
+          <MyCheckbox value="bird" />
           <Text style={styles.checkboxLabel}>{`bird`}</Text>
         </View>
 
         <View style={styles.checkboxContainer}>
-          <MyCheckbox onUpdate={onUpdate('clock')} />
+          <MyCheckbox value={'clock'} />
           <Text style={styles.checkboxLabel}>{`clock`}</Text>
         </View>
 
         <View style={styles.checkboxContainer}>
-          <MyCheckbox onUpdate={onUpdate('cup')} />
+          <MyCheckbox value={'cup'} />
           <Text style={styles.checkboxLabel}>{`cup`}</Text>
         </View>
 
         <View style={styles.checkboxContainer}>
-          <MyCheckbox onUpdate={onUpdate('flower')} />
+          <MyCheckbox value={'flower'} />
           <Text style={styles.checkboxLabel}>{`flower`}</Text>
         </View>
 
         <View style={styles.checkboxContainer}>
-          <MyCheckbox onUpdate={onUpdate('fork')} />
+          <MyCheckbox value={'fork'} />
           <Text style={styles.checkboxLabel}>{`fork`}</Text>
         </View>
 
         <View style={styles.checkboxContainer}>
-          <MyCheckbox onUpdate={onUpdate('keys')} />
+          <MyCheckbox value={'keys'} />
           <Text style={styles.checkboxLabel}>{`keys`}</Text>
         </View>
 
         <View style={styles.checkboxContainer}>
-          <MyCheckbox onUpdate={onUpdate('pen')} />
+          <MyCheckbox value={'pen'} />
           <Text style={styles.checkboxLabel}>{`pen`}</Text>
         </View>
 
         <View style={styles.checkboxContainer}>
-          <MyCheckbox onUpdate={onUpdate('scissors')} />
+          <MyCheckbox value={'scissors'} />
           <Text style={styles.checkboxLabel}>{`scissors`}</Text>
         </View>
 
         <View style={styles.checkboxContainer}>
-          <MyCheckbox onUpdate={onUpdate('toothbrush')} />
+          <MyCheckbox value={'toothbrush'} />
           <Text style={styles.checkboxLabel}>{`toothbrush`}</Text>
         </View>
       </View>
@@ -189,9 +192,7 @@ function MTFour({ navigation }) {
       <Text>{responses}</Text>
 
       <Text>{array.selected}</Text>
-      <Text>{array.selected[0]}</Text>
-      <Text>{array.selected[1]}</Text>
-      <Text>{array.selected[2]}</Text>
+
       <Text>{chosenList}</Text>
     </View>
   );
