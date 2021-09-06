@@ -1,5 +1,3 @@
-import * as SQLite from 'expo-sqlite';
-import WebSQLDatabase from 'expo-sqlite';
 import { DatabaseAdapter } from '../DatabaseAdapter';
 
 describe('DatabaseAdapter', () => {
