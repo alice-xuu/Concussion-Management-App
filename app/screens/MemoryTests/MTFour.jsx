@@ -134,13 +134,11 @@ function MTFour({ navigation }) {
       <TouchableOpacity
         onPress={() => {
           handleCreateMultiResponse(chosenList);
-          //navigation.navigate('Home');
         }}
         style={uiStyle.bottomButton}
       >
         <Text style={uiStyle.buttonLabel}>Submit</Text>
       </TouchableOpacity>
-      <Text>{responses}</Text>
     </View>
   );
 }
