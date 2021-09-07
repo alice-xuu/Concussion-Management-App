@@ -28,7 +28,6 @@ function InjurySusScreen({ navigation }) {
           <Text style={styles.label}>NO</Text>
         </Pressable>
       </View>
-
     </View>
   );
 }
