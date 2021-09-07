@@ -24,7 +24,7 @@ function SingleChoiceQuestionScreen({ navigation }) {
   const [responses, setResponses] = useState(null);
 
   const handleCreateSResponse = (res) => {
-    const desc = 'IR5-response';
+    const desc = 'IR2-response';
     incidentRepoContext.addSingleResponse(reportId, desc, res).then(() => {
       incidentRepoContext
         .getSingleResponses(reportId)
