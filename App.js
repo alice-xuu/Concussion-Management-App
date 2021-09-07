@@ -5,7 +5,6 @@ import HomeScreen from './app/screens/HomeScreen';
 import DocumentsScreen from './app/screens/DocumentsScreen';
 import SingleChoiceQuestionScreen from './app/screens/SingleChoiceQuestionScreen';
 import CreateProfileScreen from './app/screens/CreateProfileScreen';
-import IncidentReportScreen from './app/screens/IncidentReportScreen';
 import StartCheckScreen from './app/screens/StartCheckScreen';
 import BadCheckScreen from './app/screens/BadCheckScreen';
 import TextQuestionScreen from './app/screens/TextQuestionScreen';
@@ -19,7 +18,9 @@ import MTFour from './app/screens/MemoryTests/MTFour';
 import NextStepsScreen from './app/screens/NextStepsScreen';
 import ChecklistQuestionScreen from './app/screens/StartCheckScreen';
 import { GlobalContextProvider } from './app/components/GlobalContextProvider';
-//import InjurySusScreen from './app/screens/InjurySusScreen';
+import MechanismsInjuryScreen from './app/screens/MechanismsInjuryScreen';
+import IncidentReportFiveScreen from './app/screens/IncidentReportFiveScreen';
+import IncidentReportFourScreen from './app/screens/InicidentReportFourScreen';
 
 const RootStack = createNativeStackNavigator();
 /**
@@ -40,10 +41,14 @@ export default function App() {
           />
 
           <RootStack.Screen
-            name="Record Incident"
-            component={IncidentReportScreen}
+            name="Mechanisms of Injury"
+            component={MechanismsInjuryScreen}
           />
           <RootStack.Screen name="Start Check" component={StartCheckScreen} />
+          <RootStack.Screen
+            name="Incident report 4"
+            component={IncidentReportFourScreen}
+          />
           {/* bracket IR refers to incident report in the figma */}
           <RootStack.Screen
             name="Next Steps (IR1)"
@@ -58,9 +63,11 @@ export default function App() {
             component={TextQuestionScreen}
           />
           <RootStack.Screen
-            name="Checklist Question (IR4)"
+            name="Checklist Question (Start Check)"
             component={ChecklistQuestionScreen}
           />
+
+          <RootStack.Screen name="IR 5" component={IncidentReportFiveScreen} />
 
           <RootStack.Screen name="Check Result" component={BadCheckScreen} />
           <RootStack.Screen

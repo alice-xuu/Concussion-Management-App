@@ -130,7 +130,10 @@ function StartCheckScreen({ navigation }) {
       <TouchableOpacity
         onPress={() => {
           handleCreateMultiResponse(chosenList);
-          navigation.navigate('Home');
+          if (chosenList.length === 0) {
+            navigation.navigate('Next Steps (IR1)');
+          }
+          navigation.navigate('Check Result');
         }}
         style={uiStyle.bottomButton}
       >
