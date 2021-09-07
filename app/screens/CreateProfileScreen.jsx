@@ -26,9 +26,7 @@ function CreateProfileScreen({ navigation }) {
     );
   } else {
     otherUser = (
-      <Text style={styles.text}>
-        There is no other user can be selected.
-      </Text>
+      <Text style={styles.text}>There is no other user can be selected.</Text>
     );
   }
   return (
