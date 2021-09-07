@@ -31,14 +31,9 @@ function StartCheckScreen({ navigation }) {
 
   const handleCreateMultiResponse = (answers) => {
     const desc = 'Incident Report 4';
-    incidentRepoContext.addMultiResponse(reportId, desc, answers).then(
-      () => {
-        incidentRepoContext
-          .getMultiResponses(reportId)
-          .then((mrs) => setResponses(JSON.stringify(mrs)));
-      },
-      (err) => console.log(err),
-    );
+    incidentRepoContext
+      .addMultiResponse(reportId, desc, answers)
+      .then(() => {});
   };
 
   const MyCheckbox = (props) => {
