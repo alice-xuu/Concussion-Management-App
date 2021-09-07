@@ -144,6 +144,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'space-evenly',
+    marginHorizontal: 50,
   },
   checkboxContainer: {
     flexDirection: 'row',

@@ -1,6 +1,4 @@
 import * as React from 'react';
-import { useState } from 'react';
-
 import {
   StyleSheet,
   Text,
@@ -8,16 +6,14 @@ import {
   Pressable,
   TouchableOpacity,
 } from 'react-native';
-
-import uiStyle from '../../components/uiStyle.jsx';
+import { useContext, useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
+import uiStyle from '../components/uiStyle';
 
 /**
- * The screen will be perform memory test.
- * This is the first test out of the Further Tests
- * After this test is completed, user needs to navigate to the next test which
- * is Reaction Test.
+ * The screen will ask user for details about concussion in checklist form.
  */
+
 function MyCheckbox() {
   const [checked, onChange] = useState(false);
 
@@ -35,61 +31,76 @@ function MyCheckbox() {
   );
 }
 
-function MTFour({ navigation }) {
+function IncidentReportFourScreen({ navigation }) {
   return (
     <View style={uiStyle.container}>
       <Text style={uiStyle.text}>
-        What three images does your patient remember?
+        Does the patient have any of the following symptoms? Please select all
+        that apply.
       </Text>
-
       <View style={styles.allCheckboxContainer}>
         <View style={styles.checkboxContainer}>
           <MyCheckbox />
-          <Text style={styles.checkboxLabel}>{`bird`}</Text>
+          <Text
+            style={styles.checkboxLabel}
+          >{`Lying motionless after the event`}</Text>
         </View>
-
         <View style={styles.checkboxContainer}>
           <MyCheckbox />
-          <Text style={styles.checkboxLabel}>{`clock`}</Text>
+          <Text
+            style={styles.checkboxLabel}
+          >{`Slow to get up after the head knock`}</Text>
         </View>
-
         <View style={styles.checkboxContainer}>
           <MyCheckbox />
-          <Text style={styles.checkboxLabel}>{`cup`}</Text>
+          <Text style={styles.checkboxLabel}>{`Looks stunned or dazed`}</Text>
         </View>
-
         <View style={styles.checkboxContainer}>
           <MyCheckbox />
-          <Text style={styles.checkboxLabel}>{`flower`}</Text>
+          <Text
+            style={styles.checkboxLabel}
+          >{`Shows behavioural or personality changes`}</Text>
         </View>
-
         <View style={styles.checkboxContainer}>
           <MyCheckbox />
-          <Text style={styles.checkboxLabel}>{`fork`}</Text>
+          <Text
+            style={styles.checkboxLabel}
+          >{`Forgets things they normally know`}</Text>
         </View>
-
         <View style={styles.checkboxContainer}>
           <MyCheckbox />
-          <Text style={styles.checkboxLabel}>{`keys`}</Text>
+          <Text
+            style={styles.checkboxLabel}
+          >{`Disorientation or confusion`}</Text>
         </View>
-
         <View style={styles.checkboxContainer}>
           <MyCheckbox />
-          <Text style={styles.checkboxLabel}>{`pen`}</Text>
+          <Text
+            style={styles.checkboxLabel}
+          >{`Slowness in responding to questions`}</Text>
         </View>
-
         <View style={styles.checkboxContainer}>
           <MyCheckbox />
-          <Text style={styles.checkboxLabel}>{`scissors`}</Text>
+          <Text
+            style={styles.checkboxLabel}
+          >{`Forgetting what happened before injury(retrograde memory)`}</Text>
         </View>
-
         <View style={styles.checkboxContainer}>
           <MyCheckbox />
-          <Text style={styles.checkboxLabel}>{`toothbrush`}</Text>
+          <Text
+            style={styles.checkboxLabel}
+          >{`Forgetting what happened after injury`}</Text>
+        </View>
+        <View style={styles.checkboxContainer}>
+          <MyCheckbox />
+          <Text
+            style={styles.checkboxLabel}
+          >{`Stumbling and/or slow labored movements`}</Text>
         </View>
       </View>
+      <Text> </Text>
       <TouchableOpacity
-        onPress={() => navigation.navigate('Home')}
+        onPress={() => navigation.navigate('IR 5')}
         style={uiStyle.bottomButton}
       >
         <Text style={uiStyle.buttonLabel}>Submit</Text>
@@ -132,4 +143,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MTFour;
+export default IncidentReportFourScreen;

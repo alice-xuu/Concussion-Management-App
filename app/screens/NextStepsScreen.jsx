@@ -13,11 +13,11 @@ function NextStepsScreen({ navigation }) {
   return (
     <SafeAreaView style={uiStyle.container}>
 
-      <TouchableOpacity style={uiStyle.nextButton}
+      <TouchableOpacity style={uiStyle.bottomButton}
         onPress={() => navigation.navigate('SingleChoiceQ (IR2)')}
-        
+
       >
-        <Text style={uiStyle.buttonText}>Start</Text>
+        <Text style={uiStyle.buttonLabel}>Start</Text>
       </TouchableOpacity>
 
     </SafeAreaView>
