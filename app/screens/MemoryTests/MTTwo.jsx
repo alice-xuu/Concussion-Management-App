@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 import {
   StyleSheet,
@@ -12,6 +12,12 @@ import {
 
 import uiStyle from '../../components/uiStyle';
 import MTImages from '../../../assets/MemoryTestResources/MTImages';
+import {
+  IncidentReportRepoContext,
+  PatientContext,
+  PatientRepoContext,
+  ReportIdContext,
+} from '../../components/GlobalContextProvider';
 
 /**
  * The screen will be perform memory test.
@@ -21,6 +27,27 @@ import MTImages from '../../../assets/MemoryTestResources/MTImages';
  */
 
 function MTTwo({ navigation }) {
+  // Context variables
+  const [patient, setPatient] = useContext(PatientContext);
+  const [reportId, setReportId] = useContext(ReportIdContext);
+  const patientRepoContext = useContext(PatientRepoContext);
+  const incidentRepoContext = useContext(IncidentReportRepoContext);
+
+  // Local state
+  const [responses, setResponses] = useState(null);
+
+  const handleCreateMultiResponse = (res) => {
+    const desc = 'Memory Test Correct Answers';
+    incidentRepoContext.addMultiResponse(reportId, desc, res).then(
+      () => {
+        incidentRepoContext
+          .getMultiResponses(reportId)
+          .then((mrs) => setResponses(JSON.stringify(mrs)));
+      },
+      (err) => console.log(err),
+    );
+  };
+
   const arr = [];
   const threeImages = [];
 
@@ -50,6 +77,13 @@ function MTTwo({ navigation }) {
 
       <TouchableOpacity
         onPress={() => {
+          if (index === 0) {
+            const correctAnswers = [];
+            correctAnswers.push(imgs[0].title);
+            correctAnswers.push(imgs[1].title);
+            correctAnswers.push(imgs[2].title);
+            handleCreateMultiResponse(correctAnswers);
+          }
           if (index >= 2) {
             navigation.navigate('Memory Test 3');
           } else {
