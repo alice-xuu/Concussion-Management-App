@@ -7,7 +7,11 @@ import {
   Pressable,
   Dimensions,
 } from 'react-native';
-
+import {
+  IncidentReportRepoContext,
+  ReportIdContext,
+} from '../components/GlobalContextProvider';
+import { useContext, useState } from 'react';
 /**
  * Asks user for details about the concussion and gives a suggestion based on
  * the user's responses.
@@ -16,6 +20,22 @@ const width = Dimensions.get('window').width;
 
 function TextQuestionScreen({ navigation }) {
   const [value, onChangeText] = React.useState('');
+
+  const [reportId, setReportId] = useContext(ReportIdContext);
+  const incidentRepoContext = useContext(IncidentReportRepoContext);
+  const [responses, setResponses] = useState(null);
+  const handleResponseDescription = () => {
+    const desc = 'text question';
+    incidentRepoContext.addSingleResponse(reportId, desc, value).then(() => {
+      incidentRepoContext
+        .getSingleResponses(reportId)
+        .then((sr) => setResponses(JSON.stringify(sr)));
+    });
+  };
+  const myFunction = () => {
+    navigation.navigate('Incident report 4');
+    handleResponseDescription();
+  };
   return (
     <View style={styles.container}>
       <Text style={styles.font}>
@@ -35,7 +55,7 @@ function TextQuestionScreen({ navigation }) {
       />
       <Pressable
         style={styles.button}
-        onPress={() => navigation.navigate('Incident report 4')}
+        onPress={() =>myFunction()}
       >
         <Text style={styles.label}>Next</Text>
       </Pressable>

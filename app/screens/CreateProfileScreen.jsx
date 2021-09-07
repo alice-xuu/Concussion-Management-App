@@ -6,31 +6,80 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
+import {
+  PatientContext,
+  PatientRepoContext,
+} from '../components/GlobalContextProvider';
+import { useContext, useState } from 'react';
 import uiStyle from '../components/uiStyle';
 /**
  * The screen will ask user to fill in details so their result can be saved in
  * their account.
  */
 function CreateProfileScreen({ navigation }) {
-  const [nameOfUser, onChangeName] = React.useState('');
-  const [ageOfUser, onChangeAge] = React.useState('');
-  const [heightOfUser, onChangeHeight] = React.useState('');
-  const [weightOfUser, onChangeWeight] = React.useState('');
-  let otherUser;
-  const userNum = 0;
+  // Context variables
+  const [, setPatient] = useContext(PatientContext);
+  const [patients, setPatients] = useContext(PatientContext);
+  const patientRepoContext = useContext(PatientRepoContext);
+
+  const [firstNameOfUser, onChangeFirstName] = useState('');
+  const [lastNameOfUser, onChangeLastName] = useState('');
+  const [ageOfUser, onChangeAge] = useState('');
+  const [weightOfUser, onChangeWeight] = useState('');
+
+  const onCreatePatient = (firstName, lastName, age, weight) => {
+    if (patientRepoContext !== null) {
+      patientRepoContext.createPatient(firstName, lastName, age, weight).then(
+        (patientId) => {
+          patientRepoContext.getPatient(patientId).then((patientRet) => {
+            setPatient(patientRet);
+          });
+        },
+        (err) => console.log('Error: ' + err),
+      );
+    } else {
+      console.log('null patientRepo');
+    }
+  };
+  const patientsArray = [];
+  const parsePatients = (pts) => {
+    pts.forEach((element) => {
+      patientsArray.push(element.first_name + ' ' + element.last_name);
+    });
+    return patientsArray;
+  };
+
+  const onGetPatients = () => {
+    if (patientRepoContext !== null) {
+      patientRepoContext
+        .getAllPatients()
+        .then((pts) => setPatients(parsePatients(pts)));
+    } else {
+      console.log('null patientRepo');
+    }
+  };
+
+  onGetPatients();
+  const userNum = patients.length;
+  // console.log(patients.length);
+  let otherUsers = [];
   if (userNum > 0) {
-    otherUser = (
-      <TouchableOpacity style={styles.selectUserButton}>
-        <Text style={uiStyle.buttonLabel}>User1</Text>
-      </TouchableOpacity>
-    );
+    for (let i = 0; i < userNum; i++) {
+      const username = patients[i];
+      otherUsers.push(
+        <TouchableOpacity key={i} style={styles.selectUserButton}>
+          <Text style={uiStyle.buttonLabel}>{username}</Text>
+        </TouchableOpacity>,
+      );
+    }
   } else {
-    otherUser = (
-      <Text style={styles.text}>
+    otherUsers.push(
+      <Text key={-1} style={styles.text}>
         There is no other user can be selected.
-      </Text>
+      </Text>,
     );
   }
+  // console.log(otherUsers.length);
   return (
     <View style={uiStyle.container}>
       <Text style={styles.text}>
@@ -39,9 +88,17 @@ function CreateProfileScreen({ navigation }) {
       <View style={styles.inputAreaContainer}>
         <TextInput
           style={styles.input}
-          onChangeText={onChangeName}
-          value={nameOfUser}
-          placeholder="Name"
+          onChangeText={onChangeFirstName}
+          value={firstNameOfUser}
+          placeholder="First Name"
+          returnKeyType="done"
+        />
+        <TextInput
+          style={styles.input}
+          onChangeText={onChangeLastName}
+          value={lastNameOfUser}
+          placeholder="Last Name"
+          returnKeyType="done"
         />
         <TextInput
           maxLength={3}
@@ -49,15 +106,8 @@ function CreateProfileScreen({ navigation }) {
           onChangeText={onChangeAge}
           value={ageOfUser}
           placeholder="Age"
-          keyboardType="numeric"
-        />
-        <TextInput
-          maxLength={3}
-          style={styles.input}
-          onChangeText={onChangeHeight}
-          value={heightOfUser}
-          placeholder="Height in cm"
-          keyboardType="numeric"
+          keyboardType="number-pad"
+          returnKeyType="done"
         />
         <TextInput
           maxLength={3}
@@ -66,9 +116,10 @@ function CreateProfileScreen({ navigation }) {
           value={weightOfUser}
           placeholder="Weight in kg"
           keyboardType="numeric"
+          returnKeyType="done"
         />
         <Text style={styles.text}>Or select existing User</Text>
-        {otherUser}
+        {otherUsers}
       </View>
       <Text style={styles.text}>
         You will be able to view your result of your check or report anytime in
@@ -76,7 +127,15 @@ function CreateProfileScreen({ navigation }) {
       </Text>
       <TouchableOpacity
         style={uiStyle.bottomButton}
-        onPress={() => navigation.navigate('Home')}
+        onPress={() => {
+          onCreatePatient(
+            firstNameOfUser,
+            lastNameOfUser,
+            ageOfUser,
+            weightOfUser,
+          );
+          navigation.navigate('Home');
+        }}
       >
         <Text style={uiStyle.buttonLabel}>Submit</Text>
       </TouchableOpacity>
@@ -106,14 +165,13 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   selectUserButton: {
-    top: 350,
-    left: 12,
     width: 300,
     height: 50,
     padding: 10,
     borderRadius: 100,
+    marginHorizontal: 10,
+    marginVertical: 10,
     backgroundColor: '#FFA500',
-    position: 'absolute',
     alignItems: 'center',
     justifyContent: 'center',
   },
