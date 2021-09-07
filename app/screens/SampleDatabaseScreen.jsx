@@ -21,6 +21,7 @@ export default function SampleDatabaseScreen() {
 
   // Local state
   const [responses, setResponses] = useState(null);
+  const [patients, setPatients] = useState(null);
 
   // TODO: remove
   const onCreatePatient = () => {
@@ -45,6 +46,17 @@ export default function SampleDatabaseScreen() {
     incidentRepoContext
       .createReport(patient.patientId)
       .then((id) => setReportId(id));
+  };
+
+  // TODO: remove
+  const onGetPatients = () => {
+    if (patientRepoContext !== null) {
+      patientRepoContext
+        .getAllPatients()
+        .then((pts) => setPatients(JSON.stringify(pts)));
+    } else {
+      console.log('null patientRepo');
+    }
   };
 
   // TODO: remove
@@ -90,6 +102,9 @@ export default function SampleDatabaseScreen() {
           patient.weight +
           ' kg'}
       </Text>
+
+      <Button title="Get Patients" onPress={onGetPatients} />
+      <Text>{patients}</Text>
 
       <Button title="Create Report" onPress={handleCreateReport} />
 
