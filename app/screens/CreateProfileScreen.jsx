@@ -1,27 +1,102 @@
 import * as React from 'react';
-import { StyleSheet, Text, View, Pressable } from 'react-native';
-
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  TouchableOpacity,
+} from 'react-native';
+import uiStyle from '../components/uiStyle';
 /**
  * The screen will ask user to fill in details so their result can be saved in
  * their account.
  */
 function CreateProfileScreen({ navigation }) {
+  const [nameOfUser, onChangeName] = React.useState('');
+  const [ageOfUser, onChangeAge] = React.useState('');
+  const [heightOfUser, onChangeHeight] = React.useState('');
+  const [weightOfUser, onChangeWeight] = React.useState('');
+  let otherUser;
+  const userNum = 0;
+  if (userNum > 0) {
+    otherUser = (
+      <TouchableOpacity style={styles.selectUserButton}>
+        <Text style={uiStyle.buttonLabel}>User1</Text>
+      </TouchableOpacity>
+    );
+  } else {
+    otherUser = (
+      <Text style={styles.text}>
+        There is no other user can be selected.
+      </Text>
+    );
+  }
   return (
-    <View style={styles.container}>
+    <View style={uiStyle.container}>
       <Text style={styles.text}>
         Enter your details and the results will be saved in your profile
       </Text>
+      <View style={styles.inputAreaContainer}>
+        <TextInput
+          style={styles.input}
+          onChangeText={onChangeName}
+          value={nameOfUser}
+          placeholder="Name"
+        />
+        <TextInput
+          maxLength={3}
+          style={styles.input}
+          onChangeText={onChangeAge}
+          value={ageOfUser}
+          placeholder="Age"
+          keyboardType="numeric"
+        />
+        <TextInput
+          maxLength={3}
+          style={styles.input}
+          onChangeText={onChangeHeight}
+          value={heightOfUser}
+          placeholder="Height in cm"
+          keyboardType="numeric"
+        />
+        <TextInput
+          maxLength={3}
+          style={styles.input}
+          onChangeText={onChangeWeight}
+          value={weightOfUser}
+          placeholder="Weight in kg"
+          keyboardType="numeric"
+        />
+        <Text style={styles.text}>Or select existing User</Text>
+        {otherUser}
+      </View>
+      <Text style={styles.text}>
+        You will be able to view your result of your check or report anytime in
+        your profile
+      </Text>
+      <TouchableOpacity
+        style={uiStyle.bottomButton}
+        onPress={() => navigation.navigate('Home')}
+      >
+        <Text style={uiStyle.buttonLabel}>Submit</Text>
+      </TouchableOpacity>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  label: {
-    fontSize: 16,
-    lineHeight: 21,
-    fontWeight: 'bold',
-    letterSpacing: 0.25,
-    color: 'white',
+  inputAreaContainer: {
+    flex: 1,
+    alignItems: 'flex-start',
+    marginHorizontal: 50,
+  },
+  input: {
+    height: 40,
+    width: 300,
+    margin: 12,
+    borderRadius: 50,
+    padding: 10,
+    backgroundColor: '#D3D3D3',
   },
   text: {
     fontSize: 16,
@@ -30,8 +105,15 @@ const styles = StyleSheet.create({
     marginHorizontal: 50,
     marginVertical: 10,
   },
-  container: {
-    flex: 1,
+  selectUserButton: {
+    top: 350,
+    left: 12,
+    width: 300,
+    height: 50,
+    padding: 10,
+    borderRadius: 100,
+    backgroundColor: '#FFA500',
+    position: 'absolute',
     alignItems: 'center',
     justifyContent: 'center',
   },

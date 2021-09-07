@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { useState } from 'react';
+
 import {
   StyleSheet,
   Text,
@@ -6,14 +8,16 @@ import {
   Pressable,
   TouchableOpacity,
 } from 'react-native';
-import { useContext, useState } from 'react';
+
+import uiStyle from '../../components/uiStyle.jsx';
 import { Ionicons } from '@expo/vector-icons';
-import uiStyle from '../components/uiStyle';
 
 /**
- * The screen will ask user for details about concussion in checklist form.
+ * The screen will be perform memory test.
+ * This is the first test out of the Further Tests
+ * After this test is completed, user needs to navigate to the next test which
+ * is Reaction Test.
  */
-
 function MyCheckbox() {
   const [checked, onChange] = useState(false);
 
@@ -31,66 +35,61 @@ function MyCheckbox() {
   );
 }
 
-function StartCheckScreen({ navigation }) {
+function MTFour({ navigation }) {
   return (
     <View style={uiStyle.container}>
       <Text style={uiStyle.text}>
-        Does the patient have any of the following symptoms? Please select all
-        that apply.
+        What three images does your patient remember?
       </Text>
+
       <View style={styles.allCheckboxContainer}>
         <View style={styles.checkboxContainer}>
           <MyCheckbox />
-          <Text style={styles.checkboxLabel}>{`Neck pain or tenderness`}</Text>
+          <Text style={styles.checkboxLabel}>{`bird`}</Text>
         </View>
+
         <View style={styles.checkboxContainer}>
           <MyCheckbox />
-          <Text style={styles.checkboxLabel}>{`Double vision`}</Text>
+          <Text style={styles.checkboxLabel}>{`clock`}</Text>
         </View>
+
         <View style={styles.checkboxContainer}>
           <MyCheckbox />
-          <Text
-            style={styles.checkboxLabel}
-          >{`Weakness or tingling/burning in the arms or legs`}</Text>
+          <Text style={styles.checkboxLabel}>{`cup`}</Text>
         </View>
+
         <View style={styles.checkboxContainer}>
           <MyCheckbox />
-          <Text
-            style={styles.checkboxLabel}
-          >{`Severe or increasing headache`}</Text>
+          <Text style={styles.checkboxLabel}>{`flower`}</Text>
         </View>
+
         <View style={styles.checkboxContainer}>
           <MyCheckbox />
-          <Text style={styles.checkboxLabel}>{`Seizures or convulsions`}</Text>
+          <Text style={styles.checkboxLabel}>{`fork`}</Text>
         </View>
+
         <View style={styles.checkboxContainer}>
           <MyCheckbox />
-          <Text style={styles.checkboxLabel}>{`Loss of consciousness`}</Text>
+          <Text style={styles.checkboxLabel}>{`keys`}</Text>
         </View>
+
         <View style={styles.checkboxContainer}>
           <MyCheckbox />
-          <Text
-            style={styles.checkboxLabel}
-          >{`Deteriorating conscious state`}</Text>
+          <Text style={styles.checkboxLabel}>{`pen`}</Text>
         </View>
+
         <View style={styles.checkboxContainer}>
           <MyCheckbox />
-          <Text style={styles.checkboxLabel}>{`Vomiting`}</Text>
+          <Text style={styles.checkboxLabel}>{`scissors`}</Text>
         </View>
+
         <View style={styles.checkboxContainer}>
           <MyCheckbox />
-          <Text style={styles.checkboxLabel}>{`Increasing restlessness`}</Text>
-        </View>
-        <View style={styles.checkboxContainer}>
-          <MyCheckbox />
-          <Text
-            style={styles.checkboxLabel}
-          >{`Agitation or combativeness`}</Text>
+          <Text style={styles.checkboxLabel}>{`toothbrush`}</Text>
         </View>
       </View>
-      <Text> </Text>
       <TouchableOpacity
-        onPress={() => navigation.navigate('Mechanisms of Injury')}
+        onPress={() => navigation.navigate('Home')}
         style={uiStyle.bottomButton}
       >
         <Text style={uiStyle.buttonLabel}>Submit</Text>
@@ -104,7 +103,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'space-evenly',
-    marginHorizontal: 50,
   },
   checkboxContainer: {
     flexDirection: 'row',
@@ -134,4 +132,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default StartCheckScreen;
+export default MTFour;

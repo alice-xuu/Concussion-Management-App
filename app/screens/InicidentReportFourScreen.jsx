@@ -31,7 +31,7 @@ function MyCheckbox() {
   );
 }
 
-function StartCheckScreen({ navigation }) {
+function IncidentReportFourScreen({ navigation }) {
   return (
     <View style={uiStyle.container}>
       <Text style={uiStyle.text}>
@@ -41,56 +41,66 @@ function StartCheckScreen({ navigation }) {
       <View style={styles.allCheckboxContainer}>
         <View style={styles.checkboxContainer}>
           <MyCheckbox />
-          <Text style={styles.checkboxLabel}>{`Neck pain or tenderness`}</Text>
-        </View>
-        <View style={styles.checkboxContainer}>
-          <MyCheckbox />
-          <Text style={styles.checkboxLabel}>{`Double vision`}</Text>
+          <Text
+            style={styles.checkboxLabel}
+          >{`Lying motionless after the event`}</Text>
         </View>
         <View style={styles.checkboxContainer}>
           <MyCheckbox />
           <Text
             style={styles.checkboxLabel}
-          >{`Weakness or tingling/burning in the arms or legs`}</Text>
+          >{`Slow to get up after the head knock`}</Text>
+        </View>
+        <View style={styles.checkboxContainer}>
+          <MyCheckbox />
+          <Text style={styles.checkboxLabel}>{`Looks stunned or dazed`}</Text>
         </View>
         <View style={styles.checkboxContainer}>
           <MyCheckbox />
           <Text
             style={styles.checkboxLabel}
-          >{`Severe or increasing headache`}</Text>
-        </View>
-        <View style={styles.checkboxContainer}>
-          <MyCheckbox />
-          <Text style={styles.checkboxLabel}>{`Seizures or convulsions`}</Text>
-        </View>
-        <View style={styles.checkboxContainer}>
-          <MyCheckbox />
-          <Text style={styles.checkboxLabel}>{`Loss of consciousness`}</Text>
+          >{`Shows behavioural or personality changes`}</Text>
         </View>
         <View style={styles.checkboxContainer}>
           <MyCheckbox />
           <Text
             style={styles.checkboxLabel}
-          >{`Deteriorating conscious state`}</Text>
-        </View>
-        <View style={styles.checkboxContainer}>
-          <MyCheckbox />
-          <Text style={styles.checkboxLabel}>{`Vomiting`}</Text>
-        </View>
-        <View style={styles.checkboxContainer}>
-          <MyCheckbox />
-          <Text style={styles.checkboxLabel}>{`Increasing restlessness`}</Text>
+          >{`Forgets things they normally know`}</Text>
         </View>
         <View style={styles.checkboxContainer}>
           <MyCheckbox />
           <Text
             style={styles.checkboxLabel}
-          >{`Agitation or combativeness`}</Text>
+          >{`Disorientation or confusion`}</Text>
+        </View>
+        <View style={styles.checkboxContainer}>
+          <MyCheckbox />
+          <Text
+            style={styles.checkboxLabel}
+          >{`Slowness in responding to questions`}</Text>
+        </View>
+        <View style={styles.checkboxContainer}>
+          <MyCheckbox />
+          <Text
+            style={styles.checkboxLabel}
+          >{`Forgetting what happened before injury(retrograde memory)`}</Text>
+        </View>
+        <View style={styles.checkboxContainer}>
+          <MyCheckbox />
+          <Text
+            style={styles.checkboxLabel}
+          >{`Forgetting what happened after injury`}</Text>
+        </View>
+        <View style={styles.checkboxContainer}>
+          <MyCheckbox />
+          <Text
+            style={styles.checkboxLabel}
+          >{`Stumbling and/or slow labored movements`}</Text>
         </View>
       </View>
       <Text> </Text>
       <TouchableOpacity
-        onPress={() => navigation.navigate('Mechanisms of Injury')}
+        onPress={() => navigation.navigate('IR 5')}
         style={uiStyle.bottomButton}
       >
         <Text style={uiStyle.buttonLabel}>Submit</Text>
@@ -104,7 +114,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'space-evenly',
-    marginHorizontal: 50,
   },
   checkboxContainer: {
     flexDirection: 'row',
@@ -134,4 +143,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default StartCheckScreen;
+export default IncidentReportFourScreen;

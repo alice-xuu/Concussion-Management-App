@@ -7,6 +7,7 @@ import {
   Button,
 } from 'react-native';
 
+import uiStyle from '../components/uiStyle';
 
 /**
  * Starting screen that handles navigation to main app flows.
@@ -15,7 +16,7 @@ import {
  */
 function HomeScreen({ navigation }) {
   return (
-    <SafeAreaView style={[styles.screen]}>
+    <SafeAreaView style={styles.screen}>
       <TouchableOpacity
         onPress={() => navigation.navigate('Questions')}
         style={styles.startCheckButton}
@@ -25,26 +26,34 @@ function HomeScreen({ navigation }) {
 
       <TouchableOpacity
         onPress={() => navigation.navigate('Documents')}
-        style={styles.viewHistoryButton}
+        style={uiStyle.bottomButton}
       >
-        <Text style={styles.viewHistoryText}>View History</Text>
+        <Text style={uiStyle.buttonLabel}>View History</Text>
       </TouchableOpacity>
 
       <Text style={styles.titleText}>Concussion Check</Text>
+
       <Button
         title={'tempButtonToDbSample'}
         onPress={() => navigation.navigate('Database Sample')}
+      />
+      <Button
+        title={'temp Button To ir5'}
+        onPress={() => navigation.navigate('IR 5')}
+      />
+      <Button
+        title={'testing for incident report 4'}
+        onPress={() => navigation.navigate('Incident report 4')}
       />
     </SafeAreaView>
   );
 }
 
-
 // https://reactnative.dev/docs/colors
 const title = '#000000';
 const text = '#fff';
 const background = '#fff';
-const buttons = '#fc5c65';
+const buttons = '#ff0000';
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
@@ -63,7 +72,8 @@ const styles = StyleSheet.create({
   },
   startCheckText: {
     color: text,
-    fontSize: 26,
+    fontWeight: 'bold',
+    fontSize: 20,
   },
   titleText: {
     color: title,
@@ -71,21 +81,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 60,
     fontWeight: 'bold',
-  },
-  viewHistoryButton: {
-    width: 300,
-    height: 50,
-    padding: 10,
-    borderRadius: 100,
-    backgroundColor: buttons,
-    position: 'absolute',
-    bottom: 90,
-  },
-  viewHistoryText: {
-    color: text,
-    fontSize: 22,
-    textAlign: 'center',
-    textAlignVertical: 'center',
   },
 });
 
