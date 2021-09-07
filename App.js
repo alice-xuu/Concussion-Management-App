@@ -19,8 +19,9 @@ import NextStepsScreen from './app/screens/NextStepsScreen';
 import ChecklistQuestionScreen from './app/screens/StartCheckScreen';
 import { GlobalContextProvider } from './app/components/GlobalContextProvider';
 import MechanismsInjuryScreen from './app/screens/MechanismsInjuryScreen';
-import IncidentReportFiveScreen from './app/screens/IncidentReportFiveScreen';
+
 import IncidentReportFourScreen from './app/screens/InicidentReportFourScreen';
+import IncidentReportFiveScreen from './app/screens/IncidentReportFiveScreen';
 
 const RootStack = createNativeStackNavigator();
 /**
