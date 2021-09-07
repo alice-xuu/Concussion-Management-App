@@ -21,13 +21,14 @@ export default function SampleDatabaseScreen() {
 
   // Local state
   const [responses, setResponses] = useState(null);
+  const [patients, setPatients] = useState(null);
 
   // TODO: remove
   const onCreatePatient = () => {
     if (patientRepoContext !== null) {
       const fname = Math.random().toString();
 
-      patientRepoContext.createPatient(fname, 'Smith').then(
+      patientRepoContext.createPatient(fname, 'Smith', 15, 40).then(
         (patientId) => {
           patientRepoContext.getPatient(patientId).then((patientRet) => {
             setPatient(patientRet);
@@ -45,6 +46,17 @@ export default function SampleDatabaseScreen() {
     incidentRepoContext
       .createReport(patient.patientId)
       .then((id) => setReportId(id));
+  };
+
+  // TODO: remove
+  const onGetPatients = () => {
+    if (patientRepoContext !== null) {
+      patientRepoContext
+        .getAllPatients()
+        .then((pts) => setPatients(JSON.stringify(pts)));
+    } else {
+      console.log('null patientRepo');
+    }
   };
 
   // TODO: remove
@@ -81,7 +93,18 @@ export default function SampleDatabaseScreen() {
     <View>
       <Button title="Create Patient" onPress={onCreatePatient} />
 
-      <Text>{patient.firstName + ' ' + patient.lastName}</Text>
+      <Text>
+        {patient.firstName +
+          ' ' +
+          patient.lastName +
+          patient.age +
+          ' years old ' +
+          patient.weight +
+          ' kg'}
+      </Text>
+
+      <Button title="Get Patients" onPress={onGetPatients} />
+      <Text>{patients}</Text>
 
       <Button title="Create Report" onPress={handleCreateReport} />
 
