@@ -38,13 +38,12 @@ function SingleChoiceQuestionScreen({ navigation }) {
         Is there a mechanism of injury (a clear way the patient could have been
         injured)?
       </Text>
-      <Text style={styles.text}>{reportId}</Text>
       <View style={styles.sameRow}>
         <Pressable
           style={styles.buttonYes}
           onPress={() => {
             handleCreateSResponse('YES');
-            //navigation.navigate('Text Question (IR3)');
+            navigation.navigate('Text Question (IR3)');
           }}
         >
           <Text style={styles.label}>YES</Text>
