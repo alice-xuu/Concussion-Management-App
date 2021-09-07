@@ -9,29 +9,67 @@ import {
 import { useContext, useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import uiStyle from '../components/uiStyle';
+import {
+  IncidentReportRepoContext,
+  PatientContext,
+  PatientRepoContext,
+  ReportIdContext,
+} from '../components/GlobalContextProvider';
+import * as target from 'react-native';
 
 /**
  * The screen will ask user for details about concussion in checklist form.
  */
 
-function MyCheckbox() {
-  const [checked, onChange] = useState(false);
-
-  function onCheckmarkPress() {
-    onChange(!checked);
-  }
-
-  return (
-    <Pressable
-      style={[styles.checkboxBase, checked && styles.checkboxChecked]}
-      onPress={onCheckmarkPress}
-    >
-      {checked && <Ionicons name="checkmark" size={24} color="black" />}
-    </Pressable>
-  );
-}
-
 function IncidentReportFourScreen({ navigation }) {
+  const [patient, setPatient] = useContext(PatientContext);
+  const [reportId, setReportId] = useContext(ReportIdContext);
+  const patientRepoContext = useContext(PatientRepoContext);
+  const incidentRepoContext = useContext(IncidentReportRepoContext);
+
+  const [responses, setResponses] = useState(null);
+
+  const handleCreateMultiResponse = (answers) => {
+    const desc = 'Incident Report 4';
+    incidentRepoContext.addMultiResponse(reportId, desc, answers).then(
+      () => {
+        incidentRepoContext
+          .getMultiResponses(reportId)
+          .then((mrs) => setResponses(JSON.stringify(mrs)));
+      },
+      (err) => console.log(err),
+    );
+  };
+
+  const MyCheckbox = (props) => {
+    const [checked, onChange] = useState(false);
+
+    function onCheckmarkPress() {
+      onChange(!checked);
+      onUpdate(props.value);
+    }
+
+    return (
+      <Pressable
+        style={[styles.checkboxBase, checked && styles.checkboxChecked]}
+        onPress={onCheckmarkPress}
+      >
+        {checked && <Ionicons name="checkmark" size={24} color="black" />}
+      </Pressable>
+    );
+  };
+
+  function onUpdate(name) {
+    let i = chosenList.indexOf(name);
+    if (i === -1) {
+      chosenList.push(name);
+    } else {
+      chosenList.splice(i, 1);
+    }
+    return chosenList;
+  }
+  const chosenList = [];
+
   return (
     <View style={uiStyle.container}>
       <Text style={uiStyle.text}>
@@ -40,61 +78,59 @@ function IncidentReportFourScreen({ navigation }) {
       </Text>
       <View style={styles.allCheckboxContainer}>
         <View style={styles.checkboxContainer}>
-          <MyCheckbox />
+          <MyCheckbox value="Lying motionless after the event" />
           <Text
             style={styles.checkboxLabel}
           >{`Lying motionless after the event`}</Text>
         </View>
         <View style={styles.checkboxContainer}>
-          <MyCheckbox />
+          <MyCheckbox value="Slow to get up after the head knock" />
           <Text
             style={styles.checkboxLabel}
           >{`Slow to get up after the head knock`}</Text>
         </View>
         <View style={styles.checkboxContainer}>
-          <MyCheckbox />
-          <Text
-            style={styles.checkboxLabel}
-          >{`Looks stunned or dazed`}</Text>
+          <MyCheckbox value="Looks stunned or dazed" />
+          <Text style={styles.checkboxLabel}>{`Looks stunned or dazed`}</Text>
         </View>
         <View style={styles.checkboxContainer}>
-          <MyCheckbox />
+          <MyCheckbox value="Shows behavioural or personality changes" />
           <Text
             style={styles.checkboxLabel}
           >{`Shows behavioural or personality changes`}</Text>
         </View>
         <View style={styles.checkboxContainer}>
-          <MyCheckbox />
+          <MyCheckbox value="Forgets things they normally know" />
           <Text
             style={styles.checkboxLabel}
           >{`Forgets things they normally know`}</Text>
         </View>
         <View style={styles.checkboxContainer}>
-          <MyCheckbox />
+          <MyCheckbox value="Disorientation or confusion" />
           <Text
             style={styles.checkboxLabel}
           >{`Disorientation or confusion`}</Text>
         </View>
         <View style={styles.checkboxContainer}>
-          <MyCheckbox />
+          <MyCheckbox valie="Slowness in responding to questions" />
           <Text
             style={styles.checkboxLabel}
           >{`Slowness in responding to questions`}</Text>
         </View>
         <View style={styles.checkboxContainer}>
-          <MyCheckbox />
+          <MyCheckbox value="Forgetting what happened before injury(retrograde memory)" />
           <Text
             style={styles.checkboxLabel}
           >{`Forgetting what happened before injury(retrograde memory)`}</Text>
         </View>
         <View style={styles.checkboxContainer}>
-          <MyCheckbox />
+          <MyCheckbox value="Forgetting what happened after injury" />
           <Text
             style={styles.checkboxLabel}
           >{`Forgetting what happened after injury`}</Text>
         </View>
         <View style={styles.checkboxContainer}>
-          <MyCheckbox />
+          <MyCheckbox value="Stumbling and/or slow labored movements" />
           <Text
             style={styles.checkboxLabel}
           >{`Stumbling and/or slow labored movements`}</Text>
@@ -102,10 +138,13 @@ function IncidentReportFourScreen({ navigation }) {
       </View>
       <Text> </Text>
       <TouchableOpacity
-        onPress={() => navigation.navigate('Home')}
-        style={uiStyle.nextButton}
+        onPress={() => {
+          handleCreateMultiResponse(chosenList);
+          navigation.navigate('Home');
+        }}
+        style={uiStyle.bottomButton}
       >
-        <Text style={uiStyle.buttonText}>Submit</Text>
+        <Text style={uiStyle.buttonLabel}>Submit</Text>
       </TouchableOpacity>
     </View>
   );
