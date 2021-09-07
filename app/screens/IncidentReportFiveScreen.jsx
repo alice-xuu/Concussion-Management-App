@@ -2,11 +2,37 @@ import * as React from 'react';
 import { Button, StyleSheet, Text, View, Pressable } from 'react-native';
 import uiStyle from '../components/uiStyle';
 
+import { useContext, useState } from 'react';
+import {
+  IncidentReportRepoContext,
+  PatientContext,
+  PatientRepoContext,
+  ReportIdContext,
+} from '../components/GlobalContextProvider';
+
 /*
  * Asks user if there is a mechanism of injury
  * Response; Yes, Maybe/Unsure, No.
  */
 function IncidentReportFiveScreen({ navigation }) {
+  // Context variables
+  const [patient, setPatient] = useContext(PatientContext);
+  const [reportId, setReportId] = useContext(ReportIdContext);
+  const patientRepoContext = useContext(PatientRepoContext);
+  const incidentRepoContext = useContext(IncidentReportRepoContext);
+
+  // Local state
+  const [responses, setResponses] = useState(null);
+
+  const handleCreateSResponse = (res) => {
+    const desc = 'IR5-response';
+    incidentRepoContext.addSingleResponse(reportId, desc, res).then(() => {
+      incidentRepoContext
+        .getSingleResponses(reportId)
+        .then((sr) => setResponses(JSON.stringify(sr)));
+    });
+  };
+
   return (
     <View style={uiStyle.container}>
       <Text style={uiStyle.text}>
@@ -17,14 +43,20 @@ function IncidentReportFiveScreen({ navigation }) {
       <View style={styles.sameRow}>
         <Pressable
           style={styles.buttonYes}
-          onPress={() => navigation.navigate('Incident Report Result')}
+          onPress={() => {
+            handleCreateSResponse('YES');
+            navigation.navigate('Incident Report Result');
+          }}
         >
           <Text style={styles.label}>YES</Text>
         </Pressable>
 
         <Pressable
           style={styles.buttonNo}
-          onPress={() => navigation.navigate('Incident Report Result')}
+          onPress={() => {
+            handleCreateSResponse('NO');
+            navigation.navigate('Incident Report Result');
+          }}
         >
           <Text style={styles.label}>NO</Text>
         </Pressable>
