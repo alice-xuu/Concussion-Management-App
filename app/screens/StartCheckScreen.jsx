@@ -132,8 +132,9 @@ function StartCheckScreen({ navigation }) {
           handleCreateMultiResponse(chosenList);
           if (chosenList.length === 0) {
             navigation.navigate('Next Steps (IR1)');
+          } else {
+            navigation.navigate('Check Result');
           }
-          navigation.navigate('Check Result');
         }}
         style={uiStyle.bottomButton}
       >
