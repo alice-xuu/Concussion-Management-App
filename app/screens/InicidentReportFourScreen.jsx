@@ -86,7 +86,6 @@ function IncidentReportFourScreen({ navigation }) {
         </View>
         <View style={styles.checkboxContainer}>
           <MyCheckbox value="Looks stunned or dazed" />
-          <MyCheckbox />
           <Text style={styles.checkboxLabel}>{`Looks stunned or dazed`}</Text>
         </View>
         <View style={styles.checkboxContainer}>
