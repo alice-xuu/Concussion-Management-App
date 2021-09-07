@@ -18,7 +18,8 @@ import uiStyle from '../components/uiStyle';
  */
 function CreateProfileScreen({ navigation }) {
   // Context variables
-  const [patient, setPatient] = useContext(PatientContext);
+  const [, setPatient] = useContext(PatientContext);
+  const [patients, setPatients] = useContext(PatientContext);
   const patientRepoContext = useContext(PatientRepoContext);
 
   const [firstNameOfUser, onChangeFirstName] = useState('');
@@ -40,30 +41,45 @@ function CreateProfileScreen({ navigation }) {
       console.log('null patientRepo');
     }
   };
+  const patientsArray = [];
+  const parsePatients = (pts) => {
+    pts.forEach((element) => {
+      patientsArray.push(element.first_name + ' ' + element.last_name);
+    });
+    return patientsArray;
+  };
 
-  // const onGetPatient = () => {
-  //   if (patientRepoContext !== null) {
-  //     patientRepoContext.getAllPatients().then(
-  //       (err) => console.log('Error: ' + err),
-  //     );
-  //   } else {
-  //     console.log('null patientRepo');
-  //   }
-  // };
+  const onGetPatients = () => {
+    if (patientRepoContext !== null) {
+      patientRepoContext
+        .getAllPatients()
+        .then((pts) => setPatients(parsePatients(pts)));
+    } else {
+      console.log('null patientRepo');
+    }
+  };
 
-  let otherUser;
-  const userNum = 0;
+  onGetPatients();
+  const userNum = patients.length;
+  // console.log(patients.length);
+  let otherUsers = [];
   if (userNum > 0) {
-    otherUser = (
-      <TouchableOpacity style={styles.selectUserButton}>
-        <Text style={uiStyle.buttonLabel}>User1</Text>
-      </TouchableOpacity>
-    );
+    for (let i = 0; i < userNum; i++) {
+      const username = patients[i];
+      otherUsers.push(
+        <TouchableOpacity key={i} style={styles.selectUserButton}>
+          <Text style={uiStyle.buttonLabel}>{username}</Text>
+        </TouchableOpacity>,
+      );
+    }
   } else {
-    otherUser = (
-      <Text style={styles.text}>There is no other user can be selected.</Text>
+    otherUsers.push(
+      <Text key={-1} style={styles.text}>
+        There is no other user can be selected.
+      </Text>,
     );
   }
+  // console.log(otherUsers.length);
   return (
     <View style={uiStyle.container}>
       <Text style={styles.text}>
@@ -103,7 +119,7 @@ function CreateProfileScreen({ navigation }) {
           returnKeyType="done"
         />
         <Text style={styles.text}>Or select existing User</Text>
-        {otherUser}
+        {otherUsers}
       </View>
       <Text style={styles.text}>
         You will be able to view your result of your check or report anytime in
@@ -149,14 +165,13 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   selectUserButton: {
-    top: 350,
-    left: 12,
     width: 300,
     height: 50,
     padding: 10,
     borderRadius: 100,
+    marginHorizontal: 10,
+    marginVertical: 10,
     backgroundColor: '#FFA500',
-    position: 'absolute',
     alignItems: 'center',
     justifyContent: 'center',
   },
