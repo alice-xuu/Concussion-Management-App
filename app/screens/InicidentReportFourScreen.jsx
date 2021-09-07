@@ -91,6 +91,7 @@ function IncidentReportFourScreen({ navigation }) {
         </View>
         <View style={styles.checkboxContainer}>
           <MyCheckbox value="Looks stunned or dazed" />
+          <MyCheckbox />
           <Text style={styles.checkboxLabel}>{`Looks stunned or dazed`}</Text>
         </View>
         <View style={styles.checkboxContainer}>
@@ -140,7 +141,7 @@ function IncidentReportFourScreen({ navigation }) {
       <TouchableOpacity
         onPress={() => {
           handleCreateMultiResponse(chosenList);
-          navigation.navigate('Home');
+          navigation.navigate('IR 5');
         }}
         style={uiStyle.bottomButton}
       >
