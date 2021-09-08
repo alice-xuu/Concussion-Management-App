@@ -10,6 +10,14 @@ describe('PatientRepo', () => {
     weight: 67,
   };
 
+  const MOCK_RS = {
+    rows: {
+      length: 2,
+      _array: [{}, {}],
+      item: () => ({}),
+    },
+  };
+
   let mockDa;
   let pr;
 
@@ -74,6 +82,18 @@ describe('PatientRepo', () => {
 
       expect(mockRs.rows.item.mock.calls.length).toBe(1);
       expect(mockRs.rows.item.mock.calls[0][0]).toBe(0);
+    });
+
+    it('rejects if correct properties arent found', async () => {
+      const errCb = jest.fn(() => {});
+      const sucCb = jest.fn(() => {});
+
+      mockDa.runSqlStmt = () => Promise.resolve(MOCK_RS);
+
+      await pr.getPatient(1234).then(sucCb, errCb);
+
+      expect(errCb.mock.calls.length).toBe(1);
+      expect(sucCb.mock.calls.length).toBe(0);
     });
   });
 });
