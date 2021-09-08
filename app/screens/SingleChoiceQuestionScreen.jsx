@@ -1,29 +1,62 @@
 import * as React from 'react';
 import { Button, StyleSheet, Text, View, Pressable } from 'react-native';
 
+import { useContext, useState } from 'react';
+import {
+  IncidentReportRepoContext,
+  PatientContext,
+  PatientRepoContext,
+  ReportIdContext,
+} from '../components/GlobalContextProvider';
+
+import uiStyle from '../components/uiStyle.jsx';
+
 /*
  * Asks user if there is a mechanism of injury
  * Response; Yes, Maybe/Unsure, No.
  */
 function SingleChoiceQuestionScreen({ navigation }) {
+  // Context variables
+  const [patient, setPatient] = useContext(PatientContext);
+  const [reportId, setReportId] = useContext(ReportIdContext);
+  const patientRepoContext = useContext(PatientRepoContext);
+  const incidentRepoContext = useContext(IncidentReportRepoContext);
+
+  // Local state
+  const [responses, setResponses] = useState(null);
+
+  const handleCreateSResponse = (res) => {
+    const desc = 'IR2-response';
+    incidentRepoContext.addSingleResponse(reportId, desc, res).then(() => {
+      incidentRepoContext
+        .getSingleResponses(reportId)
+        .then((sr) => setResponses(JSON.stringify(sr)));
+    });
+  };
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>
+    <View style={uiStyle.container}>
+      <Text style={uiStyle.text}>
         Is there a mechanism of injury (a clear way the patient could have been
         injured)?
       </Text>
-
       <View style={styles.sameRow}>
         <Pressable
           style={styles.buttonYes}
-          onPress={() => navigation.navigate('Text Question (IR3)')}
+          onPress={() => {
+            handleCreateSResponse('YES');
+            navigation.navigate('Text Question (IR3)');
+          }}
         >
           <Text style={styles.label}>YES</Text>
         </Pressable>
 
         <Pressable
           style={styles.buttonNo}
-          onPress={() => navigation.navigate('Text Question (IR3)')}
+          onPress={() => {
+            handleCreateSResponse('NO');
+            navigation.navigate('Text Question (IR3)');
+          }}
         >
           <Text style={styles.label}>NO</Text>
         </Pressable>
@@ -31,7 +64,10 @@ function SingleChoiceQuestionScreen({ navigation }) {
       <View style={styles.sameRow}>
         <Pressable
           style={styles.buttonMaybe}
-          onPress={() => navigation.navigate('Text Question (IR3)')}
+          onPress={() => {
+            handleCreateSResponse('MAYBE');
+            navigation.navigate('Text Question (IR3)');
+          }}
         >
           <Text style={styles.label}>MAYBE/UNSURE</Text>
         </Pressable>
@@ -49,6 +85,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 125,
     backgroundColor: 'green',
+    margin: 10,
   },
   buttonNo: {
     width: 125,
@@ -58,6 +95,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 125,
     backgroundColor: 'red',
+    margin: 10,
   },
   buttonMaybe: {
     width: 125,
@@ -67,6 +105,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 125,
     backgroundColor: 'orange',
+    margin: 10,
   },
   label: {
     fontSize: 20,

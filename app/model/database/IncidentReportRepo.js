@@ -43,7 +43,7 @@ export class IncidentReportRepo {
 
   /**
    *
-   * @param {number} reportId report id
+   * @param {[undefined, React.Dispatch<React.SetStateAction<undefined>>]} reportId report id
    * @return {Promise<any[]>} array of SingleResponse rows
    */
   async getSingleResponses(reportId) {
@@ -60,6 +60,17 @@ export class IncidentReportRepo {
       });
     });
   }
+  // async changeSingleResponse(ID, text) {
+  //   const sql = 'UPDATE SingleResponse SET response = ? WHERE report_id == ?; ';
+  //   const args = [text, ID];
+  //
+  //   return new Promise((resolve, reject) => {
+  //     this.da.runSqlStmt(sql, args).then(
+  //       (rs) => resolve(rs.insertId),
+  //       (err) => reject(err),
+  //     );
+  //   });
+  // }
 
   /**
    * Store multi response in db
