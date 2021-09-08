@@ -46,6 +46,10 @@ function HomeScreen({ navigation }) {
         onPress={() => navigation.navigate('Incident report 4')}
       />
       <Button
+        title={'testing for incident report result'}
+        onPress={() => navigation.navigate('Incident Report Result')}
+      />
+      <Button
         title={'test memory'}
         onPress={() => navigation.navigate('Memory Test 1')}
       />

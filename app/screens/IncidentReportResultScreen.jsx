@@ -1,5 +1,12 @@
 import * as React from 'react';
 import { StyleSheet, Text, View, Pressable } from 'react-native';
+import { useContext, useState } from "react";
+import {
+  IncidentReportRepoContext,
+  PatientContext,
+  PatientRepoContext,
+  ReportIdContext
+} from "../components/GlobalContextProvider";
 
 /**
  * The screen will show the result after user has completed "IncidentReport"
@@ -9,10 +16,62 @@ import { StyleSheet, Text, View, Pressable } from 'react-native';
  * do further test to assess concussion or go to home and create profile
  */
 function IncidentReportResultScreen({ navigation }) {
-  //const { ReportResult } = route.params;
-  const ReportResult = -1;
+  // Context variables
+  const [patient, setPatient] = useContext(PatientContext);
+  const [reportId, setReportId] = useContext(ReportIdContext);
+  const patientRepoContext = useContext(PatientRepoContext);
+  const incidentRepoContext = useContext(IncidentReportRepoContext);
+
+  // Local state
+  let [responses, setResponses] = useState(null);
+
+  let responsesArray = [];
+  const parseSingleResponses = (srs) => {
+    if (srs !== null) {
+      srs.forEach((element) => {
+        if (element.response === 'Yes') {
+          responsesArray.push(element.response);
+        }
+      });
+    }
+    return responsesArray;
+  };
+  const parseMultiResponses = (mrs) => {
+    if (responses === null) {
+      responses = [];
+    }
+    if (mrs !== null) {
+      mrs.forEach((element) => {
+        if (element.MultiResponsePart.response !== undefined) {
+          responses.push('Yes');
+        }
+      });
+    }
+    return responses;
+  };
+
+  const handleGetSingleResponses = () => {
+    incidentRepoContext
+      .getSingleResponses(reportId)
+      .then((srs) => setResponses(parseSingleResponses(srs)));
+  };
+  const handleGetMultiResponses = () => {
+    incidentRepoContext
+      .getMultiResponses(reportId)
+      .then((mrs) => setResponses(parseMultiResponses(mrs)));
+  };
+  let reportResults = 0;
   let screen;
-  if (ReportResult > 0) {
+  handleGetSingleResponses();
+  handleGetMultiResponses();
+  if (responses !== null) {
+    responses.forEach((element) => {
+      if (element === 'Yes') {
+        reportResults++;
+      }
+    });
+  }
+  if (reportResults > 0) {
     //Have Concussion
     screen = (
       <View>
