@@ -72,56 +72,56 @@ function StartCheckScreen({ navigation }) {
         Does the patient have any of the following symptoms? Please select all
         that apply.
       </Text>
-      <View style={styles.allCheckboxContainer}>
-        <View style={styles.checkboxContainer}>
+      <SafeAreaView style={styles.allCheckboxContainer}>
+        <SafeAreaView style={styles.checkboxContainer}>
           <MyCheckbox value="Neck pain or tenderness" />
           <Text style={styles.checkboxLabel}>{`Neck pain or tenderness`}</Text>
-        </View>
-        <View style={styles.checkboxContainer}>
+        </SafeAreaView>
+        <SafeAreaView style={styles.checkboxContainer}>
           <MyCheckbox value="Neck pain or tenderness" />
           <Text style={styles.checkboxLabel}>{`Double vision`}</Text>
-        </View>
-        <View style={styles.checkboxContainer}>
+        </SafeAreaView>
+        <SafeAreaView style={styles.checkboxContainer}>
           <MyCheckbox value="Weakness or tingling/burning in the arms or legs" />
           <Text
             style={styles.checkboxLabel}
           >{`Weakness or tingling/burning in the arms or legs`}</Text>
-        </View>
-        <View style={styles.checkboxContainer}>
+        </SafeAreaView>
+        <SafeAreaView style={styles.checkboxContainer}>
           <MyCheckbox value="Severe or increasing headache" />
           <Text
             style={styles.checkboxLabel}
           >{`Severe or increasing headache`}</Text>
-        </View>
-        <View style={styles.checkboxContainer}>
+        </SafeAreaView>
+        <SafeAreaView style={styles.checkboxContainer}>
           <MyCheckbox value="Seizures or convulsions" />
           <Text style={styles.checkboxLabel}>{`Seizures or convulsions`}</Text>
-        </View>
-        <View style={styles.checkboxContainer}>
+        </SafeAreaView>
+        <SafeAreaView style={styles.checkboxContainer}>
           <MyCheckbox value="Loss of consciousness" />
           <Text style={styles.checkboxLabel}>{`Loss of consciousness`}</Text>
-        </View>
-        <View style={styles.checkboxContainer}>
+        </SafeAreaView>
+        <SafeAreaView style={styles.checkboxContainer}>
           <MyCheckbox value="Deteriorating conscious state" />
           <Text
             style={styles.checkboxLabel}
           >{`Deteriorating conscious state`}</Text>
-        </View>
-        <View style={styles.checkboxContainer}>
+        </SafeAreaView>
+        <SafeAreaView style={styles.checkboxContainer}>
           <MyCheckbox value="Vomiting" />
           <Text style={styles.checkboxLabel}>{`Vomiting`}</Text>
-        </View>
-        <View style={styles.checkboxContainer}>
+        </SafeAreaView>
+        <SafeAreaView style={styles.checkboxContainer}>
           <MyCheckbox value="Increasing restlessness" />
           <Text style={styles.checkboxLabel}>{`Increasing restlessness`}</Text>
-        </View>
-        <View style={styles.checkboxContainer}>
+        </SafeAreaView>
+        <SafeAreaView style={styles.checkboxContainer}>
           <MyCheckbox value="Agitation or combativeness" />
           <Text
             style={styles.checkboxLabel}
           >{`Agitation or combativeness`}</Text>
-        </View>
-      </View>
+        </SafeAreaView>
+      </SafeAreaView>
       <Text> </Text>
       <TouchableOpacity
         onPress={() => {
