@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { StyleSheet, Text, View, Pressable, SafeAreaView } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View, Pressable } from 'react-native';
+import { useContext, useState } from 'react';
+import {
+  IncidentReportRepoContext,
+  ReportIdContext,
+} from '../components/GlobalContextProvider';
 
 /**
  * The screen will show the result after user has completed "IncidentReport"
@@ -9,10 +14,62 @@ import { StyleSheet, Text, View, Pressable, SafeAreaView } from 'react-native';
  * do further test to assess concussion or go to home and create profile
  */
 function IncidentReportResultScreen({ navigation }) {
-  //const { ReportResult } = route.params;
-  const ReportResult = -1;
+  // Context variables
+  const [reportId] = useContext(ReportIdContext);
+  const incidentRepoContext = useContext(IncidentReportRepoContext);
+
+  // Local state
+  let [responses, setResponses] = useState(null);
+
+  let responsesArray = [];
+  const parseSingleResponses = (srs) => {
+    if (srs !== null) {
+      srs.forEach((element) => {
+        if (element.response === 'YES') {
+          responsesArray.push('Yes');
+        }
+      });
+    }
+    return responsesArray;
+  };
+  const parseMultiResponses = (mrs) => {
+    if (responses === null) {
+      responses = [];
+    }
+    if (mrs !== null) {
+      // console.log(mrs);
+      mrs.forEach((element) => {
+        if (element.MultiResponsePart.response !== undefined) {
+          responses.push('Yes');
+        }
+      });
+    }
+    return responses;
+  };
+
+  const handleGetSingleResponses = () => {
+    incidentRepoContext
+      .getSingleResponses(reportId)
+      .then((srs) => setResponses(parseSingleResponses(srs)));
+  };
+  const handleGetMultiResponses = () => {
+    incidentRepoContext
+      .getMultiResponses(reportId)
+      .then((mrs) => setResponses(parseMultiResponses(mrs)));
+  };
+  let reportResults = 0;
   let screen;
-  if (ReportResult > 0) {
+  handleGetSingleResponses();
+  handleGetMultiResponses();
+  // console.log(responses);
+  if (responses !== null) {
+    responses.forEach((element) => {
+      if (element === 'Yes') {
+        reportResults++;
+      }
+    });
+  }
+  if (reportResults > 0) {
     //Have Concussion
     screen = (
       <View>
