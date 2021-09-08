@@ -4,6 +4,9 @@ import { Patient } from '../model/database/Patient';
 import { DatabaseAdapter } from '../model/database/DatabaseAdapter';
 import { PatientRepo } from '../model/database/PatientRepo';
 import { IncidentReportRepo } from '../model/database/IncidentReportRepo';
+import * as SQLite from 'expo-sqlite';
+
+const DB_FILE = 'measurements.db';
 
 // Contexts
 /**
@@ -52,7 +55,7 @@ export function GlobalContextProvider(props) {
   const [incidentRepoContext, setIncidentRepoContext] = useState(null);
 
   useEffect(() => {
-    DatabaseAdapter.initDatabase().then((daNew) => {
+    DatabaseAdapter.initDatabase(SQLite.openDatabase(DB_FILE)).then((daNew) => {
       setDaContext(daNew);
       setPatientRepoContext(new PatientRepo(daNew));
       setIncidentRepoContext(new IncidentReportRepo(daNew));
