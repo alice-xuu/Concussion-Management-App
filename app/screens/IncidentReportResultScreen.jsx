@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { StyleSheet, Text, View, Pressable } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View, Pressable } from 'react-native';
 import { useContext, useState } from "react";
 import {
   IncidentReportRepoContext,
   PatientContext,
   PatientRepoContext,
   ReportIdContext
-} from "../components/GlobalContextProvider";
+} from '../components/GlobalContextProvider';
 
 /**
  * The screen will show the result after user has completed "IncidentReport"
@@ -29,8 +29,8 @@ function IncidentReportResultScreen({ navigation }) {
   const parseSingleResponses = (srs) => {
     if (srs !== null) {
       srs.forEach((element) => {
-        if (element.response === 'Yes') {
-          responsesArray.push(element.response);
+        if (element.response === 'YES') {
+          responsesArray.push('Yes');
         }
       });
     }
@@ -41,6 +41,7 @@ function IncidentReportResultScreen({ navigation }) {
       responses = [];
     }
     if (mrs !== null) {
+      // console.log(mrs);
       mrs.forEach((element) => {
         if (element.MultiResponsePart.response !== undefined) {
           responses.push('Yes');
@@ -64,6 +65,7 @@ function IncidentReportResultScreen({ navigation }) {
   let screen;
   handleGetSingleResponses();
   handleGetMultiResponses();
+  // console.log(responses);
   if (responses !== null) {
     responses.forEach((element) => {
       if (element === 'Yes') {
