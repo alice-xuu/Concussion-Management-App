@@ -23,7 +23,7 @@ describe('PatientRepo', () => {
 
   beforeEach(() => {
     mockDa = {
-      runSqlStmt: jest.fn(() => Promise.resolve('')),
+      runSqlStmt: jest.fn(() => Promise.resolve(MOCK_RS)),
     };
     pr = new PatientRepo(mockDa);
   });
@@ -94,6 +94,18 @@ describe('PatientRepo', () => {
 
       expect(errCb.mock.calls.length).toBe(1);
       expect(sucCb.mock.calls.length).toBe(0);
+    });
+  });
+
+  describe('getAllPatients', () => {
+    it('returns result', async () => {
+      const errCb = jest.fn(() => {});
+      const sucCb = jest.fn(() => {});
+
+      await pr.getAllPatients().then(sucCb, errCb);
+
+      expect(errCb.mock.calls.length).toBe(0);
+      expect(sucCb.mock.calls.length).toBe(1);
     });
   });
 });
