@@ -151,10 +151,12 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'space-evenly',
+    margin: 10,
   },
   checkboxContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    margin: 1,
     padding: 5,
   },
 
@@ -176,7 +178,9 @@ const styles = StyleSheet.create({
   checkboxLabel: {
     marginLeft: 8,
     fontWeight: '500',
-    fontSize: 18,
+    fontSize: 14,
+    flex: 1,
+    flexWrap: 'wrap',
   },
 });
 

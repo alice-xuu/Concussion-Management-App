@@ -151,6 +151,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     padding: 5,
+    margin: 1,
   },
 
   checkboxBase: {
@@ -171,7 +172,7 @@ const styles = StyleSheet.create({
   checkboxLabel: {
     marginLeft: 8,
     fontWeight: '500',
-    fontSize: 18,
+    fontSize: 14,
   },
 });
 
