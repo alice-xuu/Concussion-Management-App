@@ -1,10 +1,12 @@
 import { StyleSheet } from 'react-native';
 
+const background = '#fff';
 export default StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: background,
   },
   titleText: {
     color: '#000000',

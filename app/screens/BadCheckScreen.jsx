@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  SafeAreaView,
+} from 'react-native';
 
 import uiStyle from '../components/uiStyle';
 /**
@@ -7,7 +13,7 @@ import uiStyle from '../components/uiStyle';
  */
 function BadCheckScreen({ navigation }) {
   return (
-    <View style={uiStyle.container}>
+    <SafeAreaView style={uiStyle.container}>
       <Text style={styles.text}>
         Your patient needs to go to hospital immediately, please call 000 now.
       </Text>
@@ -20,7 +26,7 @@ function BadCheckScreen({ navigation }) {
       >
         <Text style={uiStyle.buttonLabel}>Next</Text>
       </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   );
 }
 

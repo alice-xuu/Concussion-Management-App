@@ -1,5 +1,12 @@
 import * as React from 'react';
-import { Button, StyleSheet, Text, View, Pressable } from 'react-native';
+import {
+  Button,
+  StyleSheet,
+  Text,
+  View,
+  Pressable,
+  SafeAreaView,
+} from 'react-native';
 import uiStyle from '../components/uiStyle';
 
 import { useContext, useState } from 'react';
@@ -34,7 +41,7 @@ function IncidentReportFiveScreen({ navigation }) {
   };
 
   return (
-    <View style={uiStyle.container}>
+    <SafeAreaView style={uiStyle.container}>
       <Text style={uiStyle.text}>
         Is there a mechanism of injury (a clear way the patient could have been
         injured)?
@@ -61,7 +68,7 @@ function IncidentReportFiveScreen({ navigation }) {
           <Text style={styles.label}>NO</Text>
         </Pressable>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 

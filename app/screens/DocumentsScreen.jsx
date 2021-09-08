@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 
 /**
  * Displays all available documents.
@@ -8,9 +8,9 @@ import { StyleSheet, Text, View } from 'react-native';
  */
 function DocumentsScreen() {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Text>Documents Screen</Text>
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#fff',
   },
 });
 

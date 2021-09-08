@@ -5,6 +5,7 @@ import {
   View,
   Pressable,
   TouchableOpacity,
+  SafeAreaView,
 } from 'react-native';
 import { useContext, useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
@@ -66,7 +67,7 @@ function IncidentReportFourScreen({ navigation }) {
   const chosenList = [];
 
   return (
-    <View style={uiStyle.container}>
+    <SafeAreaView style={uiStyle.container}>
       <Text style={uiStyle.text}>
         Does the patient have any of the following symptoms? Please select all
         that apply.
@@ -141,7 +142,7 @@ function IncidentReportFourScreen({ navigation }) {
       >
         <Text style={uiStyle.buttonLabel}>Submit</Text>
       </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   );
 }
 

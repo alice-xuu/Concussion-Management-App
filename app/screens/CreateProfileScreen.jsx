@@ -5,6 +5,7 @@ import {
   View,
   TextInput,
   TouchableOpacity,
+  SafeAreaView,
 } from 'react-native';
 import uiStyle from '../components/uiStyle';
 /**
@@ -30,7 +31,7 @@ function CreateProfileScreen({ navigation }) {
     );
   }
   return (
-    <View style={uiStyle.container}>
+    <SafeAreaView style={uiStyle.container}>
       <Text style={styles.text}>
         Enter your details and the results will be saved in your profile
       </Text>
@@ -78,7 +79,7 @@ function CreateProfileScreen({ navigation }) {
       >
         <Text style={uiStyle.buttonLabel}>Submit</Text>
       </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   );
 }
 

@@ -1,5 +1,12 @@
 import * as React from 'react';
-import { Button, StyleSheet, Text, View, Pressable } from 'react-native';
+import {
+  Button,
+  StyleSheet,
+  Text,
+  View,
+  Pressable,
+  SafeAreaView,
+} from 'react-native';
 
 import { useContext, useState } from 'react';
 import {
@@ -35,7 +42,7 @@ function SingleChoiceQuestionScreen({ navigation }) {
   };
 
   return (
-    <View style={uiStyle.container}>
+    <SafeAreaView style={uiStyle.container}>
       <Text style={uiStyle.text}>
         Is there a mechanism of injury (a clear way the patient could have been
         injured)?
@@ -72,7 +79,7 @@ function SingleChoiceQuestionScreen({ navigation }) {
           <Text style={styles.label}>MAYBE/UNSURE</Text>
         </Pressable>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 
