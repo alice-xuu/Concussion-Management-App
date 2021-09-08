@@ -15,7 +15,7 @@ function BadCheckScreen({ navigation }) {
   return (
     <SafeAreaView style={uiStyle.container}>
       <Text style={styles.text}>
-        Your patient needs to go to hospital immediately, please call 000 now.
+        Your patient needs to go to hospital immediately. Call 000.
       </Text>
       <View style={styles.callSymbol}>
         <Text style={styles.label}>Call 000</Text>
@@ -32,14 +32,12 @@ function BadCheckScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   callSymbol: {
-    flex: 1,
-    alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 12,
-    paddingHorizontal: 32,
-    borderRadius: 100,
+    alignItems: 'center',
     backgroundColor: '#ff0000',
-    marginVertical: 310,
+    borderRadius: 100,
+    width: 200,
+    height: 200,
   },
   text: {
     fontSize: 18,
@@ -49,8 +47,12 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     fontWeight: 'bold',
     position: 'absolute',
-    top: 200,
+    top: 150,
   },
+  label: {
+    color: 'white',
+    fontWeight: 'bold',
+  }
 });
 
 export default BadCheckScreen;

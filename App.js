@@ -18,9 +18,8 @@ import MTFour from './app/screens/MemoryTests/MTFour';
 import NextStepsScreen from './app/screens/NextStepsScreen';
 import ChecklistQuestionScreen from './app/screens/StartCheckScreen';
 import { GlobalContextProvider } from './app/components/GlobalContextProvider';
-import MechanismsInjuryScreen from './app/screens/MechanismsInjuryScreen';
 
-import IncidentReportFourScreen from './app/screens/InicidentReportFourScreen';
+import IncidentReportFourScreen from './app/screens/IncidentReportFourScreen';
 import IncidentReportFiveScreen from './app/screens/IncidentReportFiveScreen';
 
 const RootStack = createNativeStackNavigator();
@@ -41,10 +40,6 @@ export default function App() {
             component={CreateProfileScreen}
           />
 
-          <RootStack.Screen
-            name="Mechanisms of Injury"
-            component={MechanismsInjuryScreen}
-          />
           <RootStack.Screen name="Start Check" component={StartCheckScreen} />
           <RootStack.Screen
             name="Incident report 4"
