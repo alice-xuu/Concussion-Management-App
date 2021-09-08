@@ -1,8 +1,6 @@
 import * as SQLite from 'expo-sqlite';
 import { TABLES_SQL } from './DatabaseConfig';
 
-const DB_FILE = 'measurements.db';
-
 export class DatabaseAdapter {
   /**
    *
@@ -38,14 +36,20 @@ export class DatabaseAdapter {
 
   /**
    *
+   * @param {SQLite.WebSQLDatabase} db
    * @return {Promise<DatabaseAdapter>}
    */
-  static async initDatabase() {
-    let da = new DatabaseAdapter(SQLite.openDatabase(DB_FILE));
+  static async initDatabase(db) {
+    let da = new DatabaseAdapter(db);
     let error;
 
     for (let tableSql of TABLES_SQL) {
-      await da.runSqlStmt(tableSql);
+      await da.runSqlStmt(tableSql).then(
+        () => {},
+        (err) => {
+          error = err;
+        },
+      );
     }
 
     return new Promise((resolve, reject) => {

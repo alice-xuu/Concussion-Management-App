@@ -23,12 +23,15 @@ import * as target from 'react-native';
  */
 
 function StartCheckScreen({ navigation }) {
-  const [patient, setPatient] = useContext(PatientContext);
   const [reportId, setReportId] = useContext(ReportIdContext);
   const patientRepoContext = useContext(PatientRepoContext);
   const incidentRepoContext = useContext(IncidentReportRepoContext);
 
   const [responses, setResponses] = useState(null);
+
+  const handleCreateReport = () => {
+    incidentRepoContext.createReport(null).then((id) => setReportId(id));
+  };
 
   const handleCreateMultiResponse = (answers) => {
     const desc = 'Incident Report 4';
@@ -65,7 +68,6 @@ function StartCheckScreen({ navigation }) {
     return chosenList;
   }
   const chosenList = [];
-
   return (
     <SafeAreaView style={uiStyle.container}>
       <Text style={uiStyle.text}>
@@ -125,6 +127,7 @@ function StartCheckScreen({ navigation }) {
       <Text> </Text>
       <TouchableOpacity
         onPress={() => {
+          handleCreateReport();
           handleCreateMultiResponse(chosenList);
           if (chosenList.length === 0) {
             navigation.navigate('Next Steps (IR1)');
