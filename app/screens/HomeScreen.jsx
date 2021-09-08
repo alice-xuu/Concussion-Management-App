@@ -38,8 +38,8 @@ function HomeScreen({ navigation }) {
         onPress={() => navigation.navigate('Database Sample')}
       />
       <Button
-        title={'temp Button To ir5'}
-        onPress={() => navigation.navigate('IR 5')}
+        title={'temp Button To create profile'}
+        onPress={() => navigation.navigate('Create Profile')}
       />
       <Button
         title={'testing for incident report 4'}
