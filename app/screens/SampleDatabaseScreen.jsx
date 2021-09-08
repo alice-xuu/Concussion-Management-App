@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { useContext, useState } from 'react';
-import { Button, Text, View } from 'react-native';
+import { Button, Text, View, SafeAreaView } from 'react-native';
 import {
   IncidentReportRepoContext,
   PatientContext,
@@ -90,7 +90,7 @@ export default function SampleDatabaseScreen() {
   };
 
   return (
-    <View>
+    <SafeAreaView>
       <Button title="Create Patient" onPress={onCreatePatient} />
 
       <Text>
@@ -118,6 +118,6 @@ export default function SampleDatabaseScreen() {
       />
 
       <Text>{responses}</Text>
-    </View>
+    </SafeAreaView>
   );
 }

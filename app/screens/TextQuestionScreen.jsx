@@ -6,6 +6,7 @@ import {
   TextInput,
   Pressable,
   Dimensions,
+  SafeAreaView,
 } from 'react-native';
 import {
   IncidentReportRepoContext,
@@ -37,7 +38,7 @@ function TextQuestionScreen({ navigation }) {
     handleResponseDescription();
   };
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Text style={styles.font}>
         {' '}
         Is there an alternative explanation for your patient’s symptoms? If yes,
@@ -53,13 +54,10 @@ function TextQuestionScreen({ navigation }) {
         numberOfLines={4}
         textAlignVertical="top"
       />
-      <Pressable
-        style={styles.button}
-        onPress={() =>myFunction()}
-      >
+      <Pressable style={styles.button} onPress={() => myFunction()}>
         <Text style={styles.label}>Next</Text>
       </Pressable>
-    </View>
+    </SafeAreaView>
   );
 }
 const styles = StyleSheet.create({
@@ -67,6 +65,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#fff',
   },
   font: {
     fontSize: 16,

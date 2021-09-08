@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, Text, View, Pressable } from 'react-native';
+import { StyleSheet, Text, View, Pressable, SafeAreaView } from 'react-native';
 
 /**
  * The screen will show the result after user has completed "IncidentReport"
@@ -55,10 +55,10 @@ function IncidentReportResultScreen({ navigation }) {
   }
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Text>Result</Text>
       {screen}
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -93,6 +93,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#fff',
   },
 });
 

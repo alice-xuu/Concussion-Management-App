@@ -1,5 +1,12 @@
 import * as React from 'react';
-import { CheckBox, StyleSheet, Text, View, Pressable } from 'react-native';
+import {
+  CheckBox,
+  StyleSheet,
+  Text,
+  View,
+  Pressable,
+  SafeAreaView,
+} from 'react-native';
 // import CheckBox from 'react-native-community/checkbox';
 import { useState } from 'react';
 
@@ -19,7 +26,7 @@ function CheckListQuestionScreen({ navigation }) {
   const [toggleCheckBox10, setToggleCheckBox10] = useState(false);
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Text>
         Does the patient have any of the following symptoms? Please select all
         that apply.
@@ -118,7 +125,7 @@ function CheckListQuestionScreen({ navigation }) {
       >
         <Text style={styles.label}>Submit</Text>
       </Pressable>
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -160,6 +167,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#fff',
   },
 });
 
