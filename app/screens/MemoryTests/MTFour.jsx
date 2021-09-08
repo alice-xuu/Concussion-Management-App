@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useState } from 'react';
 
 import {
   StyleSheet,
@@ -12,84 +11,126 @@ import {
 import uiStyle from '../../components/uiStyle.jsx';
 import { Ionicons } from '@expo/vector-icons';
 
+import { useContext, useState } from 'react';
+
+import {
+  IncidentReportRepoContext,
+  PatientContext,
+  PatientRepoContext,
+  ReportIdContext,
+} from '../../components/GlobalContextProvider';
+import * as target from 'react-native';
+
 /**
  * The screen will be perform memory test.
  * This is the first test out of the Further Tests
  * After this test is completed, user needs to navigate to the next test which
  * is Reaction Test.
  */
-function MyCheckbox() {
-  const [checked, onChange] = useState(false);
-
-  function onCheckmarkPress() {
-    onChange(!checked);
-  }
-
-  return (
-    <Pressable
-      style={[styles.checkboxBase, checked && styles.checkboxChecked]}
-      onPress={onCheckmarkPress}
-    >
-      {checked && <Ionicons name="checkmark" size={24} color="black" />}
-    </Pressable>
-  );
-}
 
 function MTFour({ navigation }) {
+  // Context variables
+  const [patient, setPatient] = useContext(PatientContext);
+  const [reportId, setReportId] = useContext(ReportIdContext);
+  const patientRepoContext = useContext(PatientRepoContext);
+  const incidentRepoContext = useContext(IncidentReportRepoContext);
+
+  // Local state
+  const [responses, setResponses] = useState(null);
+
+  const handleCreateMultiResponse = (res) => {
+    const desc = 'Memory Test Part 1';
+    incidentRepoContext.addMultiResponse(reportId, desc, res).then(() => {});
+  };
+
+  const MyCheckbox = (props) => {
+    const [checked, onChange] = useState(false);
+    function onCheckmarkPress() {
+      onChange(!checked);
+      onUpdate(props.value);
+    }
+
+    return (
+      <Pressable
+        style={[styles.checkboxBase, checked && styles.checkboxChecked]}
+        onPress={() => {
+          onCheckmarkPress();
+        }}
+      >
+        {checked && <Ionicons name="checkmark" size={24} color="black" />}
+      </Pressable>
+    );
+  };
+
+  // updates const list when onCheckmarkPress() is called
+  function onUpdate(name) {
+    let index = chosenList.indexOf(name);
+    if (index === -1) {
+      chosenList.push(name); // if it isn't stored add it to the array
+    } else {
+      chosenList.splice(index, 1); // if it is stored then remove it from the array
+    }
+    return { chosenList };
+  }
+
+  const chosenList = [];
+
   return (
     <View style={uiStyle.container}>
       <Text style={uiStyle.text}>
         What three images does your patient remember?
       </Text>
-
       <View style={styles.allCheckboxContainer}>
         <View style={styles.checkboxContainer}>
-          <MyCheckbox />
+          <MyCheckbox value="bird" />
           <Text style={styles.checkboxLabel}>{`bird`}</Text>
         </View>
 
         <View style={styles.checkboxContainer}>
-          <MyCheckbox />
+          <MyCheckbox value={'clock'} />
           <Text style={styles.checkboxLabel}>{`clock`}</Text>
         </View>
 
         <View style={styles.checkboxContainer}>
-          <MyCheckbox />
+          <MyCheckbox value={'cup'} />
           <Text style={styles.checkboxLabel}>{`cup`}</Text>
         </View>
 
         <View style={styles.checkboxContainer}>
-          <MyCheckbox />
+          <MyCheckbox value={'flower'} />
           <Text style={styles.checkboxLabel}>{`flower`}</Text>
         </View>
 
         <View style={styles.checkboxContainer}>
-          <MyCheckbox />
+          <MyCheckbox value={'fork'} />
           <Text style={styles.checkboxLabel}>{`fork`}</Text>
         </View>
 
         <View style={styles.checkboxContainer}>
-          <MyCheckbox />
+          <MyCheckbox value={'keys'} />
           <Text style={styles.checkboxLabel}>{`keys`}</Text>
         </View>
 
         <View style={styles.checkboxContainer}>
-          <MyCheckbox />
+          <MyCheckbox value={'pen'} />
           <Text style={styles.checkboxLabel}>{`pen`}</Text>
         </View>
 
         <View style={styles.checkboxContainer}>
-          <MyCheckbox />
+          <MyCheckbox value={'scissors'} />
           <Text style={styles.checkboxLabel}>{`scissors`}</Text>
         </View>
 
         <View style={styles.checkboxContainer}>
-          <MyCheckbox />
+          <MyCheckbox value={'toothbrush'} />
           <Text style={styles.checkboxLabel}>{`toothbrush`}</Text>
         </View>
       </View>
       <TouchableOpacity
-        onPress={() => navigation.navigate('Home')}
+        onPress={() => {
+          handleCreateMultiResponse(chosenList);
+          navigation.navigate('Home');
+        }}
         style={uiStyle.bottomButton}
       >
         <Text style={uiStyle.buttonLabel}>Submit</Text>
