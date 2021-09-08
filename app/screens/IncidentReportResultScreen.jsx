@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { SafeAreaView, StyleSheet, Text, View, Pressable } from 'react-native';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import {
   IncidentReportRepoContext,
   ReportIdContext,
@@ -17,6 +17,15 @@ function IncidentReportResultScreen({ navigation }) {
   // Context variables
   const [reportId] = useContext(ReportIdContext);
   const incidentRepoContext = useContext(IncidentReportRepoContext);
+  const mounted = useRef(false);
+
+  useEffect(() => {
+    mounted.current = true; // Component is mounted
+    return () => {
+      // Component is unmounted
+      mounted.current = false;
+    };
+  }, []);
 
   // Local state
   let [responses, setResponses] = useState(null);
@@ -48,14 +57,18 @@ function IncidentReportResultScreen({ navigation }) {
   };
 
   const handleGetSingleResponses = () => {
-    incidentRepoContext
-      .getSingleResponses(reportId)
-      .then((srs) => setResponses(parseSingleResponses(srs)));
+    incidentRepoContext.getSingleResponses(reportId).then((srs) => {
+      if (mounted.current) {
+        setResponses(parseSingleResponses(srs));
+      }
+    });
   };
   const handleGetMultiResponses = () => {
-    incidentRepoContext
-      .getMultiResponses(reportId)
-      .then((mrs) => setResponses(parseMultiResponses(mrs)));
+    incidentRepoContext.getMultiResponses(reportId).then((mrs) => {
+      if (mounted.current) {
+        setResponses(parseMultiResponses(mrs));
+      }
+    });
   };
   let reportResults = 0;
   let screen;
