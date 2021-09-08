@@ -8,6 +8,12 @@ import {
 } from 'react-native';
 
 import uiStyle from '../components/uiStyle';
+import { useContext } from 'react';
+import {
+  IncidentReportRepoContext,
+  PatientRepoContext,
+  ReportIdContext,
+} from '../components/GlobalContextProvider';
 
 /**
  * Starting screen that handles navigation to main app flows.
@@ -15,10 +21,18 @@ import uiStyle from '../components/uiStyle';
  * @param navigation used to move to the other screens
  */
 function HomeScreen({ navigation }) {
+  const [reportId, setReportId] = useContext(ReportIdContext);
+  const incidentRepoContext = useContext(IncidentReportRepoContext);
+  const handleCreateReport = () => {
+    incidentRepoContext.createReport(null).then((id) => setReportId(id));
+  };
   return (
     <SafeAreaView style={styles.screen}>
       <TouchableOpacity
-        onPress={() => navigation.navigate('Start Check')}
+        onPress={() => {
+          handleCreateReport();
+          navigation.navigate('Start Check');
+        }}
         style={styles.startCheckButton}
       >
         <Text style={styles.startCheckText}>Start Check</Text>
