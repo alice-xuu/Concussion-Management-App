@@ -114,10 +114,10 @@ function IncidentReportResultScreen({ navigation }) {
   }
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Text>Result</Text>
       {screen}
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -152,6 +152,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#fff',
   },
 });
 

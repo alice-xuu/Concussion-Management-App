@@ -6,7 +6,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "test": "jest",
+    "test": "jest --coverage",
     "lint": "eslint --fix --ext .js,.jsx ./",
     "prettier": "prettier --write \"**/*.+(js|jsx|json|css|md)\"\n"
   },
@@ -29,6 +29,13 @@
     "react-navigation": "^4.4.4"
   },
   "jest": {
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 80,
+        "lines": 80
+      }
+    },
     "preset": "jest-expo"
   },
   "devDependencies": {

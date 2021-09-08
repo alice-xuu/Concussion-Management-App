@@ -1,5 +1,12 @@
 import * as React from 'react';
-import { Button, StyleSheet, Text, View, Pressable } from 'react-native';
+import {
+  Button,
+  StyleSheet,
+  Text,
+  View,
+  Pressable,
+  SafeAreaView,
+} from 'react-native';
 
 import { useContext, useState } from 'react';
 import {
@@ -8,6 +15,8 @@ import {
   PatientRepoContext,
   ReportIdContext,
 } from '../components/GlobalContextProvider';
+
+import uiStyle from '../components/uiStyle.jsx';
 
 /*
  * Asks user if there is a mechanism of injury
@@ -33,8 +42,8 @@ function SingleChoiceQuestionScreen({ navigation }) {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>
+    <SafeAreaView style={uiStyle.container}>
+      <Text style={uiStyle.text}>
         Is there a mechanism of injury (a clear way the patient could have been
         injured)?
       </Text>
@@ -70,8 +79,7 @@ function SingleChoiceQuestionScreen({ navigation }) {
           <Text style={styles.label}>MAYBE/UNSURE</Text>
         </Pressable>
       </View>
-      <Text>{responses}</Text>
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -84,6 +92,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 125,
     backgroundColor: 'green',
+    margin: 10,
   },
   buttonNo: {
     width: 125,
@@ -93,6 +102,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 125,
     backgroundColor: 'red',
+    margin: 10,
   },
   buttonMaybe: {
     width: 125,
@@ -102,6 +112,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 125,
     backgroundColor: 'orange',
+    margin: 10,
   },
   label: {
     fontSize: 20,

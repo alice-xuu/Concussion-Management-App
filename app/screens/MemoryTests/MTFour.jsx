@@ -6,6 +6,7 @@ import {
   View,
   Pressable,
   TouchableOpacity,
+  SafeAreaView,
 } from 'react-native';
 
 import uiStyle from '../../components/uiStyle.jsx';
@@ -76,56 +77,56 @@ function MTFour({ navigation }) {
   const chosenList = [];
 
   return (
-    <View style={uiStyle.container}>
+    <SafeAreaView style={uiStyle.container}>
       <Text style={uiStyle.text}>
         What three images does your patient remember?
       </Text>
-      <View style={styles.allCheckboxContainer}>
-        <View style={styles.checkboxContainer}>
+      <SafeAreaView style={styles.allCheckboxContainer}>
+        <SafeAreaView style={styles.checkboxContainer}>
           <MyCheckbox value="bird" />
           <Text style={styles.checkboxLabel}>{`bird`}</Text>
-        </View>
+        </SafeAreaView>
 
-        <View style={styles.checkboxContainer}>
+        <SafeAreaView style={styles.checkboxContainer}>
           <MyCheckbox value={'clock'} />
           <Text style={styles.checkboxLabel}>{`clock`}</Text>
-        </View>
+        </SafeAreaView>
 
-        <View style={styles.checkboxContainer}>
+        <SafeAreaView style={styles.checkboxContainer}>
           <MyCheckbox value={'cup'} />
           <Text style={styles.checkboxLabel}>{`cup`}</Text>
-        </View>
+        </SafeAreaView>
 
-        <View style={styles.checkboxContainer}>
+        <SafeAreaView style={styles.checkboxContainer}>
           <MyCheckbox value={'flower'} />
           <Text style={styles.checkboxLabel}>{`flower`}</Text>
-        </View>
+        </SafeAreaView>
 
-        <View style={styles.checkboxContainer}>
+        <SafeAreaView style={styles.checkboxContainer}>
           <MyCheckbox value={'fork'} />
           <Text style={styles.checkboxLabel}>{`fork`}</Text>
-        </View>
+        </SafeAreaView>
 
-        <View style={styles.checkboxContainer}>
+        <SafeAreaView style={styles.checkboxContainer}>
           <MyCheckbox value={'keys'} />
           <Text style={styles.checkboxLabel}>{`keys`}</Text>
-        </View>
+        </SafeAreaView>
 
-        <View style={styles.checkboxContainer}>
+        <SafeAreaView style={styles.checkboxContainer}>
           <MyCheckbox value={'pen'} />
           <Text style={styles.checkboxLabel}>{`pen`}</Text>
-        </View>
+        </SafeAreaView>
 
-        <View style={styles.checkboxContainer}>
+        <SafeAreaView style={styles.checkboxContainer}>
           <MyCheckbox value={'scissors'} />
           <Text style={styles.checkboxLabel}>{`scissors`}</Text>
-        </View>
+        </SafeAreaView>
 
-        <View style={styles.checkboxContainer}>
+        <SafeAreaView style={styles.checkboxContainer}>
           <MyCheckbox value={'toothbrush'} />
           <Text style={styles.checkboxLabel}>{`toothbrush`}</Text>
-        </View>
-      </View>
+        </SafeAreaView>
+      </SafeAreaView>
       <TouchableOpacity
         onPress={() => {
           handleCreateMultiResponse(chosenList);
@@ -135,7 +136,7 @@ function MTFour({ navigation }) {
       >
         <Text style={uiStyle.buttonLabel}>Submit</Text>
       </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -149,6 +150,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     padding: 5,
+    margin: 1,
   },
 
   checkboxBase: {
@@ -169,7 +171,7 @@ const styles = StyleSheet.create({
   checkboxLabel: {
     marginLeft: 8,
     fontWeight: '500',
-    fontSize: 18,
+    fontSize: 14,
   },
 });
 
