@@ -1,11 +1,9 @@
 import * as React from 'react';
 import { SafeAreaView, StyleSheet, Text, View, Pressable } from 'react-native';
-import { useContext, useState } from "react";
+import { useContext, useState } from 'react';
 import {
   IncidentReportRepoContext,
-  PatientContext,
-  PatientRepoContext,
-  ReportIdContext
+  ReportIdContext,
 } from '../components/GlobalContextProvider';
 
 /**
@@ -17,9 +15,7 @@ import {
  */
 function IncidentReportResultScreen({ navigation }) {
   // Context variables
-  const [patient, setPatient] = useContext(PatientContext);
-  const [reportId, setReportId] = useContext(ReportIdContext);
-  const patientRepoContext = useContext(PatientRepoContext);
+  const [reportId] = useContext(ReportIdContext);
   const incidentRepoContext = useContext(IncidentReportRepoContext);
 
   // Local state
