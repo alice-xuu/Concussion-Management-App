@@ -49,6 +49,21 @@ export default function SampleDatabaseScreen() {
   };
 
   // TODO: remove
+  const handleCreateReportWithNullPatient = () => {
+    incidentRepoContext.createReport(null).then((id) => setReportId(id));
+  };
+
+  // TODO: remove
+  const handleUpdateReport = () => {
+    console.log(patient.patientId);
+    console.log(reportId);
+    incidentRepoContext.updateReport(patient.patientId, reportId).then(
+      (id) => console.log(id),
+      (err) => console.log(err),
+    );
+  };
+
+  // TODO: remove
   const onGetPatients = () => {
     if (patientRepoContext !== null) {
       patientRepoContext
@@ -105,6 +120,14 @@ export default function SampleDatabaseScreen() {
 
       <Button title="Get Patients" onPress={onGetPatients} />
       <Text>{patients}</Text>
+
+      <Button
+        title="Create Report With Null Patient"
+        onPress={handleCreateReportWithNullPatient}
+      />
+      <Text>{reportId}</Text>
+
+      <Button title="Update Report with Patient" onPress={handleUpdateReport} />
 
       <Button title="Create Report" onPress={handleCreateReport} />
 

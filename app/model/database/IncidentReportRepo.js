@@ -23,6 +23,25 @@ export class IncidentReportRepo {
 
   /**
    *
+   * @param {number} patientId patient to update report for
+   * @param {number} reportId report to be updated
+   * @return {Promise<number>} promise
+   */
+  async updateReport(patientId, reportId) {
+    const sql =
+      'UPDATE IncidentReport SET patient_id = ? WHERE report_id == ?;';
+    const args = [patientId, reportId];
+
+    return new Promise((resolve, reject) => {
+      this.da.runSqlStmt(sql, args).then(
+        (rs) => resolve(rs),
+        (err) => reject(err),
+      );
+    });
+  }
+
+  /**
+   *
    * @param {number} reportId
    * @param {string} description description of response
    * @param {string} response value of response
