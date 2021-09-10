@@ -25,7 +25,7 @@ export class IncidentReportRepo {
    *
    * @param {number} patientId patient to update report for
    * @param {number} reportId report to be updated
-   * @return {Promise<number>} promise
+   * @return {Promise<number>} promise of the affected rows
    */
   async updateReport(patientId, reportId) {
     const sql =
@@ -34,7 +34,7 @@ export class IncidentReportRepo {
 
     return new Promise((resolve, reject) => {
       this.da.runSqlStmt(sql, args).then(
-        (rs) => resolve(rs),
+        (rs) => resolve(rs.rowsAffected),
         (err) => reject(err),
       );
     });

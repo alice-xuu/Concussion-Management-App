@@ -58,7 +58,7 @@ export default function SampleDatabaseScreen() {
     console.log(patient.patientId);
     console.log(reportId);
     incidentRepoContext.updateReport(patient.patientId, reportId).then(
-      (id) => console.log(id),
+      (rowsAffected) => console.log(rowsAffected),
       (err) => console.log(err),
     );
   };
