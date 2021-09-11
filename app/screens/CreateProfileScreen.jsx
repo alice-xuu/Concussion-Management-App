@@ -152,10 +152,12 @@ const styles = StyleSheet.create({
   scrollView: {
     marginHorizontal: 10,
     marginVertical: 10,
+    alignItems: 'center',
   },
   inputAreaContainer: {
     flex: 1,
-    alignItems: 'flex-start',
+
+    alignItems: 'center',
   },
   input: {
     height: 40,
