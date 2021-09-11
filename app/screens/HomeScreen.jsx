@@ -47,26 +47,26 @@ function HomeScreen({ navigation }) {
 
       <Text style={styles.titleText}>Concussion Check</Text>
 
-      <Button
-        title={'tempButtonToDbSample'}
-        onPress={() => navigation.navigate('Database Sample')}
-      />
-      <Button
-        title={'temp Button To create profile'}
-        onPress={() => navigation.navigate('Create Profile')}
-      />
-      <Button
-        title={'testing for incident report 4'}
-        onPress={() => navigation.navigate('Incident report 4')}
-      />
-      <Button
-        title={'testing for incident report result'}
-        onPress={() => navigation.navigate('Incident Report Result')}
-      />
-      <Button
-        title={'test memory'}
-        onPress={() => navigation.navigate('Memory Test 1')}
-      />
+      {/*<Button*/}
+      {/*  title={'tempButtonToDbSample'}*/}
+      {/*  onPress={() => navigation.navigate('Database Sample')}*/}
+      {/*/>*/}
+      {/*<Button*/}
+      {/*  title={'temp Button To create profile'}*/}
+      {/*  onPress={() => navigation.navigate('Create Profile')}*/}
+      {/*/>*/}
+      {/*<Button*/}
+      {/*  title={'testing for incident report 4'}*/}
+      {/*  onPress={() => navigation.navigate('Incident report 4')}*/}
+      {/*/>*/}
+      {/*<Button*/}
+      {/*  title={'testing for incident report result'}*/}
+      {/*  onPress={() => navigation.navigate('Incident Report Result')}*/}
+      {/*/>*/}
+      {/*<Button*/}
+      {/*  title={'test memory'}*/}
+      {/*  onPress={() => navigation.navigate('Memory Test 1')}*/}
+      {/*/>*/}
     </SafeAreaView>
   );
 }
