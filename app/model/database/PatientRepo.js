@@ -75,7 +75,6 @@ export class PatientRepo {
 
   /**
    * Returns all the patients in the database
-   *
    * @returns {Promise<any[]>} array of Patients first name and last name rows
    */
   async getAllPatients() {
