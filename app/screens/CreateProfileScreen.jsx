@@ -68,8 +68,6 @@ function CreateProfileScreen({ navigation }) {
 
   // TODO: remove
   const handleUpdateReport = () => {
-    console.log(patient.patientId);
-    console.log(reportId);
     incidentRepoContext.updateReport(patient.patientId, reportId).then(
       (rowsAffected) => console.log(rowsAffected),
       (err) => console.log(err),
@@ -78,7 +76,6 @@ function CreateProfileScreen({ navigation }) {
 
   onGetPatients();
   const userNum = patients.length;
-  // console.log(patients.length);
   let otherUsers = [];
   if (userNum > 0) {
     for (let i = 0; i < userNum; i++) {
@@ -103,7 +100,6 @@ function CreateProfileScreen({ navigation }) {
       </Text>,
     );
   }
-  // console.log(otherUsers.length);
   return (
     <SafeAreaView style={uiStyle.container}>
       <Text style={styles.text}>
