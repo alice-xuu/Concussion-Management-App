@@ -8,9 +8,11 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {
+  IncidentReportRepoContext,
   PatientContext,
   PatientRepoContext,
-} from '../components/GlobalContextProvider';
+  ReportIdContext
+} from "../components/GlobalContextProvider";
 import { useContext, useState } from 'react';
 import uiStyle from '../components/uiStyle';
 /**
@@ -19,9 +21,11 @@ import uiStyle from '../components/uiStyle';
  */
 function CreateProfileScreen({ navigation }) {
   // Context variables
-  const [, setPatient] = useContext(PatientContext);
+  const [patient, setPatient] = useContext(PatientContext);
   const [patients, setPatients] = useContext(PatientContext);
+  const [reportId, setReportId] = useContext(ReportIdContext);
   const patientRepoContext = useContext(PatientRepoContext);
+  const incidentRepoContext = useContext(IncidentReportRepoContext);
 
   const [firstNameOfUser, onChangeFirstName] = useState('');
   const [lastNameOfUser, onChangeLastName] = useState('');
@@ -62,6 +66,16 @@ function CreateProfileScreen({ navigation }) {
     }
   };
 
+  // TODO: remove
+  const handleUpdateReport = () => {
+    console.log(patient.patientId);
+    console.log(reportId);
+    incidentRepoContext.updateReport(patient.patientId, reportId).then(
+      (rowsAffected) => console.log(rowsAffected),
+      (err) => console.log(err),
+    );
+  };
+
   onGetPatients();
   const userNum = patients.length;
   // console.log(patients.length);
@@ -70,7 +84,14 @@ function CreateProfileScreen({ navigation }) {
     for (let i = 0; i < userNum; i++) {
       const username = patients[i];
       otherUsers.push(
-        <TouchableOpacity key={i} style={styles.selectUserButton}>
+        <TouchableOpacity
+          key={i}
+          style={styles.selectUserButton}
+          onPress={() => {
+            // handleUpdateReport();
+            navigation.navigate('Home');
+          }}
+        >
           <Text style={uiStyle.buttonLabel}>{username}</Text>
         </TouchableOpacity>,
       );
@@ -137,6 +158,7 @@ function CreateProfileScreen({ navigation }) {
                 ageOfUser,
                 weightOfUser,
               );
+              handleUpdateReport();
               navigation.navigate('Home');
             }}
           >
