@@ -21,6 +21,7 @@ import { GlobalContextProvider } from './app/components/GlobalContextProvider';
 
 import IncidentReportFourScreen from './app/screens/IncidentReportFourScreen';
 import IncidentReportFiveScreen from './app/screens/IncidentReportFiveScreen';
+import FurtherTestsScreen from './app/screens/FurtherTestsScreen';
 
 const RootStack = createNativeStackNavigator();
 /**
@@ -70,6 +71,12 @@ export default function App() {
             name="Incident Report Result"
             component={IncidentReportResultScreen}
           />
+
+          <RootStack.Screen
+            name="Further Tests"
+            component={FurtherTestsScreen}
+          />
+
           <RootStack.Screen name="Memory Test 1" component={MTOne} />
           <RootStack.Screen name="Memory Test 2" component={MTTwo} />
           <RootStack.Screen name="Memory Test 3" component={MTThree} />

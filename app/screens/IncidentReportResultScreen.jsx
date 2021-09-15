@@ -116,7 +116,7 @@ function IncidentReportResultScreen({ navigation }) {
         </Pressable>
         <Pressable
           style={styles.button}
-          onPress={() => navigation.navigate('Reaction Test')}
+          onPress={() => navigation.navigate('Further Tests')}
         >
           <Text style={styles.label}>Further Test</Text>
         </Pressable>
