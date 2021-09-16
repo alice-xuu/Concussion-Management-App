@@ -36,7 +36,7 @@ describe('DatabaseAdapter', () => {
     it('on error resolves error reason', async () => {
       const err = 'error message';
       db = {
-        transaction: jest.fn((cb, errCb, sucCb) => {
+        transaction: jest.fn((cb, errCb) => {
           errCb(err);
         }),
       };
@@ -66,9 +66,9 @@ describe('DatabaseAdapter', () => {
     it('runs executeSql with correct arguments (no "args" set)', () => {
       // Mock transaction
       let tx = {
-        executeSql: jest.fn((stmt, args, cb, errCb) => {}),
+        executeSql: jest.fn(() => {}),
       };
-      db.transaction = jest.fn((cb, errCb, sucCb) => {
+      db.transaction = jest.fn((cb) => {
         cb(tx);
       });
 
@@ -86,12 +86,36 @@ describe('DatabaseAdapter', () => {
       expect(tx.executeSql.mock.calls[0].length).toBe(4);
     });
 
+    it('runs executeSql with correct arguments (one arg in "args")', () => {
+      // Mock transaction
+      let tx = {
+        executeSql: jest.fn(() => {}),
+      };
+      db.transaction = jest.fn((cb) => {
+        cb(tx);
+      });
+
+      const sqlStmt = 'My sql statement';
+      const args = ['arg1'];
+
+      da.runSqlStmt(sqlStmt, args);
+
+      // Called once
+      expect(tx.executeSql.mock.calls.length).toBe(1);
+      // Runs given sql statement
+      expect(tx.executeSql.mock.calls[0][0]).toBe(sqlStmt);
+      // Runs with given args
+      expect(tx.executeSql.mock.calls[0][1]).toEqual(args);
+      // Correct number of arguments
+      expect(tx.executeSql.mock.calls[0].length).toBe(4);
+    });
+
     it('runs executeSql with correct arguments ("args" set)', () => {
       // Mock transaction
       let tx = {
-        executeSql: jest.fn((stmt, args, cb, errCb) => {}),
+        executeSql: jest.fn(() => {}),
       };
-      db.transaction = jest.fn((cb, errCb, sucCb) => {
+      db.transaction = jest.fn((cb) => {
         cb(tx);
       });
 
@@ -104,14 +128,14 @@ describe('DatabaseAdapter', () => {
       expect(tx.executeSql.mock.calls.length).toBe(1);
       // Runs given sql statement
       expect(tx.executeSql.mock.calls[0][0]).toBe(sqlStmt);
-      // Runs with empty args
+      // Runs with given args
       expect(tx.executeSql.mock.calls[0][1]).toEqual(args);
       // Correct number of arguments
       expect(tx.executeSql.mock.calls[0].length).toBe(4);
     });
 
     it('rejects on transaction error', async () => {
-      db.transaction = jest.fn((cb, errCb, sucCb) => {
+      db.transaction = jest.fn((cb, errCb) => {
         errCb('');
       });
 
@@ -132,7 +156,7 @@ describe('DatabaseAdapter', () => {
           errCb('', '');
         }),
       };
-      db.transaction = jest.fn((cb, errCb, sucCb) => {
+      db.transaction = jest.fn((cb) => {
         cb(tx);
       });
 
@@ -151,7 +175,7 @@ describe('DatabaseAdapter', () => {
 
       // Run the callback given to executeSql with result set
       let tx = {
-        executeSql: jest.fn((stmt, args, cb, errCb) => {
+        executeSql: jest.fn((stmt, args, cb) => {
           cb('', res);
         }),
       };
