@@ -1,4 +1,8 @@
 /**
+ * @module
+ */
+
+/**
  * A User in the database.
  *
  * TODO: remove and just use Patient row from db directly

@@ -1,3 +1,7 @@
+/**
+ * @module
+ */
+
 export class IncidentReportRepo {
   /**
    *

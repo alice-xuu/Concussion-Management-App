@@ -9,7 +9,8 @@
     "test": "jest --coverage",
     "lint": "eslint --fix --ext .js,.jsx ./",
     "prettier": "prettier --write \"**/*.+(js|jsx|json|css|md)\"\n",
-    "ci-test": "npx jest --ci --coverage"
+    "ci-test": "npx jest --ci --coverage",
+    "doc": "jsdoc -c jsdoc.config.json -r app/ App.js -d doc/"
   },
   "dependencies": {
     "@react-native-community/checkbox": "^0.5.8",
@@ -48,6 +49,7 @@
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "jest-expo": "~41.0.0-beta.0",
+    "jsdoc": "^3.6.7",
     "prettier": "^2.3.2"
   },
   "private": true
