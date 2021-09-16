@@ -1,4 +1,7 @@
-import * as SQLite from 'expo-sqlite';
+/**
+ * @module
+ */
+
 import { TABLES_SQL } from './DatabaseConfig';
 
 export class DatabaseAdapter {
