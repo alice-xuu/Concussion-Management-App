@@ -8,7 +8,9 @@
     "eject": "expo eject",
     "test": "jest --coverage",
     "lint": "eslint --fix --ext .js,.jsx ./",
-    "prettier": "prettier --write \"**/*.+(js|jsx|json|css|md)\"\n"
+    "prettier": "prettier --write \"**/*.+(js|jsx|json|css|md)\"\n",
+    "ci-test": "npx jest --ci --coverage",
+    "doc": "jsdoc -c jsdoc.config.json -r app/ App.js -d doc/"
   },
   "dependencies": {
     "@react-native-community/checkbox": "^0.5.8",
@@ -43,9 +45,11 @@
     "@babel/eslint-parser": "^7.15.0",
     "@expo/vector-icons": "^12.0.5",
     "@react-native-community/eslint-config": "^3.0.0",
+    "@types/jest": "^27.0.1",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "jest-expo": "~41.0.0-beta.0",
+    "jsdoc": "^3.6.7",
     "prettier": "^2.3.2"
   },
   "private": true

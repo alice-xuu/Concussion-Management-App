@@ -5,6 +5,23 @@ definitions:
     npm: ~/.npm
     jest: .jest
 pipelines:
+  default:
+    - parallel:
+        - step:
+            name: Test with Jest
+            caches:
+              - npm
+              - jest
+            script:
+              - npm ci
+              - yarn ci-test
+        - step:
+            name: Lint
+            caches:
+              - npm
+            script:
+              - npm ci
+              - npm run lint
   branches:
     develop:
       - parallel:
@@ -15,7 +32,7 @@ pipelines:
                 - jest
               script:
                 - npm ci
-                - npx jest --ci
+                - yarn ci-test
           - step:
               name: Lint
               caches:
@@ -23,6 +40,17 @@ pipelines:
               script:
                 - npm ci
                 - npm run lint
+          - step:
+              name: Deploy to Expo
+              trigger: manual
+              deployment: production
+              caches:
+                - npm
+              script:
+                - apk add --no-cache bash
+                - npm ci
+                - npm install -g expo-cli
+                - npx expo publish --non-interactive
     master:
       - parallel:
           - step:
@@ -32,7 +60,7 @@ pipelines:
                 - jest
               script:
                 - npm ci
-                - npx jest --ci
+                - yarn ci-test
           - step:
               name: Lint
               caches:
@@ -48,4 +76,5 @@ pipelines:
           script:
             - apk add --no-cache bash
             - npm ci
+            - npm install -g expo-cli
             - npx expo publish --non-interactive

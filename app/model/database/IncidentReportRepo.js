@@ -1,3 +1,7 @@
+/**
+ * @module
+ */
+
 export class IncidentReportRepo {
   /**
    *
@@ -62,7 +66,7 @@ export class IncidentReportRepo {
 
   /**
    *
-   * @param {[undefined, React.Dispatch<React.SetStateAction<undefined>>]} reportId report id
+   * @param {number} reportId report id
    * @return {Promise<any[]>} array of SingleResponse rows
    */
   async getSingleResponses(reportId) {

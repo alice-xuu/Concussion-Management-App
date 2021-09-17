@@ -1,3 +1,7 @@
+/**
+ * @module
+ */
+
 import { Patient } from './Patient';
 
 export class PatientRepo {
