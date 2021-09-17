@@ -78,7 +78,7 @@ export class PatientRepo {
    * @returns {Promise<any[]>} array of Patients first name and last name rows
    */
   async getAllPatients() {
-    const sql = 'SELECT first_name,last_name FROM Patient';
+    const sql = 'SELECT patient_id, first_name,last_name FROM Patient';
 
     return new Promise((resolve, reject) => {
       this.da.runSqlStmt(sql, []).then((rs) => {

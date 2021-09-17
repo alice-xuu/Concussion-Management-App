@@ -50,7 +50,9 @@ function CreateProfileScreen({ navigation }) {
   const parsePatients = (pts) => {
     if (pts !== undefined) {
       pts.forEach((element) => {
-        patientsArray.push(element.first_name + ' ' + element.last_name);
+        patientsArray.push(element.first_name);
+        patientsArray.push(element.last_name);
+        patientsArray.push(element.patient_id);
       });
     }
     return patientsArray;
@@ -66,26 +68,32 @@ function CreateProfileScreen({ navigation }) {
     }
   };
 
-  // TODO: remove
-  const handleUpdateReport = () => {
+  const handleUpdateReportNewPatient = () => {
     incidentRepoContext.updateReport(patient.patientId, reportId).then(
       (rowsAffected) => console.log(rowsAffected),
       (err) => console.log(err),
     );
   };
 
+  const handleUpdateReportExistingPatient = (pid) => {
+    incidentRepoContext.updateReport(pid, reportId).then(
+      (rowsAffected) => console.log(rowsAffected),
+      (err) => console.log(err),
+    );
+  };
+
   onGetPatients();
-  const userNum = patients.length;
   let otherUsers = [];
-  if (userNum > 0) {
-    for (let i = 0; i < userNum; i++) {
-      const username = patients[i];
+  if (patients.length > 0) {
+    for (let i = 0; i < patients.length; i += 3) {
+      const username = patients[i] + ' ' + patients[i + 1];
+      const pid = patients[i + 2];
       otherUsers.push(
         <TouchableOpacity
           key={i}
           style={styles.selectUserButton}
           onPress={() => {
-            // handleUpdateReport();
+            handleUpdateReportExistingPatient(pid);
             navigation.navigate('Home');
           }}
         >
@@ -154,7 +162,7 @@ function CreateProfileScreen({ navigation }) {
                 ageOfUser,
                 weightOfUser,
               );
-              handleUpdateReport();
+              handleUpdateReportNewPatient();
               navigation.navigate('Home');
             }}
           >
