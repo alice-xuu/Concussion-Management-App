@@ -11,9 +11,9 @@ import {
   IncidentReportRepoContext,
   PatientContext,
   PatientRepoContext,
-  ReportIdContext
-} from "../components/GlobalContextProvider";
-import { useContext, useState } from 'react';
+  ReportIdContext,
+} from '../components/GlobalContextProvider';
+import { useContext, useState, useRef, useEffect } from 'react';
 import uiStyle from '../components/uiStyle';
 /**
  * The screen will ask user to fill in details so their result can be saved in
@@ -22,7 +22,7 @@ import uiStyle from '../components/uiStyle';
 function CreateProfileScreen({ navigation }) {
   // Context variables
   const [patient, setPatient] = useContext(PatientContext);
-  const [patients, setPatients] = useContext(PatientContext);
+  const [patients, setPatients] = useState([]);
   const [reportId, setReportId] = useContext(ReportIdContext);
   const patientRepoContext = useContext(PatientRepoContext);
   const incidentRepoContext = useContext(IncidentReportRepoContext);
@@ -31,6 +31,16 @@ function CreateProfileScreen({ navigation }) {
   const [lastNameOfUser, onChangeLastName] = useState('');
   const [ageOfUser, onChangeAge] = useState('');
   const [weightOfUser, onChangeWeight] = useState('');
+
+  const mounted = useRef(false);
+
+  useEffect(() => {
+    mounted.current = true; // Component is mounted
+    return () => {
+      // Component is unmounted
+      mounted.current = false;
+    };
+  }, []);
 
   const onCreatePatient = (firstName, lastName, age, weight) => {
     if (patientRepoContext !== null) {
@@ -60,9 +70,11 @@ function CreateProfileScreen({ navigation }) {
 
   const onGetPatients = () => {
     if (patientRepoContext !== null) {
-      patientRepoContext
-        .getAllPatients()
-        .then((pts) => setPatients(parsePatients(pts)));
+      patientRepoContext.getAllPatients().then((pts) => {
+        if (mounted.current) {
+          setPatients(parsePatients(pts));
+        }
+      });
     } else {
       console.log('null patientRepo');
     }
