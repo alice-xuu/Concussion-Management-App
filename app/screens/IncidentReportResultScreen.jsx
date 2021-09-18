@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SafeAreaView, StyleSheet, Text, View, Pressable } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { useContext, useEffect, useRef, useState } from 'react';
 import {
   IncidentReportRepoContext,
@@ -91,12 +91,18 @@ function IncidentReportResultScreen({ navigation }) {
           Must see a GP within the next 24 hours.{'\n'} {'\n'}If they develop
           any of the following symptoms.....
         </Text>
-        <Pressable
+        <TouchableOpacity
           style={styles.button}
           onPress={() => navigation.navigate('Create Profile')}
         >
-          <Text style={styles.label}>Next</Text>
-        </Pressable>
+          <Text style={styles.label}>Save to new profile</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate('Select Profile')}
+        >
+          <Text style={styles.label}>Save to existing profile</Text>
+        </TouchableOpacity>
       </View>
     );
   } else {
@@ -108,18 +114,24 @@ function IncidentReportResultScreen({ navigation }) {
           If they have, please do not allow return to play, and see a GP in the
           next 24 hours.
         </Text>
-        <Pressable
+        <TouchableOpacity
           style={styles.button}
           onPress={() => navigation.navigate('Create Profile')}
         >
-          <Text style={styles.label}>Home</Text>
-        </Pressable>
-        <Pressable
+          <Text style={styles.label}>Save to new profile</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate('Select Profile')}
+        >
+          <Text style={styles.label}>Save to existing profile</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
           style={styles.button}
           onPress={() => navigation.navigate('Further Tests')}
         >
           <Text style={styles.label}>Further Test</Text>
-        </Pressable>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -135,15 +147,15 @@ function IncidentReportResultScreen({ navigation }) {
 const styles = StyleSheet.create({
   button: {
     alignItems: 'center',
-    alignSelf: 'stretch',
     justifyContent: 'center',
     paddingVertical: 12,
     paddingHorizontal: 32,
-    borderRadius: 10,
-    elevation: 3,
-    backgroundColor: 'black',
+    borderRadius: 100,
+    backgroundColor: '#ff0000',
     marginHorizontal: 50,
     marginVertical: 10,
+    width: 300,
+    height: 50,
   },
   label: {
     fontSize: 16,
@@ -153,14 +165,15 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   text: {
-    fontSize: 20,
+    fontSize: 18,
     lineHeight: 30,
     letterSpacing: 0.25,
     marginHorizontal: 50,
-    marginVertical: 10,
+    marginVertical: 50,
   },
   container: {
     flex: 1,
+    alignSelf: 'stretch',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#fff',
