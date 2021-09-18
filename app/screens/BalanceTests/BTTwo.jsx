@@ -9,23 +9,26 @@ import {
 
 import uiStyle from '../../components/uiStyle.jsx';
 
-function BTOne({ navigation }) {
+function BTTwo({ navigation }) {
   return (
     <SafeAreaView style={styles.screen}>
       <Text style={uiStyle.text}>
-        Instructions {'\n'}
+        Hold to chest {'\n'}
         {'\n'}
-        Push start and hold the phone to your chest. {'\n'}
-        {'\n'}
-        Wait for the device to vibrate to indicate that recording has finished.
       </Text>
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate('Balance Test 2');
+          navigation.navigate('Home');
         }}
         style={styles.startCheckButton}
       >
-        <Text style={styles.startCheckText}>Start!</Text>
+        <Text style={styles.startCheckText}>5,4,3,2,1</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Balance Test 1')}
+        style={uiStyle.bottomButton}
+      >
+        <Text style={uiStyle.buttonLabel}>Cancel</Text>
       </TouchableOpacity>
     </SafeAreaView>
   );
@@ -65,4 +68,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default BTOne;
+export default BTTwo;
