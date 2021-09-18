@@ -9,26 +9,28 @@ import {
 
 import uiStyle from '../../components/uiStyle.jsx';
 
-function BTTwo({ navigation }) {
+function BTThree({ navigation }) {
   return (
     <SafeAreaView style={styles.screen}>
       <Text style={uiStyle.text}>
-        Hold to chest {'\n'}
+        Stability Grade {'\n'}
         {'\n'}
+        There was an error during the test, ensure you hold the phone to your
+        chest and remain as still as possible for the test duration {'\n'}
+        {'\n'}
+        Variation{'\n'}
+        X: Y: Z: Average: {'\n'}
+        {'\n'}
+        Deviation{'\n'}
+        X: Y: Z: Average: {'\n'}
+        {'\n'}
+        Please pass the phone to your supervisor {'\n'}
       </Text>
       <TouchableOpacity
-        onPress={() => {
-          navigation.navigate('Balance Test 3');
-        }}
-        style={styles.startCheckButton}
-      >
-        <Text style={styles.startCheckText}>5,4,3,2,1</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => navigation.navigate('Balance Test 1')}
+        onPress={() => navigation.navigate('Home')}
         style={uiStyle.bottomButton}
       >
-        <Text style={uiStyle.buttonLabel}>Cancel</Text>
+        <Text style={uiStyle.buttonLabel}>Next</Text>
       </TouchableOpacity>
     </SafeAreaView>
   );
@@ -68,4 +70,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default BTTwo;
+export default BTThree;
