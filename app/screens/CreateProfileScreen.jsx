@@ -8,10 +8,12 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {
+  IncidentReportRepoContext,
   PatientContext,
   PatientRepoContext,
+  ReportIdContext,
 } from '../components/GlobalContextProvider';
-import { useContext, useState } from 'react';
+import { useContext, useState, useRef, useEffect } from 'react';
 import uiStyle from '../components/uiStyle';
 /**
  * The screen will ask user to fill in details so their result can be saved in
@@ -19,14 +21,26 @@ import uiStyle from '../components/uiStyle';
  */
 function CreateProfileScreen({ navigation }) {
   // Context variables
-  const [, setPatient] = useContext(PatientContext);
-  const [patients, setPatients] = useContext(PatientContext);
+  const [patient, setPatient] = useContext(PatientContext);
+  const [patients, setPatients] = useState([]);
+  const [reportId, setReportId] = useContext(ReportIdContext);
   const patientRepoContext = useContext(PatientRepoContext);
+  const incidentRepoContext = useContext(IncidentReportRepoContext);
 
   const [firstNameOfUser, onChangeFirstName] = useState('');
   const [lastNameOfUser, onChangeLastName] = useState('');
   const [ageOfUser, onChangeAge] = useState('');
   const [weightOfUser, onChangeWeight] = useState('');
+
+  const mounted = useRef(false);
+
+  useEffect(() => {
+    mounted.current = true; // Component is mounted
+    return () => {
+      // Component is unmounted
+      mounted.current = false;
+    };
+  }, []);
 
   const onCreatePatient = (firstName, lastName, age, weight) => {
     if (patientRepoContext !== null) {
@@ -46,7 +60,9 @@ function CreateProfileScreen({ navigation }) {
   const parsePatients = (pts) => {
     if (pts !== undefined) {
       pts.forEach((element) => {
-        patientsArray.push(element.first_name + ' ' + element.last_name);
+        patientsArray.push(element.first_name);
+        patientsArray.push(element.last_name);
+        patientsArray.push(element.patient_id);
       });
     }
     return patientsArray;
@@ -54,23 +70,45 @@ function CreateProfileScreen({ navigation }) {
 
   const onGetPatients = () => {
     if (patientRepoContext !== null) {
-      patientRepoContext
-        .getAllPatients()
-        .then((pts) => setPatients(parsePatients(pts)));
+      patientRepoContext.getAllPatients().then((pts) => {
+        if (mounted.current) {
+          setPatients(parsePatients(pts));
+        }
+      });
     } else {
       console.log('null patientRepo');
     }
   };
 
+  const handleUpdateReportNewPatient = () => {
+    incidentRepoContext.updateReport(patient.patientId, reportId).then(
+      (rowsAffected) => console.log(rowsAffected),
+      (err) => console.log(err),
+    );
+  };
+
+  const handleUpdateReportExistingPatient = (pid) => {
+    incidentRepoContext.updateReport(pid, reportId).then(
+      (rowsAffected) => console.log(rowsAffected),
+      (err) => console.log(err),
+    );
+  };
+
   onGetPatients();
-  const userNum = patients.length;
-  // console.log(patients.length);
   let otherUsers = [];
-  if (userNum > 0) {
-    for (let i = 0; i < userNum; i++) {
-      const username = patients[i];
+  if (patients.length > 0) {
+    for (let i = 0; i < patients.length; i += 3) {
+      const username = patients[i] + ' ' + patients[i + 1];
+      const pid = patients[i + 2];
       otherUsers.push(
-        <TouchableOpacity key={i} style={styles.selectUserButton}>
+        <TouchableOpacity
+          key={i}
+          style={styles.selectUserButton}
+          onPress={() => {
+            handleUpdateReportExistingPatient(pid);
+            navigation.navigate('Home');
+          }}
+        >
           <Text style={uiStyle.buttonLabel}>{username}</Text>
         </TouchableOpacity>,
       );
@@ -82,7 +120,6 @@ function CreateProfileScreen({ navigation }) {
       </Text>,
     );
   }
-  // console.log(otherUsers.length);
   return (
     <SafeAreaView style={uiStyle.container}>
       <Text style={styles.text}>
@@ -137,6 +174,7 @@ function CreateProfileScreen({ navigation }) {
                 ageOfUser,
                 weightOfUser,
               );
+              handleUpdateReportNewPatient();
               navigation.navigate('Home');
             }}
           >
