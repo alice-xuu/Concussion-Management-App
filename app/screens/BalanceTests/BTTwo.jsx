@@ -4,12 +4,15 @@ import {
   SafeAreaView,
   StyleSheet,
   TouchableOpacity,
-  Button,
-} from 'react-native';
+  Button, View
+} from "react-native";
 
 import uiStyle from '../../components/uiStyle.jsx';
+import { useState } from 'react';
 
-function BTTwo({ navigation }){
+function BTTwo({ navigation }) {
+  const [text, setText] = useState('Start!');
+  const changeText = () => setText('Have Started');
   return (
     <SafeAreaView style={styles.screen}>
       <Text style={uiStyle.text}>
@@ -18,13 +21,14 @@ function BTTwo({ navigation }){
       </Text>
       <TouchableOpacity
         onPress={() => {
+          changeText();
           setTimeout(() => {
             navigation.navigate('Balance Test 3');
           }, 2000);
         }}
         style={styles.startCheckButton}
       >
-        <Text style={styles.startCheckText}>Start!</Text>
+        <Text style={styles.startCheckText}>{text}</Text>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => navigation.navigate('Balance Test 1')}
