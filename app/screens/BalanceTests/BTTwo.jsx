@@ -36,10 +36,10 @@ function BTTwo({ navigation }) {
     setSubscription(null);
   };
 
-  useEffect(() => {
-    _subscribe();
-    return () => _unsubscribe();
-  }, []);
+  // useEffect(() => {
+  //   _subscribe();
+  //   return () => _unsubscribe();
+  // }, []);
 
   const { x, y, z } = data;
   return (
@@ -53,11 +53,13 @@ function BTTwo({ navigation }) {
       </Text>
       <TouchableOpacity
         onPress={() => {
+          _subscribe();
           _slow();
+          _unsubscribe();
           changeText();
           setTimeout(() => {
             navigation.navigate('Balance Test 3');
-          }, 2000);
+          }, 5000);
         }}
         style={styles.startCheckButton}
       >
