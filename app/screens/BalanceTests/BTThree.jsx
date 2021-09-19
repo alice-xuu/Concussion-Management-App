@@ -22,8 +22,8 @@ function BTThree({ navigation }) {
         chest and remain as still as possible for the test duration {'\n'}
         {'\n'}
         Variation{'\n'}
-        X: {Math.round(data.x * 1000) / 1000}{'\n'}Y:
-        {Math.round(data.y * 1000) / 1000}{'\n'}Z: {Math.round(data.z * 1000) / 1000}{'\n'}
+        X: {Math.round(data.x * 100) / 100}{'\n'}Y:
+        {Math.round(data.y * 100) / 100}{'\n'}Z: {Math.round(data.z * 100) / 100}{'\n'}
         Average: {'\n'}
         {'\n'}
         Deviation{'\n'}

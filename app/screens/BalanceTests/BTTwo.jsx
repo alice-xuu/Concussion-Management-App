@@ -44,13 +44,11 @@ function BTTwo({ navigation }) {
         {'\n'}
       </Text>
       <Text style={styles.text}>
-        x: {Math.round(x) / 1000} y: {Math.round(y) / 1000} z:{' '}
-        {Math.round(z) / 1000}
+        x: {x} y: {y} z:{z}
       </Text>
       <TouchableOpacity
         onPress={() => {
           _subscribe();
-          _slow();
           _unsubscribe();
           changeText();
           setTimeout(() => {
