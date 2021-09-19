@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 100,
     backgroundColor: buttons,
+    top: 50,
   },
   startCheckText: {
     color: text,

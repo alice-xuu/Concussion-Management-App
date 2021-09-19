@@ -9,20 +9,22 @@ import {
 
 import uiStyle from '../../components/uiStyle.jsx';
 
-function BTTwo({ navigation }) {
+function BTTwo({ navigation }){
   return (
     <SafeAreaView style={styles.screen}>
       <Text style={uiStyle.text}>
-        Hold to chest {'\n'}
+        Hold to chest for 5 seconds after clicking "Start!" {'\n'}
         {'\n'}
       </Text>
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate('Balance Test 3');
+          setTimeout(() => {
+            navigation.navigate('Balance Test 3');
+          }, 2000);
         }}
         style={styles.startCheckButton}
       >
-        <Text style={styles.startCheckText}>5,4,3,2,1</Text>
+        <Text style={styles.startCheckText}>Start!</Text>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => navigation.navigate('Balance Test 1')}

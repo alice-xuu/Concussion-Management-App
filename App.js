@@ -24,7 +24,7 @@ import IncidentReportFiveScreen from './app/screens/IncidentReportFiveScreen';
 import FurtherTestsScreen from './app/screens/FurtherTestsScreen';
 import BTOne from './app/screens/BalanceTests/BTOne';
 import BTTwo from './app/screens/BalanceTests/BTTwo';
-import BTThree from "./app/screens/BalanceTests/BTThree";
+import BTThree from './app/screens/BalanceTests/BTThree';
 
 const RootStack = createNativeStackNavigator();
 /**
