@@ -1,11 +1,6 @@
 import * as React from 'react';
-import {
-  Text,
-  SafeAreaView,
-  StyleSheet,
-  TouchableOpacity,
-} from 'react-native';
-import { Gyroscope } from 'expo-sensors';
+import { Text, SafeAreaView, StyleSheet, TouchableOpacity } from 'react-native';
+import { Accelerometer } from 'expo-sensors';
 
 import uiStyle from '../../components/uiStyle.jsx';
 import { useContext, useEffect, useState } from 'react';
@@ -19,13 +14,13 @@ function BTTwo({ navigation }) {
   const [subscription, setSubscription] = useState(null);
 
   const _slow = () => {
-    Gyroscope.setUpdateInterval(5000);
+    Accelerometer.setUpdateInterval(5000);
   };
 
   const _subscribe = () => {
     setSubscription(
-      Gyroscope.addListener((gyroscopeData) => {
-        setData(gyroscopeData);
+      Accelerometer.addListener((accelerometerData) => {
+        setData(accelerometerData);
       }),
     );
   };
@@ -49,7 +44,8 @@ function BTTwo({ navigation }) {
         {'\n'}
       </Text>
       <Text style={styles.text}>
-        x: {Math.round(x)/1000} y: {Math.round(y)/1000} z: {Math.round(z)/1000}
+        x: {Math.round(x) / 1000} y: {Math.round(y) / 1000} z:{' '}
+        {Math.round(z) / 1000}
       </Text>
       <TouchableOpacity
         onPress={() => {
