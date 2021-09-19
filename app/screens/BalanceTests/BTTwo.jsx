@@ -11,11 +11,11 @@ function BTTwo({ navigation }) {
   const changeText = () => setText('Have Started');
   const [data, setData] = useContext(dataContext);
   // data = { x: 0, y: 0, z: 0 };
-  const [subscription, setSubscription] = useState(null);
+  const [subscription, setSubscription] = useState(false);
 
-  const _slow = () => {
-    Accelerometer.setUpdateInterval(5000);
-  };
+  // const _slow = () => {
+  //   Accelerometer.setUpdateInterval(5000);
+  // };
 
   const _subscribe = () => {
     setSubscription(
@@ -48,8 +48,11 @@ function BTTwo({ navigation }) {
       </Text>
       <TouchableOpacity
         onPress={() => {
-          _subscribe();
-          _unsubscribe();
+          if (subscription) {
+            _unsubscribe();
+          } else {
+            _subscribe();
+          }
           changeText();
           setTimeout(() => {
             navigation.navigate('Balance Test 3');
@@ -60,7 +63,7 @@ function BTTwo({ navigation }) {
         <Text style={styles.startCheckText}>{text}</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        onPress={() => navigation.navigate('Balance Test 1')}
+        onPress={() => navigation.navigate('Home')}
         style={uiStyle.bottomButton}
       >
         <Text style={uiStyle.buttonLabel}>Cancel</Text>
