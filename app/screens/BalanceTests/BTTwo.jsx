@@ -8,21 +8,20 @@ import {
 import { Gyroscope } from 'expo-sensors';
 
 import uiStyle from '../../components/uiStyle.jsx';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { dataContext } from '../../components/GlobalContextProvider';
 
 function BTTwo({ navigation }) {
   const [text, setText] = useState('Start!');
   const changeText = () => setText('Have Started');
-  const [data, setData] = useState({
-    x: 0,
-    y: 0,
-    z: 0,
-  });
+  const [data, setData] = useContext(dataContext);
+  // data = { x: 0, y: 0, z: 0 };
   const [subscription, setSubscription] = useState(null);
 
   const _slow = () => {
-    Gyroscope.setUpdateInterval(4000);
+    Gyroscope.setUpdateInterval(5000);
   };
+
   const _subscribe = () => {
     setSubscription(
       Gyroscope.addListener((gyroscopeData) => {
@@ -42,6 +41,7 @@ function BTTwo({ navigation }) {
   // }, []);
 
   const { x, y, z } = data;
+
   return (
     <SafeAreaView style={styles.screen}>
       <Text style={uiStyle.text}>
@@ -49,7 +49,7 @@ function BTTwo({ navigation }) {
         {'\n'}
       </Text>
       <Text style={styles.text}>
-        x: {x} y: {y} z: {z}
+        x: {Math.round(x)/1000} y: {Math.round(y)/1000} z: {Math.round(z)/1000}
       </Text>
       <TouchableOpacity
         onPress={() => {

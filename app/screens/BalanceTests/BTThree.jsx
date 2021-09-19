@@ -8,8 +8,11 @@ import {
 } from 'react-native';
 
 import uiStyle from '../../components/uiStyle.jsx';
+import { useContext } from 'react';
+import { dataContext } from '../../components/GlobalContextProvider';
 
 function BTThree({ navigation }) {
+  const [data, setData] = useContext(dataContext);
   return (
     <SafeAreaView style={styles.screen}>
       <Text style={uiStyle.text}>
@@ -19,7 +22,9 @@ function BTThree({ navigation }) {
         chest and remain as still as possible for the test duration {'\n'}
         {'\n'}
         Variation{'\n'}
-        X: Y: Z: Average: {'\n'}
+        X: {Math.round(data.x * 1000) / 1000}{'\n'}Y:
+        {Math.round(data.y * 1000) / 1000}{'\n'}Z: {Math.round(data.z * 1000) / 1000}{'\n'}
+        Average: {'\n'}
         {'\n'}
         Deviation{'\n'}
         X: Y: Z: Average: {'\n'}
