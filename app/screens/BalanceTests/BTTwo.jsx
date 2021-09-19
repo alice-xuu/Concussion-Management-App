@@ -4,23 +4,56 @@ import {
   SafeAreaView,
   StyleSheet,
   TouchableOpacity,
-  Button, View
-} from "react-native";
+} from 'react-native';
+import { Gyroscope } from 'expo-sensors';
 
 import uiStyle from '../../components/uiStyle.jsx';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function BTTwo({ navigation }) {
   const [text, setText] = useState('Start!');
   const changeText = () => setText('Have Started');
+  const [data, setData] = useState({
+    x: 0,
+    y: 0,
+    z: 0,
+  });
+  const [subscription, setSubscription] = useState(null);
+
+  const _slow = () => {
+    Gyroscope.setUpdateInterval(4000);
+  };
+  const _subscribe = () => {
+    setSubscription(
+      Gyroscope.addListener((gyroscopeData) => {
+        setData(gyroscopeData);
+      }),
+    );
+  };
+
+  const _unsubscribe = () => {
+    subscription && subscription.remove();
+    setSubscription(null);
+  };
+
+  useEffect(() => {
+    _subscribe();
+    return () => _unsubscribe();
+  }, []);
+
+  const { x, y, z } = data;
   return (
     <SafeAreaView style={styles.screen}>
       <Text style={uiStyle.text}>
         Hold to chest for 5 seconds after clicking "Start!" {'\n'}
         {'\n'}
       </Text>
+      <Text style={styles.text}>
+        x: {x} y: {y} z: {z}
+      </Text>
       <TouchableOpacity
         onPress={() => {
+          _slow();
           changeText();
           setTimeout(() => {
             navigation.navigate('Balance Test 3');
