@@ -11,7 +11,7 @@ function BTTwo({ navigation }) {
   const changeText = () => setText('Have Started');
   const [data, setData] = useContext(dataContext);
   // data = { x: 0, y: 0, z: 0 };
-  const [subscription, setSubscription] = useState(false);
+  const [subscription, setSubscription] = useState(null);
 
   // const _slow = () => {
   //   Accelerometer.setUpdateInterval(5000);
