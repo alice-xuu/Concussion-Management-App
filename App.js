@@ -5,6 +5,7 @@ import HomeScreen from './app/screens/HomeScreen';
 import DocumentsScreen from './app/screens/DocumentsScreen';
 import SingleChoiceQuestionScreen from './app/screens/SingleChoiceQuestionScreen';
 import CreateProfileScreen from './app/screens/CreateProfileScreen';
+import SelectProfileScreen from './app/screens/SelectProfileScreen';
 import StartCheckScreen from './app/screens/StartCheckScreen';
 import BadCheckScreen from './app/screens/BadCheckScreen';
 import TextQuestionScreen from './app/screens/TextQuestionScreen';
@@ -40,7 +41,10 @@ export default function App() {
             name="Create Profile"
             component={CreateProfileScreen}
           />
-
+          <RootStack.Screen
+            name="Select Profile"
+            component={SelectProfileScreen}
+          />
           <RootStack.Screen name="Start Check" component={StartCheckScreen} />
           <RootStack.Screen
             name="Incident report 4"

@@ -1,10 +1,41 @@
 import * as React from 'react';
-import { SafeAreaView, StyleSheet, Text, View, Pressable } from 'react-native';
+import {
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+} from 'react-native';
 import { useContext, useEffect, useRef, useState } from 'react';
 import {
   IncidentReportRepoContext,
   ReportIdContext,
 } from '../components/GlobalContextProvider';
+
+const parseMultiResponses = (mrs) => {
+  const responsesArray = [];
+  if (mrs !== null) {
+    // console.log(mrs);
+    mrs.forEach((element) => {
+      if (element.MultiResponsePart.response !== undefined) {
+        responsesArray.push('Yes');
+      }
+    });
+  }
+  return responsesArray;
+};
+
+const parseSingleResponses = (srs) => {
+  let responsesArray = [];
+  if (srs !== null) {
+    srs.forEach((element) => {
+      if (element.response === 'YES') {
+        responsesArray.push('Yes');
+      }
+    });
+  }
+  return responsesArray;
+};
 
 /**
  * The screen will show the result after user has completed "IncidentReport"
@@ -30,50 +61,25 @@ function IncidentReportResultScreen({ navigation }) {
   // Local state
   let [responses, setResponses] = useState(null);
 
-  let responsesArray = [];
-  const parseSingleResponses = (srs) => {
-    if (srs !== null) {
-      srs.forEach((element) => {
-        if (element.response === 'YES') {
-          responsesArray.push('Yes');
-        }
-      });
-    }
-    return responsesArray;
-  };
-  const parseMultiResponses = (mrs) => {
-    if (responses === null) {
-      responses = [];
-    }
-    if (mrs !== null) {
-      // console.log(mrs);
-      mrs.forEach((element) => {
-        if (element.MultiResponsePart.response !== undefined) {
-          responses.push('Yes');
-        }
-      });
-    }
-    return responses;
-  };
+  let reportResults = 0;
+  let screen;
 
-  const handleGetSingleResponses = () => {
+  useEffect(() => {
+    // Get single responses
     incidentRepoContext.getSingleResponses(reportId).then((srs) => {
       if (mounted.current) {
         setResponses(parseSingleResponses(srs));
       }
     });
-  };
-  const handleGetMultiResponses = () => {
+
+    // Get multi-responses
     incidentRepoContext.getMultiResponses(reportId).then((mrs) => {
       if (mounted.current) {
         setResponses(parseMultiResponses(mrs));
       }
     });
-  };
-  let reportResults = 0;
-  let screen;
-  handleGetSingleResponses();
-  handleGetMultiResponses();
+  }, [incidentRepoContext, reportId]);
+
   // console.log(responses);
   if (responses !== null) {
     responses.forEach((element) => {
@@ -91,12 +97,18 @@ function IncidentReportResultScreen({ navigation }) {
           Must see a GP within the next 24 hours.{'\n'} {'\n'}If they develop
           any of the following symptoms.....
         </Text>
-        <Pressable
+        <TouchableOpacity
           style={styles.button}
           onPress={() => navigation.navigate('Create Profile')}
         >
-          <Text style={styles.label}>Next</Text>
-        </Pressable>
+          <Text style={styles.label}>Save to new profile</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate('Select Profile')}
+        >
+          <Text style={styles.label}>Save to existing profile</Text>
+        </TouchableOpacity>
       </View>
     );
   } else {
@@ -108,18 +120,24 @@ function IncidentReportResultScreen({ navigation }) {
           If they have, please do not allow return to play, and see a GP in the
           next 24 hours.
         </Text>
-        <Pressable
+        <TouchableOpacity
           style={styles.button}
           onPress={() => navigation.navigate('Create Profile')}
         >
-          <Text style={styles.label}>Home</Text>
-        </Pressable>
-        <Pressable
+          <Text style={styles.label}>Save to new profile</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate('Select Profile')}
+        >
+          <Text style={styles.label}>Save to existing profile</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
           style={styles.button}
           onPress={() => navigation.navigate('Further Tests')}
         >
           <Text style={styles.label}>Further Test</Text>
-        </Pressable>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -135,15 +153,15 @@ function IncidentReportResultScreen({ navigation }) {
 const styles = StyleSheet.create({
   button: {
     alignItems: 'center',
-    alignSelf: 'stretch',
     justifyContent: 'center',
     paddingVertical: 12,
     paddingHorizontal: 32,
-    borderRadius: 10,
-    elevation: 3,
-    backgroundColor: 'black',
+    borderRadius: 100,
+    backgroundColor: '#ff0000',
     marginHorizontal: 50,
     marginVertical: 10,
+    width: 300,
+    height: 50,
   },
   label: {
     fontSize: 16,
@@ -153,14 +171,15 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   text: {
-    fontSize: 20,
+    fontSize: 18,
     lineHeight: 30,
     letterSpacing: 0.25,
     marginHorizontal: 50,
-    marginVertical: 10,
+    marginVertical: 50,
   },
   container: {
     flex: 1,
+    alignSelf: 'stretch',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#fff',
