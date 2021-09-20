@@ -23,7 +23,6 @@ function SelectProfileScreen({ navigation }) {
   const [reportId, setReportId] = useContext(ReportIdContext);
   const patientRepoContext = useContext(PatientRepoContext);
   const incidentRepoContext = useContext(IncidentReportRepoContext);
-  const [patientsArr, setPatientsArr] = useState([]);
   const mounted = useRef(false);
 
   useEffect(() => {
@@ -65,52 +64,39 @@ function SelectProfileScreen({ navigation }) {
     );
   };
 
-  useEffect(() => {
-    console.log('running useEffect');
-    onGetPatients();
-    let otherUsers = [];
-    if (patients.length > 0) {
-      for (let i = 0; i < patients.length; i += 3) {
-        const username = patients[i] + ' ' + patients[i + 1];
-        const pid = patients[i + 2];
-        otherUsers.push(
-          <TouchableOpacity
-            key={i}
-            style={styles.selectUserButton}
-            onPress={() => {
-              handleUpdateReportExistingPatient(pid);
-              navigation.navigate('Home');
-            }}
-          >
-            <Text style={uiStyle.buttonLabel}>{username}</Text>
-          </TouchableOpacity>,
-        );
-      }
-    } else {
+  onGetPatients();
+  let otherUsers = [];
+  if (patients.length > 0) {
+    for (let i = 0; i < patients.length; i += 3) {
+      const username = patients[i] + ' ' + patients[i + 1];
+      const pid = patients[i + 2];
       otherUsers.push(
-        <Text key={-1} style={styles.text}>
-          There is no existing profile can be selected.
-        </Text>,
+        <TouchableOpacity
+          key={i}
+          style={styles.selectUserButton}
+          onPress={() => {
+            handleUpdateReportExistingPatient(pid);
+            navigation.navigate('Home');
+          }}
+        >
+          <Text style={uiStyle.buttonLabel}>{username}</Text>
+        </TouchableOpacity>,
       );
     }
-    setPatientsArr(otherUsers);
-  }, [
-    incidentRepoContext,
-    navigation,
-    parsePatients,
-    patientRepoContext,
-    patients,
-    patientsArr,
-    reportId,
-  ]);
-
+  } else {
+    otherUsers.push(
+      <Text key={-1} style={styles.text}>
+        There is no existing profile can be selected.
+      </Text>,
+    );
+  }
   return (
     <SafeAreaView style={uiStyle.container}>
       <ScrollView contentContainerStyle={styles.scrollView}>
         <Text style={styles.text}>
           You can select to save to existing profile
         </Text>
-        {patientsArr}
+        {otherUsers}
         <Text>
           You will be able to view your result of your check or report anytime
           your profile
