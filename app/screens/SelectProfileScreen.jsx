@@ -55,10 +55,15 @@ function SelectProfileScreen({ navigation }) {
   useEffect(() => {
     // Everytime there is a new patientRepoContext we
     // get patients from it.
+    console.log('useEffect called');
     if (patientRepoContext !== null) {
+      console.log('getting');
       patientRepoContext.getAllPatients().then((pts) => {
+        console.log('before mounted');
         if (mounted.current) {
+          console.log('setting');
           setPatients(parsePatients(pts));
+          console.log('set done');
         }
       });
     } else {
