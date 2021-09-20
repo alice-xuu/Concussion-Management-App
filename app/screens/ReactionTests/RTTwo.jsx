@@ -18,12 +18,15 @@ const descriptions = [
   '',
 ];
 
-const buttonInsts = ['Start!', 'Wait', 'Press!'];
-
 function RTTwo({ navigation }) {
   const StartTest = () => {
     return (
-      <TouchableOpacity style={styles.startButton} onPress={() => {}}>
+      <TouchableOpacity
+        style={styles.startButton}
+        onPress={() => {
+          setStage(stage + 1);
+        }}
+      >
         <Text style={styles.startText}>Start!</Text>
       </TouchableOpacity>
     );
@@ -45,16 +48,21 @@ function RTTwo({ navigation }) {
 
   const [attempt, setAttempt] = useState(0);
   const [description, setDescription] = useState();
-  const [buttonInst, setButtonInst] = useState();
 
   const btnList = [StartTest, WaitButton, PressButton];
-  const [state, setState] = useState({ index: 0, btns: btnList });
-  const { index, btns } = state;
+  const [testing, setIsTesting] = useState(false);
+  const [stage, setStage] = useState(0);
 
   useEffect(() => {
     setDescription(descriptions[attempt]);
-    setButtonInst(buttonInsts[attempt]);
   }, [attempt]);
+
+  let form;
+  if (stage === 0) {
+    form = <StartTest />;
+  } else if (stage === 1) {
+    form = <WaitButton />;
+  }
 
   return (
     <SafeAreaView style={uiStyle.container}>
@@ -67,9 +75,7 @@ function RTTwo({ navigation }) {
         {description}
       </Text>
 
-      <View>
-        < />
-      </View>
+      <View>{form}</View>
     </SafeAreaView>
   );
 }
