@@ -1,10 +1,41 @@
 import * as React from 'react';
-import { SafeAreaView, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import {
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+} from 'react-native';
 import { useContext, useEffect, useRef, useState } from 'react';
 import {
   IncidentReportRepoContext,
   ReportIdContext,
 } from '../components/GlobalContextProvider';
+
+const parseMultiResponses = (mrs) => {
+  const responsesArray = [];
+  if (mrs !== null) {
+    // console.log(mrs);
+    mrs.forEach((element) => {
+      if (element.MultiResponsePart.response !== undefined) {
+        responsesArray.push('Yes');
+      }
+    });
+  }
+  return responsesArray;
+};
+
+const parseSingleResponses = (srs) => {
+  let responsesArray = [];
+  if (srs !== null) {
+    srs.forEach((element) => {
+      if (element.response === 'YES') {
+        responsesArray.push('Yes');
+      }
+    });
+  }
+  return responsesArray;
+};
 
 /**
  * The screen will show the result after user has completed "IncidentReport"
@@ -30,50 +61,25 @@ function IncidentReportResultScreen({ navigation }) {
   // Local state
   let [responses, setResponses] = useState(null);
 
-  let responsesArray = [];
-  const parseSingleResponses = (srs) => {
-    if (srs !== null) {
-      srs.forEach((element) => {
-        if (element.response === 'YES') {
-          responsesArray.push('Yes');
-        }
-      });
-    }
-    return responsesArray;
-  };
-  const parseMultiResponses = (mrs) => {
-    if (responses === null) {
-      responses = [];
-    }
-    if (mrs !== null) {
-      // console.log(mrs);
-      mrs.forEach((element) => {
-        if (element.MultiResponsePart.response !== undefined) {
-          responses.push('Yes');
-        }
-      });
-    }
-    return responses;
-  };
+  let reportResults = 0;
+  let screen;
 
-  const handleGetSingleResponses = () => {
+  useEffect(() => {
+    // Get single responses
     incidentRepoContext.getSingleResponses(reportId).then((srs) => {
       if (mounted.current) {
         setResponses(parseSingleResponses(srs));
       }
     });
-  };
-  const handleGetMultiResponses = () => {
+
+    // Get multi-responses
     incidentRepoContext.getMultiResponses(reportId).then((mrs) => {
       if (mounted.current) {
         setResponses(parseMultiResponses(mrs));
       }
     });
-  };
-  let reportResults = 0;
-  let screen;
-  handleGetSingleResponses();
-  handleGetMultiResponses();
+  }, [incidentRepoContext, reportId]);
+
   // console.log(responses);
   if (responses !== null) {
     responses.forEach((element) => {
