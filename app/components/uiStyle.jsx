@@ -1,7 +1,10 @@
 import { StyleSheet } from 'react-native';
 
-const background = '#fff';
-export default StyleSheet.create({
+export const title = '#000000';
+export const text = '#fff';
+export const background = '#fff';
+export const buttons = '#ff0000';
+export const uiStyle = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
