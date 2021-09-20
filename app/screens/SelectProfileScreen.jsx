@@ -33,8 +33,8 @@ function SelectProfileScreen({ navigation }) {
     };
   }, []);
 
-  const patientsArray = [];
   const parsePatients = (pts) => {
+    const patientsArray = [];
     if (pts !== undefined) {
       pts.forEach((element) => {
         patientsArray.push(element.first_name);
@@ -45,7 +45,16 @@ function SelectProfileScreen({ navigation }) {
     return patientsArray;
   };
 
-  const onGetPatients = () => {
+  const handleUpdateReportExistingPatient = (pid) => {
+    incidentRepoContext.updateReport(pid, reportId).then(
+      (rowsAffected) => console.log(rowsAffected),
+      (err) => console.log(err),
+    );
+  };
+
+  useEffect(() => {
+    // Everytime there is a new patientRepoContext we
+    // get patients from it.
     if (patientRepoContext !== null) {
       patientRepoContext.getAllPatients().then((pts) => {
         if (mounted.current) {
@@ -55,16 +64,8 @@ function SelectProfileScreen({ navigation }) {
     } else {
       console.log('null patientRepo');
     }
-  };
+  }, [patientRepoContext]);
 
-  const handleUpdateReportExistingPatient = (pid) => {
-    incidentRepoContext.updateReport(pid, reportId).then(
-      (rowsAffected) => console.log(rowsAffected),
-      (err) => console.log(err),
-    );
-  };
-
-  onGetPatients();
   let otherUsers = [];
   if (patients.length > 0) {
     for (let i = 0; i < patients.length; i += 3) {
