@@ -3,7 +3,7 @@ import { Text, SafeAreaView, StyleSheet, TouchableOpacity } from 'react-native';
 import { Accelerometer } from 'expo-sensors';
 
 import uiStyle from '../../components/uiStyle.jsx';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import { dataContext } from '../../components/GlobalContextProvider';
 
 function BTTwo({ navigation }) {
@@ -25,16 +25,6 @@ function BTTwo({ navigation }) {
     );
   };
 
-  const _unsubscribe = () => {
-    subscription && subscription.remove();
-    setSubscription(null);
-  };
-
-  // useEffect(() => {
-  //   _subscribe();
-  //   return () => _unsubscribe();
-  // }, []);
-
   const { x, y, z } = data;
 
   return (
@@ -48,13 +38,12 @@ function BTTwo({ navigation }) {
       </Text>
       <TouchableOpacity
         onPress={() => {
-          if (subscription) {
-            _unsubscribe();
-          } else {
+          if (!subscription) {
             _subscribe();
           }
           changeText();
           setTimeout(() => {
+            Accelerometer.removeAllListeners();
             navigation.navigate('Balance Test 3');
           }, 5000);
         }}
