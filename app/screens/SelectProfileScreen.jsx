@@ -55,15 +55,10 @@ function SelectProfileScreen({ navigation }) {
   useEffect(() => {
     // Everytime there is a new patientRepoContext we
     // get patients from it.
-    console.log('useEffect called');
     if (patientRepoContext !== null) {
-      console.log('getting');
       patientRepoContext.getAllPatients().then((pts) => {
-        console.log('before mounted');
         if (mounted.current) {
-          console.log('setting');
           setPatients(parsePatients(pts));
-          console.log('set done');
         }
       });
     } else {
@@ -71,12 +66,12 @@ function SelectProfileScreen({ navigation }) {
     }
   }, [patientRepoContext]);
 
-  let otherUsers = [];
+  let usersButtons = [];
   if (patients.length > 0) {
     for (let i = 0; i < patients.length; i += 3) {
       const username = patients[i] + ' ' + patients[i + 1];
       const pid = patients[i + 2];
-      otherUsers.push(
+      usersButtons.push(
         <TouchableOpacity
           key={i}
           style={styles.selectUserButton}
@@ -90,7 +85,7 @@ function SelectProfileScreen({ navigation }) {
       );
     }
   } else {
-    otherUsers.push(
+    usersButtons.push(
       <Text key={-1} style={styles.text}>
         There is no existing profile can be selected.
       </Text>,
@@ -102,7 +97,7 @@ function SelectProfileScreen({ navigation }) {
         <Text style={styles.text}>
           You can select to save to existing profile
         </Text>
-        {otherUsers}
+        {usersButtons}
         <Text>
           You will be able to view your result of your check or report anytime
           your profile
