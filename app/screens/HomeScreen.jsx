@@ -63,10 +63,10 @@ function HomeScreen({ navigation }) {
       {/*  title={'testing for incident report result'}*/}
       {/*  onPress={() => navigation.navigate('Incident Report Result')}*/}
       {/*/>*/}
-      {/*<Button*/}
-      {/*  title={'test memory'}*/}
-      {/*  onPress={() => navigation.navigate('Memory Test 1')}*/}
-      {/*/>*/}
+      <Button
+        title={'test reaction'}
+        onPress={() => navigation.navigate('Reaction Test 1')}
+      />
     </SafeAreaView>
   );
 }
