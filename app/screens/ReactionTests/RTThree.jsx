@@ -1,5 +1,4 @@
 import * as React from 'react';
-<<<<<<< HEAD
 import {
   StyleSheet,
   Text,
@@ -8,9 +7,6 @@ import {
   TouchableOpacity,
   Button,
 } from 'react-native';
-=======
-import { Text, View, TouchableOpacity } from 'react-native';
->>>>>>> 8d3dc1c07b96369fd8b4a9db4d2dbd7c89a2e055
 
 import uiStyle from '../../components/uiStyle.jsx';
 import { useContext, useEffect, useState } from 'react';
@@ -25,6 +21,7 @@ import {
  * After this test is completed, user needs to navigate to the next test which
  * is Reaction Test.
  */
+
 export default function RTThree({ navigation }) {
   React.useLayoutEffect(() => {
     navigation.setOptions({
@@ -36,8 +33,6 @@ export default function RTThree({ navigation }) {
       ),
     });
   }, [navigation]);
-  return (
-    <View style={uiStyle.container}>
   const [reportId] = useContext(ReportIdContext);
   const incidentRepoContext = useContext(IncidentReportRepoContext);
   const [reactionTest, setReactionTest] = useState(null);
@@ -50,7 +45,6 @@ export default function RTThree({ navigation }) {
 
   if (reactionTest !== null) {
     resultComponent = (
->>>>>>> 8d3dc1c07b96369fd8b4a9db4d2dbd7c89a2e055
       <Text style={uiStyle.text}>
         Results
         {'\n'}
