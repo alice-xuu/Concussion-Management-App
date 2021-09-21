@@ -4311,6 +4311,15 @@
   "resolved" "https://registry.npmjs.org/expo-modules-core/-/expo-modules-core-0.2.0.tgz"
   "version" "0.2.0"
 
+"expo-sensors@^10.2.2":
+  "integrity" "sha512-kZZobyfQQPA7PwuTQ2+HwunZ1o2emWLKqWP9jYOBPI4toQAproSLzhlhKmpm2vRDOL1ctC12Fb0g9elv7r9Omg=="
+  "resolved" "https://registry.npmjs.org/expo-sensors/-/expo-sensors-10.2.2.tgz"
+  "version" "10.2.2"
+  dependencies:
+    "@expo/config-plugins" "^3.0.0"
+    "expo-modules-core" "~0.2.0"
+    "invariant" "^2.2.4"
+
 "expo-sqlite@^9.2.1":
   "integrity" "sha512-OTN3Dn/S07rmPEiMA8D4OXWvSwahckyAFWqgCAPUy6yjYI1O5ykhXZ37eerFJNMgSZqfOQ719lpYB0pdIKY6kA=="
   "resolved" "https://registry.npmjs.org/expo-sqlite/-/expo-sqlite-9.2.1.tgz"

@@ -39,10 +39,17 @@ export const IncidentReportRepoContext = React.createContext(null);
  */
 export const DaContext = React.createContext(null);
 
+
+export const dataContext = React.createContext(null);
+
+
 /**
  * Provider component
  */
 export function GlobalContextProvider(props) {
+  //Global x,y,z
+  const [data, setData] = useState({ x: 0, y: 0, z: 0 });
+
   // Global patient
   const [patient, setPatient] = useState(new Patient(null, 'John', null));
 
@@ -73,7 +80,9 @@ export function GlobalContextProvider(props) {
         <PatientRepoContext.Provider value={patientRepoContext}>
           <IncidentReportRepoContext.Provider value={incidentRepoContext}>
             <DaContext.Provider value={daContext}>
-              {props.children}
+              <dataContext.Provider value={[data, setData]}>
+                {props.children}
+              </dataContext.Provider>
             </DaContext.Provider>
           </IncidentReportRepoContext.Provider>
         </PatientRepoContext.Provider>

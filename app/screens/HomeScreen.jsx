@@ -55,10 +55,10 @@ function HomeScreen({ navigation }) {
       {/*  title={'temp Button To create profile'}*/}
       {/*  onPress={() => navigation.navigate('Create Profile')}*/}
       {/*/>*/}
-      {/*<Button*/}
-      {/*  title={'testing for incident report 4'}*/}
-      {/*  onPress={() => navigation.navigate('Incident report 4')}*/}
-      {/*/>*/}
+      <Button
+        title={'testing for Balance Test'}
+        onPress={() => navigation.navigate('Balance Test 1')}
+      />
       {/*<Button*/}
       {/*  title={'testing for incident report result'}*/}
       {/*  onPress={() => navigation.navigate('Incident Report Result')}*/}
