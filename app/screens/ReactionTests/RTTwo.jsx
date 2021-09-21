@@ -71,7 +71,7 @@ function RTTwo({ navigation }) {
           //stop();
           setAttempt(attempt + 1);
           if (attempt > 1) {
-            navigation.navigate('Home');
+            navigation.navigate('Reaction Test 3');
           }
           setStage(0);
           console.log(stage);
