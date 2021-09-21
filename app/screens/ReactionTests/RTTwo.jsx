@@ -9,7 +9,7 @@ import {
   Button,
 } from 'react-native';
 
-import { useEffect, useReducer, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import uiStyle from '../../components/uiStyle';
 import { Stopwatch, Timer } from 'react-native-stopwatch-timer';
 import {
