@@ -21,6 +21,7 @@ function BTTwo({ navigation }) {
     setSubscription(
       Accelerometer.addListener((accelerometerData) => {
         setData(accelerometerData);
+        Accelerometer.setUpdateInterval(1000);
       }),
     );
   };
