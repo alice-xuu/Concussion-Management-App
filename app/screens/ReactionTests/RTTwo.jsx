@@ -85,23 +85,7 @@ function RTTwo({ navigation }) {
 
   const [timerOn, setTimerOn] = useState(false);
 
-  const initialState = { stage: 0 };
-  function reducer(state, action) {
-    switch (action.type) {
-      case 'increment':
-        return {stage: state.stage + 1};
-      case 'reset':
-        return init(action.payload);
-      default:
-        throw new Error();
-    }
-  }
-
-  function init(initialStage) {
-    return {stage: initialStage;
-  }
-
-  const [stage, setStage] = useReducer(reducer, initialState, init);
+  const [stage, setStage] = useState(0);
 
   useEffect(() => {
     setDescription(descriptions[0]);
