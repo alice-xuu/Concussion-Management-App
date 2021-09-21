@@ -22,8 +22,11 @@ function BTThree({ navigation }) {
         chest and remain as still as possible for the test duration {'\n'}
         {'\n'}
         Variation{'\n'}
-        X: {Math.round(data.x * 100) / 100}{'\n'}Y:
-        {Math.round(data.y * 100) / 100}{'\n'}Z: {Math.round(data.z * 100) / 100}{'\n'}
+        X: {Math.round(data.x * 100) / 100}
+        {'\n'}Y:
+        {Math.round(data.y * 100) / 100}
+        {'\n'}Z: {Math.round(data.z * 100) / 100}
+        {'\n'}
         Average: {'\n'}
         {'\n'}
         Deviation{'\n'}
@@ -32,7 +35,7 @@ function BTThree({ navigation }) {
         Please pass the phone to your supervisor {'\n'}
       </Text>
       <TouchableOpacity
-        onPress={() => navigation.navigate('Memory Test 4')}
+        onPress={() => navigation.navigate('Memory Test 5')}
         style={uiStyle.bottomButton}
       >
         <Text style={uiStyle.buttonLabel}>Next</Text>

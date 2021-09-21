@@ -16,6 +16,8 @@ import MTOne from './app/screens/MemoryTests/MTOne';
 import MTTwo from './app/screens/MemoryTests/MTTwo';
 import MTThree from './app/screens/MemoryTests/MTThree';
 import MTFour from './app/screens/MemoryTests/MTFour';
+import MTFive from './app/screens/MemoryTests/MTFive';
+
 import NextStepsScreen from './app/screens/NextStepsScreen';
 import ChecklistQuestionScreen from './app/screens/StartCheckScreen';
 import { GlobalContextProvider } from './app/components/GlobalContextProvider';
@@ -98,6 +100,8 @@ export default function App() {
           <RootStack.Screen name="Balance Test 1" component={BTOne} />
           <RootStack.Screen name="Balance Test 2" component={BTTwo} />
           <RootStack.Screen name="Balance Test 3" component={BTThree} />
+
+          <RootStack.Screen name="Memory Test 5" component={MTFive} />
         </RootStack.Navigator>
       </NavigationContainer>
     </GlobalContextProvider>
