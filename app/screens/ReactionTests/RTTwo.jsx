@@ -37,12 +37,15 @@ function RTTwo({ navigation }) {
       <TouchableOpacity
         style={styles.startButton}
         onPress={() => {
+          console.log('1');
           setStage(stage + 1);
           setTimeout(
             function () {
+              console.log('2');
               setStage(stage + 2);
-              setTimerOn(true);
-              start();
+              //setTimerOn(true);
+              //start();
+              console.log('3');
             }.bind(this),
             3000,
           ); // wait 3 seconds, then set to next stage
@@ -64,14 +67,13 @@ function RTTwo({ navigation }) {
       <TouchableOpacity
         style={styles.pressButton}
         onPress={() => {
-          setTimerOn(false);
-
-          stop();
+          //setTimerOn(false);
+          //stop();
           setAttempt(attempt + 1);
           if (attempt > 1) {
             navigation.navigate('Home');
           }
-          setStage(useState(0));
+          setStage(0);
           console.log(stage);
         }}
       >
