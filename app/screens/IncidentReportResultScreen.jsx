@@ -65,6 +65,7 @@ function IncidentReportResultScreen({ navigation }) {
 
   useEffect(() => {
     // Get single responses
+    reportResults = 0;
     incidentRepoContext.getSingleResponses(reportId).then((srs) => {
       if (mounted.current) {
         setResponses(parseSingleResponses(srs));
