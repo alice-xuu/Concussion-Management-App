@@ -74,7 +74,6 @@ function MTTwo({ navigation }) {
         style={{ width: 300, height: 300, resizeMode: 'contain' }}
         source={imgs[index].src}
       />
-
       <TouchableOpacity
         onPress={() => {
           if (index === 0) {
