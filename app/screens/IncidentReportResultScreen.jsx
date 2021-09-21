@@ -36,6 +36,7 @@ const parseSingleResponses = (srs) => {
   }
   return responsesArray;
 };
+let reportResults = 0;
 
 /**
  * The screen will show the result after user has completed "IncidentReport"
@@ -60,8 +61,6 @@ function IncidentReportResultScreen({ navigation }) {
 
   // Local state
   let [responses, setResponses] = useState(null);
-
-  let reportResults = 0;
   let screen;
 
   useEffect(() => {
