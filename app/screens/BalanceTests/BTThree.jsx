@@ -32,7 +32,7 @@ function BTThree({ navigation }) {
         Please pass the phone to your supervisor {'\n'}
       </Text>
       <TouchableOpacity
-        onPress={() => navigation.navigate('Home')}
+        onPress={() => navigation.navigate('Memory Test 4')}
         style={uiStyle.bottomButton}
       >
         <Text style={uiStyle.buttonLabel}>Next</Text>
