@@ -30,7 +30,14 @@ export default StyleSheet.create({
     position: 'absolute',
     top: 20,
   },
-
+  textNoAbsolute: {
+    // text for instructions in the concussion check
+    fontSize: 25,
+    lineHeight: 25,
+    letterSpacing: 0.3,
+    marginHorizontal: 50,
+    marginVertical: 10,
+  },
   bottomButton: {
     // consistent with "View History" button on Home screen, i.e long red button on bottom
     width: 300,

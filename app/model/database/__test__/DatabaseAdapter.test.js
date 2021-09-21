@@ -1,4 +1,5 @@
 import { DatabaseAdapter } from '../DatabaseAdapter';
+import { TABLES_SQL } from '../DatabaseConfig';
 
 describe('DatabaseAdapter', () => {
   let db;
@@ -17,7 +18,7 @@ describe('DatabaseAdapter', () => {
   describe('initDatabase', () => {
     it('uses sqlite db', async () => {
       // 5 tables * 2
-      expect(db.transaction).toHaveBeenCalledTimes(10);
+      expect(db.transaction).toHaveBeenCalledTimes(TABLES_SQL.length);
     });
 
     it('on success resolves with database adapter', async () => {

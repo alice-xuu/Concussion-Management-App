@@ -3,15 +3,16 @@ import {
   StyleSheet,
   Text,
   View,
-  Pressable,
   TouchableOpacity,
   SafeAreaView,
-  Button,
 } from 'react-native';
 
-import { useEffect, useReducer, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import uiStyle from '../../components/uiStyle';
-import { Stopwatch, Timer } from 'react-native-stopwatch-timer';
+import {
+  IncidentReportRepoContext,
+  ReportIdContext,
+} from '../../components/GlobalContextProvider';
 
 const descriptions = [
   'Tap the screen when the circle turns black. Press start when you are ready.',
@@ -20,155 +21,136 @@ const descriptions = [
 ];
 
 function RTTwo({ navigation }) {
-  const [state, setState] = useState({ timer: null, milliseconds: 0 });
-  const start = () => {
-    let timer = setInterval(() => {
-      setState(state.milliseconds + 1);
-    }, 0);
-    setState({ timer: (state.timer = timer) });
-    //console.log(state.timer);
-  };
-  const stop = () => {
-    clearInterval(state.timer);
-  };
-
-  const StartTest = () => {
-    return (
-      <TouchableOpacity
-        style={styles.startButton}
-        onPress={() => {
-          console.log('1');
-          setStage(stage + 1);
-          setTimeout(
-            function () {
-              console.log('2');
-              setStage(stage + 2);
-              //setTimerOn(true);
-              //start();
-              console.log('3');
-            }.bind(this),
-            3000,
-          ); // wait 3 seconds, then set to next stage
-        }}
-      >
-        <Text style={styles.startText}>Start!</Text>
-      </TouchableOpacity>
-    );
-  };
-  const WaitButton = (props) => {
-    return (
-      <TouchableOpacity style={styles.waitButton}>
-        <Text style={styles.waitText}> Wait...</Text>
-      </TouchableOpacity>
-    );
-  };
-  const PressButton = (props) => {
-    return (
-      <TouchableOpacity
-        style={styles.pressButton}
-        onPress={() => {
-          //setTimerOn(false);
-          //stop();
-          setAttempt(attempt + 1);
-          if (attempt > 1) {
-            navigation.navigate('Reaction Test 3');
-          }
-          setStage(0);
-          console.log(stage);
-        }}
-      >
-        <Text style={styles.pressText}>Press!</Text>
-      </TouchableOpacity>
-    );
-  };
-
   const [attempt, setAttempt] = useState(0);
-  const [description, setDescription] = useState();
+  const [attemptResults, setAttemptResults] = useState([]);
+  const [reportId] = useContext(ReportIdContext);
+  const incidentRepoContext = useContext(IncidentReportRepoContext);
 
-  const [timerOn, setTimerOn] = useState(false);
+  // Start time in milliseconds
+  const [startMs, setStartMs] = useState(null);
 
+  // stage = button stage from start -> wait -> press
   const [stage, setStage] = useState(0);
 
-  useEffect(() => {
-    setDescription(descriptions[0]);
-  }, [attempt]);
+  let btnStyle;
+  let btnOnPress = () => {};
+  let btnTxt;
+  let btnTxtStyle;
 
-  let form;
   if (stage === 0) {
-    form = <StartTest />;
+    btnStyle = styles.startButton;
+    btnOnPress = () => {
+      setStage(1);
+      setTimeout(() => {
+        setStartMs(Date.now());
+        setStage(2);
+      }, 3000); // wait 3 seconds, then set to next stage
+    };
+    btnTxt = 'Start!';
+    btnTxtStyle = styles.startText;
   } else if (stage === 1) {
-    form = <WaitButton />;
+    btnStyle = styles.waitButton;
+    btnTxt = 'Wait...';
+    btnTxtStyle = styles.waitText;
   } else if (stage === 2) {
-    form = <PressButton />;
+    btnStyle = styles.pressButton;
+    btnOnPress = () => {
+      setAttemptResults([...attemptResults, Date.now() - startMs]);
+      setAttempt(attempt + 1);
+
+      setStartMs(null);
+      setStage(0);
+    };
+    btnTxt = 'Press!';
+    btnTxtStyle = styles.pressText;
   }
 
+  useEffect(() => {
+    if (attemptResults.length === 3) {
+      const avg =
+        attemptResults.reduce((a, b) => a + b) / attemptResults.length;
+      let grade = 'fail';
+      if (avg < 500) {
+        grade = 'pass';
+      }
+      incidentRepoContext
+        .addReactionTest(reportId, attemptResults, avg, grade)
+        .catch(console.log);
+    }
+  }, [reportId, attemptResults, incidentRepoContext]);
+
+  useEffect(() => {
+    if (attempt === 2) {
+      navigation.navigate('Reaction Test 3');
+    } else if (attempt > 2) {
+      navigation.pop();
+    }
+  }, [attempt, navigation]);
+
   return (
-    <SafeAreaView style={uiStyle.container}>
-      <Text style={uiStyle.text}>
+    <SafeAreaView style={styles.screenContainer}>
+      <Text style={[uiStyle.textNoAbsolute]}>
         Reaction Test{'\n'}
         {'\n'}
         Attempt {attempt + 1}/3
         {'\n'}
         {'\n'}
-        {description}
+        {descriptions[stage]}
       </Text>
-      <View>{form}</View>
+
+      <View style={styles.btnView}>
+        <TouchableOpacity
+          style={[styles.reactionButton, btnStyle]}
+          onPress={btnOnPress}
+        >
+          <Text style={btnTxtStyle}>{btnTxt}</Text>
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  reactionBtn: {
-    width: '75%',
+  reactionButton: {
+    width: 300,
     aspectRatio: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 10,
+    borderRadius: 150,
   },
-
   startButton: {
-    width: '75%',
-    aspectRatio: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 10,
     backgroundColor: '#ff0000',
   },
-
   startText: {
     color: '#FFFFFF',
     fontWeight: 'bold',
     fontSize: 20,
   },
   waitButton: {
-    width: '75%',
-    aspectRatio: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 10,
     borderWidth: 5,
     backgroundColor: '#FFFFFF',
   },
-
   waitText: {
     color: '#000000',
     fontWeight: 'bold',
     fontSize: 20,
   },
-
   pressButton: {
-    width: '75%',
-    aspectRatio: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 10,
     backgroundColor: '#000000',
   },
-
   pressText: {
     color: '#FFFFFF',
     fontWeight: 'bold',
     fontSize: 20,
+  },
+  screenContainer: {
+    padding: 10,
+  },
+  btnView: {
+    width: '100%',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
   },
 });
 
