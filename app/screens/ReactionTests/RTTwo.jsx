@@ -71,7 +71,7 @@ function RTTwo({ navigation }) {
           if (attempt > 1) {
             navigation.navigate('Home');
           }
-          setStage(0);
+          setStage(useState(0));
           console.log(stage);
         }}
       >
