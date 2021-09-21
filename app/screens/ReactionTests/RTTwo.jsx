@@ -9,8 +9,9 @@ import {
   Button,
 } from 'react-native';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 import uiStyle from '../../components/uiStyle';
+import { Stopwatch, Timer } from 'react-native-stopwatch-timer';
 
 const descriptions = [
   'Tap the screen when the circle turns black. Press start when you are ready.',
@@ -19,12 +20,32 @@ const descriptions = [
 ];
 
 function RTTwo({ navigation }) {
+  const [state, setState] = useState({ timer: null, milliseconds: 0 });
+  const start = () => {
+    let timer = setInterval(() => {
+      setState(state.milliseconds + 1);
+    }, 0);
+    setState({ timer: (state.timer = timer) });
+    //console.log(state.timer);
+  };
+  const stop = () => {
+    clearInterval(state.timer);
+  };
+
   const StartTest = () => {
     return (
       <TouchableOpacity
         style={styles.startButton}
         onPress={() => {
           setStage(stage + 1);
+          setTimeout(
+            function () {
+              setStage(stage + 2);
+              setTimerOn(true);
+              start();
+            }.bind(this),
+            3000,
+          ); // wait 3 seconds, then set to next stage
         }}
       >
         <Text style={styles.startText}>Start!</Text>
@@ -40,7 +61,20 @@ function RTTwo({ navigation }) {
   };
   const PressButton = (props) => {
     return (
-      <TouchableOpacity style={styles.pressButton}>
+      <TouchableOpacity
+        style={styles.pressButton}
+        onPress={() => {
+          setTimerOn(false);
+
+          stop();
+          setAttempt(attempt + 1);
+          if (attempt > 1) {
+            navigation.navigate('Home');
+          }
+          setStage(0);
+          console.log(stage);
+        }}
+      >
         <Text style={styles.pressText}>Press!</Text>
       </TouchableOpacity>
     );
@@ -49,12 +83,28 @@ function RTTwo({ navigation }) {
   const [attempt, setAttempt] = useState(0);
   const [description, setDescription] = useState();
 
-  const btnList = [StartTest, WaitButton, PressButton];
-  const [testing, setIsTesting] = useState(false);
-  const [stage, setStage] = useState(0);
+  const [timerOn, setTimerOn] = useState(false);
+
+  const initialState = { stage: 0 };
+  function reducer(state, action) {
+    switch (action.type) {
+      case 'increment':
+        return {stage: state.stage + 1};
+      case 'reset':
+        return init(action.payload);
+      default:
+        throw new Error();
+    }
+  }
+
+  function init(initialStage) {
+    return {stage: initialStage;
+  }
+
+  const [stage, setStage] = useReducer(reducer, initialState, init);
 
   useEffect(() => {
-    setDescription(descriptions[attempt]);
+    setDescription(descriptions[0]);
   }, [attempt]);
 
   let form;
@@ -62,6 +112,8 @@ function RTTwo({ navigation }) {
     form = <StartTest />;
   } else if (stage === 1) {
     form = <WaitButton />;
+  } else if (stage === 2) {
+    form = <PressButton />;
   }
 
   return (
@@ -74,7 +126,6 @@ function RTTwo({ navigation }) {
         {'\n'}
         {description}
       </Text>
-
       <View>{form}</View>
     </SafeAreaView>
   );
