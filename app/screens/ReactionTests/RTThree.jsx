@@ -5,6 +5,7 @@ import {
   View,
   Pressable,
   TouchableOpacity,
+  Button,
 } from 'react-native';
 
 import uiStyle from '../../components/uiStyle.jsx';
@@ -16,6 +17,16 @@ import uiStyle from '../../components/uiStyle.jsx';
  * is Reaction Test.
  */
 export default function RTThree({ navigation }) {
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      headerLeft: () => (
+        <Button
+          onPress={() => navigation.navigate('Reaction Test 1')}
+          title="REDO Test"
+        />
+      ),
+    });
+  }, [navigation]);
   return (
     <View style={uiStyle.container}>
       <Text style={uiStyle.text}>
