@@ -5,6 +5,7 @@ import HomeScreen from './app/screens/HomeScreen';
 import DocumentsScreen from './app/screens/DocumentsScreen';
 import SingleChoiceQuestionScreen from './app/screens/SingleChoiceQuestionScreen';
 import CreateProfileScreen from './app/screens/CreateProfileScreen';
+import SelectProfileScreen from './app/screens/SelectProfileScreen';
 import StartCheckScreen from './app/screens/StartCheckScreen';
 import BadCheckScreen from './app/screens/BadCheckScreen';
 import TextQuestionScreen from './app/screens/TextQuestionScreen';
@@ -25,6 +26,9 @@ import FurtherTestsScreen from './app/screens/FurtherTestsScreen';
 import RTOne from './app/screens/ReactionTests/RTOne';
 import RTTwo from './app/screens/ReactionTests/RTTwo';
 import RTThree from './app/screens/ReactionTests/RTThree';
+import BTOne from './app/screens/BalanceTests/BTOne';
+import BTTwo from './app/screens/BalanceTests/BTTwo';
+import BTThree from './app/screens/BalanceTests/BTThree';
 
 const RootStack = createNativeStackNavigator();
 /**
@@ -43,7 +47,10 @@ export default function App() {
             name="Create Profile"
             component={CreateProfileScreen}
           />
-
+          <RootStack.Screen
+            name="Select Profile"
+            component={SelectProfileScreen}
+          />
           <RootStack.Screen name="Start Check" component={StartCheckScreen} />
           <RootStack.Screen
             name="Incident report 4"
@@ -85,9 +92,20 @@ export default function App() {
           <RootStack.Screen name="Memory Test 3" component={MTThree} />
           <RootStack.Screen name="Memory Test 4" component={MTFour} />
 
+<<<<<<< HEAD
           <RootStack.Screen name="Reaction Test 1" component={RTOne} />
           <RootStack.Screen name="Reaction Test 2" component={RTTwo} />
           <RootStack.Screen name="Reaction Test 3" component={RTThree} />
+=======
+          <RootStack.Screen name="Balance Test 1" component={BTOne} />
+          <RootStack.Screen name="Balance Test 2" component={BTTwo} />
+          <RootStack.Screen name="Balance Test 3" component={BTThree} />
+
+          <RootStack.Screen
+            name="Reaction Test"
+            component={ReactionTestScreen}
+          />
+>>>>>>> origin/develop
           <RootStack.Screen
             name="Database Sample"
             component={SampleDatabaseScreen}
