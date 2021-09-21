@@ -1,11 +1,5 @@
 import * as React from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Pressable,
-  TouchableOpacity,
-} from 'react-native';
+import { Text, View, TouchableOpacity } from 'react-native';
 
 import uiStyle from '../../components/uiStyle.jsx';
 import { useContext, useEffect, useState } from 'react';
@@ -21,7 +15,7 @@ import {
  * is Reaction Test.
  */
 export default function RTThree({ navigation }) {
-  const [reportId, setReportId] = useContext(ReportIdContext);
+  const [reportId] = useContext(ReportIdContext);
   const incidentRepoContext = useContext(IncidentReportRepoContext);
   const [reactionTest, setReactionTest] = useState(null);
 
@@ -62,5 +56,3 @@ export default function RTThree({ navigation }) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({});

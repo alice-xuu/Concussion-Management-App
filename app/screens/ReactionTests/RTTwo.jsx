@@ -3,15 +3,12 @@ import {
   StyleSheet,
   Text,
   View,
-  Pressable,
   TouchableOpacity,
   SafeAreaView,
-  Button,
 } from 'react-native';
 
 import { useContext, useEffect, useState } from 'react';
 import uiStyle from '../../components/uiStyle';
-import { Stopwatch, Timer } from 'react-native-stopwatch-timer';
 import {
   IncidentReportRepoContext,
   ReportIdContext,
@@ -26,7 +23,7 @@ const descriptions = [
 function RTTwo({ navigation }) {
   const [attempt, setAttempt] = useState(0);
   const [attemptResults, setAttemptResults] = useState([]);
-  const [reportId, setReportId] = useContext(ReportIdContext);
+  const [reportId] = useContext(ReportIdContext);
   const incidentRepoContext = useContext(IncidentReportRepoContext);
 
   // Start time in milliseconds
@@ -62,10 +59,6 @@ function RTTwo({ navigation }) {
       setAttempt(attempt + 1);
 
       setStartMs(null);
-
-      if (attempt >= 2) {
-        navigation.navigate('Reaction Test 3');
-      }
       setStage(0);
     };
     btnTxt = 'Press!';
@@ -73,7 +66,7 @@ function RTTwo({ navigation }) {
   }
 
   useEffect(() => {
-    if (attemptResults.length >= 2) {
+    if (attemptResults.length === 3) {
       const avg =
         attemptResults.reduce((a, b) => a + b) / attemptResults.length;
       let grade = 'fail';
@@ -85,6 +78,14 @@ function RTTwo({ navigation }) {
         .catch(console.log);
     }
   }, [reportId, attemptResults, incidentRepoContext]);
+
+  useEffect(() => {
+    if (attempt === 2) {
+      navigation.navigate('Reaction Test 3');
+    } else if (attempt > 2) {
+      navigation.pop();
+    }
+  }, [attempt, navigation]);
 
   return (
     <SafeAreaView style={styles.screenContainer}>
