@@ -23,6 +23,9 @@ import { GlobalContextProvider } from './app/components/GlobalContextProvider';
 import IncidentReportFourScreen from './app/screens/IncidentReportFourScreen';
 import IncidentReportFiveScreen from './app/screens/IncidentReportFiveScreen';
 import FurtherTestsScreen from './app/screens/FurtherTestsScreen';
+import RTOne from './app/screens/ReactionTests/RTOne';
+import RTTwo from './app/screens/ReactionTests/RTTwo';
+import RTThree from './app/screens/ReactionTests/RTThree';
 import BTOne from './app/screens/BalanceTests/BTOne';
 import BTTwo from './app/screens/BalanceTests/BTTwo';
 import BTThree from './app/screens/BalanceTests/BTThree';
@@ -89,6 +92,11 @@ export default function App() {
           <RootStack.Screen name="Memory Test 3" component={MTThree} />
           <RootStack.Screen name="Memory Test 4" component={MTFour} />
 
+<<<<<<< HEAD
+          <RootStack.Screen name="Reaction Test 1" component={RTOne} />
+          <RootStack.Screen name="Reaction Test 2" component={RTTwo} />
+          <RootStack.Screen name="Reaction Test 3" component={RTThree} />
+=======
           <RootStack.Screen name="Balance Test 1" component={BTOne} />
           <RootStack.Screen name="Balance Test 2" component={BTTwo} />
           <RootStack.Screen name="Balance Test 3" component={BTThree} />
@@ -97,6 +105,7 @@ export default function App() {
             name="Reaction Test"
             component={ReactionTestScreen}
           />
+>>>>>>> origin/develop
           <RootStack.Screen
             name="Database Sample"
             component={SampleDatabaseScreen}
