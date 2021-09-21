@@ -35,7 +35,7 @@ export default function RTThree({ navigation }) {
       </Text>
 
       <TouchableOpacity
-        onPress={() => navigation.navigate('Reaction Test 1')}
+        onPress={() => navigation.navigate('Balance Test 1')}
         style={uiStyle.bottomButton}
       >
         <Text style={uiStyle.buttonLabel}>Start!</Text>
