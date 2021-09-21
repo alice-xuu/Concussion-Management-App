@@ -1,4 +1,3 @@
-import { PatientRepo } from '../PatientRepo';
 import { IncidentReportRepo } from '../IncidentReportRepo';
 
 describe('ReactionTest', () => {
@@ -61,6 +60,25 @@ describe('ReactionTest', () => {
 
       expect(sucCb.mock.calls.length).toBe(1);
       expect(sucCb.mock.calls[0][0]).toBe(id);
+    });
+  });
+
+  describe('getReactionTest', () => {
+    it('returns existing results', async () => {
+      const mockRs = {
+        rows: {
+          length: 1,
+          item: jest.fn(() => TEST_REACTION_RESULTS),
+        },
+      };
+      mockDa.runSqlStmt = jest.fn(() => Promise.resolve(mockRs));
+      let r = await rt.getReactionTest(TEST_REACTION_RESULTS.rt_id);
+
+      expect(r.rt_id).toBe(TEST_REACTION_RESULTS.rt_id);
+      expect(r.time_attempt_1).toBe(TEST_REACTION_RESULTS.time_attempt_1);
+      expect(r.time_attempt_2).toBe(TEST_REACTION_RESULTS.time_attempt_2);
+      expect(r.time_attempt_3).toBe(TEST_REACTION_RESULTS.time_attempt_3);
+      expect(r.time_average).toBe(TEST_REACTION_RESULTS.time_average);
     });
   });
 });
