@@ -12,6 +12,10 @@ import {
 import { useEffect, useReducer, useState } from 'react';
 import uiStyle from '../../components/uiStyle';
 import { Stopwatch, Timer } from 'react-native-stopwatch-timer';
+import {
+  IncidentReportRepoContext,
+  ReportIdContext,
+} from '../../components/GlobalContextProvider';
 
 const descriptions = [
   'Tap the screen when the circle turns black. Press start when you are ready.',
@@ -22,6 +26,8 @@ const descriptions = [
 function RTTwo({ navigation }) {
   const [attempt, setAttempt] = useState(0);
   const [attemptResults, setAttemptResults] = useState([]);
+  const [reportId, setReportId] = useContext(ReportIdContext);
+  const incidentRepoContext = useContext(IncidentReportRepoContext);
 
   // Start time in milliseconds
   const [startMs, setStartMs] = useState(null);
@@ -57,8 +63,6 @@ function RTTwo({ navigation }) {
 
       setStartMs(null);
 
-      console.log(attemptResults);
-
       if (attempt >= 2) {
         navigation.navigate('Reaction Test 3');
       }
@@ -68,9 +72,23 @@ function RTTwo({ navigation }) {
     btnTxtStyle = styles.pressText;
   }
 
+  useEffect(() => {
+    if (attemptResults.length >= 2) {
+      const avg =
+        attemptResults.reduce((a, b) => a + b) / attemptResults.length;
+      let grade = 'fail';
+      if (avg < 500) {
+        grade = 'pass';
+      }
+      incidentRepoContext
+        .addReactionTest(reportId, attemptResults, avg, grade)
+        .catch(console.log);
+    }
+  }, [reportId, attemptResults, incidentRepoContext]);
+
   return (
-    <SafeAreaView style={uiStyle.container}>
-      <Text style={uiStyle.text}>
+    <SafeAreaView style={styles.screenContainer}>
+      <Text style={[uiStyle.textNoAbsolute]}>
         Reaction Test{'\n'}
         {'\n'}
         Attempt {attempt + 1}/3
@@ -79,12 +97,14 @@ function RTTwo({ navigation }) {
         {descriptions[stage]}
       </Text>
 
-      <TouchableOpacity
-        style={[styles.reactionButton, btnStyle]}
-        onPress={btnOnPress}
-      >
-        <Text style={btnTxtStyle}>{btnTxt}</Text>
-      </TouchableOpacity>
+      <View style={styles.btnView}>
+        <TouchableOpacity
+          style={[styles.reactionButton, btnStyle]}
+          onPress={btnOnPress}
+        >
+          <Text style={btnTxtStyle}>{btnTxt}</Text>
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 }
@@ -121,6 +141,15 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontWeight: 'bold',
     fontSize: 20,
+  },
+  screenContainer: {
+    padding: 10,
+  },
+  btnView: {
+    width: '100%',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
   },
 });
 
