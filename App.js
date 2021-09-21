@@ -92,24 +92,12 @@ export default function App() {
           <RootStack.Screen name="Memory Test 3" component={MTThree} />
           <RootStack.Screen name="Memory Test 4" component={MTFour} />
 
-<<<<<<< HEAD
           <RootStack.Screen name="Reaction Test 1" component={RTOne} />
           <RootStack.Screen name="Reaction Test 2" component={RTTwo} />
           <RootStack.Screen name="Reaction Test 3" component={RTThree} />
-=======
           <RootStack.Screen name="Balance Test 1" component={BTOne} />
           <RootStack.Screen name="Balance Test 2" component={BTTwo} />
           <RootStack.Screen name="Balance Test 3" component={BTThree} />
-
-          <RootStack.Screen
-            name="Reaction Test"
-            component={ReactionTestScreen}
-          />
->>>>>>> origin/develop
-          <RootStack.Screen
-            name="Database Sample"
-            component={SampleDatabaseScreen}
-          />
         </RootStack.Navigator>
       </NavigationContainer>
     </GlobalContextProvider>
