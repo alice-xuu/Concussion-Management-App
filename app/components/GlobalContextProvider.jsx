@@ -39,9 +39,7 @@ export const IncidentReportRepoContext = React.createContext(null);
  */
 export const DaContext = React.createContext(null);
 
-
 export const dataContext = React.createContext(null);
-
 
 /**
  * Provider component
