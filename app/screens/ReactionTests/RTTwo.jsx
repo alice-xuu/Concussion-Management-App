@@ -21,7 +21,6 @@ const descriptions = [
 ];
 
 function RTTwo({ navigation }) {
-  const [attempt, setAttempt] = useState(0);
   const [attemptResults, setAttemptResults] = useState([]);
   const [reportId] = useContext(ReportIdContext);
   const incidentRepoContext = useContext(IncidentReportRepoContext);
@@ -55,8 +54,10 @@ function RTTwo({ navigation }) {
   } else if (stage === 2) {
     btnStyle = styles.pressButton;
     btnOnPress = () => {
-      setAttemptResults([...attemptResults, Date.now() - startMs]);
-      setAttempt(attempt + 1);
+      setAttemptResults((prevAttemptResults) => [
+        ...prevAttemptResults,
+        Date.now() - startMs,
+      ]);
 
       setStartMs(null);
       setStage(0);
@@ -73,6 +74,7 @@ function RTTwo({ navigation }) {
       if (avg < 500) {
         grade = 'pass';
       }
+
       incidentRepoContext
         .addReactionTest(reportId, attemptResults, avg, grade)
         .catch(console.log);
@@ -80,19 +82,29 @@ function RTTwo({ navigation }) {
   }, [reportId, attemptResults, incidentRepoContext]);
 
   useEffect(() => {
-    if (attempt === 2) {
+    if (attemptResults.length === 3) {
+      const avg =
+        attemptResults.reduce((a, b) => a + b) / attemptResults.length;
+      let grade = 'fail';
+      if (avg < 500) {
+        grade = 'pass';
+      }
+      incidentRepoContext
+        .addReactionTest(reportId, attemptResults, avg, grade)
+        .catch(console.log);
+
       navigation.navigate('Reaction Test 3');
-    } else if (attempt > 2) {
+    } else if (attemptResults.length > 3) {
       navigation.pop();
     }
-  }, [attempt, navigation]);
+  }, [reportId, attemptResults, incidentRepoContext, navigation]);
 
   return (
     <SafeAreaView style={styles.screenContainer}>
       <Text style={[uiStyle.textNoAbsolute]}>
         Reaction Test{'\n'}
         {'\n'}
-        Attempt {attempt + 1}/3
+        Attempt {attemptResults.length + 1}/3
         {'\n'}
         {'\n'}
         {descriptions[stage]}
