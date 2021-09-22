@@ -88,22 +88,23 @@ function RTTwo({ navigation }) {
   }, [attempt, navigation]);
 
   return (
-    <SafeAreaView style={styles.screenContainer}>
-      <Text style={[uiStyle.textNoAbsolute]}>
-        Attempt {attempt + 1}/3
-        {'\n'}
-        {'\n'}
-        {descriptions[stage]}
-      </Text>
-
-      <View style={styles.btnView}>
+    <SafeAreaView style={uiStyle.container}>
+      <SafeAreaView style={uiStyle.textContainer}>
+        <Text style={[uiStyle.text]}>
+          Attempt {attempt + 1}/3
+          {'\n'}
+          {'\n'}
+          {descriptions[stage]}
+        </Text>
+      </SafeAreaView>
+      <SafeAreaView style={uiStyle.textContainer}>
         <TouchableOpacity
           style={[styles.reactionButton, btnStyle]}
           onPress={btnOnPress}
         >
           <Text style={btnTxtStyle}>{btnTxt}</Text>
         </TouchableOpacity>
-      </View>
+      </SafeAreaView>
     </SafeAreaView>
   );
 }
@@ -145,6 +146,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   btnView: {
+    flex: 1,
     width: '100%',
     flexDirection: 'column',
     alignItems: 'center',
