@@ -186,4 +186,44 @@ export class IncidentReportRepo {
       resolve(mrs);
     });
   }
+
+  /**
+   * Stores the reaction test results.
+   *
+   * @param {number} reportId
+   * @param {number[]} attempts 3 attempt results
+   * @param {number} average
+   * @param {string} grade
+   * @return {Promise<number>}
+   */
+  async addReactionTest(reportId, attempts, average, grade) {
+    if (attempts.length !== 3) {
+      throw `given attempts has length ${attempts.length}, not 3`;
+    }
+
+    const sql = `INSERT INTO ReactionTest (report_id, time_attempt_1, time_attempt_2, time_attempt_3, time_average, grade)
+        VALUES (?, ?, ?, ?, ?, ?)`;
+    const args = [reportId, ...attempts, average, grade];
+
+    const rs = await this.da.runSqlStmt(sql, args);
+    return rs.insertId;
+  }
+
+  /**
+   * Returns the reaction test for the report
+   * @param reportId
+   * @return {Promise<any>}
+   */
+  async getReactionTest(reportId) {
+    if (reportId === undefined || reportId === null) {
+      throw 'Invalid reportId';
+    }
+
+    const sql = `SELECT time_attempt_1, time_attempt_2, time_attempt_3, time_average, grade FROM ReactionTest;`;
+    const args = [];
+
+    const rs = await this.da.runSqlStmt(sql, args);
+
+    return rs.rows.item(0);
+  }
 }
