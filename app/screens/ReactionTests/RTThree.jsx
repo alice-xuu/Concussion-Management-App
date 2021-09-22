@@ -38,7 +38,9 @@ export default function RTThree({ navigation }) {
   const [reactionTest, setReactionTest] = useState(null);
 
   useEffect(() => {
-    incidentRepoContext.getReactionTest(reportId).then(setReactionTest);
+    incidentRepoContext.getReactionTest(reportId).then((rs) => {
+      setReactionTest(rs);
+    });
   }, [reportId, incidentRepoContext]);
 
   let resultComponent = <></>;
