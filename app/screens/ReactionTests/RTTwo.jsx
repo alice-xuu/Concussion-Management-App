@@ -15,8 +15,8 @@ import {
 } from '../../components/GlobalContextProvider';
 
 const descriptions = [
-  'Tap the screen when the circle turns black. Press start when you are ready.',
-  'Tap the screen when the circle turns black.',
+  'Tap the circle when the circle turns black. Press start when you are ready.',
+  'Tap the circle when the circle turns black.',
   '',
 ];
 
@@ -100,17 +100,15 @@ function RTTwo({ navigation }) {
   }, [reportId, attemptResults, incidentRepoContext, navigation]);
 
   return (
-    <SafeAreaView style={styles.screenContainer}>
+    <View style={uiStyle.textContainer}>
       <Text style={[uiStyle.textNoAbsolute]}>
-        Reaction Test{'\n'}
-        {'\n'}
         Attempt {attemptResults.length + 1}/3
         {'\n'}
         {'\n'}
         {descriptions[stage]}
       </Text>
 
-      <View style={styles.btnView}>
+      <View style={uiStyle.textContainer}>
         <TouchableOpacity
           style={[styles.reactionButton, btnStyle]}
           onPress={btnOnPress}
@@ -118,7 +116,7 @@ function RTTwo({ navigation }) {
           <Text style={btnTxtStyle}>{btnTxt}</Text>
         </TouchableOpacity>
       </View>
-    </SafeAreaView>
+    </View>
   );
 }
 
@@ -159,6 +157,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   btnView: {
+    flex: 1,
     width: '100%',
     flexDirection: 'column',
     alignItems: 'center',

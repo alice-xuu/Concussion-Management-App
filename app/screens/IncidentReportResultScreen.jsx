@@ -5,12 +5,14 @@ import {
   Text,
   View,
   TouchableOpacity,
+  ScrollView,
 } from 'react-native';
 import { useContext, useEffect, useRef, useState } from 'react';
 import {
   IncidentReportRepoContext,
   ReportIdContext,
 } from '../components/GlobalContextProvider';
+import uiStyle from '../components/uiStyle';
 
 const parseMultiResponses = (mrs) => {
   const responsesArray = [];
@@ -91,71 +93,76 @@ function IncidentReportResultScreen({ navigation }) {
   if (reportResults > 0) {
     //Have Concussion
     screen = (
-      <View>
-        <Text style={styles.text}>
-          Your patient can not return to play.{'\n'} {'\n'}
-          Must see a GP within the next 24 hours.{'\n'} {'\n'}If they develop
-          any of the following symptoms.....
-        </Text>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate('Create Profile')}
-        >
-          <Text style={styles.label}>Save to new profile</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate('Select Profile')}
-        >
-          <Text style={styles.label}>Save to existing profile</Text>
-        </TouchableOpacity>
-      </View>
+      <ScrollView styles={styles.scroll}>
+        <View style={uiStyle.container}>
+          <Text style={styles.text}>
+            Your patient can not return to play.{'\n'} {'\n'}
+            Must see a GP within the next 24 hours.{'\n'} {'\n'}If they develop
+            any of the following symptoms.....
+          </Text>
+          <TouchableOpacity
+            style={styles.bottomButton}
+            onPress={() => navigation.navigate('Create Profile')}
+          >
+            <Text style={styles.buttonLabel}>Save to new profile</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.bottomButton}
+            onPress={() => navigation.navigate('Select Profile')}
+          >
+            <Text style={styles.buttonLabel}>Save to existing profile</Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
     );
   } else {
     screen = (
-      <View>
-        <Text style={styles.text}>
-          Your patient can return to play, provided they have had none of the
-          signs or symptoms seen previously.{'\n'} {'\n'}
-          If they have, please do not allow return to play, and see a GP in the
-          next 24 hours.
-        </Text>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate('Create Profile')}
-        >
-          <Text style={styles.label}>Save to new profile</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate('Select Profile')}
-        >
-          <Text style={styles.label}>Save to existing profile</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate('Further Tests')}
-        >
-          <Text style={styles.label}>Further Test</Text>
-        </TouchableOpacity>
-      </View>
+      <ScrollView styles={styles.scroll}>
+        <View style={uiStyle.container}>
+          <Text style={styles.text}>
+            Your patient can return to play, provided they have had none of the
+            signs or symptoms seen previously.{'\n'} {'\n'}
+            If they have, please do not allow return to play, and see a GP in
+            the next 24 hours.
+          </Text>
+          <View style={styles.textContainer}>
+            <TouchableOpacity
+              style={styles.bottomButton}
+              onPress={() => navigation.navigate('Create Profile')}
+            >
+              <Text style={styles.buttonLabel}>Save to new profile</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.bottomButton}
+              onPress={() => navigation.navigate('Select Profile')}
+            >
+              <Text style={styles.buttonLabel}>Save to existing profile</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.bottomButton}
+              onPress={() => navigation.navigate('Further Tests')}
+            >
+              <Text style={styles.buttonLabel}>Further Testing</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </ScrollView>
     );
   }
 
   return (
-    <SafeAreaView style={styles.container}>
-      <Text>Result</Text>
-      {screen}
+    <SafeAreaView style={uiStyle.container}>
+      <Text style={uiStyle.titleText}>Result</Text>
+      <ScrollView>{screen}</ScrollView>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  button: {
+  scroll: { flex: 1, alignItems: 'center' },
+  bottomButton: {
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 12,
-    paddingHorizontal: 32,
     borderRadius: 100,
     backgroundColor: '#ff0000',
     marginHorizontal: 50,
@@ -163,7 +170,7 @@ const styles = StyleSheet.create({
     width: 300,
     height: 50,
   },
-  label: {
+  buttonLabel: {
     fontSize: 16,
     lineHeight: 21,
     fontWeight: 'bold',
@@ -175,11 +182,11 @@ const styles = StyleSheet.create({
     lineHeight: 30,
     letterSpacing: 0.25,
     marginHorizontal: 50,
-    marginVertical: 50,
+    marginVertical: 20,
   },
   container: {
     flex: 1,
-    alignSelf: 'stretch',
+    alignSelf: 'center',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#fff',

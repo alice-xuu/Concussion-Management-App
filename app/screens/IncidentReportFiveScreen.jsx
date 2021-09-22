@@ -46,28 +46,29 @@ function IncidentReportFiveScreen({ navigation }) {
         Is there a mechanism of injury (a clear way the patient could have been
         injured)?
       </Text>
+      <SafeAreaView style={uiStyle.textContainer}>
+        <View style={styles.sameRow}>
+          <Pressable
+            style={styles.buttonYes}
+            onPress={() => {
+              handleCreateSResponse('YES');
+              navigation.navigate('Incident Report Result');
+            }}
+          >
+            <Text style={styles.label}>YES</Text>
+          </Pressable>
 
-      <View style={styles.sameRow}>
-        <Pressable
-          style={styles.buttonYes}
-          onPress={() => {
-            handleCreateSResponse('YES');
-            navigation.navigate('Incident Report Result');
-          }}
-        >
-          <Text style={styles.label}>YES</Text>
-        </Pressable>
-
-        <Pressable
-          style={styles.buttonNo}
-          onPress={() => {
-            handleCreateSResponse('NO');
-            navigation.navigate('Incident Report Result');
-          }}
-        >
-          <Text style={styles.label}>NO</Text>
-        </Pressable>
-      </View>
+          <Pressable
+            style={styles.buttonNo}
+            onPress={() => {
+              handleCreateSResponse('NO');
+              navigation.navigate('Incident Report Result');
+            }}
+          >
+            <Text style={styles.label}>NO</Text>
+          </Pressable>
+        </View>
+      </SafeAreaView>
     </SafeAreaView>
   );
 }

@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { Text, SafeAreaView, StyleSheet, TouchableOpacity } from 'react-native';
+import {
+  Text,
+  SafeAreaView,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import { Accelerometer } from 'expo-sensors';
 
 import uiStyle from '../../components/uiStyle.jsx';
@@ -52,12 +58,14 @@ function BTTwo({ navigation }) {
       >
         <Text style={styles.startCheckText}>{text}</Text>
       </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => navigation.navigate('Home')}
-        style={uiStyle.bottomButton}
-      >
-        <Text style={uiStyle.buttonLabel}>Cancel</Text>
-      </TouchableOpacity>
+      <View style={uiStyle.textContainer}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Balance Test 1')}
+          style={uiStyle.bottomButton}
+        >
+          <Text style={uiStyle.buttonLabel}>Cancel</Text>
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 }

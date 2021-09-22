@@ -9,14 +9,17 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
     backgroundColor: background,
+  },
+  textContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   titleText: {
     color: '#000000',
     fontSize: 30,
-    position: 'absolute',
-    top: 60,
+    margin: 10,
     fontWeight: 'bold',
   },
 
@@ -25,10 +28,8 @@ export default StyleSheet.create({
     fontSize: 25,
     lineHeight: 25,
     letterSpacing: 0.3,
-    marginHorizontal: 50,
-    marginVertical: 10,
-    position: 'absolute',
-    top: 20,
+    marginHorizontal: 20,
+    marginVertical: 20,
   },
   textNoAbsolute: {
     // text for instructions in the concussion check
@@ -45,10 +46,9 @@ export default StyleSheet.create({
     padding: 10,
     borderRadius: 100,
     backgroundColor: '#ff0000',
-    position: 'absolute',
     alignItems: 'center',
     justifyContent: 'center',
-    bottom: 90,
+    marginBottom: 50,
   },
   buttonLabel: {
     // consistent with "View History" button on Home screen, i.e. white text in the button
@@ -57,5 +57,20 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     textAlignVertical: 'center',
+  },
+
+  startCheckButton: {
+    width: 200,
+    height: 200,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 100,
+    backgroundColor: buttons,
+    margin: 10,
+  },
+  startCheckText: {
+    color: text,
+    fontWeight: 'bold',
+    fontSize: 20,
   },
 });

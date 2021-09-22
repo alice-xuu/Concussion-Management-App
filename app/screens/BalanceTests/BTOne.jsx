@@ -5,6 +5,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   Button,
+  ScrollView,
 } from 'react-native';
 
 import uiStyle from '../../components/uiStyle.jsx';
@@ -12,20 +13,23 @@ import uiStyle from '../../components/uiStyle.jsx';
 function BTOne({ navigation }) {
   return (
     <SafeAreaView style={styles.screen}>
-      <Text style={uiStyle.text}>
-        Instructions {'\n'}
-        {'\n'}
-        Push start and hold the phone to your chest. {'\n'}
-        {'\n'}
-        Wait for the device to vibrate to indicate that recording has finished.
-      </Text>
+      <ScrollView>
+        <Text style={uiStyle.text}>
+          Instructions {'\n'}
+          {'\n'}
+          Push start and hold the phone to your chest. {'\n'}
+          {'\n'}
+          Wait for the device to vibrate to indicate that recording has
+          finished.
+        </Text>
+      </ScrollView>
       <TouchableOpacity
         onPress={() => {
           navigation.navigate('Balance Test 2');
         }}
-        style={styles.startCheckButton}
+        style={uiStyle.startCheckButton}
       >
-        <Text style={styles.startCheckText}>Start!</Text>
+        <Text style={uiStyle.startCheckText}>Start!</Text>
       </TouchableOpacity>
     </SafeAreaView>
   );

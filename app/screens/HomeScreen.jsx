@@ -5,6 +5,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   Button,
+  View,
 } from 'react-native';
 
 import uiStyle from '../components/uiStyle';
@@ -28,45 +29,26 @@ function HomeScreen({ navigation }) {
   };
   return (
     <SafeAreaView style={styles.screen}>
-      <TouchableOpacity
-        onPress={() => {
-          handleCreateReport();
-          navigation.navigate('Start Check');
-        }}
-        style={styles.startCheckButton}
-      >
-        <Text style={styles.startCheckText}>Start Check</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        onPress={() => navigation.navigate('Documents')}
-        style={uiStyle.bottomButton}
-      >
-        <Text style={uiStyle.buttonLabel}>View History</Text>
-      </TouchableOpacity>
-
       <Text style={styles.titleText}>Concussion Check</Text>
-
-      {/*<Button*/}
-      {/*  title={'tempButtonToDbSample'}*/}
-      {/*  onPress={() => navigation.navigate('Database Sample')}*/}
-      {/*/>*/}
-      {/*<Button*/}
-      {/*  title={'temp Button To create profile'}*/}
-      {/*  onPress={() => navigation.navigate('Create Profile')}*/}
-      {/*/>*/}
-      <Button
-        title={'testing for Balance Test'}
-        onPress={() => navigation.navigate('Balance Test 1')}
-      />
-      {/*<Button*/}
-      {/*  title={'testing for incident report result'}*/}
-      {/*  onPress={() => navigation.navigate('Incident Report Result')}*/}
-      {/*/>*/}
-      <Button
-        title={'test reaction'}
-        onPress={() => navigation.navigate('Reaction Test 1')}
-      />
+      <View style={styles.container}>
+        <TouchableOpacity
+          onPress={() => {
+            handleCreateReport();
+            navigation.navigate('Start Check');
+          }}
+          style={styles.startCheckButton}
+        >
+          <Text style={styles.startCheckText}>Start Check</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.container2}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Documents')}
+          style={uiStyle.bottomButton}
+        >
+          <Text style={uiStyle.buttonLabel}>View History</Text>
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 }
@@ -81,16 +63,27 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     backgroundColor: background,
+  },
+  container: {
+    flex: 3,
+    alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#fff',
+  },
+  container2: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    backgroundColor: '#fff',
   },
   startCheckButton: {
     width: 200,
     height: 200,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 10,
     borderRadius: 100,
     backgroundColor: buttons,
+    margin: 10,
   },
   startCheckText: {
     color: text,
@@ -100,8 +93,7 @@ const styles = StyleSheet.create({
   titleText: {
     color: title,
     fontSize: 30,
-    position: 'absolute',
-    top: 60,
+    marginTop: 60,
     fontWeight: 'bold',
   },
 });

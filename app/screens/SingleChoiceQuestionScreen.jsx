@@ -47,38 +47,40 @@ function SingleChoiceQuestionScreen({ navigation }) {
         Is there a mechanism of injury (a clear way the patient could have been
         injured)?
       </Text>
-      <View style={styles.sameRow}>
-        <Pressable
-          style={styles.buttonYes}
-          onPress={() => {
-            handleCreateSResponse('YES');
-            navigation.navigate('Text Question (IR3)');
-          }}
-        >
-          <Text style={styles.label}>YES</Text>
-        </Pressable>
+      <SafeAreaView style={uiStyle.textContainer}>
+        <View style={styles.sameRow}>
+          <Pressable
+            style={styles.buttonYes}
+            onPress={() => {
+              handleCreateSResponse('YES');
+              navigation.navigate('Text Question (IR3)');
+            }}
+          >
+            <Text style={styles.label}>YES</Text>
+          </Pressable>
 
-        <Pressable
-          style={styles.buttonNo}
-          onPress={() => {
-            handleCreateSResponse('NO');
-            navigation.navigate('Text Question (IR3)');
-          }}
-        >
-          <Text style={styles.label}>NO</Text>
-        </Pressable>
-      </View>
-      <View style={styles.sameRow}>
-        <Pressable
-          style={styles.buttonMaybe}
-          onPress={() => {
-            handleCreateSResponse('MAYBE');
-            navigation.navigate('Text Question (IR3)');
-          }}
-        >
-          <Text style={styles.label}>MAYBE/UNSURE</Text>
-        </Pressable>
-      </View>
+          <Pressable
+            style={styles.buttonNo}
+            onPress={() => {
+              handleCreateSResponse('NO');
+              navigation.navigate('Text Question (IR3)');
+            }}
+          >
+            <Text style={styles.label}>NO</Text>
+          </Pressable>
+        </View>
+        <View style={styles.sameRow}>
+          <Pressable
+            style={styles.buttonMaybe}
+            onPress={() => {
+              handleCreateSResponse('MAYBE');
+              navigation.navigate('Text Question (IR3)');
+            }}
+          >
+            <Text style={styles.label}>MAYBE/UNSURE</Text>
+          </Pressable>
+        </View>
+      </SafeAreaView>
     </SafeAreaView>
   );
 }

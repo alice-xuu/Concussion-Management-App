@@ -7,10 +7,12 @@ import {
   Pressable,
   TouchableOpacity,
   SafeAreaView,
+  ScrollView,
 } from 'react-native';
 
 import uiStyle from '../../components/uiStyle.jsx';
 import { Ionicons } from '@expo/vector-icons';
+import cbStyle from '../../components/checkboxStyle';
 
 import { useContext, useState } from 'react';
 
@@ -53,7 +55,7 @@ function MTFour({ navigation }) {
 
     return (
       <Pressable
-        style={[styles.checkboxBase, checked && styles.checkboxChecked]}
+        style={[cbStyle.checkboxBase, checked && cbStyle.checkboxChecked]}
         onPress={() => {
           onCheckmarkPress();
         }}
@@ -81,52 +83,54 @@ function MTFour({ navigation }) {
       <Text style={uiStyle.text}>
         What three images does your patient remember?
       </Text>
-      <SafeAreaView style={styles.allCheckboxContainer}>
-        <SafeAreaView style={styles.checkboxContainer}>
-          <MyCheckbox value="bird" />
-          <Text style={styles.checkboxLabel}>{`bird`}</Text>
-        </SafeAreaView>
+      <ScrollView>
+        <SafeAreaView style={cbStyle.allCheckboxContainer}>
+          <SafeAreaView style={cbStyle.checkboxContainer}>
+            <MyCheckbox value="bird" />
+            <Text style={cbStyle.checkboxLabel}>{`bird`}</Text>
+          </SafeAreaView>
 
-        <SafeAreaView style={styles.checkboxContainer}>
-          <MyCheckbox value={'clock'} />
-          <Text style={styles.checkboxLabel}>{`clock`}</Text>
-        </SafeAreaView>
+          <SafeAreaView style={cbStyle.checkboxContainer}>
+            <MyCheckbox value={'clock'} />
+            <Text style={cbStyle.checkboxLabel}>{`clock`}</Text>
+          </SafeAreaView>
 
-        <SafeAreaView style={styles.checkboxContainer}>
-          <MyCheckbox value={'cup'} />
-          <Text style={styles.checkboxLabel}>{`cup`}</Text>
-        </SafeAreaView>
+          <SafeAreaView style={cbStyle.checkboxContainer}>
+            <MyCheckbox value={'cup'} />
+            <Text style={cbStyle.checkboxLabel}>{`cup`}</Text>
+          </SafeAreaView>
 
-        <SafeAreaView style={styles.checkboxContainer}>
-          <MyCheckbox value={'flower'} />
-          <Text style={styles.checkboxLabel}>{`flower`}</Text>
-        </SafeAreaView>
+          <SafeAreaView style={cbStyle.checkboxContainer}>
+            <MyCheckbox value={'flower'} />
+            <Text style={cbStyle.checkboxLabel}>{`flower`}</Text>
+          </SafeAreaView>
 
-        <SafeAreaView style={styles.checkboxContainer}>
-          <MyCheckbox value={'fork'} />
-          <Text style={styles.checkboxLabel}>{`fork`}</Text>
-        </SafeAreaView>
+          <SafeAreaView style={cbStyle.checkboxContainer}>
+            <MyCheckbox value={'fork'} />
+            <Text style={cbStyle.checkboxLabel}>{`fork`}</Text>
+          </SafeAreaView>
 
-        <SafeAreaView style={styles.checkboxContainer}>
-          <MyCheckbox value={'keys'} />
-          <Text style={styles.checkboxLabel}>{`keys`}</Text>
-        </SafeAreaView>
+          <SafeAreaView style={cbStyle.checkboxContainer}>
+            <MyCheckbox value={'keys'} />
+            <Text style={cbStyle.checkboxLabel}>{`keys`}</Text>
+          </SafeAreaView>
 
-        <SafeAreaView style={styles.checkboxContainer}>
-          <MyCheckbox value={'pen'} />
-          <Text style={styles.checkboxLabel}>{`pen`}</Text>
-        </SafeAreaView>
+          <SafeAreaView style={cbStyle.checkboxContainer}>
+            <MyCheckbox value={'pen'} />
+            <Text style={cbStyle.checkboxLabel}>{`pen`}</Text>
+          </SafeAreaView>
 
-        <SafeAreaView style={styles.checkboxContainer}>
-          <MyCheckbox value={'scissors'} />
-          <Text style={styles.checkboxLabel}>{`scissors`}</Text>
-        </SafeAreaView>
+          <SafeAreaView style={cbStyle.checkboxContainer}>
+            <MyCheckbox value={'scissors'} />
+            <Text style={cbStyle.checkboxLabel}>{`scissors`}</Text>
+          </SafeAreaView>
 
-        <SafeAreaView style={styles.checkboxContainer}>
-          <MyCheckbox value={'toothbrush'} />
-          <Text style={styles.checkboxLabel}>{`toothbrush`}</Text>
+          <SafeAreaView style={cbStyle.checkboxContainer}>
+            <MyCheckbox value={'toothbrush'} />
+            <Text style={cbStyle.checkboxLabel}>{`toothbrush`}</Text>
+          </SafeAreaView>
         </SafeAreaView>
-      </SafeAreaView>
+      </ScrollView>
       <TouchableOpacity
         onPress={() => {
           handleCreateMultiResponse(chosenList);
@@ -140,39 +144,6 @@ function MTFour({ navigation }) {
   );
 }
 
-const styles = StyleSheet.create({
-  allCheckboxContainer: {
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    justifyContent: 'space-evenly',
-  },
-  checkboxContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    padding: 5,
-    margin: 1,
-  },
-
-  checkboxBase: {
-    width: 35,
-    height: 35,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 4,
-    borderWidth: 2,
-    borderColor: 'black',
-    backgroundColor: 'transparent',
-  },
-
-  checkboxChecked: {
-    backgroundColor: '#C4C4C4',
-  },
-
-  checkboxLabel: {
-    marginLeft: 8,
-    fontWeight: '500',
-    fontSize: 14,
-  },
-});
+const styles = StyleSheet.create({});
 
 export default MTFour;
