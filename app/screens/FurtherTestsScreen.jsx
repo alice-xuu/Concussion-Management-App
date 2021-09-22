@@ -5,6 +5,7 @@ import {
   View,
   Pressable,
   TouchableOpacity,
+  ScrollView,
 } from 'react-native';
 
 import uiStyle from '../components/uiStyle.jsx';
@@ -18,14 +19,17 @@ import uiStyle from '../components/uiStyle.jsx';
 function FurtherTests({ navigation }) {
   return (
     <View style={uiStyle.container}>
-      <Text style={uiStyle.text}>
-        There are 5 more tests that will determine the likelihood of the patient
-        having a concussion
-        {'\n'}
-        {'\n'}
-        The tests consists of two memory tests, at the start and again at the
-        end, a reaction test, a balance test and VOMS.
-      </Text>
+      <Text style={uiStyle.titleText}>Further Tests</Text>
+      <ScrollView>
+        <Text style={uiStyle.text}>
+          There are 5 more tests that will determine the likelihood of the
+          patient having a concussion
+          {'\n'}
+          {'\n'}
+          The tests consists of two memory tests, at the start and again at the
+          end, a reaction test, a balance test and VOMS.
+        </Text>
+      </ScrollView>
 
       <TouchableOpacity
         onPress={() => navigation.navigate('Memory Test 1')}

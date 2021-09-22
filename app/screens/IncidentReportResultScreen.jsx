@@ -142,7 +142,7 @@ function IncidentReportResultScreen({ navigation }) {
               style={styles.bottomButton}
               onPress={() => navigation.navigate('Further Tests')}
             >
-              <Text style={styles.buttonLabel}>Further Test</Text>
+              <Text style={styles.buttonLabel}>Further Testing</Text>
             </TouchableOpacity>
           </View>
         </View>
