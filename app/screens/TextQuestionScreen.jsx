@@ -13,6 +13,7 @@ import {
   ReportIdContext,
 } from '../components/GlobalContextProvider';
 import { useContext, useState } from 'react';
+import uiStyle from '../components/uiStyle';
 /**
  * Asks user for details about the concussion and gives a suggestion based on
  * the user's responses.
@@ -38,24 +39,25 @@ function TextQuestionScreen({ navigation }) {
     handleResponseDescription();
   };
   return (
-    <SafeAreaView style={styles.container}>
-      <Text style={styles.font}>
+    <SafeAreaView style={uiStyle.container}>
+      <Text style={uiStyle.text}>
         {' '}
         Is there an alternative explanation for your patient’s symptoms? If yes,
         please briefly note it down.
       </Text>
-
-      <TextInput
-        style={styles.content}
-        onChangeText={(text) => onChangeText(text)}
-        textDecorationLine={'none'}
-        value={value}
-        multiline={true}
-        numberOfLines={4}
-        textAlignVertical="top"
-      />
-      <Pressable style={styles.button} onPress={() => myFunction()}>
-        <Text style={styles.label}>Next</Text>
+      <SafeAreaView style={uiStyle.textContainer}>
+        <TextInput
+          style={styles.content}
+          onChangeText={(text) => onChangeText(text)}
+          textDecorationLine={'none'}
+          value={value}
+          multiline={true}
+          numberOfLines={4}
+          textAlignVertical="top"
+        />
+      </SafeAreaView>
+      <Pressable style={uiStyle.bottomButton} onPress={() => myFunction()}>
+        <Text style={uiStyle.buttonLabel}>Next</Text>
       </Pressable>
     </SafeAreaView>
   );
@@ -75,7 +77,7 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   content: {
-    maxHeight: 100,
+    maxHeight: 200,
     marginVertical: 20,
     borderWidth: 3,
 

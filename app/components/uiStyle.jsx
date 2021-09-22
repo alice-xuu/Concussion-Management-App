@@ -30,7 +30,7 @@ export default StyleSheet.create({
     lineHeight: 25,
     letterSpacing: 0.3,
     marginHorizontal: 20,
-    marginVertical: 10,
+    marginVertical: 20,
   },
   textNoAbsolute: {
     // text for instructions in the concussion check
