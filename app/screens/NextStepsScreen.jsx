@@ -5,30 +5,30 @@ import {
   StyleSheet,
   TouchableOpacity,
   Button,
+  ScrollView,
+  View,
 } from 'react-native';
 
 import uiStyle from '../components/uiStyle';
 
 function NextStepsScreen({ navigation }) {
   return (
-    <SafeAreaView style={styles.screen}>
-      <Text style={styles.titleText}>Next Steps</Text>
-
-      <Text style={styles.normalText1}>
-        At this stage, the patient presents no symptoms necessitating
-        hospitalisation. However, if they do develop any of the previous
-        symptoms, immediately call for an ambulance or take them to hospital.
-      </Text>
-
-      <Text style={styles.normalText2}>
-        The next steps will help determine the best treatment for the patient.
-      </Text>
-
+    <SafeAreaView style={uiStyle.container}>
+      <Text style={uiStyle.titleText}>Next Steps</Text>
+      <ScrollView>
+        <Text style={uiStyle.text}>
+          At this stage, the patient presents no symptoms necessitating
+          hospitalisation. However, if they do develop any of the previous
+          symptoms, immediately call for an ambulance or take them to hospital.
+          {'\n'} {'\n'}
+          The next steps will help determine the best treatment for the patient.
+        </Text>
+      </ScrollView>
       <TouchableOpacity
         onPress={() => navigation.navigate('SingleChoiceQ (IR2)')}
-        style={styles.startButton}
+        style={uiStyle.bottomButton}
       >
-        <Text style={styles.startText}>Start</Text>
+        <Text style={uiStyle.buttonLabel}>Start</Text>
       </TouchableOpacity>
     </SafeAreaView>
   );

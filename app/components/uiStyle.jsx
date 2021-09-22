@@ -11,11 +11,16 @@ export default StyleSheet.create({
     alignItems: 'center',
     backgroundColor: background,
   },
+  textContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#fff',
+  },
   titleText: {
     color: '#000000',
     fontSize: 30,
-    position: 'absolute',
-    top: 60,
+    margin: 10,
     fontWeight: 'bold',
   },
 
@@ -53,5 +58,20 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     textAlignVertical: 'center',
+  },
+
+  startCheckButton: {
+    width: 200,
+    height: 200,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 100,
+    backgroundColor: buttons,
+    margin: 10,
+  },
+  startCheckText: {
+    color: text,
+    fontWeight: 'bold',
+    fontSize: 20,
   },
 });
