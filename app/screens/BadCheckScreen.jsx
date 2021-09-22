@@ -14,11 +14,11 @@ import uiStyle from '../components/uiStyle';
 function BadCheckScreen({ navigation }) {
   return (
     <SafeAreaView style={uiStyle.container}>
-      <Text style={styles.text}>
+      <Text style={uiStyle.text}>
         Your patient needs to go to hospital immediately. Call 000.
       </Text>
-      <View style={styles.callSymbol}>
-        <Text style={styles.label}>Call 000</Text>
+      <View style={uiStyle.startCheckButton}>
+        <Text style={uiStyle.startCheckText}>Call 000</Text>
       </View>
       <TouchableOpacity
         style={styles.bottomButton}

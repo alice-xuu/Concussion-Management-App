@@ -4,12 +4,11 @@ export default StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'space-evenly',
-    marginHorizontal: 50,
+    marginHorizontal: 20,
   },
   checkboxContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 5,
     margin: 1,
   },
 
@@ -32,5 +31,6 @@ export default StyleSheet.create({
     marginLeft: 8,
     fontWeight: '500',
     fontSize: 16,
+    flexWrap: 'wrap',
   },
 });

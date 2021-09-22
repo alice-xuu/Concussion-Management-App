@@ -6,6 +6,7 @@ import {
   Pressable,
   TouchableOpacity,
   SafeAreaView,
+  ScrollView,
 } from 'react-native';
 import { useContext, useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
@@ -17,6 +18,7 @@ import {
   ReportIdContext,
 } from '../components/GlobalContextProvider';
 import * as target from 'react-native';
+import cbStyle from '../components/checkboxStyle';
 
 /**
  * The screen will ask user for details about concussion in checklist form.
@@ -47,7 +49,7 @@ function IncidentReportFourScreen({ navigation }) {
 
     return (
       <Pressable
-        style={[styles.checkboxBase, checked && styles.checkboxChecked]}
+        style={[cbStyle.checkboxBase, checked && cbStyle.checkboxChecked]}
         onPress={onCheckmarkPress}
       >
         {checked && <Ionicons name="checkmark" size={24} color="black" />}
@@ -72,66 +74,70 @@ function IncidentReportFourScreen({ navigation }) {
         Does the patient have any of the following symptoms? Please select all
         that apply.
       </Text>
-      <SafeAreaView style={styles.allCheckboxContainer}>
-        <SafeAreaView style={styles.checkboxContainer}>
-          <MyCheckbox value="Lying motionless after the event" />
-          <Text
-            style={styles.checkboxLabel}
-          >{`Lying motionless after the event`}</Text>
+      <ScrollView>
+        <SafeAreaView style={cbStyle.allCheckboxContainer}>
+          <SafeAreaView style={cbStyle.checkboxContainer}>
+            <MyCheckbox value="Lying motionless after the event" />
+            <Text
+              style={cbStyle.checkboxLabel}
+            >{`Lying motionless after the event`}</Text>
+          </SafeAreaView>
+          <SafeAreaView style={cbStyle.checkboxContainer}>
+            <MyCheckbox value="Slow to get up after the head knock" />
+            <Text
+              style={cbStyle.checkboxLabel}
+            >{`Slow to get up after the head knock`}</Text>
+          </SafeAreaView>
+          <SafeAreaView style={cbStyle.checkboxContainer}>
+            <MyCheckbox value="Looks stunned or dazed" />
+            <Text
+              style={cbStyle.checkboxLabel}
+            >{`Looks stunned or dazed`}</Text>
+          </SafeAreaView>
+          <SafeAreaView style={cbStyle.checkboxContainer}>
+            <MyCheckbox value="Shows behavioural or personality changes" />
+            <Text
+              style={cbStyle.checkboxLabel}
+            >{`Shows behavioural or personality changes`}</Text>
+          </SafeAreaView>
+          <SafeAreaView style={cbStyle.checkboxContainer}>
+            <MyCheckbox value="Forgets things they normally know" />
+            <Text
+              style={cbStyle.checkboxLabel}
+            >{`Forgets things they normally know`}</Text>
+          </SafeAreaView>
+          <SafeAreaView style={cbStyle.checkboxContainer}>
+            <MyCheckbox value="Disorientation or confusion" />
+            <Text
+              style={cbStyle.checkboxLabel}
+            >{`Disorientation or confusion`}</Text>
+          </SafeAreaView>
+          <SafeAreaView style={cbStyle.checkboxContainer}>
+            <MyCheckbox valie="Slowness in responding to questions" />
+            <Text
+              style={cbStyle.checkboxLabel}
+            >{`Slowness in responding to questions`}</Text>
+          </SafeAreaView>
+          <SafeAreaView style={cbStyle.checkboxContainer}>
+            <MyCheckbox value="Forgetting what happened before injury(retrograde memory)" />
+            <Text
+              style={cbStyle.checkboxLabel}
+            >{`Forgetting what happened before injury(retrograde memory)`}</Text>
+          </SafeAreaView>
+          <SafeAreaView style={cbStyle.checkboxContainer}>
+            <MyCheckbox value="Forgetting what happened after injury" />
+            <Text
+              style={cbStyle.checkboxLabel}
+            >{`Forgetting what happened after injury`}</Text>
+          </SafeAreaView>
+          <SafeAreaView style={cbStyle.checkboxContainer}>
+            <MyCheckbox value="Stumbling and/or slow labored movements" />
+            <Text
+              style={cbStyle.checkboxLabel}
+            >{`Stumbling and/or slow labored movements`}</Text>
+          </SafeAreaView>
         </SafeAreaView>
-        <SafeAreaView style={styles.checkboxContainer}>
-          <MyCheckbox value="Slow to get up after the head knock" />
-          <Text
-            style={styles.checkboxLabel}
-          >{`Slow to get up after the head knock`}</Text>
-        </SafeAreaView>
-        <SafeAreaView style={styles.checkboxContainer}>
-          <MyCheckbox value="Looks stunned or dazed" />
-          <Text style={styles.checkboxLabel}>{`Looks stunned or dazed`}</Text>
-        </SafeAreaView>
-        <SafeAreaView style={styles.checkboxContainer}>
-          <MyCheckbox value="Shows behavioural or personality changes" />
-          <Text
-            style={styles.checkboxLabel}
-          >{`Shows behavioural or personality changes`}</Text>
-        </SafeAreaView>
-        <SafeAreaView style={styles.checkboxContainer}>
-          <MyCheckbox value="Forgets things they normally know" />
-          <Text
-            style={styles.checkboxLabel}
-          >{`Forgets things they normally know`}</Text>
-        </SafeAreaView>
-        <SafeAreaView style={styles.checkboxContainer}>
-          <MyCheckbox value="Disorientation or confusion" />
-          <Text
-            style={styles.checkboxLabel}
-          >{`Disorientation or confusion`}</Text>
-        </SafeAreaView>
-        <SafeAreaView style={styles.checkboxContainer}>
-          <MyCheckbox valie="Slowness in responding to questions" />
-          <Text
-            style={styles.checkboxLabel}
-          >{`Slowness in responding to questions`}</Text>
-        </SafeAreaView>
-        <SafeAreaView style={styles.checkboxContainer}>
-          <MyCheckbox value="Forgetting what happened before injury(retrograde memory)" />
-          <Text
-            style={styles.checkboxLabel}
-          >{`Forgetting what happened before injury(retrograde memory)`}</Text>
-        </SafeAreaView>
-        <SafeAreaView style={styles.checkboxContainer}>
-          <MyCheckbox value="Forgetting what happened after injury" />
-          <Text
-            style={styles.checkboxLabel}
-          >{`Forgetting what happened after injury`}</Text>
-        </SafeAreaView>
-        <SafeAreaView style={styles.checkboxContainer}>
-          <MyCheckbox value="Stumbling and/or slow labored movements" />
-          <Text
-            style={styles.checkboxLabel}
-          >{`Stumbling and/or slow labored movements`}</Text>
-        </SafeAreaView>
-      </SafeAreaView>
+      </ScrollView>
       <Text> </Text>
       <TouchableOpacity
         onPress={() => {
