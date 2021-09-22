@@ -15,8 +15,8 @@ import {
 } from '../../components/GlobalContextProvider';
 
 const descriptions = [
-  'Tap the screen when the circle turns black. Press start when you are ready.',
-  'Tap the screen when the circle turns black.',
+  'Tap the circle when the circle turns black. Press start when you are ready.',
+  'Tap the circle when the circle turns black.',
   '',
 ];
 
@@ -90,8 +90,6 @@ function RTTwo({ navigation }) {
   return (
     <SafeAreaView style={styles.screenContainer}>
       <Text style={[uiStyle.textNoAbsolute]}>
-        Reaction Test{'\n'}
-        {'\n'}
         Attempt {attempt + 1}/3
         {'\n'}
         {'\n'}

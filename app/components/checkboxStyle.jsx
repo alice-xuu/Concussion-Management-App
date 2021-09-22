@@ -5,11 +5,12 @@ export default StyleSheet.create({
     alignItems: 'flex-start',
     justifyContent: 'space-evenly',
     marginHorizontal: 20,
+    width: '80%',
   },
   checkboxContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    margin: 1,
+    margin: 3,
   },
 
   checkboxBase: {
