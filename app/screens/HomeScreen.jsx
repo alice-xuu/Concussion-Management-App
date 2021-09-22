@@ -28,6 +28,8 @@ function HomeScreen({ navigation }) {
   };
   return (
     <SafeAreaView style={styles.screen}>
+      <Text style={styles.titleText}>Concussion Check</Text>
+
       <TouchableOpacity
         onPress={() => {
           handleCreateReport();
@@ -44,29 +46,6 @@ function HomeScreen({ navigation }) {
       >
         <Text style={uiStyle.buttonLabel}>View History</Text>
       </TouchableOpacity>
-
-      <Text style={styles.titleText}>Concussion Check</Text>
-
-      {/*<Button*/}
-      {/*  title={'tempButtonToDbSample'}*/}
-      {/*  onPress={() => navigation.navigate('Database Sample')}*/}
-      {/*/>*/}
-      {/*<Button*/}
-      {/*  title={'temp Button To create profile'}*/}
-      {/*  onPress={() => navigation.navigate('Create Profile')}*/}
-      {/*/>*/}
-      <Button
-        title={'testing for Balance Test'}
-        onPress={() => navigation.navigate('Balance Test 1')}
-      />
-      {/*<Button*/}
-      {/*  title={'testing for incident report result'}*/}
-      {/*  onPress={() => navigation.navigate('Incident Report Result')}*/}
-      {/*/>*/}
-      <Button
-        title={'test reaction'}
-        onPress={() => navigation.navigate('Reaction Test 1')}
-      />
     </SafeAreaView>
   );
 }
@@ -81,7 +60,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     backgroundColor: background,
-    justifyContent: 'center',
   },
   startCheckButton: {
     width: 200,
@@ -91,6 +69,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 100,
     backgroundColor: buttons,
+    margin: 100,
   },
   startCheckText: {
     color: text,
@@ -100,8 +79,7 @@ const styles = StyleSheet.create({
   titleText: {
     color: title,
     fontSize: 30,
-    position: 'absolute',
-    top: 60,
+    marginTop: 60,
     fontWeight: 'bold',
   },
 });
