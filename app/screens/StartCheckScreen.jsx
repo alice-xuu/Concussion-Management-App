@@ -11,6 +11,8 @@ import {
 import { useContext, useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import uiStyle from '../components/uiStyle';
+import cbStyle from '../components/checkboxStyle';
+
 import {
   IncidentReportRepoContext,
   PatientContext,
@@ -51,7 +53,7 @@ function StartCheckScreen({ navigation }) {
 
     return (
       <Pressable
-        style={[styles.checkboxBase, checked && styles.checkboxChecked]}
+        style={[cbStyle.checkboxBase, checked && cbStyle.checkboxChecked]}
         onPress={onCheckmarkPress}
       >
         {checked && <Ionicons name="checkmark" size={24} color="black" />}
@@ -76,59 +78,59 @@ function StartCheckScreen({ navigation }) {
         that apply.
       </Text>
       <ScrollView>
-        <SafeAreaView style={styles.allCheckboxContainer}>
-          <SafeAreaView style={styles.checkboxContainer}>
+        <SafeAreaView style={cbStyle.allCheckboxContainer}>
+          <SafeAreaView style={cbStyle.checkboxContainer}>
             <MyCheckbox value="Neck pain or tenderness" />
             <Text
-              style={styles.checkboxLabel}
+              style={cbStyle.checkboxLabel}
             >{`Neck pain or tenderness`}</Text>
           </SafeAreaView>
-          <SafeAreaView style={styles.checkboxContainer}>
+          <SafeAreaView style={cbStyle.checkboxContainer}>
             <MyCheckbox value="Neck pain or tenderness" />
-            <Text style={styles.checkboxLabel}>{`Double vision`}</Text>
+            <Text style={cbStyle.checkboxLabel}>{`Double vision`}</Text>
           </SafeAreaView>
-          <SafeAreaView style={styles.checkboxContainer}>
+          <SafeAreaView style={cbStyle.checkboxContainer}>
             <MyCheckbox value="Weakness or tingling/burning in the arms or legs" />
             <Text
-              style={styles.checkboxLabel}
+              style={cbStyle.checkboxLabel}
             >{`Weakness or tingling/burning in the arms or legs`}</Text>
           </SafeAreaView>
-          <SafeAreaView style={styles.checkboxContainer}>
+          <SafeAreaView style={cbStyle.checkboxContainer}>
             <MyCheckbox value="Severe or increasing headache" />
             <Text
-              style={styles.checkboxLabel}
+              style={cbStyle.checkboxLabel}
             >{`Severe or increasing headache`}</Text>
           </SafeAreaView>
-          <SafeAreaView style={styles.checkboxContainer}>
+          <SafeAreaView style={cbStyle.checkboxContainer}>
             <MyCheckbox value="Seizures or convulsions" />
             <Text
-              style={styles.checkboxLabel}
+              style={cbStyle.checkboxLabel}
             >{`Seizures or convulsions`}</Text>
           </SafeAreaView>
-          <SafeAreaView style={styles.checkboxContainer}>
+          <SafeAreaView style={cbStyle.checkboxContainer}>
             <MyCheckbox value="Loss of consciousness" />
-            <Text style={styles.checkboxLabel}>{`Loss of consciousness`}</Text>
+            <Text style={cbStyle.checkboxLabel}>{`Loss of consciousness`}</Text>
           </SafeAreaView>
-          <SafeAreaView style={styles.checkboxContainer}>
+          <SafeAreaView style={cbStyle.checkboxContainer}>
             <MyCheckbox value="Deteriorating conscious state" />
             <Text
-              style={styles.checkboxLabel}
+              style={cbStyle.checkboxLabel}
             >{`Deteriorating conscious state`}</Text>
           </SafeAreaView>
-          <SafeAreaView style={styles.checkboxContainer}>
+          <SafeAreaView style={cbStyle.checkboxContainer}>
             <MyCheckbox value="Vomiting" />
-            <Text style={styles.checkboxLabel}>{`Vomiting`}</Text>
+            <Text style={cbStyle.checkboxLabel}>{`Vomiting`}</Text>
           </SafeAreaView>
-          <SafeAreaView style={styles.checkboxContainer}>
+          <SafeAreaView style={cbStyle.checkboxContainer}>
             <MyCheckbox value="Increasing restlessness" />
             <Text
-              style={styles.checkboxLabel}
+              style={cbStyle.checkboxLabel}
             >{`Increasing restlessness`}</Text>
           </SafeAreaView>
-          <SafeAreaView style={styles.checkboxContainer}>
+          <SafeAreaView style={cbStyle.checkboxContainer}>
             <MyCheckbox value="Agitation or combativeness" />
             <Text
-              style={styles.checkboxLabel}
+              style={cbStyle.checkboxLabel}
             >{`Agitation or combativeness`}</Text>
           </SafeAreaView>
         </SafeAreaView>
@@ -151,40 +153,6 @@ function StartCheckScreen({ navigation }) {
   );
 }
 
-const styles = StyleSheet.create({
-  allCheckboxContainer: {
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    justifyContent: 'space-evenly',
-    marginHorizontal: 50,
-  },
-  checkboxContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    padding: 5,
-    margin: 1,
-  },
-
-  checkboxBase: {
-    width: 40,
-    height: 40,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 4,
-    borderWidth: 2,
-    borderColor: 'black',
-    backgroundColor: 'transparent',
-  },
-
-  checkboxChecked: {
-    backgroundColor: '#C4C4C4',
-  },
-
-  checkboxLabel: {
-    marginLeft: 8,
-    fontWeight: '500',
-    fontSize: 16,
-  },
-});
+const styles = StyleSheet.create({});
 
 export default StartCheckScreen;
