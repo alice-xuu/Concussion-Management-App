@@ -4,8 +4,8 @@ import {
   SafeAreaView,
   StyleSheet,
   TouchableOpacity,
-  View,
-} from 'react-native';
+  View, Vibration
+} from "react-native";
 import { Accelerometer } from 'expo-sensors';
 
 import uiStyle from '../../components/uiStyle.jsx';
@@ -59,6 +59,7 @@ function BTTwo({ navigation }) {
           setTimeout(() => {
             Accelerometer.removeAllListeners();
             navigation.navigate('Balance Test 3');
+            Vibration.vibrate();
           }, 10000);
         }}
         style={styles.startCheckButton}
