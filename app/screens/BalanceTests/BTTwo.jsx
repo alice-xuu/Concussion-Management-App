@@ -27,17 +27,24 @@ function BTTwo({ navigation }) {
     setSubscription(
       Accelerometer.addListener((accelerometerData) => {
         setData(accelerometerData);
-        Accelerometer.setUpdateInterval(1000);
+        Accelerometer.setUpdateInterval(500);
+        x_arr.push(accelerometerData.x);
+        y_arr.push(accelerometerData.y);
+        z_arr.push(accelerometerData.z);
+        console.log('x array: ', x_arr);
       }),
     );
   };
 
   const { x, y, z } = data;
+  const x_arr = [];
+  const y_arr = [];
+  const z_arr = [];
 
   return (
     <SafeAreaView style={styles.screen}>
       <Text style={uiStyle.text}>
-        Hold to chest for 5 seconds after clicking "Start!" {'\n'}
+        Hold to chest for 10 seconds after clicking "Start!" {'\n'}
         {'\n'}
       </Text>
       <Text style={styles.text}>
@@ -52,7 +59,7 @@ function BTTwo({ navigation }) {
           setTimeout(() => {
             Accelerometer.removeAllListeners();
             navigation.navigate('Balance Test 3');
-          }, 5000);
+          }, 10000);
         }}
         style={styles.startCheckButton}
       >
