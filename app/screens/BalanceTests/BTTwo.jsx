@@ -26,16 +26,36 @@ function BTTwo({ navigation }) {
   const _subscribe = () => {
     setSubscription(
       Accelerometer.addListener((accelerometerData) => {
-        setData(accelerometerData);
+        // setData(accelerometerData);
         Accelerometer.setUpdateInterval(500);
         x_arr.push(accelerometerData.x);
         y_arr.push(accelerometerData.y);
         z_arr.push(accelerometerData.z);
         console.log('x array: ', x_arr);
+        console.log(getAverage(x_arr));
+        console.log(getVariance(x_arr));
       }),
     );
   };
 
+  const getAverage = (arr) => {
+    const reducer = (total, currentValue) => total + currentValue;
+    const sum = arr.reduce(reducer);
+    const average = sum / arr.length;
+    console.log('average: ', average);
+
+    return average;
+  };
+
+  const getVariance = (arr) => {
+    const reducer = (total, currentValue) =>
+      total + Math.pow(currentValue - getAverage(arr), 2);
+    const sum = arr.reduce(reducer);
+    const variance = sum / (arr.length - 1);
+    console.log('variance: ', variance);
+
+    return variance;
+  };
   const { x, y, z } = data;
   const x_arr = [];
   const y_arr = [];
@@ -60,7 +80,7 @@ function BTTwo({ navigation }) {
             Accelerometer.removeAllListeners();
             navigation.navigate('Balance Test 3');
             Vibration.vibrate();
-          }, 10000);
+          }, 1000);
         }}
         style={styles.startCheckButton}
       >

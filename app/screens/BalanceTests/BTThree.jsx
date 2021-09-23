@@ -5,8 +5,8 @@ import {
   StyleSheet,
   TouchableOpacity,
   Button,
-  ScrollView, Vibration
-} from "react-native";
+  ScrollView,
+} from 'react-native';
 
 import uiStyle from '../../components/uiStyle.jsx';
 import { useContext } from 'react';
