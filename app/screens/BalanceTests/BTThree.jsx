@@ -22,11 +22,11 @@ function BTThree({ navigation }) {
           {'\n'}
           Variation{'\n'}
           {'\n'}
-          X: Y: Z: Average: {Math.pow(data, 2)} {'\n'}
+          X: Y: Z: Average: {Math.round(Math.pow(data, 2) * 1000) / 1000} {'\n'}
           {'\n'}
           Deviation{'\n'}
           {'\n'}
-          X: Y: Z: Average: {data} {'\n'}
+          X: Y: Z: Average: {Math.round(data * 1000) / 1000} {'\n'}
           {'\n'}
           Please pass the phone to your supervisor {'\n'}
         </Text>
