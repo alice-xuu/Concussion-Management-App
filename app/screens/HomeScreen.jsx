@@ -40,15 +40,6 @@ function HomeScreen({ navigation }) {
         >
           <Text style={styles.startCheckText}>Start Check</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => {
-            handleCreateReport();
-            navigation.navigate('Balance Test 1');
-          }}
-          style={styles.startCheckButton}
-        >
-          <Text style={styles.startCheckText}>testing</Text>
-        </TouchableOpacity>
       </View>
       <View style={styles.container2}>
         <TouchableOpacity
