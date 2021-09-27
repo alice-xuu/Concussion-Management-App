@@ -17,8 +17,10 @@ function BTTwo({ navigation }) {
   const [text, setText] = useState('Start!');
   const changeText = () => setText('Recording!');
   const [data, setData] = useContext(dataContext);
-  // data = { x: 0, y: 0, z: 0 };
   const [subscription, setSubscription] = useState(null);
+  const x_arr = [];
+  const y_arr = [];
+  const z_arr = [];
 
   // const _slow = () => {
   //   Accelerometer.setUpdateInterval(5000);
@@ -32,10 +34,11 @@ function BTTwo({ navigation }) {
         x_arr.push(accelerometerData.x);
         y_arr.push(accelerometerData.y);
         z_arr.push(accelerometerData.z);
-        console.log('x array: ', x_arr);
-        // console.log(getVariance(x_arr));
-        console.log(getStandardDeviation(x_arr));
-        setData(getStandardDeviation(x_arr));
+        const x_sd = getStandardDeviation(x_arr);
+        const y_sd = getStandardDeviation(y_arr);
+        const z_sd = getStandardDeviation(z_arr);
+        const sd = (x_sd + y_sd + z_sd) / 3;
+        setData(sd);
       }),
     );
   };
@@ -51,25 +54,20 @@ function BTTwo({ navigation }) {
     );
   }
 
-  const getVariance = (arr) => {
-    const reducer = (total, currentValue) => total + currentValue;
-    const sum = arr.reduce(reducer);
-    const average = sum / arr.length;
-    console.log('average: ', average);
-
-    const reducer2 = (total, currentValue) =>
-      total + Math.pow(currentValue - average, 2);
-    const varSum = arr.reduce(reducer2);
-    const variance = varSum / (arr.length - 1);
-    console.log('Variance: ', variance);
-
-    return variance;
-  };
-  const { x, y, z } = data;
-  const x_arr = [];
-  const y_arr = [];
-  const z_arr = [];
-
+  // const getVariance = (arr) => {
+  //   const reducer = (total, currentValue) => total + currentValue;
+  //   const sum = arr.reduce(reducer);
+  //   const average = sum / arr.length;
+  //   console.log('average: ', average);
+  //
+  //   const reducer2 = (total, currentValue) =>
+  //     total + Math.pow(currentValue - average, 2);
+  //   const varSum = arr.reduce(reducer2);
+  //   const variance = varSum / (arr.length - 1);
+  //   console.log('Variance: ', variance);
+  //
+  //   return variance;
+  // };
   return (
     <SafeAreaView style={styles.screen}>
       <Text style={uiStyle.text}>
