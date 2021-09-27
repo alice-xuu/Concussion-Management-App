@@ -4,8 +4,9 @@ import {
   SafeAreaView,
   StyleSheet,
   TouchableOpacity,
-  View, Vibration
-} from "react-native";
+  View,
+  Vibration,
+} from 'react-native';
 import { Accelerometer } from 'expo-sensors';
 
 import uiStyle from '../../components/uiStyle.jsx';
@@ -32,27 +33,35 @@ function BTTwo({ navigation }) {
         y_arr.push(accelerometerData.y);
         z_arr.push(accelerometerData.z);
         console.log('x array: ', x_arr);
-        console.log(getAverage(x_arr));
-        console.log(getVariance(x_arr));
+        // console.log(getVariance(x_arr));
+        console.log(getStandardDeviation(x_arr));
+        setData(getStandardDeviation(x_arr));
       }),
     );
   };
 
-  const getAverage = (arr) => {
+  function getStandardDeviation(array) {
+    const n = array.length;
+    const mean = array.reduce((a, b) => a + b) / n;
+    if (!array || array.length === 0) {
+      return 0;
+    }
+    return Math.sqrt(
+      array.map((x) => Math.pow(x - mean, 2)).reduce((a, b) => a + b) / n,
+    );
+  }
+
+  const getVariance = (arr) => {
     const reducer = (total, currentValue) => total + currentValue;
     const sum = arr.reduce(reducer);
     const average = sum / arr.length;
     console.log('average: ', average);
 
-    return average;
-  };
-
-  const getVariance = (arr) => {
-    const reducer = (total, currentValue) =>
-      total + Math.pow(currentValue - getAverage(arr), 2);
-    const sum = arr.reduce(reducer);
-    const variance = sum / (arr.length - 1);
-    console.log('variance: ', variance);
+    const reducer2 = (total, currentValue) =>
+      total + Math.pow(currentValue - average, 2);
+    const varSum = arr.reduce(reducer2);
+    const variance = varSum / (arr.length - 1);
+    console.log('Variance: ', variance);
 
     return variance;
   };
@@ -80,7 +89,7 @@ function BTTwo({ navigation }) {
             Accelerometer.removeAllListeners();
             navigation.navigate('Balance Test 3');
             Vibration.vibrate();
-          }, 1000);
+          }, 10000);
         }}
         style={styles.startCheckButton}
       >
