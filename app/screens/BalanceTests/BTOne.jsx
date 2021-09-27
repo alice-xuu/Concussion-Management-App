@@ -17,7 +17,8 @@ function BTOne({ navigation }) {
         <Text style={uiStyle.text}>
           Instructions {'\n'}
           {'\n'}
-          Push start and hold the phone to your chest. {'\n'}
+          Push 'Next' to navigate to the recording page, and hold the phone to
+          your chest while recording. {'\n'}
           {'\n'}
           Wait for the device to vibrate to indicate that recording has
           finished.
@@ -29,7 +30,7 @@ function BTOne({ navigation }) {
         }}
         style={uiStyle.startCheckButton}
       >
-        <Text style={uiStyle.startCheckText}>Start!</Text>
+        <Text style={uiStyle.startCheckText}>Next</Text>
       </TouchableOpacity>
     </SafeAreaView>
   );

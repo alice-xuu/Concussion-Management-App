@@ -15,7 +15,7 @@ import { dataContext } from '../../components/GlobalContextProvider';
 
 function BTTwo({ navigation }) {
   const [text, setText] = useState('Start!');
-  const changeText = () => setText('Have Started');
+  const changeText = () => setText('Recording!');
   const [data, setData] = useContext(dataContext);
   // data = { x: 0, y: 0, z: 0 };
   const [subscription, setSubscription] = useState(null);
@@ -75,9 +75,6 @@ function BTTwo({ navigation }) {
       <Text style={uiStyle.text}>
         Hold to chest for 10 seconds after clicking "Start!" {'\n'}
         {'\n'}
-      </Text>
-      <Text style={styles.text}>
-        x: {x} y: {y} z:{z}
       </Text>
       <TouchableOpacity
         onPress={() => {
