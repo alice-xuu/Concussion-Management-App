@@ -42,8 +42,8 @@ function TextQuestionScreen({ navigation }) {
     <SafeAreaView style={uiStyle.container}>
       <Text style={uiStyle.text}>
         {' '}
-        Is there an alternative explanation for your patient’s symptoms? If yes,
-        please briefly note it down.
+        Is there an alternative explanation for the affected person’s symptoms?
+        If yes, please briefly note it down.
       </Text>
       <SafeAreaView style={uiStyle.textContainer}>
         <TextInput
