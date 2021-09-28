@@ -17,15 +17,16 @@ function NextStepsScreen({ navigation }) {
       <Text style={uiStyle.titleText}>Next Steps</Text>
       <ScrollView>
         <Text style={uiStyle.text}>
-          At this stage, the patient presents no symptoms necessitating
-          hospitalisation. However, if they do develop any of the previous
-          symptoms, immediately call for an ambulance or take them to hospital.
+          {'\n'}
+          There are currently no symptons present that necessitate hospitalisation.
           {'\n'} {'\n'}
-          The next steps will help determine the best treatment for the patient.
+          However, if any of the previous symptoms develop, immediately call for an ambulance or take them to hospital.
+          {'\n'} {'\n'}
+          The next steps will further assess the severiity of the injury.
         </Text>
       </ScrollView>
       <TouchableOpacity
-        onPress={() => navigation.navigate('SingleChoiceQ (IR2)')}
+        onPress={() => navigation.navigate('Incident report 4')}
         style={uiStyle.bottomButton}
       >
         <Text style={uiStyle.buttonLabel}>Start</Text>
