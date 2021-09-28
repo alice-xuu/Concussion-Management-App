@@ -219,8 +219,8 @@ export class IncidentReportRepo {
       throw 'Invalid reportId';
     }
 
-    const sql = `SELECT time_attempt_1, time_attempt_2, time_attempt_3, time_average, grade FROM ReactionTest;`;
-    const args = [];
+    const sql = `SELECT time_attempt_1, time_attempt_2, time_attempt_3, time_average, grade FROM ReactionTest WHERE report_id = ?;`;
+    const args = [reportId];
 
     const rs = await this.da.runSqlStmt(sql, args);
 
