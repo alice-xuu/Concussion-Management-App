@@ -41,9 +41,7 @@ function HomeScreen({ navigation }) {
           <Text style={styles.startCheckText}>Start Check</Text>
         </TouchableOpacity>
       </View>
-      <TouchableOpacity onPress={() => navigation.navigate('Reaction Test 1')}>
-        <Text style={{ color: '#000000' }}>Reaction test</Text>
-      </TouchableOpacity>
+
       <View style={styles.container2}>
         <TouchableOpacity
           onPress={() => navigation.navigate('Documents')}
