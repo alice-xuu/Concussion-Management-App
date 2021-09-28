@@ -14,7 +14,7 @@ import {
 import { useContext, useState, useRef, useEffect } from 'react';
 import uiStyle from '../components/uiStyle';
 /**
- * The screen will ask user to fill in details so their result can be saved in
+ * The screen will ask user to choose an existing profile to save the result to
  * their account.
  */
 function SelectProfileScreen({ navigation }) {

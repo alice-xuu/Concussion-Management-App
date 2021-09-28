@@ -25,6 +25,7 @@ import { GlobalContextProvider } from './app/components/GlobalContextProvider';
 import IncidentReportFourScreen from './app/screens/IncidentReportFourScreen';
 import IncidentReportFiveScreen from './app/screens/IncidentReportFiveScreen';
 import FurtherTestsScreen from './app/screens/FurtherTestsScreen';
+import FurtherTestsResultsScreen from './app/screens/FurtherTestsResultsScreen';
 import RTOne from './app/screens/ReactionTests/RTOne';
 import RTTwo from './app/screens/ReactionTests/RTTwo';
 import RTThree from './app/screens/ReactionTests/RTThree';
@@ -87,6 +88,11 @@ export default function App() {
           <RootStack.Screen
             name="Further Tests"
             component={FurtherTestsScreen}
+          />
+
+          <RootStack.Screen
+            name="Further Tests Results"
+            component={FurtherTestsResultsScreen}
           />
 
           <RootStack.Screen name="Memory Test 1" component={MTOne} />
