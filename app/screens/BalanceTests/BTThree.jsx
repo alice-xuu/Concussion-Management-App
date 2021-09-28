@@ -20,19 +20,13 @@ function BTThree({ navigation }) {
         <Text style={uiStyle.text}>
           Stability Grade {'\n'}
           {'\n'}
-          There was an error during the test, ensure you hold the phone to your
-          chest and remain as still as possible for the test duration {'\n'}
-          {'\n'}
           Variation{'\n'}
-          X: {Math.round(data.x * 100) / 100}
-          {'\n'}Y:
-          {Math.round(data.y * 100) / 100}
-          {'\n'}Z: {Math.round(data.z * 100) / 100}
           {'\n'}
-          Average: {'\n'}
+          X: Y: Z: Average: {Math.round(Math.pow(data, 2) * 1000) / 1000} {'\n'}
           {'\n'}
           Deviation{'\n'}
-          X: Y: Z: Average: {'\n'}
+          {'\n'}
+          X: Y: Z: Average: {Math.round(data * 1000) / 1000} {'\n'}
           {'\n'}
           Please pass the phone to your supervisor {'\n'}
         </Text>
