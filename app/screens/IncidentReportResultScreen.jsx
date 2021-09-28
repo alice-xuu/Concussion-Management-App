@@ -96,7 +96,7 @@ function IncidentReportResultScreen({ navigation }) {
       <ScrollView styles={styles.scroll}>
         <View style={uiStyle.container}>
           <Text style={styles.text}>
-            Your patient can not return to play.{'\n'} {'\n'}
+            The affected person can not return to play.{'\n'} {'\n'}
             Must see a GP within the next 24 hours.{'\n'} {'\n'}If they develop
             any of the following symptoms.....
           </Text>
@@ -120,10 +120,9 @@ function IncidentReportResultScreen({ navigation }) {
       <ScrollView styles={styles.scroll}>
         <View style={uiStyle.container}>
           <Text style={styles.text}>
-            Your patient can return to play, provided they have had none of the
-            signs or symptoms seen previously.{'\n'} {'\n'}
-            If they have, please do not allow return to play, and see a GP in
-            the next 24 hours.
+            The affected person had none of the signs or symptoms seen
+            previously.{'\n'} {'\n'}
+            We advise them to continue to take further testing.
           </Text>
           <View style={styles.textContainer}>
             <TouchableOpacity

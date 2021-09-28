@@ -28,8 +28,8 @@ function CheckListQuestionScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <Text>
-        Does the patient have any of the following symptoms? Please select all
-        that apply.
+        Does the affected person have any of the following symptoms? Please
+        select all that apply.
       </Text>
       <Text> </Text>
       <View style={styles.checkboxContainer}>
