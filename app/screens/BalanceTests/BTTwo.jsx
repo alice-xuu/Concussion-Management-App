@@ -5,6 +5,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   View,
+  Vibration,
 } from 'react-native';
 import { Accelerometer } from 'expo-sensors';
 
@@ -14,10 +15,12 @@ import { dataContext } from '../../components/GlobalContextProvider';
 
 function BTTwo({ navigation }) {
   const [text, setText] = useState('Start!');
-  const changeText = () => setText('Have Started');
+  const changeText = () => setText('Recording!');
   const [data, setData] = useContext(dataContext);
-  // data = { x: 0, y: 0, z: 0 };
   const [subscription, setSubscription] = useState(null);
+  const x_arr = [];
+  const y_arr = [];
+  const z_arr = [];
 
   // const _slow = () => {
   //   Accelerometer.setUpdateInterval(5000);
@@ -26,22 +29,50 @@ function BTTwo({ navigation }) {
   const _subscribe = () => {
     setSubscription(
       Accelerometer.addListener((accelerometerData) => {
-        setData(accelerometerData);
-        Accelerometer.setUpdateInterval(1000);
+        // setData(accelerometerData);
+        Accelerometer.setUpdateInterval(500);
+        x_arr.push(accelerometerData.x);
+        y_arr.push(accelerometerData.y);
+        z_arr.push(accelerometerData.z);
+        const x_sd = getStandardDeviation(x_arr);
+        const y_sd = getStandardDeviation(y_arr);
+        const z_sd = getStandardDeviation(z_arr);
+        const sd = (x_sd + y_sd + z_sd) / 3;
+        setData(sd);
       }),
     );
   };
 
-  const { x, y, z } = data;
+  function getStandardDeviation(array) {
+    const n = array.length;
+    const mean = array.reduce((a, b) => a + b) / n;
+    if (!array || array.length === 0) {
+      return 0;
+    }
+    return Math.sqrt(
+      array.map((x) => Math.pow(x - mean, 2)).reduce((a, b) => a + b) / n,
+    );
+  }
 
+  // const getVariance = (arr) => {
+  //   const reducer = (total, currentValue) => total + currentValue;
+  //   const sum = arr.reduce(reducer);
+  //   const average = sum / arr.length;
+  //   console.log('average: ', average);
+  //
+  //   const reducer2 = (total, currentValue) =>
+  //     total + Math.pow(currentValue - average, 2);
+  //   const varSum = arr.reduce(reducer2);
+  //   const variance = varSum / (arr.length - 1);
+  //   console.log('Variance: ', variance);
+  //
+  //   return variance;
+  // };
   return (
     <SafeAreaView style={styles.screen}>
       <Text style={uiStyle.text}>
-        Hold to chest for 5 seconds after clicking "Start!" {'\n'}
+        Hold to chest for 10 seconds after clicking "Start!" {'\n'}
         {'\n'}
-      </Text>
-      <Text style={styles.text}>
-        x: {x} y: {y} z:{z}
       </Text>
       <TouchableOpacity
         onPress={() => {
@@ -52,7 +83,8 @@ function BTTwo({ navigation }) {
           setTimeout(() => {
             Accelerometer.removeAllListeners();
             navigation.navigate('Balance Test 3');
-          }, 5000);
+            Vibration.vibrate();
+          }, 10000);
         }}
         style={styles.startCheckButton}
       >
