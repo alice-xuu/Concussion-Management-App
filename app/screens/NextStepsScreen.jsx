@@ -18,7 +18,9 @@ function NextStepsScreen({ navigation }) {
       <ScrollView>
         <Text style={uiStyle.text}>
           At this stage, the affected person presents no symptoms necessitating
-          hospitalisation. However, if they do develop any of the previous
+          hospitalisation.
+          {'\n'} {'\n'}
+          However, if they do develop any of the previous
           symptoms, immediately call for an ambulance or take them to hospital.
           {'\n'} {'\n'}
           The next steps will help determine the best treatment for the affected
