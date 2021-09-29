@@ -18,7 +18,7 @@ const parseMultiResponses = (mrs) => {
   const memoryTestCorrectAnswers = [];
   const memoryTest1Responses = [];
   const memoryTest2Responses = [];
-  const reactionTestResponses = [];
+
   const testResultsArray = [];
   if (mrs !== null) {
     // console.log(mrs);
@@ -39,15 +39,10 @@ const parseMultiResponses = (mrs) => {
       ) {
         memoryTest2Responses.push(element.MultiResponsePart.response);
       } else if (
-        element.MultiResponsePart.desc === 'Reaction Test' &&
-        element.MultiResponsePart.response !== undefined
-      ) {
-        reactionTestResponses.push(element.MultiResponsePart.response);
-      } else if (
         element.MultiResponsePart.desc === 'Balance Test' &&
         element.MultiResponsePart.response !== undefined
       ) {
-        reactionTestResponses.push(element.MultiResponsePart.response);
+        // balanceTestResponses.push(element.MultiResponsePart.response);
       }
     });
   }
@@ -75,6 +70,14 @@ const parseMultiResponses = (mrs) => {
   }
   return testResultsArray;
 };
+
+const parseReactionTest = (rt) => {
+  const reactionTestResponses = [];
+  if (rt.time_attempt_1 < 2 && rt.time_attempt_2 < 2 && rt.time_attempt_3 < 2) {
+    reactionTestResponses.push('Reaction Test Result: Passed');
+  }
+  return reactionTestResponses;
+};
 let testResults = [];
 
 /**
@@ -87,6 +90,7 @@ function FurtherTestsResultsScreen({ navigation }) {
   const incidentRepoContext = useContext(IncidentReportRepoContext);
   const [reportId] = useContext(ReportIdContext);
   const [results, setResults] = useState([]);
+  const [reactionTest, setReactionTest] = useState(null);
 
   useEffect(() => {
     incidentRepoContext
@@ -94,9 +98,14 @@ function FurtherTestsResultsScreen({ navigation }) {
       .then((mrs) => parseMultiResponses(JSON.stringify(mrs)))
       .then((res) => setResults(res));
     for (let i = 0; i < results.length; i++) {
-      testResults.push(<Text style={uiStyle.text}>results[i]</Text>);
+      testResults.push(<Text style={uiStyle.text}>{results[i]}</Text>);
     }
-  }, [incidentRepoContext, reportId, results]);
+    incidentRepoContext
+      .getReactionTest(reportId)
+      .then((rt) => parseReactionTest(JSON.stringify(rt)))
+      .then((rs) => setReactionTest(rs));
+    testResults.push(<Text style={uiStyle.text}>{reactionTest}</Text>);
+  }, [incidentRepoContext, reactionTest, reportId, results]);
   return (
     <View style={uiStyle.container}>
       <Text style={uiStyle.titleText}>Further Tests Results</Text>

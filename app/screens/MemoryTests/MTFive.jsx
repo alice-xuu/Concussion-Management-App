@@ -40,7 +40,7 @@ function MTFive({ navigation }) {
   const [responses, setResponses] = useState(null);
 
   const handleCreateMultiResponse = (res) => {
-    const desc = 'Memory Test Part 1';
+    const desc = 'Memory Test Part 2';
     incidentRepoContext.addMultiResponse(reportId, desc, res).then(() => {});
   };
 
