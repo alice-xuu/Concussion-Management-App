@@ -71,8 +71,8 @@ function IncidentReportFourScreen({ navigation }) {
   return (
     <SafeAreaView style={uiStyle.container}>
       <Text style={uiStyle.text}>
-        Does the patient have any of the following symptoms? Please select all
-        that apply.
+        Does the affected person have any of the following symptoms? Please
+        select all that apply.
       </Text>
       <ScrollView>
         <SafeAreaView style={cbStyle.allCheckboxContainer}>

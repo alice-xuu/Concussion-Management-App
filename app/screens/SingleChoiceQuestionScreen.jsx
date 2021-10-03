@@ -44,8 +44,8 @@ function SingleChoiceQuestionScreen({ navigation }) {
   return (
     <SafeAreaView style={uiStyle.container}>
       <Text style={uiStyle.text}>
-        Is there a mechanism of injury (a clear way the patient could have been
-        injured)?
+        Is there a mechanism of injury (a clear way the affected person could
+        have been injured)?
       </Text>
       <SafeAreaView style={uiStyle.textContainer}>
         <View style={styles.sameRow}>

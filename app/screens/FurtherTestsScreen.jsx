@@ -23,7 +23,7 @@ function FurtherTests({ navigation }) {
       <ScrollView>
         <Text style={uiStyle.text}>
           There are 5 more tests that will determine the likelihood of the
-          patient having a concussion
+          affected person having a concussion
           {'\n'}
           {'\n'}
           The tests consists of two memory tests, at the start and again at the

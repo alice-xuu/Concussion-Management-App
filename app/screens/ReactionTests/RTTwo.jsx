@@ -14,12 +14,6 @@ import {
   ReportIdContext,
 } from '../../components/GlobalContextProvider';
 
-const descriptions = [
-  'Tap the circle when the circle turns black. Press start when you are ready.',
-  'Tap the circle when the circle turns black.',
-  '',
-];
-
 function RTTwo({ navigation }) {
   const [attemptResults, setAttemptResults] = useState([]);
   const [reportId] = useContext(ReportIdContext);
@@ -49,8 +43,6 @@ function RTTwo({ navigation }) {
     btnTxtStyle = styles.startText;
   } else if (stage === 1) {
     btnStyle = styles.waitButton;
-    btnTxt = 'Wait...';
-    btnTxtStyle = styles.waitText;
   } else if (stage === 2) {
     btnStyle = styles.pressButton;
     btnOnPress = () => {
@@ -62,8 +54,6 @@ function RTTwo({ navigation }) {
       setStartMs(null);
       setStage(0);
     };
-    btnTxt = 'Press!';
-    btnTxtStyle = styles.pressText;
   }
 
   useEffect(() => {
@@ -101,13 +91,6 @@ function RTTwo({ navigation }) {
 
   return (
     <View style={uiStyle.textContainer}>
-      <Text style={[uiStyle.textNoAbsolute]}>
-        Attempt {attemptResults.length + 1}/3
-        {'\n'}
-        {'\n'}
-        {descriptions[stage]}
-      </Text>
-
       <View style={uiStyle.textContainer}>
         <TouchableOpacity
           style={[styles.reactionButton, btnStyle]}
@@ -137,22 +120,12 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   waitButton: {
-    borderWidth: 5,
-    backgroundColor: '#FFFFFF',
-  },
-  waitText: {
-    color: '#000000',
-    fontWeight: 'bold',
-    fontSize: 20,
+    backgroundColor: '#1820EB',
   },
   pressButton: {
-    backgroundColor: '#000000',
+    backgroundColor: '#FAD826',
   },
-  pressText: {
-    color: '#FFFFFF',
-    fontWeight: 'bold',
-    fontSize: 20,
-  },
+
   screenContainer: {
     padding: 10,
   },

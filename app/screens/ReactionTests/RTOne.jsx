@@ -24,11 +24,14 @@ function RTOne({ navigation }) {
           Welcome to the reaction test.
           {'\n'}
           {'\n'}
-          The patient will be presented with traffic lights that will turn
-          yellow after a period of time. They should tap the screen once they
-          turn yellow. The test will run three times.
+          Press the start button button on the next screen to begin the test.
+          The affected individual will be presented with a blue circle that will
+          turn yellow after a period of time. They should tap it the moment it
+          turns yellow.
           {'\n'} {'\n'}
-          Pass the phone to the patient.
+          The test will run three times.
+          {'\n'} {'\n'}
+          Pass the phone to the affected person.
         </Text>
       </ScrollView>
       <TouchableOpacity
