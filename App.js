@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './app/screens/HomeScreen';
 import DocumentsScreen from './app/screens/DocumentsScreen';
-import SingleChoiceQuestionScreen from './app/screens/SingleChoiceQuestionScreen';
+import MechanismOfInjuryCheck from './app/screens/MechanismOfInjuryCheck';
 import CreateProfileScreen from './app/screens/CreateProfileScreen';
 import SelectProfileScreen from './app/screens/SelectProfileScreen';
 import RedFlagsChecklist from './app/screens/RedFlagsChecklist';
@@ -23,7 +23,6 @@ import ChecklistQuestionScreen from './app/screens/RedFlagsChecklist';
 import { GlobalContextProvider } from './app/components/GlobalContextProvider';
 
 import PCSSChecklist from './app/screens/PCSSChecklist';
-import IncidentReportFiveScreen from './app/screens/IncidentReportFiveScreen';
 import FurtherTestsScreen from './app/screens/FurtherTestsScreen';
 import RTOne from './app/screens/ReactionTests/RTOne';
 import RTTwo from './app/screens/ReactionTests/RTTwo';
@@ -66,8 +65,8 @@ export default function App() {
             component={NextStepsScreen}
           />
           <RootStack.Screen
-            name="SingleChoiceQ (IR2)"
-            component={SingleChoiceQuestionScreen}
+            name="Mechanism Of Injury Check"
+            component={MechanismOfInjuryCheck}
           />
           <RootStack.Screen
             name="Text Question (IR3)"
@@ -77,15 +76,11 @@ export default function App() {
             name="Checklist Question (Start Check)"
             component={ChecklistQuestionScreen}
           />
-
-          <RootStack.Screen name="IR 5" component={IncidentReportFiveScreen} />
-
           <RootStack.Screen name="Check Result" component={BadCheckScreen} />
           <RootStack.Screen
             name="Incident Report Result"
             component={IncidentReportResultScreen}
           />
-
           <RootStack.Screen
             name="Further Tests"
             component={FurtherTestsScreen}

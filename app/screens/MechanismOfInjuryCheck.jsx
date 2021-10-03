@@ -18,11 +18,11 @@ import {
 
 import uiStyle from '../components/uiStyle.jsx';
 
-/*
- * Asks user if there is a mechanism of injury
+/**
+ * Asks user if there was a clear head injury
  * Response; Yes, Maybe/Unsure, No.
  */
-function SingleChoiceQuestionScreen({ navigation }) {
+function MechanismOfInjuryCheck({ navigation }) {
   // Context variables
   const [patient, setPatient] = useContext(PatientContext);
   const [reportId, setReportId] = useContext(ReportIdContext);
@@ -44,8 +44,7 @@ function SingleChoiceQuestionScreen({ navigation }) {
   return (
     <SafeAreaView style={uiStyle.container}>
       <Text style={uiStyle.text}>
-        Is there a mechanism of injury (a clear way the affected person could
-        have been injured)?
+        Was there a clear impact to the body or head?
       </Text>
       <SafeAreaView style={uiStyle.textContainer}>
         <View style={styles.sameRow}>
@@ -53,7 +52,7 @@ function SingleChoiceQuestionScreen({ navigation }) {
             style={styles.buttonYes}
             onPress={() => {
               handleCreateSResponse('YES');
-              navigation.navigate('Text Question (IR3)');
+              navigation.navigate('PCSS Checklist');
             }}
           >
             <Text style={styles.label}>YES</Text>
@@ -63,7 +62,7 @@ function SingleChoiceQuestionScreen({ navigation }) {
             style={styles.buttonNo}
             onPress={() => {
               handleCreateSResponse('NO');
-              navigation.navigate('Text Question (IR3)');
+              navigation.navigate('PCSS Checklist');
             }}
           >
             <Text style={styles.label}>NO</Text>
@@ -74,7 +73,7 @@ function SingleChoiceQuestionScreen({ navigation }) {
             style={styles.buttonMaybe}
             onPress={() => {
               handleCreateSResponse('MAYBE');
-              navigation.navigate('Text Question (IR3)');
+              navigation.navigate('PCSS Checklist');
             }}
           >
             <Text style={styles.label}>MAYBE/UNSURE</Text>
@@ -142,4 +141,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SingleChoiceQuestionScreen;
+export default MechanismOfInjuryCheck;

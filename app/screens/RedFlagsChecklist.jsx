@@ -74,8 +74,7 @@ function RedFlagsChecklist({ navigation }) {
   return (
     <SafeAreaView style={uiStyle.container}>
       <Text style={uiStyle.text}>
-        Does the affected individual have any of the following symptoms? Please
-        select all that apply.
+        Are any of the following symptoms present? Select all that apply.
       </Text>
       <ScrollView>
         <SafeAreaView style={cbStyle.allCheckboxContainer}>

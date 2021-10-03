@@ -71,8 +71,7 @@ function PCSSChecklist({ navigation }) {
   return (
     <SafeAreaView style={uiStyle.container}>
       <Text style={uiStyle.text}>
-        Does the affected person have any of the following symptoms? Please
-        select all that apply.
+        Are any of the following symptoms present? Select all that apply.
       </Text>
       <ScrollView>
         <SafeAreaView style={cbStyle.allCheckboxContainer}>
@@ -142,7 +141,7 @@ function PCSSChecklist({ navigation }) {
       <TouchableOpacity
         onPress={() => {
           handleCreateMultiResponse(chosenList);
-          navigation.navigate('Further Tests');
+          navigation.navigate('Incident Report Result');
         }}
         style={uiStyle.bottomButton}
       >

@@ -27,7 +27,7 @@ function NextStepsScreen({ navigation }) {
         </Text>
       </ScrollView>
       <TouchableOpacity
-        onPress={() => navigation.navigate('PCSS Checklist')}
+        onPress={() => navigation.navigate('Mechanism Of Injury Check')}
         style={uiStyle.bottomButton}
       >
         <Text style={uiStyle.buttonLabel}>Start</Text>

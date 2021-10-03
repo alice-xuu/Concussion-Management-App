@@ -91,27 +91,36 @@ function IncidentReportResultScreen({ navigation }) {
     });
   }
   if (reportResults > 0) {
-    //Have Concussion
     screen = (
       <ScrollView styles={styles.scroll}>
         <View style={uiStyle.container}>
           <Text style={styles.text}>
-            The affected person can not return to play.{'\n'} {'\n'}
-            Must see a GP within the next 24 hours.{'\n'} {'\n'}If they develop
-            any of the following symptoms.....
+            The affected individual is displaying some symptoms of concussion.
+            {'\n'} {'\n'}
+            We strongly recommend you complete our further testing.
+            {'\n'} {'\n'}
+            If you are concerned, immediately see a GP.
           </Text>
-          <TouchableOpacity
-            style={styles.bottomButton}
-            onPress={() => navigation.navigate('Create Profile')}
-          >
-            <Text style={styles.buttonLabel}>Save to new profile</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.bottomButton}
-            onPress={() => navigation.navigate('Select Profile')}
-          >
-            <Text style={styles.buttonLabel}>Save to existing profile</Text>
-          </TouchableOpacity>
+          <View style={styles.textContainer}>
+            <TouchableOpacity
+              style={styles.bottomButton}
+              onPress={() => navigation.navigate('Create Profile')}
+            >
+              <Text style={styles.buttonLabel}>Save to new profile</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.bottomButton}
+              onPress={() => navigation.navigate('Select Profile')}
+            >
+              <Text style={styles.buttonLabel}>Save to existing profile</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.bottomButton}
+              onPress={() => navigation.navigate('Further Tests')}
+            >
+              <Text style={styles.buttonLabel}>Further Testing</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </ScrollView>
     );
@@ -120,9 +129,13 @@ function IncidentReportResultScreen({ navigation }) {
       <ScrollView styles={styles.scroll}>
         <View style={uiStyle.container}>
           <Text style={styles.text}>
-            The affected person had none of the signs or symptoms seen
-            previously.{'\n'} {'\n'}
-            We advise them to continue to take further testing.
+            There is a low probability of a concussion injury.
+            {'\n'} {'\n'}
+            However, we strongly recommend you immediately remove yourself from
+            play and complete our further tests.
+            {'\n'} {'\n'}
+            You should rest for the next 24 hours. If symptoms should develop,
+            see a GP immediately.
           </Text>
           <View style={styles.textContainer}>
             <TouchableOpacity
