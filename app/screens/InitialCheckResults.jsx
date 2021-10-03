@@ -47,7 +47,7 @@ let reportResults = 0;
  * or
  * do further test to assess concussion or go to home and create profile
  */
-function IncidentReportResultScreen({ navigation }) {
+function InitialCheckResults({ navigation }) {
   // Context variables
   const [reportId] = useContext(ReportIdContext);
   const incidentRepoContext = useContext(IncidentReportRepoContext);
@@ -205,4 +205,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default IncidentReportResultScreen;
+export default InitialCheckResults;
