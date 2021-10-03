@@ -11,6 +11,8 @@ import {
 import { useContext, useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import uiStyle from '../components/uiStyle';
+import cbStyle from '../components/checkboxStyle';
+
 import {
   IncidentReportRepoContext,
   PatientContext,
@@ -18,19 +20,21 @@ import {
   ReportIdContext,
 } from '../components/GlobalContextProvider';
 import * as target from 'react-native';
-import cbStyle from '../components/checkboxStyle';
 
 /**
  * The screen will ask user for details about concussion in checklist form.
  */
 
-function IncidentReportFourScreen({ navigation }) {
-  const [patient, setPatient] = useContext(PatientContext);
+function RedFlagsChecklist({ navigation }) {
   const [reportId, setReportId] = useContext(ReportIdContext);
   const patientRepoContext = useContext(PatientRepoContext);
   const incidentRepoContext = useContext(IncidentReportRepoContext);
 
   const [responses, setResponses] = useState(null);
+
+  const handleCreateReport = () => {
+    incidentRepoContext.createReport(null).then((id) => setReportId(id));
+  };
 
   const handleCreateMultiResponse = (answers) => {
     const desc = 'Incident Report 4';
@@ -67,82 +71,79 @@ function IncidentReportFourScreen({ navigation }) {
     return chosenList;
   }
   const chosenList = [];
-
   return (
     <SafeAreaView style={uiStyle.container}>
       <Text style={uiStyle.text}>
-        Does the affected person have any of the following symptoms? Please
+        Does the affected individual have any of the following symptoms? Please
         select all that apply.
       </Text>
       <ScrollView>
         <SafeAreaView style={cbStyle.allCheckboxContainer}>
           <SafeAreaView style={cbStyle.checkboxContainer}>
-            <MyCheckbox value="Lying motionless after the event" />
+            <MyCheckbox value="Neck pain or tenderness" />
             <Text
               style={cbStyle.checkboxLabel}
-            >{`Lying motionless after the event`}</Text>
+            >{`Neck pain or tenderness`}</Text>
           </SafeAreaView>
           <SafeAreaView style={cbStyle.checkboxContainer}>
-            <MyCheckbox value="Slow to get up after the head knock" />
-            <Text
-              style={cbStyle.checkboxLabel}
-            >{`Slow to get up after the head knock`}</Text>
+            <MyCheckbox value="Neck pain or tenderness" />
+            <Text style={cbStyle.checkboxLabel}>{`Double vision`}</Text>
           </SafeAreaView>
           <SafeAreaView style={cbStyle.checkboxContainer}>
-            <MyCheckbox value="Looks stunned or dazed" />
+            <MyCheckbox value="Weakness or tingling/burning in the arms or legs" />
             <Text
               style={cbStyle.checkboxLabel}
-            >{`Looks stunned or dazed`}</Text>
+            >{`Weakness or tingling/burning in the arms or legs`}</Text>
           </SafeAreaView>
           <SafeAreaView style={cbStyle.checkboxContainer}>
-            <MyCheckbox value="Shows behavioural or personality changes" />
+            <MyCheckbox value="Severe or increasing headache" />
             <Text
               style={cbStyle.checkboxLabel}
-            >{`Shows behavioural or personality changes`}</Text>
+            >{`Severe or increasing headache`}</Text>
           </SafeAreaView>
           <SafeAreaView style={cbStyle.checkboxContainer}>
-            <MyCheckbox value="Forgets things they normally know" />
+            <MyCheckbox value="Seizures or convulsions" />
             <Text
               style={cbStyle.checkboxLabel}
-            >{`Forgets things they normally know`}</Text>
+            >{`Seizures or convulsions`}</Text>
           </SafeAreaView>
           <SafeAreaView style={cbStyle.checkboxContainer}>
-            <MyCheckbox value="Disorientation or confusion" />
-            <Text
-              style={cbStyle.checkboxLabel}
-            >{`Disorientation or confusion`}</Text>
+            <MyCheckbox value="Loss of consciousness" />
+            <Text style={cbStyle.checkboxLabel}>{`Loss of consciousness`}</Text>
           </SafeAreaView>
           <SafeAreaView style={cbStyle.checkboxContainer}>
-            <MyCheckbox valie="Slowness in responding to questions" />
+            <MyCheckbox value="Deteriorating conscious state" />
             <Text
               style={cbStyle.checkboxLabel}
-            >{`Slowness in responding to questions`}</Text>
+            >{`Deteriorating conscious state`}</Text>
           </SafeAreaView>
           <SafeAreaView style={cbStyle.checkboxContainer}>
-            <MyCheckbox value="Forgetting what happened before injury(retrograde memory)" />
-            <Text
-              style={cbStyle.checkboxLabel}
-            >{`Forgetting what happened before injury(retrograde memory)`}</Text>
+            <MyCheckbox value="Vomiting" />
+            <Text style={cbStyle.checkboxLabel}>{`Vomiting`}</Text>
           </SafeAreaView>
           <SafeAreaView style={cbStyle.checkboxContainer}>
-            <MyCheckbox value="Forgetting what happened after injury" />
+            <MyCheckbox value="Increasing restlessness" />
             <Text
               style={cbStyle.checkboxLabel}
-            >{`Forgetting what happened after injury`}</Text>
+            >{`Increasing restlessness`}</Text>
           </SafeAreaView>
           <SafeAreaView style={cbStyle.checkboxContainer}>
-            <MyCheckbox value="Stumbling and/or slow labored movements" />
+            <MyCheckbox value="Agitation or combativeness" />
             <Text
               style={cbStyle.checkboxLabel}
-            >{`Stumbling and/or slow labored movements`}</Text>
+            >{`Agitation or combativeness`}</Text>
           </SafeAreaView>
         </SafeAreaView>
       </ScrollView>
-      <Text> </Text>
       <TouchableOpacity
         onPress={() => {
+          handleCreateReport();
           handleCreateMultiResponse(chosenList);
-          navigation.navigate('Further Tests');
+          if (chosenList.length === 0) {
+            navigation.navigate('Next Steps');
+          } else {
+            navigation.navigate('Check Result');
+          }
         }}
         style={uiStyle.bottomButton}
       >
@@ -152,42 +153,6 @@ function IncidentReportFourScreen({ navigation }) {
   );
 }
 
-const styles = StyleSheet.create({
-  allCheckboxContainer: {
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    justifyContent: 'space-evenly',
-    margin: 10,
-  },
-  checkboxContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    margin: 1,
-    padding: 5,
-  },
+const styles = StyleSheet.create({});
 
-  checkboxBase: {
-    width: 35,
-    height: 35,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 4,
-    borderWidth: 2,
-    borderColor: 'black',
-    backgroundColor: 'transparent',
-  },
-
-  checkboxChecked: {
-    backgroundColor: '#C4C4C4',
-  },
-
-  checkboxLabel: {
-    marginLeft: 8,
-    fontWeight: '500',
-    fontSize: 14,
-    flex: 1,
-    flexWrap: 'wrap',
-  },
-});
-
-export default IncidentReportFourScreen;
+export default RedFlagsChecklist;

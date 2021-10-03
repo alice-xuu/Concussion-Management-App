@@ -6,7 +6,7 @@ import DocumentsScreen from './app/screens/DocumentsScreen';
 import SingleChoiceQuestionScreen from './app/screens/SingleChoiceQuestionScreen';
 import CreateProfileScreen from './app/screens/CreateProfileScreen';
 import SelectProfileScreen from './app/screens/SelectProfileScreen';
-import StartCheckScreen from './app/screens/StartCheckScreen';
+import RedFlagsChecklist from './app/screens/RedFlagsChecklist';
 import BadCheckScreen from './app/screens/BadCheckScreen';
 import TextQuestionScreen from './app/screens/TextQuestionScreen';
 import ReactionTestScreen from './app/screens/ReactionTestScreen';
@@ -19,10 +19,10 @@ import MTFour from './app/screens/MemoryTests/MTFour';
 import MTFive from './app/screens/MemoryTests/MTFive';
 
 import NextStepsScreen from './app/screens/NextStepsScreen';
-import ChecklistQuestionScreen from './app/screens/StartCheckScreen';
+import ChecklistQuestionScreen from './app/screens/RedFlagsChecklist';
 import { GlobalContextProvider } from './app/components/GlobalContextProvider';
 
-import IncidentReportFourScreen from './app/screens/IncidentReportFourScreen';
+import PCSSChecklist from './app/screens/PCSSChecklist';
 import IncidentReportFiveScreen from './app/screens/IncidentReportFiveScreen';
 import FurtherTestsScreen from './app/screens/FurtherTestsScreen';
 import RTOne from './app/screens/ReactionTests/RTOne';
@@ -53,14 +53,16 @@ export default function App() {
             name="Select Profile"
             component={SelectProfileScreen}
           />
-          <RootStack.Screen name="Start Check" component={StartCheckScreen} />
           <RootStack.Screen
-            name="Incident report 4"
-            component={IncidentReportFourScreen}
+            name="Red flags checklist"
+            component={RedFlagsChecklist}
           />
-          {/* bracket IR refers to incident report in the figma */}
           <RootStack.Screen
-            name="Next Steps (IR1)"
+            name="PCSS Checklist"
+            component={PCSSChecklist}
+          />
+          <RootStack.Screen
+            name="Next Steps"
             component={NextStepsScreen}
           />
           <RootStack.Screen

@@ -39,7 +39,7 @@ function HomeScreen({ navigation }) {
           onPress: () => console.log('Cancel Pressed'),
           style: 'cancel',
         },
-        { text: 'OK', onPress: () => navigation.navigate('Start Check') },
+        { text: 'OK', onPress: () => navigation.navigate('Red flags checklist') },
       ],
     );
 
@@ -48,7 +48,7 @@ function HomeScreen({ navigation }) {
       <Text style={styles.titleText}>Concussion Check</Text>
       <View style={styles.container}>
         <TouchableOpacity onPress={createAlert} style={styles.startCheckButton}>
-          <Text style={styles.startCheckText}>Start Check</Text>
+          <Text style={styles.startCheckText}>Begin Check</Text>
         </TouchableOpacity>
         {/*<Button style={styles.startCheckText} {'Start Check'} onPress={createAlert} />*/}
       </View>
