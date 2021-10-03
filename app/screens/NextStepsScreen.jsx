@@ -28,7 +28,7 @@ function NextStepsScreen({ navigation }) {
         </Text>
       </ScrollView>
       <TouchableOpacity
-        onPress={() => navigation.navigate('SingleChoiceQ (IR2)')}
+        onPress={() => navigation.navigate('Incident report 4')}
         style={uiStyle.bottomButton}
       >
         <Text style={uiStyle.buttonLabel}>Start</Text>

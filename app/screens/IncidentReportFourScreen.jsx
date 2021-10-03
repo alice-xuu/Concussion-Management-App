@@ -142,7 +142,7 @@ function IncidentReportFourScreen({ navigation }) {
       <TouchableOpacity
         onPress={() => {
           handleCreateMultiResponse(chosenList);
-          navigation.navigate('IR 5');
+          navigation.navigate('Further Tests');
         }}
         style={uiStyle.bottomButton}
       >
