@@ -3,26 +3,21 @@ import * as React from 'react';
 import {
   StyleSheet,
   Text,
-  View,
-  Pressable,
   TouchableOpacity,
   SafeAreaView,
   ScrollView,
 } from 'react-native';
 
 import uiStyle from '../../components/uiStyle.jsx';
-import { Ionicons } from '@expo/vector-icons';
-import cbStyle from '../../components/checkboxStyle';
 
 import { useContext, useState } from 'react';
 
 import {
   IncidentReportRepoContext,
-  PatientContext,
-  PatientRepoContext,
   ReportIdContext,
 } from '../../components/GlobalContextProvider';
-import * as target from 'react-native';
+import DisplayOptions from '../../components/MemoryTests/DisplayOptions';
+import { getShuffledOptions } from '../../model/constants/MemoryTestOptions';
 
 /**
  * The screen will be perform memory test.
@@ -33,36 +28,15 @@ import * as target from 'react-native';
 
 function MTFour({ navigation }) {
   // Context variables
-  const [patient, setPatient] = useContext(PatientContext);
-  const [reportId, setReportId] = useContext(ReportIdContext);
-  const patientRepoContext = useContext(PatientRepoContext);
+  const [reportId] = useContext(ReportIdContext);
   const incidentRepoContext = useContext(IncidentReportRepoContext);
 
   // Local state
-  const [responses, setResponses] = useState(null);
+  const [options] = useState(getShuffledOptions());
 
   const handleCreateMultiResponse = (res) => {
     const desc = 'Memory Test Part 1';
     incidentRepoContext.addMultiResponse(reportId, desc, res).then(() => {});
-  };
-
-  const MyCheckbox = (props) => {
-    const [checked, onChange] = useState(false);
-    function onCheckmarkPress() {
-      onChange(!checked);
-      onUpdate(props.value);
-    }
-
-    return (
-      <Pressable
-        style={[cbStyle.checkboxBase, checked && cbStyle.checkboxChecked]}
-        onPress={() => {
-          onCheckmarkPress();
-        }}
-      >
-        {checked && <Ionicons name="checkmark" size={24} color="black" />}
-      </Pressable>
-    );
   };
 
   // updates const list when onCheckmarkPress() is called
@@ -84,52 +58,7 @@ function MTFour({ navigation }) {
         What three images does your patient remember?
       </Text>
       <ScrollView>
-        <SafeAreaView style={cbStyle.allCheckboxContainer}>
-          <SafeAreaView style={cbStyle.checkboxContainer}>
-            <MyCheckbox value="bird" />
-            <Text style={cbStyle.checkboxLabel}>{`bird`}</Text>
-          </SafeAreaView>
-
-          <SafeAreaView style={cbStyle.checkboxContainer}>
-            <MyCheckbox value={'clock'} />
-            <Text style={cbStyle.checkboxLabel}>{`clock`}</Text>
-          </SafeAreaView>
-
-          <SafeAreaView style={cbStyle.checkboxContainer}>
-            <MyCheckbox value={'cup'} />
-            <Text style={cbStyle.checkboxLabel}>{`cup`}</Text>
-          </SafeAreaView>
-
-          <SafeAreaView style={cbStyle.checkboxContainer}>
-            <MyCheckbox value={'flower'} />
-            <Text style={cbStyle.checkboxLabel}>{`flower`}</Text>
-          </SafeAreaView>
-
-          <SafeAreaView style={cbStyle.checkboxContainer}>
-            <MyCheckbox value={'fork'} />
-            <Text style={cbStyle.checkboxLabel}>{`fork`}</Text>
-          </SafeAreaView>
-
-          <SafeAreaView style={cbStyle.checkboxContainer}>
-            <MyCheckbox value={'keys'} />
-            <Text style={cbStyle.checkboxLabel}>{`keys`}</Text>
-          </SafeAreaView>
-
-          <SafeAreaView style={cbStyle.checkboxContainer}>
-            <MyCheckbox value={'pen'} />
-            <Text style={cbStyle.checkboxLabel}>{`pen`}</Text>
-          </SafeAreaView>
-
-          <SafeAreaView style={cbStyle.checkboxContainer}>
-            <MyCheckbox value={'scissors'} />
-            <Text style={cbStyle.checkboxLabel}>{`scissors`}</Text>
-          </SafeAreaView>
-
-          <SafeAreaView style={cbStyle.checkboxContainer}>
-            <MyCheckbox value={'toothbrush'} />
-            <Text style={cbStyle.checkboxLabel}>{`toothbrush`}</Text>
-          </SafeAreaView>
-        </SafeAreaView>
+        <DisplayOptions options={options} updateOption={onUpdate} />
       </ScrollView>
       <TouchableOpacity
         onPress={() => {

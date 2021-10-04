@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Button,
   View,
+  Alert,
 } from 'react-native';
 
 import uiStyle from '../components/uiStyle';
@@ -27,19 +28,35 @@ function HomeScreen({ navigation }) {
   const handleCreateReport = () => {
     incidentRepoContext.createReport(null).then((id) => setReportId(id));
   };
+
+  const createAlert = () =>
+    Alert.alert(
+      'Alert',
+      'Make sure there is someone to help after you start check!',
+      [
+        {
+          text: 'Cancel',
+          onPress: () => console.log('Cancel Pressed'),
+          style: 'cancel',
+        },
+        { text: 'OK', onPress: () => navigation.navigate('Start Check') },
+      ],
+    );
+
   return (
     <SafeAreaView style={styles.screen}>
       <Text style={styles.titleText}>Concussion Check</Text>
       <View style={styles.container}>
-        <TouchableOpacity
-          onPress={() => {
-            handleCreateReport();
-            navigation.navigate('Start Check');
-          }}
-          style={styles.startCheckButton}
-        >
+        <TouchableOpacity onPress={createAlert} style={styles.startCheckButton}>
           <Text style={styles.startCheckText}>Start Check</Text>
         </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Balance Test 1')}
+          style={uiStyle.bottomButton}
+        >
+          <Text style={uiStyle.buttonLabel}>Test</Text>
+        </TouchableOpacity>
+        {/*<Button style={styles.startCheckText} {'Start Check'} onPress={createAlert} />*/}
       </View>
 
       <View style={styles.container2}>

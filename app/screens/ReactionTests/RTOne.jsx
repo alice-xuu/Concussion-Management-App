@@ -31,7 +31,7 @@ function RTOne({ navigation }) {
           {'\n'} {'\n'}
           The test will run three times.
           {'\n'} {'\n'}
-          Pass the phone to the affected patient.
+          Pass the phone to the affected person.
         </Text>
       </ScrollView>
       <TouchableOpacity
