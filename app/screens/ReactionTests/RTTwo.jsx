@@ -14,6 +14,12 @@ import {
   ReportIdContext,
 } from '../../components/GlobalContextProvider';
 
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min);
+}
+
 function RTTwo({ navigation }) {
   const [attemptResults, setAttemptResults] = useState([]);
   const [reportId] = useContext(ReportIdContext);
@@ -37,7 +43,7 @@ function RTTwo({ navigation }) {
       setTimeout(() => {
         setStartMs(Date.now());
         setStage(2);
-      }, 3000); // wait 3 seconds, then set to next stage
+      }, getRandomInt(2000, 5000)); // wait between 2 and 5 seconds, then set to next stage
     };
     btnTxt = 'Start!';
     btnTxtStyle = styles.startText;
