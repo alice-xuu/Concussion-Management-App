@@ -15,7 +15,7 @@ function BadCheckScreen({ navigation }) {
   return (
     <SafeAreaView style={uiStyle.container}>
       <Text style={uiStyle.text}>
-        Your patient needs to go to hospital immediately. Call 000.
+        The affected person needs to go to hospital immediately. Call 000.
       </Text>
       <View style={uiStyle.startCheckButton}>
         <Text style={uiStyle.startCheckText}>Call 000</Text>

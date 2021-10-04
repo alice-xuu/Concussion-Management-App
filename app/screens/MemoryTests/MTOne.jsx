@@ -23,11 +23,11 @@ function MTOne({ navigation }) {
         <Text style={uiStyle.text}>
           Welcome to the first memory test. {'\n'}
           {'\n'}
-          The patient will be presented with three images to remember, they will
-          be tested on these images once now and then again at the end of the
+          The affected person will be presented with three images to remember,
+          they will be tested on these images once now and then again at the end
           other assessments. {'\n'}
           {'\n'}
-          Pass the phone to the patient.
+          Pass the phone to the affected person.
         </Text>
       </ScrollView>
 
