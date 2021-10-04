@@ -1,26 +1,17 @@
 import * as React from 'react';
 
-import {
-  StyleSheet,
-  Text,
-  View,
-  Pressable,
-  TouchableOpacity,
-  SafeAreaView,
-} from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, SafeAreaView } from 'react-native';
 
 import uiStyle from '../../components/uiStyle.jsx';
-import { Ionicons } from '@expo/vector-icons';
 
 import { useContext, useState } from 'react';
 
 import {
   IncidentReportRepoContext,
-  PatientContext,
-  PatientRepoContext,
   ReportIdContext,
 } from '../../components/GlobalContextProvider';
-import * as target from 'react-native';
+import DisplayOptions from '../../components/MemoryTests/DisplayOptions';
+import { getShuffledOptions } from '../../model/constants/MemoryTestOptions';
 
 /**
  * The screen will be perform memory test.
@@ -28,39 +19,17 @@ import * as target from 'react-native';
  * After this test is completed, user needs to navigate to the next test which
  * is Reaction Test.
  */
-
 function MTFive({ navigation }) {
   // Context variables
-  const [patient, setPatient] = useContext(PatientContext);
-  const [reportId, setReportId] = useContext(ReportIdContext);
-  const patientRepoContext = useContext(PatientRepoContext);
+  const [reportId] = useContext(ReportIdContext);
   const incidentRepoContext = useContext(IncidentReportRepoContext);
 
   // Local state
-  const [responses, setResponses] = useState(null);
+  const [options] = useState(getShuffledOptions());
 
   const handleCreateMultiResponse = (res) => {
     const desc = 'Memory Test Part 1';
     incidentRepoContext.addMultiResponse(reportId, desc, res).then(() => {});
-  };
-
-  const MyCheckbox = (props) => {
-    const [checked, onChange] = useState(false);
-    function onCheckmarkPress() {
-      onChange(!checked);
-      onUpdate(props.value);
-    }
-
-    return (
-      <Pressable
-        style={[styles.checkboxBase, checked && styles.checkboxChecked]}
-        onPress={() => {
-          onCheckmarkPress();
-        }}
-      >
-        {checked && <Ionicons name="checkmark" size={24} color="black" />}
-      </Pressable>
-    );
   };
 
   // updates const list when onCheckmarkPress() is called
@@ -82,50 +51,7 @@ function MTFive({ navigation }) {
         What three images does your patient remember?
       </Text>
       <SafeAreaView style={styles.allCheckboxContainer}>
-        <SafeAreaView style={styles.checkboxContainer}>
-          <MyCheckbox value="bird" />
-          <Text style={styles.checkboxLabel}>{`bird`}</Text>
-        </SafeAreaView>
-
-        <SafeAreaView style={styles.checkboxContainer}>
-          <MyCheckbox value={'clock'} />
-          <Text style={styles.checkboxLabel}>{`clock`}</Text>
-        </SafeAreaView>
-
-        <SafeAreaView style={styles.checkboxContainer}>
-          <MyCheckbox value={'cup'} />
-          <Text style={styles.checkboxLabel}>{`cup`}</Text>
-        </SafeAreaView>
-
-        <SafeAreaView style={styles.checkboxContainer}>
-          <MyCheckbox value={'flower'} />
-          <Text style={styles.checkboxLabel}>{`flower`}</Text>
-        </SafeAreaView>
-
-        <SafeAreaView style={styles.checkboxContainer}>
-          <MyCheckbox value={'fork'} />
-          <Text style={styles.checkboxLabel}>{`fork`}</Text>
-        </SafeAreaView>
-
-        <SafeAreaView style={styles.checkboxContainer}>
-          <MyCheckbox value={'keys'} />
-          <Text style={styles.checkboxLabel}>{`keys`}</Text>
-        </SafeAreaView>
-
-        <SafeAreaView style={styles.checkboxContainer}>
-          <MyCheckbox value={'pen'} />
-          <Text style={styles.checkboxLabel}>{`pen`}</Text>
-        </SafeAreaView>
-
-        <SafeAreaView style={styles.checkboxContainer}>
-          <MyCheckbox value={'scissors'} />
-          <Text style={styles.checkboxLabel}>{`scissors`}</Text>
-        </SafeAreaView>
-
-        <SafeAreaView style={styles.checkboxContainer}>
-          <MyCheckbox value={'toothbrush'} />
-          <Text style={styles.checkboxLabel}>{`toothbrush`}</Text>
-        </SafeAreaView>
+        <DisplayOptions options={options} updateOption={onUpdate} />
       </SafeAreaView>
       <TouchableOpacity
         onPress={() => {
