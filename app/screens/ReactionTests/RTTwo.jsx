@@ -88,10 +88,8 @@ function RTTwo({ navigation }) {
       incidentRepoContext
         .addReactionTest(reportId, attemptResults, avg, grade)
         .catch(console.log);
-
+      setAttemptResults([]);
       navigation.navigate('Reaction Test 3');
-    } else if (attemptResults.length > 3) {
-      navigation.pop();
     }
   }, [reportId, attemptResults, incidentRepoContext, navigation]);
 
