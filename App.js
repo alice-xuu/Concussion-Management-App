@@ -10,7 +10,7 @@ import RedFlagsChecklist from './app/screens/RedFlagsChecklist';
 import BadCheckScreen from './app/screens/BadCheckScreen';
 import TextQuestionScreen from './app/screens/TextQuestionScreen';
 import ReactionTestScreen from './app/screens/ReactionTestScreen';
-import InitialCheckResults from './app/screens/InitialCheckResults';
+import SecondCheckResults from './app/screens/SecondCheckResults';
 import SampleDatabaseScreen from './app/screens/SampleDatabaseScreen';
 import MTOne from './app/screens/MemoryTests/MTOne';
 import MTTwo from './app/screens/MemoryTests/MTTwo';
@@ -79,7 +79,7 @@ export default function App() {
           <RootStack.Screen name="Check Result" component={BadCheckScreen} />
           <RootStack.Screen
             name="Incident Report Result"
-            component={InitialCheckResults}
+            component={SecondCheckResults}
           />
           <RootStack.Screen
             name="Further Tests"
