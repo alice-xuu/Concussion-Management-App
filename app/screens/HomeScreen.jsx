@@ -56,6 +56,12 @@ function HomeScreen({ navigation }) {
         >
           <Text style={uiStyle.buttonLabel}>Memory Test 1</Text>
         </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Sample Database')}
+          style={uiStyle.bottomButton}
+        >
+          <Text style={uiStyle.buttonLabel}>Sample Database</Text>
+        </TouchableOpacity>
         {/*<Button style={styles.startCheckText} {'Start Check'} onPress={createAlert} />*/}
       </View>
 

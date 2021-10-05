@@ -15,6 +15,7 @@ import {
 import uiStyle from '../components/uiStyle.jsx';
 
 const parseMultiResponses = (mrs) => {
+  console.log('in parseMultiResponses');
   const memoryTestCorrectAnswers = [];
   const memoryTest1Responses = [];
   const memoryTest2Responses = [];
@@ -79,12 +80,18 @@ const parseMultiResponses = (mrs) => {
 };
 
 const parseReactionTest = (rt) => {
+  console.log('in rt');
   const reactionTestResponses = [];
-  if (rt.time_attempt_1 < 2 && rt.time_attempt_2 < 2 && rt.time_attempt_3 < 2) {
+  if (
+    rt.time_attempt_1 < 500 &&
+    rt.time_attempt_2 < 500 &&
+    rt.time_attempt_3 < 500
+  ) {
     reactionTestResponses.push('Reaction Test Result: Passed');
   } else {
     reactionTestResponses.push('Reaction Test Result:: Failed');
   }
+  console.log('reactionTestResponses' + reactionTestResponses);
   return reactionTestResponses;
 };
 let testResults = [];
@@ -102,17 +109,22 @@ function FurtherTestsResultsScreen({ navigation }) {
   const [reactionTest, setReactionTest] = useState(null);
 
   useEffect(() => {
+    console.log('useEffect');
+    console.log('reportId ' + reportId);
     incidentRepoContext
       .getMultiResponses(reportId)
-      .then((mrs) => parseMultiResponses(JSON.stringify(mrs)))
+      .then((mrs) => parseMultiResponses(mrs))
       .then((res) => setResults(res));
+    console.log('getMultiResponses ' + JSON.stringify(incidentRepoContext.getMultiResponses(reportId)));
     for (let i = 0; i < results.length; i++) {
+      console.log('result' + results[i]);
       testResults.push(<Text style={uiStyle.text}>{results[i]}</Text>);
     }
     incidentRepoContext
       .getReactionTest(reportId)
-      .then((rt) => parseReactionTest(JSON.stringify(rt)))
+      .then((rt) => parseReactionTest(rt))
       .then((rs) => setReactionTest(rs));
+    console.log('reaction Test ' + reactionTest);
     testResults.push(<Text style={uiStyle.text}>{reactionTest}</Text>);
   }, [incidentRepoContext, reactionTest, reportId, results]);
   return (

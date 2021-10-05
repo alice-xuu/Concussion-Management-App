@@ -33,7 +33,16 @@ function BTTwo({ navigation }) {
     const desc = 'BalanceTest-response: first SD, second VAR';
     incidentRepoContext
       .addMultiResponse(reportId, desc, answers)
-      .then(() => {});
+      .then(() => {})
+      .then(
+        () => {
+          incidentRepoContext
+            .getMultiResponses(reportId)
+            .then((mrs) => setResponses(JSON.stringify(mrs)));
+        },
+        (err) => console.log(err),
+      );
+    console.log('reportId' + reportId + 'response: ' + responses);
   };
 
   const [text, setText] = useState('Start!');

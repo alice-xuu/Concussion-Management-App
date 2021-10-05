@@ -22,6 +22,7 @@ import { getShuffledOptions } from '../../model/constants/MemoryTestOptions';
 function MTFive({ navigation }) {
   // Context variables
   const [reportId] = useContext(ReportIdContext);
+  const [responses, setResponses] = useState(null);
   const incidentRepoContext = useContext(IncidentReportRepoContext);
 
   // Local state
@@ -29,7 +30,18 @@ function MTFive({ navigation }) {
 
   const handleCreateMultiResponse = (res) => {
     const desc = 'Memory Test Part 2';
-    incidentRepoContext.addMultiResponse(reportId, desc, res).then(() => {});
+    incidentRepoContext
+      .addMultiResponse(reportId, desc, res)
+      .then(() => {})
+      .then(
+        () => {
+          incidentRepoContext
+            .getMultiResponses(reportId)
+            .then((mrs) => setResponses(JSON.stringify(mrs)));
+        },
+        (err) => console.log(err),
+      );
+    console.log('reportId' + reportId + 'response: ' + responses);
   };
 
   // updates const list when onCheckmarkPress() is called

@@ -46,6 +46,10 @@ export default function App() {
           <RootStack.Screen name="Home" component={HomeScreen} />
           <RootStack.Screen name="Documents" component={DocumentsScreen} />
           <RootStack.Screen
+            name="Sample Database"
+            component={SampleDatabaseScreen}
+          />
+          <RootStack.Screen
             name="Create Profile"
             component={CreateProfileScreen}
           />
