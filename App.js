@@ -3,14 +3,14 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './app/screens/HomeScreen';
 import DocumentsScreen from './app/screens/DocumentsScreen';
-import SingleChoiceQuestionScreen from './app/screens/SingleChoiceQuestionScreen';
+import MechanismOfInjuryCheck from './app/screens/MechanismOfInjuryCheck';
 import CreateProfileScreen from './app/screens/CreateProfileScreen';
 import SelectProfileScreen from './app/screens/SelectProfileScreen';
-import StartCheckScreen from './app/screens/StartCheckScreen';
+import RedFlagsChecklist from './app/screens/RedFlagsChecklist';
 import BadCheckScreen from './app/screens/BadCheckScreen';
 import TextQuestionScreen from './app/screens/TextQuestionScreen';
 import ReactionTestScreen from './app/screens/ReactionTestScreen';
-import IncidentReportResultScreen from './app/screens/IncidentReportResultScreen';
+import SecondCheckResults from './app/screens/SecondCheckResults';
 import SampleDatabaseScreen from './app/screens/SampleDatabaseScreen';
 import MTOne from './app/screens/MemoryTests/MTOne';
 import MTTwo from './app/screens/MemoryTests/MTTwo';
@@ -19,11 +19,10 @@ import MTFour from './app/screens/MemoryTests/MTFour';
 import MTFive from './app/screens/MemoryTests/MTFive';
 
 import NextStepsScreen from './app/screens/NextStepsScreen';
-import ChecklistQuestionScreen from './app/screens/StartCheckScreen';
+import ChecklistQuestionScreen from './app/screens/RedFlagsChecklist';
 import { GlobalContextProvider } from './app/components/GlobalContextProvider';
 
-import IncidentReportFourScreen from './app/screens/IncidentReportFourScreen';
-import IncidentReportFiveScreen from './app/screens/IncidentReportFiveScreen';
+import PCSSChecklist from './app/screens/PCSSChecklist';
 import FurtherTestsScreen from './app/screens/FurtherTestsScreen';
 import RTOne from './app/screens/ReactionTests/RTOne';
 import RTTwo from './app/screens/ReactionTests/RTTwo';
@@ -53,19 +52,21 @@ export default function App() {
             name="Select Profile"
             component={SelectProfileScreen}
           />
-          <RootStack.Screen name="Start Check" component={StartCheckScreen} />
           <RootStack.Screen
-            name="Incident report 4"
-            component={IncidentReportFourScreen}
+            name="Red flags checklist"
+            component={RedFlagsChecklist}
           />
-          {/* bracket IR refers to incident report in the figma */}
           <RootStack.Screen
-            name="Next Steps (IR1)"
+            name="PCSS Checklist"
+            component={PCSSChecklist}
+          />
+          <RootStack.Screen
+            name="Next Steps"
             component={NextStepsScreen}
           />
           <RootStack.Screen
-            name="SingleChoiceQ (IR2)"
-            component={SingleChoiceQuestionScreen}
+            name="Mechanism Of Injury Check"
+            component={MechanismOfInjuryCheck}
           />
           <RootStack.Screen
             name="Text Question (IR3)"
@@ -75,15 +76,11 @@ export default function App() {
             name="Checklist Question (Start Check)"
             component={ChecklistQuestionScreen}
           />
-
-          <RootStack.Screen name="IR 5" component={IncidentReportFiveScreen} />
-
           <RootStack.Screen name="Check Result" component={BadCheckScreen} />
           <RootStack.Screen
             name="Incident Report Result"
-            component={IncidentReportResultScreen}
+            component={SecondCheckResults}
           />
-
           <RootStack.Screen
             name="Further Tests"
             component={FurtherTestsScreen}
