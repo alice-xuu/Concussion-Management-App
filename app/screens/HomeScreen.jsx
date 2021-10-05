@@ -51,10 +51,10 @@ function HomeScreen({ navigation }) {
           <Text style={styles.startCheckText}>Start Check</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => navigation.navigate('Balance Test 1')}
+          onPress={() => navigation.navigate('Memory Test 1')}
           style={uiStyle.bottomButton}
         >
-          <Text style={uiStyle.buttonLabel}>Test</Text>
+          <Text style={uiStyle.buttonLabel}>Memory Test 1</Text>
         </TouchableOpacity>
         {/*<Button style={styles.startCheckText} {'Start Check'} onPress={createAlert} />*/}
       </View>

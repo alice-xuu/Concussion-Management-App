@@ -56,7 +56,7 @@ function MTFive({ navigation }) {
       <TouchableOpacity
         onPress={() => {
           handleCreateMultiResponse(chosenList);
-          navigation.navigate('Home');
+          navigation.navigate('Further Tests Results');
         }}
         style={uiStyle.bottomButton}
       >

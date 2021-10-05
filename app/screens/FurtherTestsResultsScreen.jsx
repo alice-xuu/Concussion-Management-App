@@ -18,6 +18,7 @@ const parseMultiResponses = (mrs) => {
   const memoryTestCorrectAnswers = [];
   const memoryTest1Responses = [];
   const memoryTest2Responses = [];
+  const balanceTestResponses = [];
 
   const testResultsArray = [];
   if (mrs !== null) {
@@ -39,10 +40,11 @@ const parseMultiResponses = (mrs) => {
       ) {
         memoryTest2Responses.push(element.MultiResponsePart.response);
       } else if (
-        element.MultiResponsePart.desc === 'Balance Test' &&
+        element.MultiResponsePart.desc ===
+          'BalanceTest-response: first SD, second VAR' &&
         element.MultiResponsePart.response !== undefined
       ) {
-        // balanceTestResponses.push(element.MultiResponsePart.response);
+        balanceTestResponses.push(element.MultiResponsePart.response);
       }
     });
   }
@@ -68,6 +70,11 @@ const parseMultiResponses = (mrs) => {
   } else {
     testResultsArray.push('Follow-up Memory Test Result: Failed');
   }
+  if (balanceTestResponses[0] < 3 && balanceTestResponses[1] < 2) {
+    testResultsArray.push('Follow-up Memory Test Result: Passed');
+  } else {
+    testResultsArray.push('Follow-up Memory Test Result: Failed');
+  }
   return testResultsArray;
 };
 
@@ -75,6 +82,8 @@ const parseReactionTest = (rt) => {
   const reactionTestResponses = [];
   if (rt.time_attempt_1 < 2 && rt.time_attempt_2 < 2 && rt.time_attempt_3 < 2) {
     reactionTestResponses.push('Reaction Test Result: Passed');
+  } else {
+    reactionTestResponses.push('Reaction Test Result:: Failed');
   }
   return reactionTestResponses;
 };
