@@ -14,24 +14,14 @@ import {
 } from '../components/GlobalContextProvider';
 import uiStyle from '../components/uiStyle';
 
-const parseMultiResponses = (mrs) => {
-  const responsesArray = [];
-  if (mrs !== null) {
-    // console.log(mrs);
-    mrs.forEach((element) => {
-      if (element.MultiResponsePart.response !== undefined) {
-        responsesArray.push('Yes');
-      }
-    });
-  }
-  return responsesArray;
-};
-
 const parseSingleResponses = (srs) => {
   let responsesArray = [];
   if (srs !== null) {
     srs.forEach((element) => {
-      if (element.response === 'YES') {
+      if (
+        element.description === 'Mechanism of injury response' &&
+        element.response === 'YES'
+      ) {
         responsesArray.push('Yes');
       }
     });
@@ -62,7 +52,7 @@ function SecondCheckResults({ navigation }) {
   }, []);
 
   // Local state
-  let [responses, setResponses] = useState(null);
+  let [responses, setResponses] = useState([]);
   let screen;
 
   useEffect(() => {
@@ -73,16 +63,8 @@ function SecondCheckResults({ navigation }) {
         setResponses(parseSingleResponses(srs));
       }
     });
-
-    // Get multi-responses
-    incidentRepoContext.getMultiResponses(reportId).then((mrs) => {
-      if (mounted.current) {
-        setResponses(parseMultiResponses(mrs));
-      }
-    });
   }, [incidentRepoContext, reportId]);
 
-  // console.log(responses);
   if (responses !== null) {
     responses.forEach((element) => {
       if (element === 'Yes') {

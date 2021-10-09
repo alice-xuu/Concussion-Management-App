@@ -33,7 +33,7 @@ function MechanismOfInjuryCheck({ navigation }) {
   const [responses, setResponses] = useState(null);
 
   const handleCreateSResponse = (res) => {
-    const desc = 'IR2-response';
+    const desc = 'Mechanism of injury response';
     incidentRepoContext.addSingleResponse(reportId, desc, res).then(() => {
       incidentRepoContext
         .getSingleResponses(reportId)
