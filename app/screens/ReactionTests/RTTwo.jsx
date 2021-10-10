@@ -77,9 +77,8 @@ function RTTwo({ navigation }) {
         .then(() => {
           incidentRepoContext
             .getReactionTest(reportId)
-            .then((rs) => setReactionTest(rs));
+            .then((rs) => console.log(rs));
         });
-      console.log('reportId' + reportId + 'reactionTest: ' + reactionTest);
     }
   }, [reportId, attemptResults, incidentRepoContext, reactionTest]);
 

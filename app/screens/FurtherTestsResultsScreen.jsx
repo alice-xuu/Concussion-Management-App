@@ -7,7 +7,7 @@ import {
   ScrollView,
 } from 'react-native';
 
-import { useEffect, useContext, useState } from 'react';
+import { useEffect, useContext, useState, useRef } from 'react';
 import {
   IncidentReportRepoContext,
   ReportIdContext,
@@ -23,29 +23,35 @@ const parseMultiResponses = (mrs) => {
 
   const testResultsArray = [];
   if (mrs !== null) {
-    // console.log(mrs);
-    mrs.forEach((element) => {
+    mrs.forEach((mr) => {
       if (
-        element.MultiResponsePart.desc === 'Memory Test Correct Answers' &&
-        element.MultiResponsePart.response !== undefined
+        mr.description === 'Memory Test Correct Answers' &&
+        mr.MultiResponsePart !== undefined
       ) {
-        memoryTestCorrectAnswers.push(element.MultiResponsePart.response);
+        mr.MultiResponsePart.forEach((mrp) => {
+          memoryTestCorrectAnswers.push(mrp.response);
+        });
       } else if (
-        element.MultiResponsePart.desc === 'Memory Test Part 1' &&
-        element.MultiResponsePart.response !== undefined
+        mr.description === 'Memory Test Part 1' &&
+        mr.MultiResponsePart !== undefined
       ) {
-        memoryTest1Responses.push(element.MultiResponsePart.response);
+        mr.MultiResponsePart.forEach((mrp) => {
+          memoryTest1Responses.push(mrp.response);
+        });
       } else if (
-        element.MultiResponsePart.desc === 'Memory Test Part 2' &&
-        element.MultiResponsePart.response !== undefined
+        mr.description === 'Memory Test Part 2' &&
+        mr.MultiResponsePart !== undefined
       ) {
-        memoryTest2Responses.push(element.MultiResponsePart.response);
+        mr.MultiResponsePart.forEach((mrp) => {
+          memoryTest2Responses.push(mrp.response);
+        });
       } else if (
-        element.MultiResponsePart.desc ===
-          'BalanceTest-response: first SD, second VAR' &&
-        element.MultiResponsePart.response !== undefined
+        mr.description === 'BalanceTest-response: first SD, second VAR' &&
+        mr.MultiResponsePart !== undefined
       ) {
-        balanceTestResponses.push(element.MultiResponsePart.response);
+        mr.MultiResponsePart.forEach((mrp) => {
+          balanceTestResponses.push(mrp.response);
+        });
       }
     });
   }
@@ -107,25 +113,50 @@ function FurtherTestsResultsScreen({ navigation }) {
   const [reportId] = useContext(ReportIdContext);
   const [results, setResults] = useState([]);
   const [reactionTest, setReactionTest] = useState(null);
+  const mounted = useRef(false);
 
+  useEffect(() => {
+    mounted.current = true; // Component is mounted
+    return () => {
+      // Component is unmounted
+      mounted.current = false;
+    };
+  }, []);
   useEffect(() => {
     console.log('useEffect');
     console.log('reportId ' + reportId);
+    incidentRepoContext.getSingleResponses(reportId).then((srs) => {
+      if (mounted.current) {
+        console.log(srs);
+      }
+    });
+    incidentRepoContext.getReactionTest(reportId).then((rs) => {
+      if (mounted.current) {
+        console.log('logging');
+      }
+    });
     incidentRepoContext
       .getMultiResponses(reportId)
-      .then((mrs) => parseMultiResponses(mrs))
-      .then((res) => setResults(res));
-    console.log('getMultiResponses ' + JSON.stringify(incidentRepoContext.getMultiResponses(reportId)));
+      .then((mrs) => console.log('getting: ' + JSON.stringify(mrs)));
+      // .then((res) => setResults(res));
     for (let i = 0; i < results.length; i++) {
       console.log('result' + results[i]);
-      testResults.push(<Text style={uiStyle.text}>{results[i]}</Text>);
+      testResults.push(
+        <Text key={i} style={uiStyle.text}>
+          {results[i]}
+        </Text>,
+      );
     }
     incidentRepoContext
       .getReactionTest(reportId)
       .then((rt) => parseReactionTest(rt))
       .then((rs) => setReactionTest(rs));
     console.log('reaction Test ' + reactionTest);
-    testResults.push(<Text style={uiStyle.text}>{reactionTest}</Text>);
+    testResults.push(
+      <Text key={99} style={uiStyle.text}>
+        {reactionTest}
+      </Text>,
+    );
   }, [incidentRepoContext, reactionTest, reportId, results]);
   return (
     <View style={uiStyle.container}>

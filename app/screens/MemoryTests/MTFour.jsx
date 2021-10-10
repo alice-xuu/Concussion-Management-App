@@ -33,22 +33,17 @@ function MTFour({ navigation }) {
 
   // Local state
   const [options] = useState(getShuffledOptions());
-  const [responses, setResponses] = useState(null);
 
   const handleCreateMultiResponse = (res) => {
     const desc = 'Memory Test Part 1';
-    incidentRepoContext
-      .addMultiResponse(reportId, desc, res)
-      .then(() => {})
-      .then(
-        () => {
-          incidentRepoContext
-            .getMultiResponses(reportId)
-            .then((mrs) => setResponses(JSON.stringify(mrs)));
-        },
-        (err) => console.log(err),
-      );
-    console.log('reportId' + reportId + 'response: ' + responses);
+    incidentRepoContext.addMultiResponse(reportId, desc, res).then(
+      () => {
+        incidentRepoContext
+          .getMultiResponses(reportId)
+          .then((mrs) => console.log(mrs));
+      },
+      (err) => console.log(err),
+    );
   };
 
   // updates const list when onCheckmarkPress() is called

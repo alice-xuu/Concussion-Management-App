@@ -31,18 +31,14 @@ function BTTwo({ navigation }) {
 
   const handleCreateMultiResponse = (answers) => {
     const desc = 'BalanceTest-response: first SD, second VAR';
-    incidentRepoContext
-      .addMultiResponse(reportId, desc, answers)
-      .then(() => {})
-      .then(
-        () => {
-          incidentRepoContext
-            .getMultiResponses(reportId)
-            .then((mrs) => setResponses(JSON.stringify(mrs)));
-        },
-        (err) => console.log(err),
-      );
-    console.log('reportId' + reportId + 'response: ' + responses);
+    incidentRepoContext.addMultiResponse(reportId, desc, answers).then(
+      () => {
+        incidentRepoContext
+          .getMultiResponses(reportId)
+          .then((mrs) => console.log(mrs));
+      },
+      (err) => console.log(err),
+    );
   };
 
   const [text, setText] = useState('Start!');
