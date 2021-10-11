@@ -22,14 +22,15 @@ import { getShuffledOptions } from '../../model/constants/MemoryTestOptions';
 function MTFive({ navigation }) {
   // Context variables
   const [reportId] = useContext(ReportIdContext);
+  const [responses, setResponses] = useState(null);
   const incidentRepoContext = useContext(IncidentReportRepoContext);
 
   // Local state
   const [options] = useState(getShuffledOptions());
 
   const handleCreateMultiResponse = (res) => {
-    const desc = 'Memory Test Part 1';
-    incidentRepoContext.addMultiResponse(reportId, desc, res).then(() => {});
+    const desc = 'Memory Test Part 2';
+    incidentRepoContext.addMultiResponse(reportId, desc, res).then(r => {});
   };
 
   // updates const list when onCheckmarkPress() is called
@@ -56,7 +57,7 @@ function MTFive({ navigation }) {
       <TouchableOpacity
         onPress={() => {
           handleCreateMultiResponse(chosenList);
-          navigation.navigate('Home');
+          navigation.navigate('Further Tests Results');
         }}
         style={uiStyle.bottomButton}
       >

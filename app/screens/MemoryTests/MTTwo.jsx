@@ -33,33 +33,24 @@ function MTTwo({ navigation }) {
   const patientRepoContext = useContext(PatientRepoContext);
   const incidentRepoContext = useContext(IncidentReportRepoContext);
 
-  // Local state
-  const [responses, setResponses] = useState(null);
-
   const handleCreateMultiResponse = (res) => {
+    console.log('correct answers: ' + res);
     const desc = 'Memory Test Correct Answers';
-    incidentRepoContext.addMultiResponse(reportId, desc, res).then(
-      () => {
-        incidentRepoContext
-          .getMultiResponses(reportId)
-          .then((mrs) => setResponses(JSON.stringify(mrs)));
-      },
-      (err) => console.log(err),
-    );
+    incidentRepoContext.addMultiResponse(reportId, desc, res).then(r => {});
   };
 
   const arr = [];
   const threeImages = [];
 
-  function generate3Images(arr) {
-    while (arr.length < 3) {
+  function generate3Images(ar) {
+    while (ar.length < 3) {
       const r = Math.floor(Math.random() * 8) + 1;
-      if (arr.indexOf(r) === -1) {
-        arr.push(r);
+      if (ar.indexOf(r) === -1) {
+        ar.push(r);
         threeImages.push(MTImages[r]);
       }
     }
-    return arr;
+    return ar;
   }
 
   generate3Images(arr);
