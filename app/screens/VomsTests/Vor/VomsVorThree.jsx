@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { SafeAreaView, Text, TouchableOpacity, View } from 'react-native';
 import uiStyle from '../../../components/uiStyle';
-import MyCheckbox from '../../../components/MyCheckbox';
 import { useState } from 'react';
 import DisplayOptions from '../../../components/MemoryTests/DisplayOptions';
 
@@ -24,7 +23,6 @@ function VomsVorThree(props) {
             });
           }}
         />
-        <Text>{JSON.stringify(selected)}</Text>
       </View>
       <TouchableOpacity onPress={() => {}} style={uiStyle.bottomButton}>
         <Text style={uiStyle.buttonLabel}>Next</Text>
