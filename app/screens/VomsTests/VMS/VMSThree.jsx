@@ -4,7 +4,7 @@ import uiStyle from '../../../components/uiStyle';
 import { useState } from 'react';
 import DisplayOptions from '../../../components/MemoryTests/DisplayOptions';
 
-function VomsVorThree(props) {
+function VMSThree(props) {
   const [selected, setSelected] = useState(getOptionsObj());
 
   return (
@@ -24,12 +24,7 @@ function VomsVorThree(props) {
           }}
         />
       </View>
-      <TouchableOpacity
-        onPress={() => {
-          props.navigation.navigate('Memory Test 5');
-        }}
-        style={uiStyle.bottomButton}
-      >
+      <TouchableOpacity onPress={() => {}} style={uiStyle.bottomButton}>
         <Text style={uiStyle.buttonLabel}>Next</Text>
       </TouchableOpacity>
     </SafeAreaView>
@@ -45,4 +40,4 @@ const getOptionsObj = () => {
   return obj;
 };
 
-export default VomsVorThree;
+export default VMSThree;

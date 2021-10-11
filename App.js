@@ -44,7 +44,7 @@ export default function App() {
   return (
     <GlobalContextProvider>
       <NavigationContainer>
-        <RootStack.Navigator initialRouteName="Home">
+        <RootStack.Navigator initialRouteName="Voms Test VMS 1">
           <RootStack.Screen name="Home" component={HomeScreen} />
           <RootStack.Screen name="Documents" component={DocumentsScreen} />
           <RootStack.Screen
@@ -100,6 +100,10 @@ export default function App() {
           <RootStack.Screen name="Voms Test Vor 1" component={VomsVorOne} />
           <RootStack.Screen name="Voms Test Vor 2" component={VomsVorTwo} />
           <RootStack.Screen name="Voms Test Vor 3" component={VomsVorThree} />
+
+          <RootStack.Screen name="Voms Test VMS 1" component={VomsVorOne} />
+          <RootStack.Screen name="Voms Test VMS 2" component={VomsVorTwo} />
+          <RootStack.Screen name="Voms Test VMS 3" component={VomsVorThree} />
         </RootStack.Navigator>
       </NavigationContainer>
     </GlobalContextProvider>
