@@ -30,14 +30,7 @@ function MTFive({ navigation }) {
 
   const handleCreateMultiResponse = (res) => {
     const desc = 'Memory Test Part 2';
-    incidentRepoContext.addMultiResponse(reportId, desc, res).then(
-      () => {
-        incidentRepoContext
-          .getMultiResponses(reportId)
-          .then((mrs) => console.log(mrs));
-      },
-      (err) => console.log(err),
-    );
+    incidentRepoContext.addMultiResponse(reportId, desc, res).then(r => {});
   };
 
   // updates const list when onCheckmarkPress() is called

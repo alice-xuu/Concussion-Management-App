@@ -73,12 +73,7 @@ function RTTwo({ navigation }) {
       }
       incidentRepoContext
         .addReactionTest(reportId, attemptResults, avg, grade)
-        .catch(console.log)
-        .then(() => {
-          incidentRepoContext
-            .getReactionTest(reportId)
-            .then((rs) => console.log(rs));
-        });
+        .catch(console.log);
     }
   }, [reportId, attemptResults, incidentRepoContext, reactionTest]);
 

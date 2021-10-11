@@ -36,14 +36,7 @@ function MTTwo({ navigation }) {
   const handleCreateMultiResponse = (res) => {
     console.log('correct answers: ' + res);
     const desc = 'Memory Test Correct Answers';
-    incidentRepoContext.addMultiResponse(reportId, desc, res).then(
-      () => {
-        incidentRepoContext
-          .getMultiResponses(reportId)
-          .then((mrs) => console.log(mrs));
-      },
-      (err) => console.log(err),
-    );
+    incidentRepoContext.addMultiResponse(reportId, desc, res).then(r => {});
   };
 
   const arr = [];
