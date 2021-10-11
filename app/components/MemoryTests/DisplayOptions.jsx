@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import { StyleSheet, Text, View } from 'react-native';
 import MyCheckbox from '../MyCheckbox';
+import checkboxStyle from '../checkboxStyle';
 
 /**
  *
@@ -34,4 +35,5 @@ const styles = StyleSheet.create({
     padding: 5,
     margin: 1,
   },
+  checkboxLabel: checkboxStyle.checkboxLabel,
 });

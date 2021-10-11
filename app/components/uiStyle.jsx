@@ -73,4 +73,25 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 20,
   },
+
+  // Container for main contents of a screen excluding bottom navigation button
+  contentContainer: {
+    flex: 1,
+    alignItems: 'center',
+  },
+
+  contentContainerCentered: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  // Circle used in voms tests
+  vomsCircle: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    backgroundColor: 'red',
+    transform: [{ scaleY: 0.76 }, { scaleX: 0.67 }],
+  },
 });
