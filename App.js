@@ -30,6 +30,9 @@ import RTThree from './app/screens/ReactionTests/RTThree';
 import BTOne from './app/screens/BalanceTests/BTOne';
 import BTTwo from './app/screens/BalanceTests/BTTwo';
 import BTThree from './app/screens/BalanceTests/BTThree';
+import VomsVorOne from './app/screens/VomsTests/Vor/VomsVorOne';
+import VomsVorTwo from './app/screens/VomsTests/Vor/VomsVorTwo';
+import VomsVorThree from './app/screens/VomsTests/Vor/VomsVorThree';
 
 const RootStack = createNativeStackNavigator();
 /**
@@ -56,14 +59,8 @@ export default function App() {
             name="Red flags checklist"
             component={RedFlagsChecklist}
           />
-          <RootStack.Screen
-            name="PCSS Checklist"
-            component={PCSSChecklist}
-          />
-          <RootStack.Screen
-            name="Next Steps"
-            component={NextStepsScreen}
-          />
+          <RootStack.Screen name="PCSS Checklist" component={PCSSChecklist} />
+          <RootStack.Screen name="Next Steps" component={NextStepsScreen} />
           <RootStack.Screen
             name="Mechanism Of Injury Check"
             component={MechanismOfInjuryCheck}
@@ -99,6 +96,10 @@ export default function App() {
           <RootStack.Screen name="Balance Test 3" component={BTThree} />
 
           <RootStack.Screen name="Memory Test 5" component={MTFive} />
+
+          <RootStack.Screen name="Voms Test Vor 1" component={VomsVorOne} />
+          <RootStack.Screen name="Voms Test Vor 2" component={VomsVorTwo} />
+          <RootStack.Screen name="Voms Test Vor 3" component={VomsVorThree} />
         </RootStack.Navigator>
       </NavigationContainer>
     </GlobalContextProvider>
