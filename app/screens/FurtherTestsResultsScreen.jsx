@@ -15,7 +15,6 @@ import {
 import uiStyle from '../components/uiStyle.jsx';
 
 const parseMultiResponses = (mrs) => {
-  console.log('in parseMultiResponses');
   const memoryTestCorrectAnswers = [];
   const memoryTest1Responses = [];
   const memoryTest2Responses = [];
@@ -86,8 +85,6 @@ const parseMultiResponses = (mrs) => {
 };
 
 const parseReactionTest = (rt) => {
-  console.log('in rt');
-  console.log(rt);
   const reactionTestResponses = [];
   if (
     rt.time_attempt_1 < 500 &&
@@ -98,7 +95,6 @@ const parseReactionTest = (rt) => {
   } else {
     reactionTestResponses.push('Reaction Test Result: Failed');
   }
-  console.log('reactionTestResponses' + reactionTestResponses);
   return reactionTestResponses;
 };
 
@@ -123,23 +119,19 @@ function FurtherTestsResultsScreen({ navigation }) {
     };
   }, []);
   useEffect(() => {
-    console.log('useEffect');
-    console.log('report id: ', reportId); // will return 1 as report ID
     incidentRepoContext
       .getMultiResponses(reportId)
       .then((mrs) => parseMultiResponses(mrs))
       .then((res) => setMTBTResults(res));
     incidentRepoContext
       .getReactionTest(reportId)
-      .then((rt) => parseReactionTest(rt), console.log)
+      .then((rt) => parseReactionTest(rt))
       .then((rs) => setReactionTest(rs));
   }, [incidentRepoContext, reportId]);
-  console.log('reaction Test: ' + reactionTest + ' mtAndBtResults: ' + mtAndBtResults);
   let allTestResults = [];
   if (reactionTest !== null && mtAndBtResults.length > 0) {
     let i = 0;
     for (; i < mtAndBtResults.length; i++) {
-      console.log('result' + mtAndBtResults[i]);
       allTestResults.push(
         <Text key={i} style={uiStyle.text}>
           {mtAndBtResults[i]}
