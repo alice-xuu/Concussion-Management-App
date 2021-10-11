@@ -44,7 +44,7 @@ export default function App() {
   return (
     <GlobalContextProvider>
       <NavigationContainer>
-        <RootStack.Navigator initialRouteName="Voms Test VMS 1">
+        <RootStack.Navigator initialRouteName="Home">
           <RootStack.Screen name="Home" component={HomeScreen} />
           <RootStack.Screen name="Documents" component={DocumentsScreen} />
           <RootStack.Screen
