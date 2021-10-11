@@ -18,6 +18,7 @@ import {
   PatientRepoContext,
   ReportIdContext,
 } from '../../components/GlobalContextProvider';
+import getStandardDeviation from '../../model/standardDeviation';
 
 function BTTwo({ navigation }) {
   // Context variables
@@ -31,6 +32,7 @@ function BTTwo({ navigation }) {
 
   const handleCreateMultiResponse = (answers) => {
     const desc = 'BalanceTest-response: first SD, second VAR';
+    console.log(answers);
     incidentRepoContext.addMultiResponse(reportId, desc, answers).then(
       () => {
         incidentRepoContext
@@ -70,17 +72,6 @@ function BTTwo({ navigation }) {
     );
   };
 
-  function getStandardDeviation(array) {
-    const n = array.length;
-    const mean = array.reduce((a, b) => a + b) / n;
-    if (!array || array.length === 0) {
-      return 0;
-    }
-    return Math.sqrt(
-      array.map((x) => Math.pow(x - mean, 2)).reduce((a, b) => a + b) / n,
-    );
-  }
-
   return (
     <SafeAreaView style={styles.screen}>
       <Text style={uiStyle.text}>
@@ -95,13 +86,15 @@ function BTTwo({ navigation }) {
           changeText();
           setTimeout(() => {
             Accelerometer.removeAllListeners();
-            navigation.navigate('Balance Test 3');
             Vibration.vibrate();
             //saving result to database
+            console.log(data);
+            console.log(data * 1000);
             handleCreateMultiResponse([
               Math.round(data * 1000) / 1000,
               Math.round(Math.pow(data, 2) * 1000) / 1000,
             ]);
+            navigation.navigate('Balance Test 3');
           }, 10000);
         }}
         style={styles.startCheckButton}

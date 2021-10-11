@@ -78,15 +78,16 @@ const parseMultiResponses = (mrs) => {
     testResultsArray.push('Follow-up Memory Test Result: Failed');
   }
   if (balanceTestResponses[0] < 3 && balanceTestResponses[1] < 2) {
-    testResultsArray.push('Follow-up Memory Test Result: Passed');
+    testResultsArray.push('Balance Test Result: Passed');
   } else {
-    testResultsArray.push('Follow-up Memory Test Result: Failed');
+    testResultsArray.push('Balance Test Result: Failed');
   }
   return testResultsArray;
 };
 
 const parseReactionTest = (rt) => {
   console.log('in rt');
+  console.log(rt);
   const reactionTestResponses = [];
   if (
     rt.time_attempt_1 < 500 &&
@@ -95,12 +96,11 @@ const parseReactionTest = (rt) => {
   ) {
     reactionTestResponses.push('Reaction Test Result: Passed');
   } else {
-    reactionTestResponses.push('Reaction Test Result:: Failed');
+    reactionTestResponses.push('Reaction Test Result: Failed');
   }
   console.log('reactionTestResponses' + reactionTestResponses);
   return reactionTestResponses;
 };
-let testResults = [];
 
 /**
  * The screen will be perform memory test.
@@ -111,7 +111,7 @@ let testResults = [];
 function FurtherTestsResultsScreen({ navigation }) {
   const incidentRepoContext = useContext(IncidentReportRepoContext);
   const [reportId] = useContext(ReportIdContext);
-  const [results, setResults] = useState([]);
+  const [mtAndBtResults, setMTBTResults] = useState([]);
   const [reactionTest, setReactionTest] = useState(null);
   const mounted = useRef(false);
 
@@ -124,44 +124,39 @@ function FurtherTestsResultsScreen({ navigation }) {
   }, []);
   useEffect(() => {
     console.log('useEffect');
-    console.log('reportId ' + reportId);
-    incidentRepoContext.getSingleResponses(reportId).then((srs) => {
-      if (mounted.current) {
-        console.log(srs);
-      }
-    });
-    incidentRepoContext.getReactionTest(reportId).then((rs) => {
-      if (mounted.current) {
-        console.log('logging');
-      }
-    });
+    console.log('report id: ', reportId); // will return 1 as report ID
     incidentRepoContext
       .getMultiResponses(reportId)
-      .then((mrs) => console.log('getting: ' + JSON.stringify(mrs)));
-      // .then((res) => setResults(res));
-    for (let i = 0; i < results.length; i++) {
-      console.log('result' + results[i]);
-      testResults.push(
+      .then((mrs) => parseMultiResponses(mrs))
+      .then((res) => setMTBTResults(res));
+    incidentRepoContext
+      .getReactionTest(reportId)
+      .then((rt) => parseReactionTest(rt), console.log)
+      .then((rs) => setReactionTest(rs));
+  }, [incidentRepoContext, reportId]);
+  console.log('reaction Test: ' + reactionTest + ' mtAndBtResults: ' + mtAndBtResults);
+  let allTestResults = [];
+  if (reactionTest !== null && mtAndBtResults.length > 0) {
+    let i = 0;
+    for (; i < mtAndBtResults.length; i++) {
+      console.log('result' + mtAndBtResults[i]);
+      allTestResults.push(
         <Text key={i} style={uiStyle.text}>
-          {results[i]}
+          {mtAndBtResults[i]}
         </Text>,
       );
     }
-    incidentRepoContext
-      .getReactionTest(reportId)
-      .then((rt) => parseReactionTest(rt))
-      .then((rs) => setReactionTest(rs));
-    console.log('reaction Test ' + reactionTest);
-    testResults.push(
+    allTestResults.push(
       <Text key={99} style={uiStyle.text}>
         {reactionTest}
       </Text>,
     );
-  }, [incidentRepoContext, reactionTest, reportId, results]);
+  }
+
   return (
     <View style={uiStyle.container}>
       <Text style={uiStyle.titleText}>Further Tests Results</Text>
-      <ScrollView>{testResults}</ScrollView>
+      <ScrollView>{allTestResults}</ScrollView>
       <TouchableOpacity
         style={styles.bottomButton}
         onPress={() => navigation.navigate('Create Profile')}
