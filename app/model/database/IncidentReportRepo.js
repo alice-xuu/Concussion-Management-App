@@ -223,7 +223,6 @@ export class IncidentReportRepo {
     const args = [reportId];
 
     const rs = await this.da.runSqlStmt(sql, args);
-
     return rs.rows.item(0);
   }
 }

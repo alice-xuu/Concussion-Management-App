@@ -24,6 +24,7 @@ import { GlobalContextProvider } from './app/components/GlobalContextProvider';
 
 import PCSSChecklist from './app/screens/PCSSChecklist';
 import FurtherTestsScreen from './app/screens/FurtherTestsScreen';
+import FurtherTestsResultsScreen from './app/screens/FurtherTestsResultsScreen';
 import RTOne from './app/screens/ReactionTests/RTOne';
 import RTTwo from './app/screens/ReactionTests/RTTwo';
 import RTThree from './app/screens/ReactionTests/RTThree';
@@ -47,6 +48,10 @@ export default function App() {
         <RootStack.Navigator initialRouteName="Home">
           <RootStack.Screen name="Home" component={HomeScreen} />
           <RootStack.Screen name="Documents" component={DocumentsScreen} />
+          <RootStack.Screen
+            name="Sample Database"
+            component={SampleDatabaseScreen}
+          />
           <RootStack.Screen
             name="Create Profile"
             component={CreateProfileScreen}
@@ -81,6 +86,11 @@ export default function App() {
           <RootStack.Screen
             name="Further Tests"
             component={FurtherTestsScreen}
+          />
+
+          <RootStack.Screen
+            name="Further Tests Results"
+            component={FurtherTestsResultsScreen}
           />
 
           <RootStack.Screen name="Memory Test 1" component={MTOne} />

@@ -11,9 +11,38 @@ import { Accelerometer } from 'expo-sensors';
 
 import uiStyle from '../../components/uiStyle.jsx';
 import { useContext, useState } from 'react';
-import { dataContext } from '../../components/GlobalContextProvider';
+import {
+  dataContext,
+  IncidentReportRepoContext,
+  PatientContext,
+  PatientRepoContext,
+  ReportIdContext,
+} from '../../components/GlobalContextProvider';
+import getStandardDeviation from '../../model/standardDeviation';
 
 function BTTwo({ navigation }) {
+  // Context variables
+  const [patient, setPatient] = useContext(PatientContext);
+  const [reportId, setReportId] = useContext(ReportIdContext);
+  const patientRepoContext = useContext(PatientRepoContext);
+  const incidentRepoContext = useContext(IncidentReportRepoContext);
+
+  // Local state
+  const [responses, setResponses] = useState(null);
+
+  const handleCreateMultiResponse = (answers) => {
+    const desc = 'BalanceTest-response: first SD, second VAR';
+    console.log(answers);
+    incidentRepoContext.addMultiResponse(reportId, desc, answers).then(
+      () => {
+        incidentRepoContext
+          .getMultiResponses(reportId)
+          .then((mrs) => console.log(mrs));
+      },
+      (err) => console.log(err),
+    );
+  };
+
   const [text, setText] = useState('Start!');
   const changeText = () => setText('Recording!');
   const [data, setData] = useContext(dataContext);
@@ -43,31 +72,6 @@ function BTTwo({ navigation }) {
     );
   };
 
-  function getStandardDeviation(array) {
-    const n = array.length;
-    const mean = array.reduce((a, b) => a + b) / n;
-    if (!array || array.length === 0) {
-      return 0;
-    }
-    return Math.sqrt(
-      array.map((x) => Math.pow(x - mean, 2)).reduce((a, b) => a + b) / n,
-    );
-  }
-
-  // const getVariance = (arr) => {
-  //   const reducer = (total, currentValue) => total + currentValue;
-  //   const sum = arr.reduce(reducer);
-  //   const average = sum / arr.length;
-  //   console.log('average: ', average);
-  //
-  //   const reducer2 = (total, currentValue) =>
-  //     total + Math.pow(currentValue - average, 2);
-  //   const varSum = arr.reduce(reducer2);
-  //   const variance = varSum / (arr.length - 1);
-  //   console.log('Variance: ', variance);
-  //
-  //   return variance;
-  // };
   return (
     <SafeAreaView style={styles.screen}>
       <Text style={uiStyle.text}>
@@ -82,8 +86,15 @@ function BTTwo({ navigation }) {
           changeText();
           setTimeout(() => {
             Accelerometer.removeAllListeners();
-            navigation.navigate('Balance Test 3');
             Vibration.vibrate();
+            //saving result to database
+            console.log(data);
+            console.log(data * 1000);
+            handleCreateMultiResponse([
+              Math.round(data * 1000) / 1000,
+              Math.round(Math.pow(data, 2) * 1000) / 1000,
+            ]);
+            navigation.navigate('Balance Test 3');
           }, 10000);
         }}
         style={styles.startCheckButton}

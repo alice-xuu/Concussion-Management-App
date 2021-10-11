@@ -39,14 +39,14 @@ export const IncidentReportRepoContext = React.createContext(null);
  */
 export const DaContext = React.createContext(null);
 
-export const dataContext = React.createContext(null);
+export const dataContext = React.createContext(0);
 
 /**
  * Provider component
  */
 export function GlobalContextProvider(props) {
   //Global x,y,z
-  const [data, setData] = useState({ x: 0, y: 0, z: 0 });
+  const [data, setData] = useState(0);
 
   // Global patient
   const [patient, setPatient] = useState(new Patient(null, 'John', null));
