@@ -30,7 +30,6 @@ function BTThree({ navigation }) {
 
   const handleCreateMultiResponse = (answers) => {
     const desc = 'BalanceTest-response: first SD, second VAR';
-    console.log(answers);
     incidentRepoContext.addMultiResponse(reportId, desc, answers).then(
       () => {
         incidentRepoContext
