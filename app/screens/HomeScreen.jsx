@@ -52,6 +52,9 @@ function HomeScreen({ navigation }) {
         </TouchableOpacity>
         {/*<Button style={styles.startCheckText} {'Start Check'} onPress={createAlert} />*/}
       </View>
+      <TouchableOpacity onPress={() => navigation.navigate('Voms Start')}>
+        <Text>VOMS Start</Text>
+      </TouchableOpacity>
 
       <View style={styles.container2}>
         <TouchableOpacity
