@@ -24,7 +24,10 @@ function VomsVorThree(props) {
           }}
         />
       </View>
-      <TouchableOpacity onPress={() => {}} style={uiStyle.bottomButton}>
+      <TouchableOpacity
+        onPress={() => props.navigation.navigate('Voms Test Row4 1')}
+        style={uiStyle.bottomButton}
+      >
         <Text style={uiStyle.buttonLabel}>Next</Text>
       </TouchableOpacity>
     </SafeAreaView>

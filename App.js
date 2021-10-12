@@ -110,6 +110,11 @@ export default function App() {
           <RootStack.Screen name="Voms Test Vor 1" component={VomsVorOne} />
           <RootStack.Screen name="Voms Test Vor 2" component={VomsVorTwo} />
           <RootStack.Screen name="Voms Test Vor 3" component={VomsVorThree} />
+
+          <RootStack.Screen name="Voms Test Row4 1" component={VomsVorOne} />
+          <RootStack.Screen name="Voms Test Row4 2" component={VomsVorTwo} />
+          <RootStack.Screen name="Voms Test Row4 3" component={VomsVorThree} />
+          <RootStack.Screen name="Voms Test Row4 4" component={VomsVorThree} />
         </RootStack.Navigator>
       </NavigationContainer>
     </GlobalContextProvider>
