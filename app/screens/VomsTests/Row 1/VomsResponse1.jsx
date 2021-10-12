@@ -4,7 +4,7 @@ import uiStyle from '../../../components/uiStyle';
 import { useState } from 'react';
 import DisplayOptions from '../../../components/MemoryTests/DisplayOptions';
 
-function VomsInitialSymptoms({ navigation }) {
+function VomsResponse1({ navigation }) {
   const [selected, setSelected] = useState(getOptionsObj());
 
   return (
@@ -29,7 +29,7 @@ function VomsInitialSymptoms({ navigation }) {
         />
       </View>
       <TouchableOpacity
-        onPress={() => navigation.navigate('Voms Test SP 1')}
+        onPress={() => navigation.navigate('Home')}
         style={uiStyle.bottomButton}
       >
         <Text style={uiStyle.buttonLabel}>Next</Text>
@@ -47,4 +47,4 @@ const getOptionsObj = () => {
   return obj;
 };
 
-export default VomsInitialSymptoms;
+export default VomsResponse1;

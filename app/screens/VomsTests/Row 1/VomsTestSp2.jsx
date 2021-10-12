@@ -11,11 +11,12 @@ import uiStyle from '../../../components/uiStyle';
 function VomsTestSp2({ navigation }) {
   return (
     <SafeAreaView style={uiStyle.container}>
+      <View style={uiStyle.vomsCircle} />
       <View style={styles.circleContainer}>
         <View style={uiStyle.vomsCircle} />
       </View>
       <TouchableOpacity
-        onPress={() => navigation.navigate('Home')}
+        onPress={() => navigation.navigate('Voms Response 1')}
         style={uiStyle.bottomButton}
       >
         <Text style={uiStyle.buttonLabel}>Next</Text>
