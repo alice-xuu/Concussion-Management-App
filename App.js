@@ -34,6 +34,7 @@ import BTThree from './app/screens/BalanceTests/BTThree';
 import VomsVorOne from './app/screens/VomsTests/Vor/VomsVorOne';
 import VomsVorTwo from './app/screens/VomsTests/Vor/VomsVorTwo';
 import VomsVorThree from './app/screens/VomsTests/Vor/VomsVorThree';
+import Disclaimer from './app/screens/Disclaimer';
 
 const RootStack = createNativeStackNavigator();
 /**
@@ -45,8 +46,9 @@ export default function App() {
   return (
     <GlobalContextProvider>
       <NavigationContainer>
-        <RootStack.Navigator initialRouteName="Home">
+        <RootStack.Navigator initialRouteName="Disclaimer">
           <RootStack.Screen name="Home" component={HomeScreen} />
+          <RootStack.Screen name="Disclaimer" component={Disclaimer} />
           <RootStack.Screen name="Documents" component={DocumentsScreen} />
           <RootStack.Screen
             name="Sample Database"
