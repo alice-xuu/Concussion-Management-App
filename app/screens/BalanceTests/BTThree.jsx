@@ -32,7 +32,7 @@ function BTThree({ navigation }) {
         </Text>
       </ScrollView>
       <TouchableOpacity
-        onPress={() => navigation.navigate('Memory Test 5')}
+        onPress={() => navigation.navigate('Memory Test 5')} //TODO change navigation to VOMS start
         style={uiStyle.bottomButton}
       >
         <Text style={uiStyle.buttonLabel}>Next</Text>
