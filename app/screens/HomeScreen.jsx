@@ -51,6 +51,12 @@ function HomeScreen({ navigation }) {
           <Text style={styles.startCheckText}>Begin Check</Text>
         </TouchableOpacity>
         {/*<Button style={styles.startCheckText} {'Start Check'} onPress={createAlert} />*/}
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Balance Test 1')}
+          style={uiStyle.bottomButton}
+        >
+          <Text style={uiStyle.buttonLabel}>Test</Text>
+        </TouchableOpacity>
       </View>
 
       <View style={styles.container2}>
