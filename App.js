@@ -34,14 +34,11 @@ import BTThree from './app/screens/BalanceTests/BTThree';
 import VomsVorOne from './app/screens/VomsTests/Vor/VomsVorOne';
 import VomsVorTwo from './app/screens/VomsTests/Vor/VomsVorTwo';
 import VomsVorThree from './app/screens/VomsTests/Vor/VomsVorThree';
-<<<<<<< HEAD
 import VomsS1 from './app/screens/VomsTests/Row 2/VomsS1';
 import VomsSP3 from './app/screens/VomsTests/Row 2/VomsSP3';
 import VomsSP4 from './app/screens/VomsTests/Row 2/VomsSP4';
 import VomsResponse2 from './app/screens/VomsTests/Row 2/VomsResponse2';
-=======
 import Disclaimer from './app/screens/Disclaimer';
->>>>>>> ac21332310f3014b791ba45a2d4cdfa6d8012926
 
 const RootStack = createNativeStackNavigator();
 /**
