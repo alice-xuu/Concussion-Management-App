@@ -39,7 +39,10 @@ function HomeScreen({ navigation }) {
           onPress: () => console.log('Cancel Pressed'),
           style: 'cancel',
         },
-        { text: 'OK', onPress: () => navigation.navigate('Red flags checklist') },
+        {
+          text: 'OK',
+          onPress: () => navigation.navigate('Red flags checklist'),
+        },
       ],
     );
 

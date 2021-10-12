@@ -34,10 +34,14 @@ import BTThree from './app/screens/BalanceTests/BTThree';
 import VomsVorOne from './app/screens/VomsTests/Vor/VomsVorOne';
 import VomsVorTwo from './app/screens/VomsTests/Vor/VomsVorTwo';
 import VomsVorThree from './app/screens/VomsTests/Vor/VomsVorThree';
+<<<<<<< HEAD
 import VomsS1 from './app/screens/VomsTests/Row 2/VomsS1';
 import VomsSP3 from './app/screens/VomsTests/Row 2/VomsSP3';
 import VomsSP4 from './app/screens/VomsTests/Row 2/VomsSP4';
 import VomsResponse2 from './app/screens/VomsTests/Row 2/VomsResponse2';
+=======
+import Disclaimer from './app/screens/Disclaimer';
+>>>>>>> ac21332310f3014b791ba45a2d4cdfa6d8012926
 
 const RootStack = createNativeStackNavigator();
 /**
@@ -49,8 +53,9 @@ export default function App() {
   return (
     <GlobalContextProvider>
       <NavigationContainer>
-        <RootStack.Navigator initialRouteName="Home">
+        <RootStack.Navigator initialRouteName="Disclaimer">
           <RootStack.Screen name="Home" component={HomeScreen} />
+          <RootStack.Screen name="Disclaimer" component={Disclaimer} />
           <RootStack.Screen name="Documents" component={DocumentsScreen} />
           <RootStack.Screen
             name="Sample Database"
@@ -119,6 +124,10 @@ export default function App() {
           <RootStack.Screen name="Voms Test Vor 1" component={VomsVorOne} />
           <RootStack.Screen name="Voms Test Vor 2" component={VomsVorTwo} />
           <RootStack.Screen name="Voms Test Vor 3" component={VomsVorThree} />
+
+          <RootStack.Screen name="Voms Test VMS 1" component={VomsVorOne} />
+          <RootStack.Screen name="Voms Test VMS 2" component={VomsVorTwo} />
+          <RootStack.Screen name="Voms Test VMS 3" component={VomsVorThree} />
         </RootStack.Navigator>
       </NavigationContainer>
     </GlobalContextProvider>
