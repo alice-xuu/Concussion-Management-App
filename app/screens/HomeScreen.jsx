@@ -53,6 +53,10 @@ function HomeScreen({ navigation }) {
         {/*<Button style={styles.startCheckText} {'Start Check'} onPress={createAlert} />*/}
       </View>
 
+      <TouchableOpacity onPress={() => navigation.navigate('Voms Test S 1')}>
+        <Text>VOMS Row 2</Text>
+      </TouchableOpacity>
+
       <View style={styles.container2}>
         <TouchableOpacity
           onPress={() => navigation.navigate('Documents')}
@@ -61,6 +65,7 @@ function HomeScreen({ navigation }) {
           <Text style={uiStyle.buttonLabel}>View History</Text>
         </TouchableOpacity>
       </View>
+
     </SafeAreaView>
   );
 }
