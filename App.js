@@ -35,6 +35,7 @@ import VomsVorOne from './app/screens/VomsTests/Vor/VomsVorOne';
 import VomsVorTwo from './app/screens/VomsTests/Vor/VomsVorTwo';
 import VomsVorThree from './app/screens/VomsTests/Vor/VomsVorThree';
 import VomsStart from "./app/screens/VomsTests/Row 1/VomsStart";
+import VomsInitialSymptoms from "./app/screens/VomsTests/Row 1/VomsInitialSymptoms";
 
 const RootStack = createNativeStackNavigator();
 /**
@@ -109,6 +110,10 @@ export default function App() {
           <RootStack.Screen name="Memory Test 5" component={MTFive} />
 
           <RootStack.Screen name="Voms Start" component={VomsStart} />
+          <RootStack.Screen
+            name="Voms Initial Symptoms"
+            component={VomsInitialSymptoms}
+          />
 
           <RootStack.Screen name="Voms Test Vor 1" component={VomsVorOne} />
           <RootStack.Screen name="Voms Test Vor 2" component={VomsVorTwo} />
