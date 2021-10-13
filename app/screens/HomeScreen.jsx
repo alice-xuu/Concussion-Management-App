@@ -32,7 +32,7 @@ function HomeScreen({ navigation }) {
   const createAlert = () =>
     Alert.alert(
       'Alert',
-      'We strongly recommend there is someone to help you do the test!',
+      'We strongly recommend you have someone else do the concussion check for you',
       [
         {
           text: 'Cancel',

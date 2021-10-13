@@ -45,7 +45,10 @@ import VomsSP3 from './app/screens/VomsTests/Row 2/VomsSP3';
 import VomsSP4 from './app/screens/VomsTests/Row 2/VomsSP4';
 import VomsResponse2 from './app/screens/VomsTests/Row 2/VomsResponse2';
 import Disclaimer from './app/screens/Disclaimer';
-
+import VomsNPC1 from './app/screens/VomsTests/Row4/VomsNPC1';
+import VomsNPC2 from './app/screens/VomsTests/Row4/VomsNPC2';
+import VomsNPC3 from './app/screens/VomsTests/Row4/VomsNPC3';
+import VomsResponse4 from './app/screens/VomsTests/Row4/VomsResponse4';
 
 const RootStack = createNativeStackNavigator();
 /**
@@ -141,6 +144,11 @@ export default function App() {
           <RootStack.Screen name="Voms Test VMS 1" component={VomsVorOne} />
           <RootStack.Screen name="Voms Test VMS 2" component={VomsVorTwo} />
           <RootStack.Screen name="Voms Test VMS 3" component={VomsVorThree} />
+
+          <RootStack.Screen name="Voms Test NPC 1" component={VomsNPC1} />
+          <RootStack.Screen name="Voms Test NPC 2" component={VomsNPC2} />
+          <RootStack.Screen name="Voms Test NPC 3" component={VomsNPC3} />
+          <RootStack.Screen name="Voms Test Response 4" component={VomsResponse4} />
 
         </RootStack.Navigator>
       </NavigationContainer>
