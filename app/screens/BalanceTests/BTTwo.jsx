@@ -21,28 +21,6 @@ import {
 import getStandardDeviation from '../../model/standardDeviation';
 
 function BTTwo({ navigation }) {
-  // Context variables
-  const [patient, setPatient] = useContext(PatientContext);
-  const [reportId, setReportId] = useContext(ReportIdContext);
-  const patientRepoContext = useContext(PatientRepoContext);
-  const incidentRepoContext = useContext(IncidentReportRepoContext);
-
-  // Local state
-  const [responses, setResponses] = useState(null);
-
-  const handleCreateMultiResponse = (answers) => {
-    const desc = 'BalanceTest-response: first SD, second VAR';
-    console.log(answers);
-    incidentRepoContext.addMultiResponse(reportId, desc, answers).then(
-      () => {
-        incidentRepoContext
-          .getMultiResponses(reportId)
-          .then((mrs) => console.log(mrs));
-      },
-      (err) => console.log(err),
-    );
-  };
-
   const [text, setText] = useState('Start!');
   const changeText = () => setText('Recording!');
   const [data, setData] = useContext(dataContext);
@@ -87,13 +65,6 @@ function BTTwo({ navigation }) {
           setTimeout(() => {
             Accelerometer.removeAllListeners();
             Vibration.vibrate();
-            //saving result to database
-            console.log(data);
-            console.log(data * 1000);
-            handleCreateMultiResponse([
-              Math.round(data * 1000) / 1000,
-              Math.round(Math.pow(data, 2) * 1000) / 1000,
-            ]);
             navigation.navigate('Balance Test 3');
           }, 10000);
         }}
