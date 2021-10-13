@@ -32,7 +32,7 @@ function HomeScreen({ navigation }) {
   const createAlert = () =>
     Alert.alert(
       'Alert',
-      'Make sure there is someone to help after you start check!',
+      'We strongly recommend you have someone else do the concussion check for you',
       [
         {
           text: 'Cancel',
@@ -63,6 +63,14 @@ function HomeScreen({ navigation }) {
           <Text style={uiStyle.buttonLabel}>View History</Text>
         </TouchableOpacity>
       </View>
+      {/*<View style={styles.container2}>*/}
+      {/*  <TouchableOpacity*/}
+      {/*    onPress={() => navigation.navigate('Voms Test Vor 1')}*/}
+      {/*    style={uiStyle.bottomButton}*/}
+      {/*  >*/}
+      {/*    <Text style={uiStyle.buttonLabel}>Test</Text>*/}
+      {/*  </TouchableOpacity>*/}
+      {/*</View>*/}
     </SafeAreaView>
   );
 }
