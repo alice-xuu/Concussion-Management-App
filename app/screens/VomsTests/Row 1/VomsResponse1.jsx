@@ -4,14 +4,18 @@ import uiStyle from '../../../components/uiStyle';
 import { useState } from 'react';
 import DisplayOptions from '../../../components/MemoryTests/DisplayOptions';
 
-function VomsVorThree(props) {
+function VomsResponse1({ navigation }) {
   const [selected, setSelected] = useState(getOptionsObj());
 
   return (
     <SafeAreaView style={uiStyle.container}>
+      <Text style={uiStyle.titleText}>
+        Does the affected person have any of these symptoms?
+      </Text>
       <View style={[uiStyle.contentContainer]}>
-        <Text style={uiStyle.text}>
-          Does the affected person have any of these symptoms?
+        <Text>
+          {'\n'} {'\n'}
+          {'\n'} {'\n'}
         </Text>
         <DisplayOptions
           options={options}
@@ -25,9 +29,7 @@ function VomsVorThree(props) {
         />
       </View>
       <TouchableOpacity
-        onPress={() => {
-          props.navigation.navigate('Memory Test 5');
-        }}
+        onPress={() => navigation.navigate('Home')}
         style={uiStyle.bottomButton}
       >
         <Text style={uiStyle.buttonLabel}>Next</Text>
@@ -36,7 +38,7 @@ function VomsVorThree(props) {
   );
 }
 
-const options = ['headache', 'nausea', 'dizzyness', 'foggyness'];
+const options = ['headache', 'nausea', 'dizziness', 'fogginess'];
 
 const getOptionsObj = () => {
   const obj = {};
@@ -45,4 +47,4 @@ const getOptionsObj = () => {
   return obj;
 };
 
-export default VomsVorThree;
+export default VomsResponse1;

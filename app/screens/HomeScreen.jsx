@@ -39,7 +39,10 @@ function HomeScreen({ navigation }) {
           onPress: () => console.log('Cancel Pressed'),
           style: 'cancel',
         },
-        { text: 'OK', onPress: () => navigation.navigate('Red flags checklist') },
+        {
+          text: 'OK',
+          onPress: () => navigation.navigate('Red flags checklist'),
+        },
       ],
     );
 
@@ -52,7 +55,6 @@ function HomeScreen({ navigation }) {
         </TouchableOpacity>
         {/*<Button style={styles.startCheckText} {'Start Check'} onPress={createAlert} />*/}
       </View>
-
       <View style={styles.container2}>
         <TouchableOpacity
           onPress={() => navigation.navigate('Documents')}

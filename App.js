@@ -34,10 +34,18 @@ import BTThree from './app/screens/BalanceTests/BTThree';
 import VomsVorOne from './app/screens/VomsTests/Vor/VomsVorOne';
 import VomsVorTwo from './app/screens/VomsTests/Vor/VomsVorTwo';
 import VomsVorThree from './app/screens/VomsTests/Vor/VomsVorThree';
-import VomsOne from './app/screens/VomsTests/Row4/VomsOne';
-import VomsTwo from './app/screens/VomsTests/Row4/VomsTwo';
-import VomsThree from './app/screens/VomsTests/Row4/VomsThree';
-import VomsFour from './app/screens/VomsTests/Row4/VomsFour';
+
+import VomsStart from './app/screens/VomsTests/Row 1/VomsStart';
+import VomsInitialSymptoms from './app/screens/VomsTests/Row 1/VomsInitialSymptoms';
+import VomsTestSp1 from './app/screens/VomsTests/Row 1/VomsTestSp1';
+import VomsTestSp2 from './app/screens/VomsTests/Row 1/VomsTestSp2';
+import VomsResponse1 from './app/screens/VomsTests/Row 1/VomsResponse1';
+import VomsS1 from './app/screens/VomsTests/Row 2/VomsS1';
+import VomsSP3 from './app/screens/VomsTests/Row 2/VomsSP3';
+import VomsSP4 from './app/screens/VomsTests/Row 2/VomsSP4';
+import VomsResponse2 from './app/screens/VomsTests/Row 2/VomsResponse2';
+import Disclaimer from './app/screens/Disclaimer';
+
 
 const RootStack = createNativeStackNavigator();
 /**
@@ -49,8 +57,9 @@ export default function App() {
   return (
     <GlobalContextProvider>
       <NavigationContainer>
-        <RootStack.Navigator initialRouteName="Home">
+        <RootStack.Navigator initialRouteName="Disclaimer">
           <RootStack.Screen name="Home" component={HomeScreen} />
+          <RootStack.Screen name="Disclaimer" component={Disclaimer} />
           <RootStack.Screen name="Documents" component={DocumentsScreen} />
           <RootStack.Screen
             name="Sample Database"
@@ -111,14 +120,28 @@ export default function App() {
 
           <RootStack.Screen name="Memory Test 5" component={MTFive} />
 
+          <RootStack.Screen name="Voms Start" component={VomsStart} />
+          <RootStack.Screen
+            name="Voms Initial Symptoms"
+            component={VomsInitialSymptoms}
+          />
+          <RootStack.Screen name="Voms Test SP 1" component={VomsTestSp1} />
+          <RootStack.Screen name="Voms Test SP 2" component={VomsTestSp2} />
+          <RootStack.Screen name="Voms Response 1" component={VomsResponse1} />
+
+          <RootStack.Screen name="Voms Test S 1" component={VomsS1} />
+          <RootStack.Screen name="Voms Test SP 3" component={VomsSP3} />
+          <RootStack.Screen name="Voms Test SP 4" component={VomsSP4} />
+          <RootStack.Screen name="Voms Response 2" component={VomsResponse2} />
+
           <RootStack.Screen name="Voms Test Vor 1" component={VomsVorOne} />
           <RootStack.Screen name="Voms Test Vor 2" component={VomsVorTwo} />
           <RootStack.Screen name="Voms Test Vor 3" component={VomsVorThree} />
 
-          <RootStack.Screen name="Voms Test Row4 1" component={VomsOne} />
-          <RootStack.Screen name="Voms Test Row4 2" component={VomsTwo} />
-          <RootStack.Screen name="Voms Test Row4 3" component={VomsThree} />
-          <RootStack.Screen name="Voms Test Row4 4" component={VomsFour} />
+          <RootStack.Screen name="Voms Test VMS 1" component={VomsVorOne} />
+          <RootStack.Screen name="Voms Test VMS 2" component={VomsVorTwo} />
+          <RootStack.Screen name="Voms Test VMS 3" component={VomsVorThree} />
+
         </RootStack.Navigator>
       </NavigationContainer>
     </GlobalContextProvider>
