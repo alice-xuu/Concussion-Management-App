@@ -7,7 +7,7 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  View
+  View,
 } from 'react-native';
 import uiStyle from '../../../components/uiStyle';
 
