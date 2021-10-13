@@ -9,10 +9,36 @@ import {
 } from 'react-native';
 
 import uiStyle from '../../components/uiStyle.jsx';
-import { useContext } from 'react';
-import { dataContext } from '../../components/GlobalContextProvider';
+import { useContext, useState } from 'react';
+import {
+  dataContext,
+  IncidentReportRepoContext,
+  PatientContext,
+  PatientRepoContext,
+  ReportIdContext,
+} from '../../components/GlobalContextProvider';
 
 function BTThree({ navigation }) {
+  // Context variables
+  const [patient, setPatient] = useContext(PatientContext);
+  const [reportId, setReportId] = useContext(ReportIdContext);
+  const patientRepoContext = useContext(PatientRepoContext);
+  const incidentRepoContext = useContext(IncidentReportRepoContext);
+
+  // Local state
+  const [responses, setResponses] = useState(null);
+
+  const handleCreateMultiResponse = (answers) => {
+    const desc = 'BalanceTest-response: first SD, second VAR';
+    incidentRepoContext.addMultiResponse(reportId, desc, answers).then(
+      () => {
+        incidentRepoContext
+          .getMultiResponses(reportId)
+          .then((mrs) => console.log(mrs));
+      },
+      (err) => console.log(err),
+    );
+  };
   const [data, setData] = useContext(dataContext);
   return (
     <SafeAreaView style={styles.screen}>
@@ -32,7 +58,13 @@ function BTThree({ navigation }) {
         </Text>
       </ScrollView>
       <TouchableOpacity
-        onPress={() => navigation.navigate('Memory Test 5')} //TODO change navigation to VOMS start
+        onPress={() => {
+          navigation.navigate('Memory Test 5');
+          handleCreateMultiResponse([
+            Math.round(data * 1000) / 1000,
+            Math.round(Math.pow(data, 2) * 1000) / 1000,
+          ]);
+        }}
         style={uiStyle.bottomButton}
       >
         <Text style={uiStyle.buttonLabel}>Next</Text>

@@ -34,6 +34,11 @@ import BTThree from './app/screens/BalanceTests/BTThree';
 import VomsVorOne from './app/screens/VomsTests/Vor/VomsVorOne';
 import VomsVorTwo from './app/screens/VomsTests/Vor/VomsVorTwo';
 import VomsVorThree from './app/screens/VomsTests/Vor/VomsVorThree';
+import VomsStart from './app/screens/VomsTests/Row 1/VomsStart';
+import VomsInitialSymptoms from './app/screens/VomsTests/Row 1/VomsInitialSymptoms';
+import VomsTestSp1 from './app/screens/VomsTests/Row 1/VomsTestSp1';
+import VomsTestSp2 from './app/screens/VomsTests/Row 1/VomsTestSp2';
+import VomsResponse1 from './app/screens/VomsTests/Row 1/VomsResponse1';
 import VomsS1 from './app/screens/VomsTests/Row 2/VomsS1';
 import VomsSP3 from './app/screens/VomsTests/Row 2/VomsSP3';
 import VomsSP4 from './app/screens/VomsTests/Row 2/VomsSP4';
@@ -112,6 +117,15 @@ export default function App() {
           <RootStack.Screen name="Balance Test 3" component={BTThree} />
 
           <RootStack.Screen name="Memory Test 5" component={MTFive} />
+
+          <RootStack.Screen name="Voms Start" component={VomsStart} />
+          <RootStack.Screen
+            name="Voms Initial Symptoms"
+            component={VomsInitialSymptoms}
+          />
+          <RootStack.Screen name="Voms Test SP 1" component={VomsTestSp1} />
+          <RootStack.Screen name="Voms Test SP 2" component={VomsTestSp2} />
+          <RootStack.Screen name="Voms Response 1" component={VomsResponse1} />
 
           <RootStack.Screen name="Voms Test S 1" component={VomsS1} />
           <RootStack.Screen name="Voms Test SP 3" component={VomsSP3} />
