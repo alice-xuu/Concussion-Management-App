@@ -49,6 +49,7 @@ import VomsNPC1 from './app/screens/VomsTests/Row4/VomsNPC1';
 import VomsNPC2 from './app/screens/VomsTests/Row4/VomsNPC2';
 import VomsNPC3 from './app/screens/VomsTests/Row4/VomsNPC3';
 import VomsResponse4 from './app/screens/VomsTests/Row4/VomsResponse4';
+import VomsS5 from './app/screens/VomsTests/Row 2/VomsS5';
 
 const RootStack = createNativeStackNavigator();
 /**
@@ -134,6 +135,7 @@ export default function App() {
 
           <RootStack.Screen name="Voms Test S 1" component={VomsS1} />
           <RootStack.Screen name="Voms Test SP 3" component={VomsSP3} />
+          <RootStack.Screen name="Voms Test S 5" component={VomsS5} />
           <RootStack.Screen name="Voms Test SP 4" component={VomsSP4} />
           <RootStack.Screen name="Voms Response 2" component={VomsResponse2} />
 
