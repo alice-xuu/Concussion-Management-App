@@ -57,7 +57,7 @@ function HomeScreen({ navigation }) {
       </View>
       <View style={styles.container2}>
         <TouchableOpacity
-          onPress={() => navigation.navigate('Documents')}
+          onPress={() => navigation.navigate('Profile')}
           style={uiStyle.bottomButton}
         >
           <Text style={uiStyle.buttonLabel}>View History</Text>
