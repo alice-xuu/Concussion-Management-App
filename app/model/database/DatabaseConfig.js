@@ -72,4 +72,16 @@ CREATE TABLE IF NOT EXISTS ReactionTest (
     grade VARCHAR(10)
 );
   `,
+
+  // User responses for symptom check after each VOMS test section
+  `
+CREATE TABLE IF NOT EXISTS VOMSSymptoms (
+    vomsSymptoms_id INTEGER PRIMARY KEY
+    description VARCHAR(100)
+    headache_rating INTEGER CHECK(headache_rating >= 0 and headache_rating <= 10)
+    nausea_rating INTEGER CHECK(nausea_rating >= 0 and nausea_rating <= 10)
+    dizziness_rating INTEGER CHECK(dizziness_rating >= 0 and dizziness_rating <= 10)
+    fogginess_rating INTEGER CHECK(fogginess_rating >= 0 and fogginess_rating <= 10)
+);
+`,
 ];
