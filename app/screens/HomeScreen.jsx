@@ -63,14 +63,14 @@ function HomeScreen({ navigation }) {
           <Text style={uiStyle.buttonLabel}>View History</Text>
         </TouchableOpacity>
       </View>
-      {/*<View style={styles.container2}>*/}
-      {/*  <TouchableOpacity*/}
-      {/*    onPress={() => navigation.navigate('Voms Test Vor 1')}*/}
-      {/*    style={uiStyle.bottomButton}*/}
-      {/*  >*/}
-      {/*    <Text style={uiStyle.buttonLabel}>Test</Text>*/}
-      {/*  </TouchableOpacity>*/}
-      {/*</View>*/}
+      <View style={styles.container2}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Voms Test SP 1')}
+          style={uiStyle.bottomButton}
+        >
+          <Text style={uiStyle.buttonLabel}>Test</Text>
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 }
