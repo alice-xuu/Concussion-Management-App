@@ -110,9 +110,6 @@ function VomsResponse1({ navigation }) {
   );
 }
 
-const options = ['headache', 'nausea', 'dizziness', 'fogginess'];
-
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
