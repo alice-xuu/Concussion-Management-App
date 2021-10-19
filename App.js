@@ -49,6 +49,7 @@ import VomsNPC1 from './app/screens/VomsTests/Row4/VomsNPC1';
 import VomsNPC2 from './app/screens/VomsTests/Row4/VomsNPC2';
 import VomsNPC3 from './app/screens/VomsTests/Row4/VomsNPC3';
 import VomsResponse4 from './app/screens/VomsTests/Row4/VomsResponse4';
+import ChooseProfileScreen from "./app/screens/ChooseProfileScreen";
 
 const RootStack = createNativeStackNavigator();
 /**
@@ -63,7 +64,7 @@ export default function App() {
         <RootStack.Navigator initialRouteName="Disclaimer">
           <RootStack.Screen name="Home" component={HomeScreen} />
           <RootStack.Screen name="Disclaimer" component={Disclaimer} />
-          <RootStack.Screen name="Documents" component={DocumentsScreen} />
+          <RootStack.Screen name="Profile" component={ChooseProfileScreen} />
           <RootStack.Screen
             name="Sample Database"
             component={SampleDatabaseScreen}
