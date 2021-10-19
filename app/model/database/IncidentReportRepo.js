@@ -83,6 +83,7 @@ export class IncidentReportRepo {
       });
     });
   }
+
   // async changeSingleResponse(ID, text) {
   //   const sql = 'UPDATE SingleResponse SET response = ? WHERE report_id == ?; ';
   //   const args = [text, ID];
@@ -224,5 +225,28 @@ export class IncidentReportRepo {
 
     const rs = await this.da.runSqlStmt(sql, args);
     return rs.rows.item(0);
+  }
+
+  async addVOMSSymptoms(
+    reportId,
+    description,
+    headache_rating,
+    nausea_rating,
+    dizziness_rating,
+    fogginess_rating,
+  ) {
+    const sql = `INSERT INTO VOMSSymptoms (reportId, description, headache_rating, nausea_rating, dizziness_rating, fogginess_rating)
+        VALUES (?, ?, ?, ?, ?, ?)`;
+    const args = [
+      reportId,
+      description,
+      headache_rating,
+      nausea_rating,
+      dizziness_rating,
+      fogginess_rating,
+    ];
+
+    const rs = await this.da.runSqlStmt(sql, args);
+    return rs.insertId;
   }
 }

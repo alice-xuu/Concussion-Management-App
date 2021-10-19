@@ -5,8 +5,6 @@ import { useState } from 'react';
 import DisplayOptions from '../../../components/MemoryTests/DisplayOptions';
 
 function VomsVorThree(props) {
-  const [selected, setSelected] = useState(getOptionsObj());
-
   return (
     <SafeAreaView style={uiStyle.container}>
       <View style={[uiStyle.contentContainer]}>

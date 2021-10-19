@@ -43,7 +43,6 @@ const options = ['headache', 'nausea', 'dizziness', 'fogginess'];
 const getOptionsObj = () => {
   const obj = {};
   options.forEach((opt) => (obj[opt] = false));
-
   return obj;
 };
 

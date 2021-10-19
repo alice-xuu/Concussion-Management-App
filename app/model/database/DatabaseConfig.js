@@ -23,6 +23,10 @@ DROP TABLE IF EXISTS SingleResponse;
   `
 DROP TABLE IF EXISTS ReactionTest;
 `,
+  //TODO: remove
+  `
+DROP TABLE IF EXISTS VOMSPart;
+  `,
   `
 CREATE TABLE IF NOT EXISTS Patient (
     patient_id INTEGER PRIMARY KEY,
