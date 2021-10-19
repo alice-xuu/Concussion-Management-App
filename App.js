@@ -6,6 +6,7 @@ import DocumentsScreen from './app/screens/DocumentsScreen';
 import MechanismOfInjuryCheck from './app/screens/MechanismOfInjuryCheck';
 import CreateProfileScreen from './app/screens/CreateProfileScreen';
 import SelectProfileScreen from './app/screens/SelectProfileScreen';
+import ProfileInfoScreen from './app/screens/ProfileInfoScreen';
 import RedFlagsChecklist from './app/screens/RedFlagsChecklist';
 import BadCheckScreen from './app/screens/BadCheckScreen';
 import TextQuestionScreen from './app/screens/TextQuestionScreen';
@@ -76,6 +77,7 @@ export default function App() {
             name="Select Profile"
             component={SelectProfileScreen}
           />
+          <RootStack.Screen name="Profile Info" component={ProfileInfoScreen} />
           <RootStack.Screen
             name="Red flags checklist"
             component={RedFlagsChecklist}
