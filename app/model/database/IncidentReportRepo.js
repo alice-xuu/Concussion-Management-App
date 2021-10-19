@@ -47,10 +47,10 @@ export class IncidentReportRepo {
   /**
    *
    * @param {number} patientId patient to update report for
-   * @return {Promise<number>} promise of the reportIds
+   * @return {Promise<any[]>} promise of the reportIds
    */
   async getReports(patientId) {
-    const sql = 'SELECT report_id FROM IncidentReport WHERE patient_id == ?;';
+    const sql = 'SELECT * FROM IncidentReport WHERE patient_id == ?;';
     const args = [patientId];
 
     return new Promise((resolve, reject) => {

@@ -7,10 +7,10 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {
-  IncidentReportRepoContext,
+  IncidentReportRepoContext, PatientContext,
   PatientRepoContext,
-  ReportIdContext,
-} from '../components/GlobalContextProvider';
+  ReportIdContext
+} from "../components/GlobalContextProvider";
 import { useContext, useState, useRef, useEffect } from 'react';
 import uiStyle from '../components/uiStyle';
 /**
@@ -20,6 +20,7 @@ import uiStyle from '../components/uiStyle';
 function SelectProfileScreen({ navigation }) {
   // Context variables
   const [patients, setPatients] = useState([]);
+  const [patient, setPatient] = useContext(PatientContext);
   const [reportId, setReportId] = useContext(ReportIdContext);
   const patientRepoContext = useContext(PatientRepoContext);
   const incidentRepoContext = useContext(IncidentReportRepoContext);
@@ -45,11 +46,10 @@ function SelectProfileScreen({ navigation }) {
     return patientsArray;
   };
 
-  const handleUpdateReportExistingPatient = (pid) => {
-    incidentRepoContext.updateReport(pid, reportId).then(
-      (rowsAffected) => console.log(rowsAffected),
-      (err) => console.log(err),
-    );
+  const handleGetPatient = (pid) => {
+    patientRepoContext.getPatient(pid).then((patientRet) => {
+      setPatient(patientRet);
+    });
   };
 
   useEffect(() => {
@@ -76,8 +76,8 @@ function SelectProfileScreen({ navigation }) {
           key={i}
           style={styles.selectUserButton}
           onPress={() => {
-            handleUpdateReportExistingPatient(pid);
-            navigation.navigate('Home');
+            handleGetPatient(pid);
+            navigation.navigate('Profile Info');
           }}
         >
           <Text style={uiStyle.buttonLabel}>{username}</Text>

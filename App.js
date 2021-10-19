@@ -2,7 +2,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './app/screens/HomeScreen';
-import DocumentsScreen from './app/screens/DocumentsScreen';
+import ChooseProfileScreen from './app/screens/ChooseProfileScreen';
 import MechanismOfInjuryCheck from './app/screens/MechanismOfInjuryCheck';
 import CreateProfileScreen from './app/screens/CreateProfileScreen';
 import SelectProfileScreen from './app/screens/SelectProfileScreen';
@@ -50,7 +50,6 @@ import VomsNPC1 from './app/screens/VomsTests/Row4/VomsNPC1';
 import VomsNPC2 from './app/screens/VomsTests/Row4/VomsNPC2';
 import VomsNPC3 from './app/screens/VomsTests/Row4/VomsNPC3';
 import VomsResponse4 from './app/screens/VomsTests/Row4/VomsResponse4';
-import ChooseProfileScreen from "./app/screens/ChooseProfileScreen";
 
 const RootStack = createNativeStackNavigator();
 /**
@@ -65,7 +64,10 @@ export default function App() {
         <RootStack.Navigator initialRouteName="Disclaimer">
           <RootStack.Screen name="Home" component={HomeScreen} />
           <RootStack.Screen name="Disclaimer" component={Disclaimer} />
-          <RootStack.Screen name="Profile" component={ChooseProfileScreen} />
+          <RootStack.Screen
+            name="Choose Profile"
+            component={ChooseProfileScreen}
+          />
           <RootStack.Screen
             name="Sample Database"
             component={SampleDatabaseScreen}

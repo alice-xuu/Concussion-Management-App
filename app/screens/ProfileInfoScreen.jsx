@@ -39,31 +39,41 @@ function ProfileInfoScreen({ navigation }) {
   const parsePatient = (pt) => {
     const patientArray = [];
     if (pt !== undefined) {
-      patientArray.push('First Name: ' + pt.first_name);
-      patientArray.push('Last Name: ' + pt.last_name);
+      patientArray.push('First Name: ' + pt.firstName);
+      patientArray.push('Last Name: ' + pt.lastName);
       patientArray.push('Age: ' + pt.age);
       patientArray.push('Weight: ' + pt.weight);
     }
     return patientArray;
   };
 
+  const parseReports = (rps) => {
+    const reportsArray = [];
+    if (rps !== undefined) {
+      rps.forEach((element) => {
+        reportsArray.push(element.report_id);
+      });
+    }
+    return reportsArray;
+  };
+
   useEffect(() => {
     if (incidentRepoContext !== null) {
-      incidentRepoContext.getReports(patient.patient_id).then((rpIds) => {
+      incidentRepoContext.getReports(patient.patientId).then((rps) => {
         if (mounted.current) {
-          setReports(rpIds);
+          setReports(parseReports(rps));
         }
       });
     } else {
       console.log('null incidentReportRepo');
     }
-    parsePatient(patient).then((pt) => setPatientDetails(pt));
+    setPatientDetails(parsePatient(patient));
   }, [patient, patientRepoContext, incidentRepoContext]);
 
   let patientDetailsText = [];
   if (patientDetails.length > 3) {
     patientDetailsText.push(
-      <Text style={styles.text}>
+      <Text key={0} style={styles.text}>
         {patientDetails[0]}
         {'\n'} {'\n'}
         {patientDetails[1]}
@@ -80,13 +90,13 @@ function ProfileInfoScreen({ navigation }) {
     for (let i = 0; i < reports.length; i++) {
       reportsButtons.push(
         <TouchableOpacity
-          key={i}
+          key={i+1}
           style={styles.selectUserButton}
           onPress={() => {
             // navigation.navigate('Home');
           }}
         >
-          <Text style={uiStyle.buttonLabel}>REPORT {i}</Text>
+          <Text style={uiStyle.buttonLabel}>REPORT {i+1}</Text>
         </TouchableOpacity>,
       );
     }
