@@ -49,6 +49,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 50,
+    alignSelf: 'center',
   },
   buttonLabel: {
     // consistent with "View History" button on Home screen, i.e. white text in the button

@@ -9,13 +9,10 @@ import {
 } from 'react-native';
 import uiStyle from '../../../components/uiStyle';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
+import Slider from '@react-native-community/slider';
 
 function VomsInitialSymptoms({ navigation }) {
-  const [sliderOneChanging, setSliderOneChanging] = React.useState(false);
-  const [sliderOneValue, setSliderOneValue] = React.useState([0]);
-  const sliderOneValuesChangeStart = () => setSliderOneChanging(true);
-  const sliderOneValuesChange = (values) => setSliderOneValue(values);
-  const sliderOneValuesChangeFinish = () => setSliderOneChanging(false);
+  const [sliderOneValue, setSliderOneValue] = React.useState(0);
 
   const [sliderTwoChanging, setSliderTwoChanging] = React.useState(false);
   const [sliderTwoValue, setSliderTwoValue] = React.useState([0]);
@@ -37,75 +34,76 @@ function VomsInitialSymptoms({ navigation }) {
 
   return (
     <SafeAreaView style={uiStyle.container}>
-      <Text style={uiStyle.titleText}>
-        Does the affected person have any of these symptoms?
-      </Text>
-      <View style={[uiStyle.contentContainer]}>
-        <View style={styles.sliders}>
-          <View style={styles.sliderOne}>
-            <Text style={uiStyle.text}>Headache:</Text>
-            <Text style={[uiStyle.text, sliderOneChanging && { color: 'red' }]}>
-              {sliderOneValue}
-            </Text>
+      <ScrollView>
+        <Text style={uiStyle.titleText}>
+          Does the affected person have any of these symptoms?
+        </Text>
+        <View style={[uiStyle.contentContainer]}>
+          <View style={styles.sliders}>
+            <View style={styles.sliderOne}>
+              <Text style={uiStyle.text}>Headache:</Text>
+              <Text style={[uiStyle.text]}>{sliderOneValue}</Text>
+            </View>
+            <Slider
+              minimumValue={0}
+              maximumValue={10}
+              step={1}
+              onValueChange={(val) => setSliderOneValue(val)}
+            />
+            <View style={styles.sliderOne}>
+              <Text style={uiStyle.text}>Nausea: </Text>
+              <Text
+                style={[uiStyle.text, sliderTwoChanging && { color: 'red' }]}
+              >
+                {sliderTwoValue}
+              </Text>
+            </View>
+            <MultiSlider
+              values={sliderTwoValue}
+              sliderLength={310}
+              onValuesChangeStart={sliderTwoValuesChangeStart}
+              onValuesChange={sliderTwoValuesChange}
+              onValuesChangeFinish={sliderTwoValuesChangeFinish}
+            />
+            <View style={styles.sliderOne}>
+              <Text style={uiStyle.text}>Dizziness:</Text>
+              <Text
+                style={[uiStyle.text, sliderThreeChanging && { color: 'red' }]}
+              >
+                {sliderThreeValue}
+              </Text>
+            </View>
+            <MultiSlider
+              values={sliderThreeValue}
+              sliderLength={310}
+              onValuesChangeStart={sliderThreeValuesChangeStart}
+              onValuesChange={sliderThreeValuesChange}
+              onValuesChangeFinish={sliderThreeValuesChangeFinish}
+            />
+            <View style={styles.sliderOne}>
+              <Text style={uiStyle.text}>Fogginess:</Text>
+              <Text
+                style={[uiStyle.text, sliderFourChanging && { color: 'red' }]}
+              >
+                {sliderFourValue}
+              </Text>
+            </View>
+            <MultiSlider
+              values={sliderFourValue}
+              sliderLength={310}
+              onValuesChangeStart={sliderFourValuesChangeStart}
+              onValuesChange={sliderFourValuesChange}
+              onValuesChangeFinish={sliderFourValuesChangeFinish}
+            />
           </View>
-          <MultiSlider
-            values={sliderOneValue}
-            sliderLength={310}
-            onValuesChangeStart={sliderOneValuesChangeStart}
-            onValuesChange={sliderOneValuesChange}
-            onValuesChangeFinish={sliderOneValuesChangeFinish}
-          />
-          <View style={styles.sliderOne}>
-            <Text style={uiStyle.text}>Nausea: </Text>
-            <Text style={[uiStyle.text, sliderTwoChanging && { color: 'red' }]}>
-              {sliderTwoValue}
-            </Text>
-          </View>
-          <MultiSlider
-            values={sliderTwoValue}
-            sliderLength={310}
-            onValuesChangeStart={sliderTwoValuesChangeStart}
-            onValuesChange={sliderTwoValuesChange}
-            onValuesChangeFinish={sliderTwoValuesChangeFinish}
-          />
-          <View style={styles.sliderOne}>
-            <Text style={uiStyle.text}>Dizziness:</Text>
-            <Text
-              style={[uiStyle.text, sliderThreeChanging && { color: 'red' }]}
-            >
-              {sliderThreeValue}
-            </Text>
-          </View>
-          <MultiSlider
-            values={sliderThreeValue}
-            sliderLength={310}
-            onValuesChangeStart={sliderThreeValuesChangeStart}
-            onValuesChange={sliderThreeValuesChange}
-            onValuesChangeFinish={sliderThreeValuesChangeFinish}
-          />
-          <View style={styles.sliderOne}>
-            <Text style={uiStyle.text}>Fogginess:</Text>
-            <Text
-              style={[uiStyle.text, sliderFourChanging && { color: 'red' }]}
-            >
-              {sliderFourValue}
-            </Text>
-          </View>
-          <MultiSlider
-            values={sliderFourValue}
-            sliderLength={310}
-            onValuesChangeStart={sliderFourValuesChangeStart}
-            onValuesChange={sliderFourValuesChange}
-            onValuesChangeFinish={sliderFourValuesChangeFinish}
-          />
         </View>
-      </View>
-      <TouchableOpacity
-        onPress={() => navigation.navigate('Voms Test SP 1')}
-        style={uiStyle.bottomButton}
-      >
-        <Text style={uiStyle.buttonLabel}>Next</Text>
-      </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Voms Test SP 1')}
+          style={uiStyle.bottomButton}
+        >
+          <Text style={uiStyle.buttonLabel}>Next</Text>
+        </TouchableOpacity>
+      </ScrollView>
     </SafeAreaView>
   );
 }
