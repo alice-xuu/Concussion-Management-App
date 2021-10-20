@@ -7,21 +7,23 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {
-  IncidentReportRepoContext, PatientContext,
+  IncidentReportRepoContext,
+  PatientContext,
   PatientRepoContext,
-  ReportIdContext
-} from "../components/GlobalContextProvider";
+  ReportIdContext,
+} from '../components/GlobalContextProvider';
 import { useContext, useState, useRef, useEffect } from 'react';
 import uiStyle from '../components/uiStyle';
 /**
  * The screen will ask user to choose an existing profile to save the result to
  * their account.
  */
-function SelectProfileScreen({ navigation }) {
+function ProfileInfoScreen({ navigation }) {
   // Context variables
-  const [patients, setPatients] = useState([]);
-  const [patient, setPatient] = useContext(PatientContext);
+  const [reports, setReports] = useState([]);
+  const [patientDetails, setPatientDetails] = useState([]);
   const [reportId, setReportId] = useContext(ReportIdContext);
+  const [patient, setPatient] = useContext(PatientContext);
   const patientRepoContext = useContext(PatientRepoContext);
   const incidentRepoContext = useContext(IncidentReportRepoContext);
   const mounted = useRef(false);
@@ -34,69 +36,84 @@ function SelectProfileScreen({ navigation }) {
     };
   }, []);
 
-  const parsePatients = (pts) => {
-    const patientsArray = [];
-    if (pts !== undefined) {
-      pts.forEach((element) => {
-        patientsArray.push(element.first_name);
-        patientsArray.push(element.last_name);
-        patientsArray.push(element.patient_id);
-      });
+  const parsePatient = (pt) => {
+    const patientArray = [];
+    if (pt !== undefined) {
+      patientArray.push('First Name: ' + pt.firstName);
+      patientArray.push('Last Name: ' + pt.lastName);
+      patientArray.push('Age: ' + pt.age);
+      patientArray.push('Weight: ' + pt.weight);
     }
-    return patientsArray;
+    return patientArray;
   };
 
-  const handleGetPatient = (pid) => {
-    patientRepoContext.getPatient(pid).then((patientRet) => {
-      setPatient(patientRet);
-    });
+  const parseReports = (rps) => {
+    const reportsArray = [];
+    if (rps !== undefined) {
+      rps.forEach((element) => {
+        reportsArray.push(element.report_id);
+      });
+    }
+    return reportsArray;
   };
 
   useEffect(() => {
-    // Everytime there is a new patientRepoContext we
-    // get patients from it.
-    if (patientRepoContext !== null) {
-      patientRepoContext.getAllPatients().then((pts) => {
+    if (incidentRepoContext !== null) {
+      incidentRepoContext.getReports(patient.patientId).then((rps) => {
         if (mounted.current) {
-          setPatients(parsePatients(pts));
+          setReports(parseReports(rps));
         }
       });
     } else {
-      console.log('null patientRepo');
+      console.log('null incidentReportRepo');
     }
-  }, [patientRepoContext]);
+    setPatientDetails(parsePatient(patient));
+  }, [patient, patientRepoContext, incidentRepoContext]);
 
-  let usersButtons = [];
-  if (patients.length > 0) {
-    for (let i = 0; i < patients.length; i += 3) {
-      const username = patients[i] + ' ' + patients[i + 1];
-      const pid = patients[i + 2];
-      usersButtons.push(
+  let patientDetailsText = [];
+  if (patientDetails.length > 3) {
+    patientDetailsText.push(
+      <Text key={0} style={styles.text}>
+        {patientDetails[0]}
+        {'\n'} {'\n'}
+        {patientDetails[1]}
+        {'\n'} {'\n'}
+        {patientDetails[2]}
+        {'\n'} {'\n'}
+        {patientDetails[3]}
+      </Text>,
+    );
+  }
+
+  let reportsButtons = [];
+  if (reports.length > 0) {
+    for (let i = 0; i < reports.length; i++) {
+      reportsButtons.push(
         <TouchableOpacity
-          key={i}
+          key={i+1}
           style={styles.selectUserButton}
           onPress={() => {
-            handleGetPatient(pid);
-            navigation.navigate('Profile Info');
+            // navigation.navigate('Home');
           }}
         >
-          <Text style={uiStyle.buttonLabel}>{username}</Text>
+          <Text style={uiStyle.buttonLabel}>REPORT {i+1}</Text>
         </TouchableOpacity>,
       );
     }
   } else {
-    usersButtons.push(
+    reportsButtons.push(
       <Text key={-1} style={styles.text}>
-        There is no existing profile can be selected.
+        There is no existing report.
       </Text>,
     );
   }
   return (
     <SafeAreaView style={uiStyle.container}>
       <ScrollView contentContainerStyle={styles.scrollView}>
-        <Text style={styles.text}>Which profile you want to choose?</Text>
-        {usersButtons}
-
+        <Text style={styles.text}>User Profile</Text>
+        {patientDetailsText}
+        <Text>You can select reports to view</Text>
+        {reportsButtons}
         <TouchableOpacity
           style={styles.bottomButton}
           onPress={() => navigation.goBack()}
@@ -146,4 +163,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SelectProfileScreen;
+export default ProfileInfoScreen;
