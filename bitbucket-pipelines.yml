@@ -14,7 +14,7 @@ pipelines:
               - jest
             script:
               - npm ci
-              - yarn ci-test
+              - jest --ci
         - step:
             name: Lint
             caches:
@@ -32,7 +32,7 @@ pipelines:
                 - jest
               script:
                 - npm ci
-                - yarn ci-test
+                - jest --ci
           - step:
               name: Lint
               caches:
@@ -60,7 +60,7 @@ pipelines:
                 - jest
               script:
                 - npm ci
-                - yarn ci-test
+                - jest --ci
           - step:
               name: Lint
               caches:
