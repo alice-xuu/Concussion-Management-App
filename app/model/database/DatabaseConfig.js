@@ -81,6 +81,7 @@ CREATE TABLE IF NOT EXISTS ReactionTest (
   `
 CREATE TABLE IF NOT EXISTS VOMSSymptoms (
     vomsSymptoms_id INTEGER PRIMARY KEY
+    report_id INTEGER REFERENCES IncidentReport(report_id),
     description VARCHAR(100)
     headache_rating INTEGER CHECK(headache_rating >= 0 and headache_rating <= 10)
     nausea_rating INTEGER CHECK(nausea_rating >= 0 and nausea_rating <= 10)
