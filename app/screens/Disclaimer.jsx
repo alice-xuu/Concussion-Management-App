@@ -14,7 +14,8 @@ function Disclaimer({ navigation }) {
         interpretation or course of treatment.
       </Text>
       <TouchableOpacity
-        onPress={() => navigation.navigate('Voms Start')}
+        // onPress={() => navigation.navigate('Voms Start')}
+        onPress={() => navigation.navigate('Home')}
         style={uiStyle.startCheckButton}
       >
         <Text style={uiStyle.buttonLabel}>I understand</Text>
