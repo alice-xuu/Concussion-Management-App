@@ -2,10 +2,11 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './app/screens/HomeScreen';
-import DocumentsScreen from './app/screens/DocumentsScreen';
+import ChooseProfileScreen from './app/screens/ChooseProfileScreen';
 import MechanismOfInjuryCheck from './app/screens/MechanismOfInjuryCheck';
 import CreateProfileScreen from './app/screens/CreateProfileScreen';
 import SelectProfileScreen from './app/screens/SelectProfileScreen';
+import ProfileInfoScreen from './app/screens/ProfileInfoScreen';
 import RedFlagsChecklist from './app/screens/RedFlagsChecklist';
 import BadCheckScreen from './app/screens/BadCheckScreen';
 import TextQuestionScreen from './app/screens/TextQuestionScreen';
@@ -64,7 +65,10 @@ export default function App() {
         <RootStack.Navigator initialRouteName="Disclaimer">
           <RootStack.Screen name="Home" component={HomeScreen} />
           <RootStack.Screen name="Disclaimer" component={Disclaimer} />
-          <RootStack.Screen name="Documents" component={DocumentsScreen} />
+          <RootStack.Screen
+            name="Choose Profile"
+            component={ChooseProfileScreen}
+          />
           <RootStack.Screen
             name="Sample Database"
             component={SampleDatabaseScreen}
@@ -77,6 +81,7 @@ export default function App() {
             name="Select Profile"
             component={SelectProfileScreen}
           />
+          <RootStack.Screen name="Profile Info" component={ProfileInfoScreen} />
           <RootStack.Screen
             name="Red flags checklist"
             component={RedFlagsChecklist}

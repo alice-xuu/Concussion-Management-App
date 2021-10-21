@@ -16,9 +16,7 @@ function VomsNPC1(props) {
           Ask them to hold the phone 30cm from their face. Then bring the phone
           closer until they see double.
         </Text>
-        <Text style={uiStyle.text}>
-          Measure the distance.
-        </Text>
+        <Text style={uiStyle.text}>Measure the distance.</Text>
       </View>
       <TouchableOpacity
         onPress={() => {
