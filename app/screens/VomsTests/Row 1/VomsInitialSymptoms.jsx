@@ -23,6 +23,8 @@ function VomsInitialSymptoms({ navigation }) {
             setSelected((prev) => {
               const newSelected = { ...prev };
               newSelected[opt] = !prev[opt];
+              console.log(newSelected);
+
               return newSelected;
             });
           }}

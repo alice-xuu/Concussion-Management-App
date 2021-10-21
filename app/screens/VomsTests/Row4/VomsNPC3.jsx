@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     padding: 0,
     width: width - 40,
     height: height - 700,
-  }
+  },
 });
 
 export default VomsNPC3;
