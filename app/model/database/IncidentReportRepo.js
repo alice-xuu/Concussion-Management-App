@@ -119,7 +119,7 @@ export class IncidentReportRepo {
    * @param {string[]}responses values of responses
    * @return {Promise<number>} resolves with the MultiResponse id
    */
-  async addMultiResponse(reportId, description, responses) {
+  async setMultiResponse(reportId, description, responses) {
     await this.da.runSqlStmt(
       'DELETE FROM MultiResponse WHERE report_id = ? AND description = ?;',
       [reportId, description],

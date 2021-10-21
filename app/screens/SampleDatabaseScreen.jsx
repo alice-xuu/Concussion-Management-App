@@ -89,7 +89,7 @@ export default function SampleDatabaseScreen() {
   const handleCreateMultiResponse = () => {
     const desc = 'test-multi-response';
     incidentRepoContext
-      .addMultiResponse(reportId, desc, [
+      .setMultiResponse(reportId, desc, [
         Math.random().toString(),
         Math.random().toString(),
         Math.random().toString(),

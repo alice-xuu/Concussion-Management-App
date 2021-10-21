@@ -35,7 +35,7 @@ function PCSSChecklist({ navigation }) {
   const handleCreateMultiResponse = (answers) => {
     const desc = 'PCSS Checklist';
     incidentRepoContext
-      .addMultiResponse(reportId, desc, answers)
+      .setMultiResponse(reportId, desc, answers)
       .then(() => {});
   };
 
