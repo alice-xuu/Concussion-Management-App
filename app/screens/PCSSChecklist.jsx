@@ -141,7 +141,9 @@ function PCSSChecklist({ navigation }) {
       <TouchableOpacity
         onPress={() => {
           handleCreateMultiResponse(chosenList);
-          navigation.navigate('Incident Report Result');
+          navigation.navigate('Incident Report Result', {
+            hasSymptoms: chosenList.length > 0,
+          });
         }}
         style={uiStyle.bottomButton}
       >
