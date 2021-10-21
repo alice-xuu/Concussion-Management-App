@@ -42,14 +42,16 @@ CREATE TABLE IF NOT EXISTS IncidentReport (
 CREATE TABLE IF NOT EXISTS MultiResponse (
     mr_id INTEGER PRIMARY KEY,
     report_id INTEGER REFERENCES IncidentReport(report_id),
-    description VARCHAR(100)
+    description VARCHAR(100),
+    UNIQUE(report_id, description)
 );`,
   //A part of a multi response
   `
 CREATE TABLE IF NOT EXISTS MultiResponsePart (
     mrp_id INTEGER PRIMARY KEY,
-    mr_id INTEGER REFERENCES MultiResponse(mr_id),
-    response VARCHAR(50)                              
+    mr_id INTEGER REFERENCES MultiResponse(mr_id)
+      ON DELETE CASCADE,
+    response VARCHAR(50)
 );`,
   // Instance of a single response
   `

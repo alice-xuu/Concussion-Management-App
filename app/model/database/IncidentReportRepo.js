@@ -69,16 +69,15 @@ export class IncidentReportRepo {
    * @return {Promise<number>} promise of single response id
    */
   async setSingleResponse(reportId, description, response) {
-    let sql;
-    let args;
+    await this.da.runSqlStmt(
+      `DELETE FROM SingleResponse WHERE report_id = ? AND description = ?;`,
+      [reportId, description],
+    );
 
-    sql = `DELETE FROM SingleResponse WHERE report_id = ? AND description = ?;`;
-    args = [reportId, description];
-    await this.da.runSqlStmt(sql, args);
-
-    sql = `INSERT INTO SingleResponse (report_id, description, response) VALUES (?, ?, ?);`;
-    args = [reportId, description, response];
-    const rs = await this.da.runSqlStmt(sql, args);
+    const rs = await this.da.runSqlStmt(
+      `INSERT INTO SingleResponse (report_id, description, response) VALUES (?, ?, ?);`,
+      [reportId, description, response],
+    );
     return rs.insertId;
   }
 
@@ -118,46 +117,29 @@ export class IncidentReportRepo {
    * @param {number}reportId report id
    * @param {string}description description of response
    * @param {string[]}responses values of responses
-   * @return {Promise<Promise<unknown> | Promise.Promise>}
+   * @return {Promise<number>} resolves with the MultiResponse id
    */
   async addMultiResponse(reportId, description, responses) {
-    let mrId = null;
-    let err = null;
-    await this.da
-      .runSqlStmt(
-        'INSERT INTO MultiResponse (report_id, description) VALUES (?, ?);',
-        [reportId, description],
-      )
-      .then(
-        (rs) => (mrId = rs.insertId),
-        (er) => (err = er),
-      );
-    if (err != null) {
-      // Error with creating MultiResponse
-      return new Promise((resolve, reject) => reject(err));
-    }
+    await this.da.runSqlStmt(
+      'DELETE FROM MultiResponse WHERE report_id = ? AND description = ?;',
+      [reportId, description],
+    );
+
+    const rs = await this.da.runSqlStmt(
+      'INSERT INTO MultiResponse (report_id, description) VALUES (?, ?);',
+      [reportId, description],
+    );
+    const mrId = rs.insertId;
 
     // Add each part of the response
     for (let res of responses) {
-      await this.da
-        .runSqlStmt(
-          'INSERT INTO MultiResponsePart (mr_id, response) VALUES (?, ?);',
-          [mrId, res],
-        )
-        .then(
-          () => {},
-          (er) => (err = er),
-        );
-
-      if (err != null) {
-        // Error with creating MultiResponse
-        return new Promise((resolve, reject) => reject(err));
-      }
+      await this.da.runSqlStmt(
+        'INSERT INTO MultiResponsePart (mr_id, response) VALUES (?, ?);',
+        [mrId, res],
+      );
     }
 
-    return new Promise((resolve) => {
-      resolve(mrId);
-    });
+    return mrId;
   }
 
   /**
