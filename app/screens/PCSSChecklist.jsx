@@ -35,7 +35,7 @@ function PCSSChecklist({ navigation }) {
   const handleCreateMultiResponse = (answers) => {
     const desc = 'PCSS Checklist';
     incidentRepoContext
-      .addMultiResponse(reportId, desc, answers)
+      .setMultiResponse(reportId, desc, answers)
       .then(() => {});
   };
 
@@ -141,7 +141,9 @@ function PCSSChecklist({ navigation }) {
       <TouchableOpacity
         onPress={() => {
           handleCreateMultiResponse(chosenList);
-          navigation.navigate('Incident Report Result');
+          navigation.navigate('Incident Report Result', {
+            hasSymptoms: chosenList.length > 0,
+          });
         }}
         style={uiStyle.bottomButton}
       >

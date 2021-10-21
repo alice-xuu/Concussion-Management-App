@@ -39,7 +39,7 @@ function RedFlagsChecklist({ navigation }) {
   const handleCreateMultiResponse = (answers) => {
     const desc = 'Incident Report 4';
     incidentRepoContext
-      .addMultiResponse(reportId, desc, answers)
+      .setMultiResponse(reportId, desc, answers)
       .then(() => {});
   };
 
