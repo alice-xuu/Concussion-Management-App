@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { SafeAreaView, TouchableOpacity, StyleSheet, View, Text } from 'react-native';
+import {
+  SafeAreaView,
+  TouchableOpacity,
+  StyleSheet,
+  View,
+  Text,
+} from 'react-native';
 import uiStyle from '../../../components/uiStyle';
 
 function VomsSP4({ navigation }) {

@@ -100,6 +100,7 @@ export class IncidentReportRepo {
       });
     });
   }
+
   // async changeSingleResponse(ID, text) {
   //   const sql = 'UPDATE SingleResponse SET response = ? WHERE report_id == ?; ';
   //   const args = [text, ID];
@@ -238,6 +239,51 @@ export class IncidentReportRepo {
 
     const sql = `SELECT time_attempt_1, time_attempt_2, time_attempt_3, time_average, grade FROM ReactionTest WHERE report_id = ?;`;
     const args = [reportId];
+
+    const rs = await this.da.runSqlStmt(sql, args);
+    return rs.rows.item(0);
+  }
+
+  /**
+   * Stores the VOMS symptom ratings of headache, nausea, dizziness and fogginess
+   * @param reportId
+   * @param description
+   * @param headache_rating
+   * @param nausea_rating
+   * @param dizziness_rating
+   * @param fogginess_rating
+   * @returns {Promise<number>}
+   */
+  async addVOMSSymptoms(
+    reportId,
+    description,
+    headache_rating,
+    nausea_rating,
+    dizziness_rating,
+    fogginess_rating,
+  ) {
+    const sql = `INSERT INTO VOMSSymptoms (reportId, description, headache_rating, nausea_rating, dizziness_rating, fogginess_rating)
+        VALUES (?, ?, ?, ?, ?, ?)`;
+    const args = [
+      reportId,
+      description,
+      headache_rating,
+      nausea_rating,
+      dizziness_rating,
+      fogginess_rating,
+    ];
+
+    const rs = await this.da.runSqlStmt(sql, args);
+    return rs.insertId;
+  }
+
+  async getVOMSSymptoms(reportId, description) {
+    if (reportId === undefined || reportId === null) {
+      throw 'Invalid reportId';
+    }
+
+    const sql = `SELECT headache_rating, nausea_rating, dizziness_rating, fogginess_rating FROM VOMSSymptoms WHERE report_id = ? AND description = ?;`;
+    const args = [reportId, description];
 
     const rs = await this.da.runSqlStmt(sql, args);
     return rs.rows.item(0);
