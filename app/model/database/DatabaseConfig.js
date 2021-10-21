@@ -57,7 +57,8 @@ CREATE TABLE IF NOT EXISTS SingleResponse (
     sr_id INTEGER PRIMARY KEY,
     report_id INTEGER REFERENCES IncidentReport(report_id),
     response VARCHAR(500),
-    description VARCHAR(100)
+    description VARCHAR(100),
+    UNIQUE(report_id, description)
 );
 `,
   // Reaction time table that stores times in milliseconds

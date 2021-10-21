@@ -34,7 +34,7 @@ function MechanismOfInjuryCheck({ navigation }) {
 
   const handleCreateSResponse = (res) => {
     const desc = 'Mechanism of injury response';
-    incidentRepoContext.addSingleResponse(reportId, desc, res).then(() => {
+    incidentRepoContext.setSingleResponse(reportId, desc, res).then(() => {
       incidentRepoContext
         .getSingleResponses(reportId)
         .then((sr) => setResponses(JSON.stringify(sr)));

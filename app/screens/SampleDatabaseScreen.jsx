@@ -78,7 +78,7 @@ export default function SampleDatabaseScreen() {
   const handleCreateSResponse = () => {
     const desc = 'test-response';
     const res = Math.random().toString();
-    incidentRepoContext.addSingleResponse(reportId, desc, res).then(() => {
+    incidentRepoContext.setSingleResponse(reportId, desc, res).then(() => {
       incidentRepoContext
         .getSingleResponses(reportId)
         .then((sr) => setResponses(JSON.stringify(sr)));

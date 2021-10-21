@@ -68,17 +68,18 @@ export class IncidentReportRepo {
    * @param {string} response value of response
    * @return {Promise<number>} promise of single response id
    */
-  async addSingleResponse(reportId, description, response) {
-    const sql =
-      'INSERT INTO SingleResponse (report_id, description, response) VALUES (?, ?, ?)';
-    const args = [reportId, description, response];
+  async setSingleResponse(reportId, description, response) {
+    let sql;
+    let args;
 
-    return new Promise((resolve, reject) => {
-      this.da.runSqlStmt(sql, args).then(
-        (rs) => resolve(rs.insertId),
-        (err) => reject(err),
-      );
-    });
+    sql = `DELETE FROM SingleResponse WHERE report_id = ? AND description = ?;`;
+    args = [reportId, description];
+    await this.da.runSqlStmt(sql, args);
+
+    sql = `INSERT INTO SingleResponse (report_id, description, response) VALUES (?, ?, ?);`;
+    args = [reportId, description, response];
+    const rs = await this.da.runSqlStmt(sql, args);
+    return rs.insertId;
   }
 
   /**
