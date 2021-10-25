@@ -2,7 +2,6 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './app/screens/HomeScreen';
-import ChooseProfileScreen from './app/screens/ChooseProfileScreen';
 import MechanismOfInjuryCheck from './app/screens/MechanismOfInjuryCheck';
 import CreateProfileScreen from './app/screens/CreateProfileScreen';
 import SelectProfileScreen from './app/screens/SelectProfileScreen';
@@ -50,6 +49,7 @@ import VomsNPC1 from './app/screens/VomsTests/Row4/VomsNPC1';
 import VomsNPC2 from './app/screens/VomsTests/Row4/VomsNPC2';
 import VomsNPC3 from './app/screens/VomsTests/Row4/VomsNPC3';
 import VomsResponse4 from './app/screens/VomsTests/Row4/VomsResponse4';
+import ChooseProfileScreen from './app/screens/ChooseProfileScreen';
 import VomsS5 from './app/screens/VomsTests/Row 2/VomsS5';
 
 const RootStack = createNativeStackNavigator();
@@ -155,8 +155,10 @@ export default function App() {
           <RootStack.Screen name="Voms Test NPC 1" component={VomsNPC1} />
           <RootStack.Screen name="Voms Test NPC 2" component={VomsNPC2} />
           <RootStack.Screen name="Voms Test NPC 3" component={VomsNPC3} />
-          <RootStack.Screen name="Voms Test Response 4" component={VomsResponse4} />
-
+          <RootStack.Screen
+            name="Voms Test Response 4"
+            component={VomsResponse4}
+          />
         </RootStack.Navigator>
       </NavigationContainer>
     </GlobalContextProvider>
