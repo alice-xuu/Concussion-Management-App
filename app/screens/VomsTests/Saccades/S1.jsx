@@ -10,8 +10,9 @@ function S1({ navigation }) {
       <ScrollView>
         <Text style={uiStyle.text}>
           The affected person will be shown two circles at either end of the
-          screen. Ask them to alternate left and right 10 times as quickly as
-          possible.
+          screen.
+          {'\n'} {'\n'}
+          Ask them to alternate left and right 10 times as quickly as possible.
           {'\n'} {'\n'}
           Please allow them to sit down and place the phone landscape at eye
           level, 10cm away.
