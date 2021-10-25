@@ -64,12 +64,12 @@ function HomeScreen({ navigation }) {
         </TouchableOpacity>
       </View>
       {/*<View style={styles.container2}>*/}
-      <TouchableOpacity
+      {/*<TouchableOpacity
         onPress={() => navigation.navigate('VOMS Saccades 1')}
         style={uiStyle.bottomButton}
       >
         <Text style={uiStyle.buttonLabel}>Saccades</Text>
-      </TouchableOpacity>
+      </TouchableOpacity>*/}
       {/*</View>*/}
       {/*<View style={styles.container2}>*/}
       {/*  <TouchableOpacity*/}
