@@ -5,7 +5,7 @@ import uiStyle from '../../../components/uiStyle';
 function S2({ navigation }) {
   setTimeout(() => {
     navigation.navigate('VOMS Saccades 3');
-  }, 15000);
+  }, 10000);
 
   return (
     <SafeAreaView style={uiStyle.container}>
