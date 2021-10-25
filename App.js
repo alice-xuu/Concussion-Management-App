@@ -2,10 +2,10 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './app/screens/HomeScreen';
-import DocumentsScreen from './app/screens/DocumentsScreen';
 import MechanismOfInjuryCheck from './app/screens/MechanismOfInjuryCheck';
 import CreateProfileScreen from './app/screens/CreateProfileScreen';
 import SelectProfileScreen from './app/screens/SelectProfileScreen';
+import ProfileInfoScreen from './app/screens/ProfileInfoScreen';
 import RedFlagsChecklist from './app/screens/RedFlagsChecklist';
 import BadCheckScreen from './app/screens/BadCheckScreen';
 import TextQuestionScreen from './app/screens/TextQuestionScreen';
@@ -50,6 +50,7 @@ import VomsNPC2 from './app/screens/VomsTests/Row4/VomsNPC2';
 import VomsNPC3 from './app/screens/VomsTests/Row4/VomsNPC3';
 import VomsResponse4 from './app/screens/VomsTests/Row4/VomsResponse4';
 import ChooseProfileScreen from './app/screens/ChooseProfileScreen';
+import VomsS5 from './app/screens/VomsTests/Row 2/VomsS5';
 
 const RootStack = createNativeStackNavigator();
 /**
@@ -64,7 +65,10 @@ export default function App() {
         <RootStack.Navigator initialRouteName="Disclaimer">
           <RootStack.Screen name="Home" component={HomeScreen} />
           <RootStack.Screen name="Disclaimer" component={Disclaimer} />
-          <RootStack.Screen name="Profile" component={ChooseProfileScreen} />
+          <RootStack.Screen
+            name="Choose Profile"
+            component={ChooseProfileScreen}
+          />
           <RootStack.Screen
             name="Sample Database"
             component={SampleDatabaseScreen}
@@ -77,6 +81,7 @@ export default function App() {
             name="Select Profile"
             component={SelectProfileScreen}
           />
+          <RootStack.Screen name="Profile Info" component={ProfileInfoScreen} />
           <RootStack.Screen
             name="Red flags checklist"
             component={RedFlagsChecklist}
@@ -135,6 +140,7 @@ export default function App() {
 
           <RootStack.Screen name="Voms Test S 1" component={VomsS1} />
           <RootStack.Screen name="Voms Test SP 3" component={VomsSP3} />
+          <RootStack.Screen name="Voms Test S 5" component={VomsS5} />
           <RootStack.Screen name="Voms Test SP 4" component={VomsSP4} />
           <RootStack.Screen name="Voms Response 2" component={VomsResponse2} />
 

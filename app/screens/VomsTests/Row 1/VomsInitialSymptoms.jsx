@@ -65,6 +65,21 @@ function VomsInitialSymptoms({ navigation }) {
             onValueChange={(val) => setSliderFourValue(val)}
           />
         </View>
+        {/*<Text>*/}
+        {/*  {'\n'} {'\n'}*/}
+        {/*  {'\n'} {'\n'}*/}
+        {/*</Text>*/}
+        {/*<DisplayOptions*/}
+        {/*  options={options}*/}
+        {/*  updateOption={(opt) => {*/}
+        {/*    setSelected((prev) => {*/}
+        {/*      const newSelected = { ...prev };*/}
+        {/*      newSelected[opt] = !prev[opt];*/}
+
+        {/*      return newSelected;*/}
+        {/*    });*/}
+        {/*  }}*/}
+        {/*/>*/}
       </View>
       <TouchableOpacity
         onPress={() => navigation.navigate('Voms Test SP 1')}

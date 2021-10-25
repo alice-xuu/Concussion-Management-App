@@ -46,7 +46,7 @@ describe('IncidentReportRepo', () => {
     });
   });
 
-  describe('addSingleResponse', () => {
+  describe('setSingleResponse', () => {
     it('returns insertId', async () => {
       const args = [REP_ID, 'knock knock', 'whos there?'];
       const insertId = 1111111;
@@ -57,17 +57,18 @@ describe('IncidentReportRepo', () => {
 
       mockDa.runSqlStmt = () => Promise.resolve(mockRs);
 
-      let ret = await iRR.addSingleResponse(...args);
+      let ret = await iRR.setSingleResponse(...args);
       expect(ret).toBe(insertId);
     });
 
     it('calls with patientId ', async () => {
       const args = [12345, 'knock knock', 'whos there?'];
 
-      await iRR.addSingleResponse(...args);
+      await iRR.setSingleResponse(...args);
 
-      expect(mockDa.runSqlStmt.mock.calls.length).toBe(1);
-      expect(mockDa.runSqlStmt.mock.calls[0][1]).toEqual(args);
+      expect(mockDa.runSqlStmt.mock.calls.length).toBe(2);
+      expect(mockDa.runSqlStmt.mock.calls[0][1]).toEqual(args.slice(0, 2));
+      expect(mockDa.runSqlStmt.mock.calls[1][1]).toEqual(args);
     });
   });
 
@@ -87,7 +88,7 @@ describe('IncidentReportRepo', () => {
     });
   });
 
-  describe('addMultiResponse', () => {
+  describe('setMultiResponse', () => {
     it('inserts new multi response and its parts', async () => {
       const errCb = jest.fn(() => {});
       const sucCb = jest.fn(() => {});
@@ -95,8 +96,8 @@ describe('IncidentReportRepo', () => {
       const desc = 'test multi response';
       const resp = ['response 1', 'response 2', 'response 3'];
 
-      await iRR.addMultiResponse(REP_ID, desc, resp).then(sucCb, errCb);
-      expect(mockDa.runSqlStmt.mock.calls.length).toBe(4);
+      await iRR.setMultiResponse(REP_ID, desc, resp).then(sucCb, errCb);
+      expect(mockDa.runSqlStmt.mock.calls.length).toBe(5);
 
       expect(errCb.mock.calls.length).toBe(0);
       expect(sucCb.mock.calls.length).toBe(1);
@@ -110,7 +111,7 @@ describe('IncidentReportRepo', () => {
       const errCb = jest.fn(() => {});
       const sucCb = jest.fn(() => {});
 
-      await iRR.addMultiResponse(REP_ID, '', []).then(sucCb, errCb);
+      await iRR.setMultiResponse(REP_ID, '', []).then(sucCb, errCb);
 
       expect(errCb.mock.calls.length).toBe(1);
       expect(sucCb.mock.calls.length).toBe(0);
@@ -130,7 +131,7 @@ describe('IncidentReportRepo', () => {
       const errCb = jest.fn(() => {});
       const sucCb = jest.fn(() => {});
 
-      await iRR.addMultiResponse(REP_ID, '', []).then(sucCb, errCb);
+      await iRR.setMultiResponse(REP_ID, '', []).then(sucCb, errCb);
 
       expect(errCb.mock.calls.length).toBe(1);
       expect(sucCb.mock.calls.length).toBe(0);

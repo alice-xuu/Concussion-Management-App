@@ -28,20 +28,21 @@ const parseSingleResponses = (srs) => {
   }
   return responsesArray;
 };
-let reportResults = 0;
-
 /**
  * The screen will show the result after user has completed "IncidentReport"
  * The screen will either be:
  * patient needs to go to GP ASAP,
  * or
  * do further test to assess concussion or go to home and create profile
+ *
+ * @param {boolean} route.params.hasSymptoms if the individual has any PCSS symptoms
  */
-function SecondCheckResults({ navigation }) {
+function SecondCheckResults({ route, navigation }) {
   // Context variables
   const [reportId] = useContext(ReportIdContext);
   const incidentRepoContext = useContext(IncidentReportRepoContext);
   const mounted = useRef(false);
+  const [symptoms, setSymptoms] = useState(0);
 
   useEffect(() => {
     mounted.current = true; // Component is mounted
@@ -51,13 +52,18 @@ function SecondCheckResults({ navigation }) {
     };
   }, []);
 
+  useEffect(() => {
+    if (route.params.hasSymptoms) {
+      setSymptoms((prevSymptoms) => ++prevSymptoms);
+    }
+  }, [route.params.hasSymptoms]);
+
   // Local state
   let [responses, setResponses] = useState([]);
   let screen;
 
   useEffect(() => {
     // Get single responses
-    reportResults = 0;
     incidentRepoContext.getSingleResponses(reportId).then((srs) => {
       if (mounted.current) {
         setResponses(parseSingleResponses(srs));
@@ -68,11 +74,11 @@ function SecondCheckResults({ navigation }) {
   if (responses !== null) {
     responses.forEach((element) => {
       if (element === 'Yes') {
-        reportResults++;
+        setSymptoms((prevSymptoms) => ++prevSymptoms);
       }
     });
   }
-  if (reportResults > 0) {
+  if (symptoms > 0) {
     screen = (
       <ScrollView styles={styles.scroll}>
         <View style={uiStyle.container}>

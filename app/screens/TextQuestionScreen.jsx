@@ -28,7 +28,7 @@ function TextQuestionScreen({ navigation }) {
   const [responses, setResponses] = useState(null);
   const handleResponseDescription = () => {
     const desc = 'text question';
-    incidentRepoContext.addSingleResponse(reportId, desc, value).then(() => {
+    incidentRepoContext.setSingleResponse(reportId, desc, value).then(() => {
       incidentRepoContext
         .getSingleResponses(reportId)
         .then((sr) => setResponses(JSON.stringify(sr)));

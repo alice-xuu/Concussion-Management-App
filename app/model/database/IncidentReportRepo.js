@@ -46,22 +46,39 @@ export class IncidentReportRepo {
 
   /**
    *
+   * @param {number} patientId patient to update report for
+   * @return {Promise<any[]>} promise of the reportIds
+   */
+  async getReports(patientId) {
+    const sql = 'SELECT * FROM IncidentReport WHERE patient_id == ?;';
+    const args = [patientId];
+
+    return new Promise((resolve, reject) => {
+      this.da.runSqlStmt(sql, args).then(
+        (rs) => resolve(rs.rows._array),
+        (err) => reject(err),
+      );
+    });
+  }
+
+  /**
+   *
    * @param {number} reportId
    * @param {string} description description of response
    * @param {string} response value of response
    * @return {Promise<number>} promise of single response id
    */
-  async addSingleResponse(reportId, description, response) {
-    const sql =
-      'INSERT INTO SingleResponse (report_id, description, response) VALUES (?, ?, ?)';
-    const args = [reportId, description, response];
+  async setSingleResponse(reportId, description, response) {
+    await this.da.runSqlStmt(
+      `DELETE FROM SingleResponse WHERE report_id = ? AND description = ?;`,
+      [reportId, description],
+    );
 
-    return new Promise((resolve, reject) => {
-      this.da.runSqlStmt(sql, args).then(
-        (rs) => resolve(rs.insertId),
-        (err) => reject(err),
-      );
-    });
+    const rs = await this.da.runSqlStmt(
+      `INSERT INTO SingleResponse (report_id, description, response) VALUES (?, ?, ?);`,
+      [reportId, description, response],
+    );
+    return rs.insertId;
   }
 
   /**
@@ -83,6 +100,7 @@ export class IncidentReportRepo {
       });
     });
   }
+
   // async changeSingleResponse(ID, text) {
   //   const sql = 'UPDATE SingleResponse SET response = ? WHERE report_id == ?; ';
   //   const args = [text, ID];
@@ -100,46 +118,29 @@ export class IncidentReportRepo {
    * @param {number}reportId report id
    * @param {string}description description of response
    * @param {string[]}responses values of responses
-   * @return {Promise<Promise<unknown> | Promise.Promise>}
+   * @return {Promise<number>} resolves with the MultiResponse id
    */
-  async addMultiResponse(reportId, description, responses) {
-    let mrId = null;
-    let err = null;
-    await this.da
-      .runSqlStmt(
-        'INSERT INTO MultiResponse (report_id, description) VALUES (?, ?);',
-        [reportId, description],
-      )
-      .then(
-        (rs) => (mrId = rs.insertId),
-        (er) => (err = er),
-      );
-    if (err != null) {
-      // Error with creating MultiResponse
-      return new Promise((resolve, reject) => reject(err));
-    }
+  async setMultiResponse(reportId, description, responses) {
+    await this.da.runSqlStmt(
+      'DELETE FROM MultiResponse WHERE report_id = ? AND description = ?;',
+      [reportId, description],
+    );
+
+    const rs = await this.da.runSqlStmt(
+      'INSERT INTO MultiResponse (report_id, description) VALUES (?, ?);',
+      [reportId, description],
+    );
+    const mrId = rs.insertId;
 
     // Add each part of the response
     for (let res of responses) {
-      await this.da
-        .runSqlStmt(
-          'INSERT INTO MultiResponsePart (mr_id, response) VALUES (?, ?);',
-          [mrId, res],
-        )
-        .then(
-          () => {},
-          (er) => (err = er),
-        );
-
-      if (err != null) {
-        // Error with creating MultiResponse
-        return new Promise((resolve, reject) => reject(err));
-      }
+      await this.da.runSqlStmt(
+        'INSERT INTO MultiResponsePart (mr_id, response) VALUES (?, ?);',
+        [mrId, res],
+      );
     }
 
-    return new Promise((resolve) => {
-      resolve(mrId);
-    });
+    return mrId;
   }
 
   /**
@@ -221,6 +222,51 @@ export class IncidentReportRepo {
 
     const sql = `SELECT time_attempt_1, time_attempt_2, time_attempt_3, time_average, grade FROM ReactionTest WHERE report_id = ?;`;
     const args = [reportId];
+
+    const rs = await this.da.runSqlStmt(sql, args);
+    return rs.rows.item(0);
+  }
+
+  /**
+   * Stores the VOMS symptom ratings of headache, nausea, dizziness and fogginess
+   * @param reportId
+   * @param description
+   * @param headache_rating
+   * @param nausea_rating
+   * @param dizziness_rating
+   * @param fogginess_rating
+   * @returns {Promise<number>}
+   */
+  async addVOMSSymptoms(
+    reportId,
+    description,
+    headache_rating,
+    nausea_rating,
+    dizziness_rating,
+    fogginess_rating,
+  ) {
+    const sql = `INSERT INTO VOMSSymptoms (reportId, description, headache_rating, nausea_rating, dizziness_rating, fogginess_rating)
+        VALUES (?, ?, ?, ?, ?, ?)`;
+    const args = [
+      reportId,
+      description,
+      headache_rating,
+      nausea_rating,
+      dizziness_rating,
+      fogginess_rating,
+    ];
+
+    const rs = await this.da.runSqlStmt(sql, args);
+    return rs.insertId;
+  }
+
+  async getVOMSSymptoms(reportId, description) {
+    if (reportId === undefined || reportId === null) {
+      throw 'Invalid reportId';
+    }
+
+    const sql = `SELECT headache_rating, nausea_rating, dizziness_rating, fogginess_rating FROM VOMSSymptoms WHERE report_id = ? AND description = ?;`;
+    const args = [reportId, description];
 
     const rs = await this.da.runSqlStmt(sql, args);
     return rs.rows.item(0);

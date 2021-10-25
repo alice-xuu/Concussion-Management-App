@@ -6,14 +6,14 @@ import uiStyle from '../../../components/uiStyle';
 function VomsS1({ navigation }) {
   return (
     <SafeAreaView style={uiStyle.container}>
-      <Text style={uiStyle.titleText}>Saccades</Text>
+      <Text style={uiStyle.titleText}>Instructions</Text>
       <ScrollView>
         <Text style={uiStyle.text}>
           The affected person will be shown two circles at either end of the
           screen. Ask them to alternate looking at each circle.
           {'\n'} {'\n'}
           Please allow them to sit down and place the phone landscape at eye
-          level, ___cm away.
+          level, 10cm away.
         </Text>
       </ScrollView>
       <TouchableOpacity
