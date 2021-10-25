@@ -82,7 +82,7 @@ function VomsInitialSymptoms({ navigation }) {
         {/*/>*/}
       </View>
       <TouchableOpacity
-        onPress={() => navigation.navigate('Voms Test SP 1')}
+        onPress={() => navigation.navigate('Voms Test Saccades 1')}
         style={uiStyle.bottomButton}
       >
         <Text style={uiStyle.buttonLabel}>Next</Text>

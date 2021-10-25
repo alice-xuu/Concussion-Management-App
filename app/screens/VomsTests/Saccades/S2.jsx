@@ -2,7 +2,7 @@ import * as React from 'react';
 import { SafeAreaView, StyleSheet, View } from 'react-native';
 import uiStyle from '../../../components/uiStyle';
 
-function VomsSP4({ navigation }) {
+function S2({ navigation }) {
   setTimeout(() => {
     navigation.navigate('Voms Response 2');
   }, 15000);
@@ -26,4 +26,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default VomsSP4;
+export default S2;
