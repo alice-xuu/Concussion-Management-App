@@ -61,7 +61,7 @@ export default function App() {
   return (
     <GlobalContextProvider>
       <NavigationContainer>
-        <RootStack.Navigator initialRouteName="Voms Start">
+        <RootStack.Navigator initialRouteName="Home">
           <RootStack.Screen name="Home" component={HomeScreen} />
           <RootStack.Screen name="Disclaimer" component={Disclaimer} />
           <RootStack.Screen name="Profile" component={ChooseProfileScreen} />
