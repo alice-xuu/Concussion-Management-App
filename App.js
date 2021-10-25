@@ -41,16 +41,17 @@ import VomsTestSp1 from './app/screens/VomsTests/Row 1/VomsTestSp1';
 import VomsTestSp2 from './app/screens/VomsTests/Row 1/VomsTestSp2';
 import VomsResponse1 from './app/screens/VomsTests/Row 1/VomsResponse1';
 import S1 from './app/screens/VomsTests/Saccades/S1';
-import S5 from './app/screens/VomsTests/Saccades/S5';
 import S2 from './app/screens/VomsTests/Saccades/S2';
-import S3Response1 from './app/screens/VomsTests/Saccades/S3Response1';
+import S3Response2 from './app/screens/VomsTests/Saccades/S3Response2';
+import S4 from './app/screens/VomsTests/Saccades/S4';
+import S5 from './app/screens/VomsTests/Saccades/S5';
+import S6 from './app/screens/VomsTests/Saccades/S6Response3';
 import Disclaimer from './app/screens/Disclaimer';
 import VomsNPC1 from './app/screens/VomsTests/Row4/VomsNPC1';
 import VomsNPC2 from './app/screens/VomsTests/Row4/VomsNPC2';
 import VomsNPC3 from './app/screens/VomsTests/Row4/VomsNPC3';
 import VomsResponse4 from './app/screens/VomsTests/Row4/VomsResponse4';
 import ChooseProfileScreen from './app/screens/ChooseProfileScreen';
-import S4 from './app/screens/VomsTests/Saccades/S4';
 
 const RootStack = createNativeStackNavigator();
 /**
@@ -138,14 +139,15 @@ export default function App() {
           <RootStack.Screen name="Voms Test SP 2" component={VomsTestSp2} />
           <RootStack.Screen name="Voms Response 1" component={VomsResponse1} />
 
-          <RootStack.Screen name="Voms Test S 1" component={S1} />
-          <RootStack.Screen name="Voms Test S 5" component={S5} />
-          <RootStack.Screen name="Voms Test S 4" component={S4} />
-          <RootStack.Screen name="Voms Test S 2" component={S2} />
+          <RootStack.Screen name="VOMS Saccades 1" component={S1} />
+          <RootStack.Screen name="VOMS Saccades 2" component={S2} />
           <RootStack.Screen
-            name="Voms Test S 3 Response 1"
-            component={S3Response1}
+            name="VOMS Saccades 3 Response 1"
+            component={S3Response2}
           />
+          <RootStack.Screen name="VOMS Saccades 4" component={S4} />
+          <RootStack.Screen name="VOMS Saccades 5" component={S5} />
+          <RootStack.Screen name="VOMS Saccades 6" component={S6} />
 
           <RootStack.Screen name="Voms Test Vor 1" component={VomsVorOne} />
           <RootStack.Screen name="Voms Test Vor 2" component={VomsVorTwo} />

@@ -4,7 +4,7 @@ import uiStyle from '../../../components/uiStyle';
 import { useState } from 'react';
 import DisplayOptions from '../../../components/MemoryTests/DisplayOptions';
 
-function S3Response1({ navigation }) {
+function S3Response2({ navigation }) {
   const [selected, setSelected] = useState(getOptionsObj());
 
   return (
@@ -43,4 +43,4 @@ const getOptionsObj = () => {
   return obj;
 };
 
-export default S3Response1;
+export default S3Response2;
