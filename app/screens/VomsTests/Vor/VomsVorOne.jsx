@@ -13,8 +13,8 @@ function VomsVorOne(props) {
           screen.
         </Text>
         <Text style={uiStyle.text}>
-          Ask them to keep their head still while moving the phone left to right
-          at eye level while following the circle with their eyes.
+          Ask them to hold the phone in front of them and rotate their head left
+          and right 10 times while keeping their eyes on the circle.
         </Text>
       </View>
       <TouchableOpacity
