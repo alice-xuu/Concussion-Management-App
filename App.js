@@ -147,7 +147,7 @@ export default function App() {
           />
           <RootStack.Screen name="VOMS Saccades 4" component={S4} />
           <RootStack.Screen name="VOMS Saccades 5" component={S5} />
-          <RootStack.Screen name="VOMS Saccades 6" component={S6} />
+          <RootStack.Screen name="VOMS Saccades 6 Response 2" component={S6} />
 
           <RootStack.Screen name="Voms Test Vor 1" component={VomsVorOne} />
           <RootStack.Screen name="Voms Test Vor 2" component={VomsVorTwo} />

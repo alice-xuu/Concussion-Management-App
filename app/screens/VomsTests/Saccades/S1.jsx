@@ -18,7 +18,7 @@ function S1({ navigation }) {
         </Text>
       </ScrollView>
       <TouchableOpacity
-        onPress={() => navigation.navigate('Voms Test Saccades 3')}
+        onPress={() => navigation.navigate('VOMS Saccades 2')}
         style={uiStyle.bottomButton}
       >
         <Text style={uiStyle.buttonLabel}>Next</Text>

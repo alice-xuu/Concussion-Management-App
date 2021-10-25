@@ -25,7 +25,7 @@ function S3Response2({ navigation }) {
         />
       </View>
       <TouchableOpacity
-        onPress={() => navigation.navigate('Voms Test Vor 1')}
+        onPress={() => navigation.navigate('VOMS Saccades 4')}
         style={uiStyle.bottomButton}
       >
         <Text style={uiStyle.buttonLabel}>Next</Text>

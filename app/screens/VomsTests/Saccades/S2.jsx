@@ -4,7 +4,7 @@ import uiStyle from '../../../components/uiStyle';
 
 function S2({ navigation }) {
   setTimeout(() => {
-    navigation.navigate('Voms Response 2');
+    navigation.navigate('VOMS Saccades 3');
   }, 15000);
 
   return (
