@@ -13,8 +13,8 @@ function VMSOne(props) {
           screen.
         </Text>
         <Text style={uiStyle.text}>
-          Ask them to rotate their body left and right while holding the phone
-          at eye level with arms straight and follow the circle with their eyes.
+          Ask them to rotate their body left and right 5 times while holding the
+          phone at eye level with arms straight while looking at the circle.
         </Text>
       </View>
       <TouchableOpacity
