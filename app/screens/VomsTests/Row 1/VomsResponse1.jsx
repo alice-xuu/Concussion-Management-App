@@ -1,40 +1,22 @@
 import * as React from 'react';
 import {
   SafeAreaView,
-  ScrollView,
   Text,
   TouchableOpacity,
   View,
   StyleSheet,
 } from 'react-native';
 import uiStyle from '../../../components/uiStyle';
-import MultiSlider from '@ptomasroos/react-native-multi-slider';
+import Slider from '@react-native-community/slider';
 
 function VomsResponse1({ navigation }) {
-  const [sliderOneChanging, setSliderOneChanging] = React.useState(false);
-  const [sliderOneValue, setSliderOneValue] = React.useState([0]);
-  const sliderOneValuesChangeStart = () => setSliderOneChanging(true);
-  const sliderOneValuesChange = (values) => setSliderOneValue(values);
-  const sliderOneValuesChangeFinish = () => setSliderOneChanging(false);
+  const [sliderOneValue, setSliderOneValue] = React.useState(0);
 
-  const [sliderTwoChanging, setSliderTwoChanging] = React.useState(false);
   const [sliderTwoValue, setSliderTwoValue] = React.useState([0]);
-  const sliderTwoValuesChangeStart = () => setSliderTwoChanging(true);
-  const sliderTwoValuesChange = (values) => setSliderTwoValue(values);
-  const sliderTwoValuesChangeFinish = () => setSliderTwoChanging(false);
 
-  const [sliderThreeChanging, setSliderThreeChanging] = React.useState(false);
   const [sliderThreeValue, setSliderThreeValue] = React.useState([0]);
-  const sliderThreeValuesChangeStart = () => setSliderThreeChanging(true);
-  const sliderThreeValuesChange = (values) => setSliderThreeValue(values);
-  const sliderThreeValuesChangeFinish = () => setSliderThreeChanging(false);
 
-  const [sliderFourChanging, setSliderFourChanging] = React.useState(false);
   const [sliderFourValue, setSliderFourValue] = React.useState([0]);
-  const sliderFourValuesChangeStart = () => setSliderFourChanging(true);
-  const sliderFourValuesChange = (values) => setSliderFourValue(values);
-  const sliderFourValuesChangeFinish = () => setSliderFourChanging(false);
-
   return (
     <SafeAreaView style={uiStyle.container}>
       <Text style={uiStyle.titleText}>
@@ -44,59 +26,43 @@ function VomsResponse1({ navigation }) {
         <View style={styles.sliders}>
           <View style={styles.sliderOne}>
             <Text style={uiStyle.text}>Headache:</Text>
-            <Text style={[uiStyle.text, sliderOneChanging && { color: 'red' }]}>
-              {sliderOneValue}
-            </Text>
+            <Text style={[uiStyle.text]}>{sliderOneValue}</Text>
           </View>
-          <MultiSlider
-            values={sliderOneValue}
-            sliderLength={310}
-            onValuesChangeStart={sliderOneValuesChangeStart}
-            onValuesChange={sliderOneValuesChange}
-            onValuesChangeFinish={sliderOneValuesChangeFinish}
+          <Slider
+            minimumValue={0}
+            maximumValue={10}
+            step={1}
+            onValueChange={(val) => setSliderOneValue(val)}
           />
           <View style={styles.sliderOne}>
             <Text style={uiStyle.text}>Nausea: </Text>
-            <Text style={[uiStyle.text, sliderTwoChanging && { color: 'red' }]}>
-              {sliderTwoValue}
-            </Text>
+            <Text style={[uiStyle.text]}>{sliderTwoValue}</Text>
           </View>
-          <MultiSlider
-            values={sliderTwoValue}
-            sliderLength={310}
-            onValuesChangeStart={sliderTwoValuesChangeStart}
-            onValuesChange={sliderTwoValuesChange}
-            onValuesChangeFinish={sliderTwoValuesChangeFinish}
+          <Slider
+            minimumValue={0}
+            maximumValue={10}
+            step={1}
+            onValueChange={(val) => setSliderTwoValue(val)}
           />
           <View style={styles.sliderOne}>
             <Text style={uiStyle.text}>Dizziness:</Text>
-            <Text
-              style={[uiStyle.text, sliderThreeChanging && { color: 'red' }]}
-            >
-              {sliderThreeValue}
-            </Text>
+            <Text style={[uiStyle.text]}>{sliderThreeValue}</Text>
           </View>
-          <MultiSlider
-            values={sliderThreeValue}
-            sliderLength={310}
-            onValuesChangeStart={sliderThreeValuesChangeStart}
-            onValuesChange={sliderThreeValuesChange}
-            onValuesChangeFinish={sliderThreeValuesChangeFinish}
+          <Slider
+            minimumValue={0}
+            maximumValue={10}
+            step={1}
+            onValueChange={(val) => setSliderThreeValue(val)}
           />
           <View style={styles.sliderOne}>
             <Text style={uiStyle.text}>Fogginess:</Text>
-            <Text
-              style={[uiStyle.text, sliderFourChanging && { color: 'red' }]}
-            >
-              {sliderFourValue}
-            </Text>
+            <Text style={[uiStyle.text]}>{sliderFourValue}</Text>
           </View>
-          <MultiSlider
-            values={sliderFourValue}
-            sliderLength={310}
-            onValuesChangeStart={sliderFourValuesChangeStart}
-            onValuesChange={sliderFourValuesChange}
-            onValuesChangeFinish={sliderFourValuesChangeFinish}
+          <Slider
+            minimumValue={0}
+            maximumValue={10}
+            step={1}
+            onValueChange={(val) => setSliderFourValue(val)}
           />
         </View>
       </View>
