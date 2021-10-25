@@ -65,7 +65,7 @@ function HomeScreen({ navigation }) {
       </View>
       {/*<View style={styles.container2}>*/}
       {/*<TouchableOpacity
-        onPress={() => navigation.navigate('VOMS Saccades 1')}
+        onPress={() => navigation.navigate('Voms Response 1')}
         style={uiStyle.bottomButton}
       >
         <Text style={uiStyle.buttonLabel}>Saccades</Text>
