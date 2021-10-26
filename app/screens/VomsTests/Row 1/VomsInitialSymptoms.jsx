@@ -12,11 +12,11 @@ import Slider from '@react-native-community/slider';
 function VomsInitialSymptoms({ navigation }) {
   const [sliderOneValue, setSliderOneValue] = React.useState(0);
 
-  const [sliderTwoValue, setSliderTwoValue] = React.useState([0]);
+  const [sliderTwoValue, setSliderTwoValue] = React.useState(0);
 
-  const [sliderThreeValue, setSliderThreeValue] = React.useState([0]);
+  const [sliderThreeValue, setSliderThreeValue] = React.useState(0);
 
-  const [sliderFourValue, setSliderFourValue] = React.useState([0]);
+  const [sliderFourValue, setSliderFourValue] = React.useState(0);
   return (
     <SafeAreaView style={uiStyle.container}>
       <Text style={uiStyle.titleText}>
