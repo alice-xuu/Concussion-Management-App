@@ -71,14 +71,14 @@ function HomeScreen({ navigation }) {
       {/*    <Text style={uiStyle.buttonLabel}>Test</Text>*/}
       {/*  </TouchableOpacity>*/}
       {/*</View>*/}
-      {/*<View style={styles.container2}>*/}
-      {/*  <TouchableOpacity*/}
-      {/*    onPress={() => navigation.navigate('Voms Start')}*/}
-      {/*    style={uiStyle.bottomButton}*/}
-      {/*  >*/}
-      {/*    <Text style={uiStyle.buttonLabel}>Voms 1 row</Text>*/}
-      {/*  </TouchableOpacity>*/}
-      {/*</View>*/}
+      <View style={styles.container2}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Voms Start')}
+          style={uiStyle.bottomButton}
+        >
+          <Text style={uiStyle.buttonLabel}>Voms 1 row</Text>
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 }
