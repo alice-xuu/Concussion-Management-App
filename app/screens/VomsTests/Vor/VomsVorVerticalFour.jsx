@@ -16,7 +16,7 @@ function VomsVorTwo(props) {
       </View>
       <TouchableOpacity
         onPress={() => {
-          props.navigation.navigate('Voms Test Vor 3');
+          props.navigation.navigate('Voms Test Vor Vertical Response');
         }}
         style={uiStyle.bottomButton}
       >
