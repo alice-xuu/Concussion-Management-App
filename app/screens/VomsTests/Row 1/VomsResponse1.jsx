@@ -112,12 +112,5 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
   },
 });
-// const options = ['headache', 'nausea', 'dizziness', 'fogginess'];
-//
-// const getOptionsObj = () => {
-//   const obj = {};
-//   options.forEach((opt) => (obj[opt] = false));
-//   return obj;
-// };
 
 export default VomsResponse1;
