@@ -72,7 +72,7 @@ function VomsResponse1({ navigation }) {
           incidentRepoContext
             .addVOMSSymptoms(
               reportId,
-              'Initial',
+              'Saccades',
               sliderOneValue,
               sliderTwoValue,
               sliderThreeValue,
