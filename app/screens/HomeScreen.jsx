@@ -64,20 +64,20 @@ function HomeScreen({ navigation }) {
         </TouchableOpacity>
       </View>
       {/*<View style={styles.container2}>*/}
-      {/*  <TouchableOpacity*/}
-      {/*    onPress={() => navigation.navigate('Voms Start')}*/}
-      {/*    style={uiStyle.bottomButton}*/}
-      {/*  >*/}
-      {/*    <Text style={uiStyle.buttonLabel}>Test</Text>*/}
-      {/*  </TouchableOpacity>*/}
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Voms Start')}
+        style={uiStyle.bottomButton}
+      >
+        <Text style={uiStyle.buttonLabel}>Test</Text>
+      </TouchableOpacity>
       {/*</View>*/}
       {/*<View style={styles.container2}>*/}
-      {/*  <TouchableOpacity*/}
-      {/*    onPress={() => navigation.navigate('Voms Start')}*/}
-      {/*    style={uiStyle.bottomButton}*/}
-      {/*  >*/}
-      {/*    <Text style={uiStyle.buttonLabel}>Voms 1 row</Text>*/}
-      {/*  </TouchableOpacity>*/}
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Sample Database')}
+        style={uiStyle.bottomButton}
+      >
+        <Text style={uiStyle.buttonLabel}>sample database</Text>
+      </TouchableOpacity>
       {/*</View>*/}
     </SafeAreaView>
   );

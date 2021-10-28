@@ -245,7 +245,7 @@ export class IncidentReportRepo {
     dizziness_rating,
     fogginess_rating,
   ) {
-    const sql = `INSERT INTO VOMSSymptoms (reportId, description, headache_rating, nausea_rating, dizziness_rating, fogginess_rating)
+    const sql = `INSERT INTO VOMSSymptoms (report_Id, description, headache_rating, nausea_rating, dizziness_rating, fogginess_rating)
         VALUES (?, ?, ?, ?, ?, ?)`;
     const args = [
       reportId,

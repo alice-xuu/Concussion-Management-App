@@ -24,6 +24,23 @@ export default function SampleDatabaseScreen() {
   const [patients, setPatients] = useState(null);
 
   // TODO: remove
+  const onCreateVOMSResponse = () => {
+    const desc = 'Initial';
+    incidentRepoContext.addVOMSSymptoms(reportId, desc, 5, 5, 5, 5).then(() => {
+      incidentRepoContext
+        .getVOMSSymptoms(reportId, desc)
+        .then((sr) => setResponses(JSON.stringify(sr)));
+    });
+  };
+
+  // TODO: remove
+  const getVOMS = () => {
+    if (patientRepoContext !== null) {
+      getVOMSSymptoms(reportId, 'Initial');
+    }
+  };
+
+  // TODO: remove
   const onCreatePatient = () => {
     if (patientRepoContext !== null) {
       const fname = Math.random().toString();
@@ -139,6 +156,8 @@ export default function SampleDatabaseScreen() {
         title="Create Multi response"
         onPress={handleCreateMultiResponse}
       />
+
+      <Button title="Create voms response" onPress={onCreateVOMSResponse} />
 
       <Text>{responses}</Text>
     </SafeAreaView>

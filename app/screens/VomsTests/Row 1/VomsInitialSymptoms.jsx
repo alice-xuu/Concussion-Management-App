@@ -8,15 +8,20 @@ import {
 } from 'react-native';
 import uiStyle from '../../../components/uiStyle';
 import Slider from '@react-native-community/slider';
+import {
+  IncidentReportRepoContext,
+  ReportIdContext,
+} from '../../../components/GlobalContextProvider';
 
 function VomsInitialSymptoms({ navigation }) {
+  const [reportId] = useContext(ReportIdContext);
+  const incidentRepoContext = useContext(IncidentReportRepoContext);
+
   const [sliderOneValue, setSliderOneValue] = React.useState(0);
-
   const [sliderTwoValue, setSliderTwoValue] = React.useState(0);
-
   const [sliderThreeValue, setSliderThreeValue] = React.useState(0);
-
   const [sliderFourValue, setSliderFourValue] = React.useState(0);
+
   return (
     <SafeAreaView style={uiStyle.container}>
       <Text style={uiStyle.titleText}>
@@ -65,24 +70,21 @@ function VomsInitialSymptoms({ navigation }) {
             onValueChange={(val) => setSliderFourValue(val)}
           />
         </View>
-        {/*<Text>*/}
-        {/*  {'\n'} {'\n'}*/}
-        {/*  {'\n'} {'\n'}*/}
-        {/*</Text>*/}
-        {/*<DisplayOptions*/}
-        {/*  options={options}*/}
-        {/*  updateOption={(opt) => {*/}
-        {/*    setSelected((prev) => {*/}
-        {/*      const newSelected = { ...prev };*/}
-        {/*      newSelected[opt] = !prev[opt];*/}
-
-        {/*      return newSelected;*/}
-        {/*    });*/}
-        {/*  }}*/}
-        {/*/>*/}
       </View>
       <TouchableOpacity
-        onPress={() => navigation.navigate('Voms Test SP 1')}
+        onPress={() => {
+          incidentRepoContext
+            .addVOMSSymptoms(
+              reportId,
+              'Initial',
+              sliderOneValue,
+              sliderTwoValue,
+              sliderThreeValue,
+              sliderFourValue,
+            )
+            .catch(console.log);
+          navigation.navigate('Voms Test SP 1');
+        }}
         style={uiStyle.bottomButton}
       >
         <Text style={uiStyle.buttonLabel}>Next</Text>
