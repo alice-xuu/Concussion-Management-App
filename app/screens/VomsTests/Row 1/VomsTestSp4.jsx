@@ -10,7 +10,7 @@ import {
 import uiStyle from '../../../components/uiStyle';
 import { useEffect, useRef } from 'react';
 
-function VomsTestSp2({ navigation }) {
+function VomsTestSp4({ navigation }) {
   const startValue = useRef(new Animated.Value(0)).current;
   const endRightValue = 320;
   const endLeftValue = -320;
@@ -38,17 +38,10 @@ function VomsTestSp2({ navigation }) {
       ]),
       { iterations: 2 },
     ).start();
-    navigation.navigate('Voms Response 1');
-  }, [startValue, endRightValue, endLeftValue, navigation]);
+  }, [startValue, endRightValue, endLeftValue]);
 
   return (
     <SafeAreaView style={uiStyle.container}>
-      <TouchableOpacity
-        onPress={() => navigation.navigate('Voms Response 1')}
-        style={uiStyle.bottomButton}
-      >
-        <Text style={uiStyle.buttonLabel}>Next</Text>
-      </TouchableOpacity>
       <View style={styles.circleContainer}>
         <Animated.View
           style={[
@@ -63,6 +56,12 @@ function VomsTestSp2({ navigation }) {
           ]}
         />
       </View>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Voms Response 1')}
+        style={uiStyle.bottomButton}
+      >
+        <Text style={uiStyle.buttonLabel}>Next</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 }
@@ -74,4 +73,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default VomsTestSp2;
+export default VomsTestSp4;

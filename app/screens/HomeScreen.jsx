@@ -70,8 +70,13 @@ function HomeScreen({ navigation }) {
         >
           <Text style={uiStyle.buttonLabel}>Voms 2 row</Text>
         </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Voms Test SP 2')}
+          style={uiStyle.bottomButton}
+        >
+          <Text style={uiStyle.buttonLabel}>Voms Test SP 2</Text>
+        </TouchableOpacity>
       </View>
-
     </SafeAreaView>
   );
 }

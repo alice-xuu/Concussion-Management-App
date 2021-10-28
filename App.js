@@ -41,6 +41,7 @@ import VomsInitialSymptoms from './app/screens/VomsTests/Row 1/VomsInitialSympto
 import VomsTestSp1 from './app/screens/VomsTests/Row 1/VomsTestSp1';
 import VomsTestSp2 from './app/screens/VomsTests/Row 1/VomsTestSp2';
 import VomsResponse1 from './app/screens/VomsTests/Row 1/VomsResponse1';
+import VomsTestSp4 from './app/screens/VomsTests/Row 1/VomsTestSp4';
 import VomsS1 from './app/screens/VomsTests/Row 2/VomsS1';
 import VomsSP3 from './app/screens/VomsTests/Row 2/VomsSP3';
 import VomsSP4 from './app/screens/VomsTests/Row 2/VomsSP4';
@@ -137,6 +138,7 @@ export default function App() {
           <RootStack.Screen name="Voms Test SP 1" component={VomsTestSp1} />
           <RootStack.Screen name="Voms Test SP 2" component={VomsTestSp2} />
           <RootStack.Screen name="Voms Response 1" component={VomsResponse1} />
+          <RootStack.Screen name="Voms Test SP 4" component={VomsTestSp4} />
 
           <RootStack.Screen name="Voms Test S 1" component={VomsS1} />
           <RootStack.Screen name="Voms Test SP 3" component={VomsSP3} />
@@ -155,8 +157,10 @@ export default function App() {
           <RootStack.Screen name="Voms Test NPC 1" component={VomsNPC1} />
           <RootStack.Screen name="Voms Test NPC 2" component={VomsNPC2} />
           <RootStack.Screen name="Voms Test NPC 3" component={VomsNPC3} />
-          <RootStack.Screen name="Voms Test Response 4" component={VomsResponse4} />
-
+          <RootStack.Screen
+            name="Voms Test Response 4"
+            component={VomsResponse4}
+          />
         </RootStack.Navigator>
       </NavigationContainer>
     </GlobalContextProvider>
