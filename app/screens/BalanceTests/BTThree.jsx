@@ -59,7 +59,7 @@ function BTThree({ navigation }) {
       </ScrollView>
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate('VOMS Start');
+          navigation.navigate('Voms Start');
           handleCreateMultiResponse([
             Math.round(data * 1000) / 1000,
             Math.round(Math.pow(data, 2) * 1000) / 1000,
