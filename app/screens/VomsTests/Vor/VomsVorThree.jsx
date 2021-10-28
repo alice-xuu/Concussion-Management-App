@@ -7,11 +7,14 @@ import {
   View,
 } from 'react-native';
 import uiStyle from '../../../components/uiStyle';
-import { useState } from 'react';
-import DisplayOptions from '../../../components/MemoryTests/DisplayOptions';
 import Slider from '@react-native-community/slider';
+import {
+  IncidentReportRepoContext,
+  ReportIdContext,
+} from '../../../components/GlobalContextProvider';
+import { useContext } from 'react';
 
-function VomsVorThree(props) {
+function VomsVorThree({ navigation }) {
   const [reportId] = useContext(ReportIdContext);
   const incidentRepoContext = useContext(IncidentReportRepoContext);
 

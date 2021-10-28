@@ -8,6 +8,11 @@ import {
 } from 'react-native';
 import uiStyle from '../../../components/uiStyle';
 import Slider from '@react-native-community/slider';
+import { useContext } from 'react';
+import {
+  IncidentReportRepoContext,
+  ReportIdContext,
+} from '../../../components/GlobalContextProvider';
 
 function VomsResponse1({ navigation }) {
   const [reportId] = useContext(ReportIdContext);

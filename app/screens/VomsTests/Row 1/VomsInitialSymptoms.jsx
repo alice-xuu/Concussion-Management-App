@@ -12,6 +12,7 @@ import {
   IncidentReportRepoContext,
   ReportIdContext,
 } from '../../../components/GlobalContextProvider';
+import { useContext } from 'react';
 
 function VomsInitialSymptoms({ navigation }) {
   const [reportId] = useContext(ReportIdContext);

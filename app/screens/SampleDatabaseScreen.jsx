@@ -34,13 +34,6 @@ export default function SampleDatabaseScreen() {
   };
 
   // TODO: remove
-  const getVOMS = () => {
-    if (patientRepoContext !== null) {
-      getVOMSSymptoms(reportId, 'Initial');
-    }
-  };
-
-  // TODO: remove
   const onCreatePatient = () => {
     if (patientRepoContext !== null) {
       const fname = Math.random().toString();
