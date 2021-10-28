@@ -143,7 +143,6 @@ export default function App() {
           <RootStack.Screen name="Voms Test S 1" component={VomsS1} />
           <RootStack.Screen name="Voms Test SP 3" component={VomsSP3} />
           <RootStack.Screen name="Voms Test S 5" component={VomsS5} />
-          <RootStack.Screen name="Voms Test SP 4" component={VomsSP4} />
           <RootStack.Screen name="Voms Response 2" component={VomsResponse2} />
 
           <RootStack.Screen name="Voms Test Vor 1" component={VomsVorOne} />

@@ -38,17 +38,10 @@ function VomsTestSp2({ navigation }) {
       ]),
       { iterations: 2 },
     ).start();
-    navigation.navigate('Voms Response 1');
   }, [startValue, endRightValue, endLeftValue, navigation]);
 
   return (
     <SafeAreaView style={uiStyle.container}>
-      <TouchableOpacity
-        onPress={() => navigation.navigate('Voms Response 1')}
-        style={uiStyle.bottomButton}
-      >
-        <Text style={uiStyle.buttonLabel}>Next</Text>
-      </TouchableOpacity>
       <View style={styles.circleContainer}>
         <Animated.View
           style={[
@@ -63,6 +56,12 @@ function VomsTestSp2({ navigation }) {
           ]}
         />
       </View>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Voms Response 1')}
+        style={uiStyle.bottomButton}
+      >
+        <Text style={uiStyle.buttonLabel}>Next</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 }
