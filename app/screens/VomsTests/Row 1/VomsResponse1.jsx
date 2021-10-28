@@ -10,13 +10,14 @@ import uiStyle from '../../../components/uiStyle';
 import Slider from '@react-native-community/slider';
 
 function VomsResponse1({ navigation }) {
+  const [reportId] = useContext(ReportIdContext);
+  const incidentRepoContext = useContext(IncidentReportRepoContext);
+
   const [sliderOneValue, setSliderOneValue] = React.useState(0);
-
   const [sliderTwoValue, setSliderTwoValue] = React.useState(0);
-
   const [sliderThreeValue, setSliderThreeValue] = React.useState(0);
-
   const [sliderFourValue, setSliderFourValue] = React.useState(0);
+
   return (
     <SafeAreaView style={uiStyle.container}>
       <Text style={uiStyle.titleText}>
@@ -67,7 +68,19 @@ function VomsResponse1({ navigation }) {
         </View>
       </View>
       <TouchableOpacity
-        onPress={() => navigation.navigate('Home')}
+        onPress={() => {
+          incidentRepoContext
+            .addVOMSSymptoms(
+              reportId,
+              'Initial',
+              sliderOneValue,
+              sliderTwoValue,
+              sliderThreeValue,
+              sliderFourValue,
+            )
+            .catch(console.log);
+          navigation.navigate('Home');
+        }}
         style={uiStyle.bottomButton}
       >
         <Text style={uiStyle.buttonLabel}>Next</Text>
