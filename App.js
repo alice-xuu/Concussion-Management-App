@@ -42,6 +42,8 @@ import VomsStart from './app/screens/VomsTests/Row 1/VomsStart';
 import VomsInitialSymptoms from './app/screens/VomsTests/Row 1/VomsInitialSymptoms';
 import VomsTestSp1 from './app/screens/VomsTests/Row 1/VomsTestSp1';
 import VomsTestSp2 from './app/screens/VomsTests/Row 1/VomsTestSp2';
+import VomsTestSp3 from './app/screens/VomsTests/Row 1/VomsTestSp3';
+import VomsTestSp4 from './app/screens/VomsTests/Row 1/VomsTestSp4';
 import VomsResponse1 from './app/screens/VomsTests/Row 1/VomsResponse1';
 import VomsS1 from './app/screens/VomsTests/Row 2/VomsS1';
 import VomsSP3 from './app/screens/VomsTests/Row 2/VomsSP3';
@@ -54,7 +56,6 @@ import VomsNPC3 from './app/screens/VomsTests/Row4/VomsNPC3';
 import VomsResponse4 from './app/screens/VomsTests/Row4/VomsResponse4';
 import ChooseProfileScreen from './app/screens/ChooseProfileScreen';
 import VomsS5 from './app/screens/VomsTests/Row 2/VomsS5';
-
 
 const RootStack = createNativeStackNavigator();
 /**
@@ -140,6 +141,8 @@ export default function App() {
           />
           <RootStack.Screen name="Voms Test SP 1" component={VomsTestSp1} />
           <RootStack.Screen name="Voms Test SP 2" component={VomsTestSp2} />
+          <RootStack.Screen name="Voms Test SP 3.1" component={VomsTestSp3} />
+          <RootStack.Screen name="Voms Test SP 4.1" component={VomsTestSp4} />
           <RootStack.Screen name="Voms Response 1" component={VomsResponse1} />
 
           <RootStack.Screen name="Voms Test S 1" component={VomsS1} />

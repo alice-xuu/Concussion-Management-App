@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import uiStyle from '../../../components/uiStyle';
 
-function VomsTestSp2({ navigation }) {
+function VomsTestSp4({ navigation }) {
   return (
     <SafeAreaView style={uiStyle.container}>
       <View style={uiStyle.vomsCircle} />
@@ -16,7 +16,7 @@ function VomsTestSp2({ navigation }) {
         <View style={uiStyle.vomsCircle} />
       </View>
       <TouchableOpacity
-        onPress={() => navigation.navigate('Voms Test SP 3.1')}
+        onPress={() => navigation.navigate('Voms Response 1')}
         style={uiStyle.bottomButton}
       >
         <Text style={uiStyle.buttonLabel}>Next</Text>
@@ -32,4 +32,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default VomsTestSp2;
+export default VomsTestSp4;
