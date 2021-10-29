@@ -12,10 +12,10 @@ function VomsTestSp1({ navigation }) {
           Instructions
           {'\n'} {'\n'}
           The affected person will be shown a circle slowly moving from left to
-          right. Ask them to follow the circle.
+          right. Ask them to keep their head still and follow the circle.
           {'\n'} {'\n'}
           Please allow them to sit down and place the phone landscape at eye
-          level, 0.91m (3ft) away.
+          level, 15cm away away.
         </Text>
       </ScrollView>
       <TouchableOpacity

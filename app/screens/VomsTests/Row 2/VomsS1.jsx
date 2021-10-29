@@ -14,7 +14,7 @@ function VomsS1({ navigation }) {
           possible.
           {'\n'} {'\n'}
           Please allow them to sit down and place the phone landscape at eye
-          level, 10cm away.
+          level, 15cm away.
         </Text>
       </ScrollView>
       <TouchableOpacity
