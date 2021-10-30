@@ -6,7 +6,7 @@ import {
   View,
   StyleSheet,
 } from 'react-native';
-import uiStyle from '../../../components/uiStyle';
+import uiStyle from '../../components/uiStyle';
 import Slider from '@react-native-community/slider';
 
 function VomsInitialSymptoms({ navigation }) {
@@ -82,7 +82,7 @@ function VomsInitialSymptoms({ navigation }) {
         {/*/>*/}
       </View>
       <TouchableOpacity
-        onPress={() => navigation.navigate('Voms Test SP 1')}
+        onPress={() => navigation.navigate('Voms SP 1')}
         style={uiStyle.bottomButton}
       >
         <Text style={uiStyle.buttonLabel}>Next</Text>

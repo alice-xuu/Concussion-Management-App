@@ -9,7 +9,7 @@ import {
 import uiStyle from '../../../components/uiStyle';
 import Slider from '@react-native-community/slider';
 
-function VomsResponse1({ navigation }) {
+function SP3Response1({ navigation }) {
   const [sliderOneValue, setSliderOneValue] = React.useState(0);
 
   const [sliderTwoValue, setSliderTwoValue] = React.useState(0);
@@ -67,7 +67,7 @@ function VomsResponse1({ navigation }) {
         </View>
       </View>
       <TouchableOpacity
-        onPress={() => navigation.navigate('Voms Test S 1')}
+        onPress={() => navigation.navigate('Voms Test SP 4')}
         style={uiStyle.bottomButton}
       >
         <Text style={uiStyle.buttonLabel}>Next</Text>
@@ -107,4 +107,4 @@ const styles = StyleSheet.create({
 //   return obj;
 // };
 
-export default VomsResponse1;
+export default SP3Response1;
