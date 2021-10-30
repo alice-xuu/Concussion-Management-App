@@ -10,7 +10,7 @@ import {
 import uiStyle from '../../../components/uiStyle';
 import { useEffect, useRef } from 'react';
 
-function VomsTestSp4({ navigation }) {
+function SP4({ navigation }) {
   const startValue = useRef(new Animated.Value(0)).current;
   const endRightValue = 320;
   const endLeftValue = -320;
@@ -57,7 +57,7 @@ function VomsTestSp4({ navigation }) {
         />
       </View>
       <TouchableOpacity
-        onPress={() => navigation.navigate('Voms Response 2')}
+        onPress={() => navigation.navigate('Voms SP 5 Response 2')}
         style={uiStyle.bottomButton}
       >
         <Text style={uiStyle.buttonLabel}>Next</Text>
@@ -73,4 +73,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default VomsTestSp4;
+export default SP4;

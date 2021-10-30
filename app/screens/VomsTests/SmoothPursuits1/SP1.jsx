@@ -3,7 +3,7 @@ import { Text, SafeAreaView, TouchableOpacity, ScrollView } from 'react-native';
 
 import uiStyle from '../../../components/uiStyle';
 
-function VomsTestSp1({ navigation }) {
+function SP1({ navigation }) {
   return (
     <SafeAreaView style={uiStyle.container}>
       <Text style={uiStyle.titleText}>Smooth Pursuits</Text>
@@ -19,7 +19,7 @@ function VomsTestSp1({ navigation }) {
         </Text>
       </ScrollView>
       <TouchableOpacity
-        onPress={() => navigation.navigate('Voms Test SP 2')}
+        onPress={() => navigation.navigate('Voms SP 2')}
         style={uiStyle.bottomButton}
       >
         <Text style={uiStyle.buttonLabel}>Next</Text>
@@ -28,4 +28,4 @@ function VomsTestSp1({ navigation }) {
   );
 }
 
-export default VomsTestSp1;
+export default SP1;

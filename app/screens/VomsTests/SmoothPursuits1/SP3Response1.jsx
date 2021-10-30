@@ -9,7 +9,7 @@ import {
 import uiStyle from '../../../components/uiStyle';
 import Slider from '@react-native-community/slider';
 
-function VomsResponse1({ navigation }) {
+function SP3Response1({ navigation }) {
   const [sliderOneValue, setSliderOneValue] = React.useState(0);
 
   const [sliderTwoValue, setSliderTwoValue] = React.useState(0);
@@ -107,4 +107,4 @@ const styles = StyleSheet.create({
 //   return obj;
 // };
 
-export default VomsResponse1;
+export default SP3Response1;
