@@ -15,7 +15,7 @@ function S1({ navigation }) {
           Ask them to alternate left and right 10 times as quickly as possible.
           {'\n'} {'\n'}
           Please allow them to sit down and place the phone landscape at eye
-          level, 10cm away.
+          level, 15cm away.
         </Text>
       </ScrollView>
       <TouchableOpacity
