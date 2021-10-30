@@ -19,7 +19,7 @@ function VomsTestSp1({ navigation }) {
         </Text>
       </ScrollView>
       <TouchableOpacity
-        onPress={() => navigation.navigate('Voms Test SP 2')}
+        onPress={() => navigation.navigate('Voms Test Saccades 2')}
         style={uiStyle.bottomButton}
       >
         <Text style={uiStyle.buttonLabel}>Next</Text>

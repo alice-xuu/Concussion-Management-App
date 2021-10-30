@@ -7,10 +7,11 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {
-  IncidentReportRepoContext, PatientContext,
+  IncidentReportRepoContext,
+  PatientContext,
   PatientRepoContext,
-  ReportIdContext
-} from "../components/GlobalContextProvider";
+  ReportIdContext,
+} from '../components/GlobalContextProvider';
 import { useContext, useState, useRef, useEffect } from 'react';
 import uiStyle from '../components/uiStyle';
 /**
