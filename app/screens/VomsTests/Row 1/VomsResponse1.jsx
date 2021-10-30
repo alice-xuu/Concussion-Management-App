@@ -67,7 +67,7 @@ function VomsResponse1({ navigation }) {
         </View>
       </View>
       <TouchableOpacity
-        onPress={() => navigation.navigate('Home')}
+        onPress={() => navigation.navigate('VOMS Saccades 1')}
         style={uiStyle.bottomButton}
       >
         <Text style={uiStyle.buttonLabel}>Next</Text>

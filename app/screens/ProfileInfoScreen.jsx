@@ -90,13 +90,13 @@ function ProfileInfoScreen({ navigation }) {
     for (let i = 0; i < reports.length; i++) {
       reportsButtons.push(
         <TouchableOpacity
-          key={i+1}
+          key={i + 1}
           style={styles.selectUserButton}
           onPress={() => {
             // navigation.navigate('Home');
           }}
         >
-          <Text style={uiStyle.buttonLabel}>REPORT {i+1}</Text>
+          <Text style={uiStyle.buttonLabel}>REPORT {i + 1}</Text>
         </TouchableOpacity>,
       );
     }
