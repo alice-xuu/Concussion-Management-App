@@ -42,17 +42,9 @@ import VomsVorVertical from './app/screens/VomsTests/Vor/VomsVorVertical';
 import VomsVorVerticalFour from './app/screens/VomsTests/Vor/VomsVorVerticalFour';
 import VomsVorResponseFive from './app/screens/VomsTests/Vor/VomsVorResponseFive';
 
-// import VomsStart from './app/screens/VomsTests/Row 1/VomsStart';
-// import VomsInitialSymptoms from './app/screens/VomsTests/Row 1/VomsInitialSymptoms';
-// import VomsTestSp1 from './app/screens/VomsTests/Row 1/VomsTestSp1';
-// import VomsTestSp2 from './app/screens/VomsTests/Row 1/VomsTestSp2';
-// import VomsTestSp3 from './app/screens/VomsTests/Row 1/VomsTestSp3';
-// import VomsTestSp4 from './app/screens/VomsTests/Row 1/VomsTestSp4';
-// import VomsResponse1 from './app/screens/VomsTests/Row 1/VomsResponse1';
-// import VomsS1 from './app/screens/VomsTests/Row 2/VomsS1';
-// import VomsSP3 from './app/screens/VomsTests/Row 2/VomsSP3';
-// import VomsSP4 from './app/screens/VomsTests/Row 2/VomsSP4';
-// import VomsResponse2 from './app/screens/VomsTests/Row 2/VomsResponse2';
+import VomsTestSp2 from './app/screens/VomsTests/Row 1/VomsTestSp2';
+import VomsTestSp3 from './app/screens/VomsTests/Row 1/VomsTestSp3';
+import VomsTestSp4 from './app/screens/VomsTests/Row 1/VomsTestSp4';
 import SP1 from './app/screens/VomsTests/SmoothPursuits1/SP1';
 import SP2 from './app/screens/VomsTests/SmoothPursuits1/SP2';
 import SP3Response1 from './app/screens/VomsTests/SmoothPursuits1/SP3Response1';
@@ -154,16 +146,20 @@ export default function App() {
             name="Voms Initial Symptoms"
             component={VomsInitialSymptoms}
           />
-          // <RootStack.Screen name="Voms Test SP 1" component={VomsTestSp1} />
-          // <RootStack.Screen name="Voms Test SP 2" component={VomsTestSp2} />
-          // <RootStack.Screen name="Voms Test SP 3.1" component={VomsTestSp3} />
-          // <RootStack.Screen name="Voms Test SP 4.1" component={VomsTestSp4} />
-          // <RootStack.Screen name="Voms Response 1" component={VomsResponse1} />
+          <RootStack.Screen name="Voms Test SP 2" component={VomsTestSp2} />
+          <RootStack.Screen name="Voms Test SP 3.1" component={VomsTestSp3} />
+          <RootStack.Screen name="Voms Test SP 4.1" component={VomsTestSp4} />
           <RootStack.Screen name="Voms SP 1" component={SP1} />
           <RootStack.Screen name="Voms SP 2" component={SP2} />
-          <RootStack.Screen name="Voms SP 3 Response 1" component={SP3Response1} />
+          <RootStack.Screen
+            name="Voms SP 3 Response 1"
+            component={SP3Response1}
+          />
           <RootStack.Screen name="Voms SP 4" component={SP4} />
-          <RootStack.Screen name="Voms SP 5 Response 2" component={SP5Response2} />
+          <RootStack.Screen
+            name="Voms SP 5 Response 2"
+            component={SP5Response2}
+          />
 
           <RootStack.Screen name="VOMS Saccades 1" component={S1} />
           <RootStack.Screen name="VOMS Saccades 2" component={S2} />

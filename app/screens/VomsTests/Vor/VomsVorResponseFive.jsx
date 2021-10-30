@@ -26,7 +26,7 @@ function VomsVorThree(props) {
       </View>
       <TouchableOpacity
         onPress={() => {
-          props.navigation.navigate('"Voms Test NPC 1"');
+          props.navigation.navigate('Voms Test NPC 1');
         }}
         style={uiStyle.bottomButton}
       >

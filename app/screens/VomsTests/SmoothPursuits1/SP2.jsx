@@ -57,7 +57,8 @@ function SP2({ navigation }) {
         />
       </View>
       <TouchableOpacity
-        onPress={() => navigation.navigate('Voms SP 3 Response 1')}
+        // onPress={() => navigation.navigate('Voms SP 3 Response 1')}
+        onPress={() => navigation.navigate('Voms Test SP 3.1')}
         style={uiStyle.bottomButton}
       >
         <Text style={uiStyle.buttonLabel}>Next</Text>

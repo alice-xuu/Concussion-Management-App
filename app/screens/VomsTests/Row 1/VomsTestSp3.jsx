@@ -16,7 +16,7 @@ function VomsTestSp3({ navigation }) {
         follow the circle again
       </Text>
       <TouchableOpacity
-        onPress={() => navigation.navigate('Voms Test SP 4.1')}
+        onPress={() => navigation.navigate('Voms SP 4')}
         style={uiStyle.bottomButton}
       >
         <Text style={uiStyle.buttonLabel}>Next</Text>
