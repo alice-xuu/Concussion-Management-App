@@ -89,8 +89,9 @@ export default StyleSheet.create({
 
   // Circle used in voms tests
   vomsCircle: {
-    width: 100,
-    height: 100,
+    width: 20,
+    height: 20,
+    // fontSize: 14,
     borderRadius: 50,
     backgroundColor: 'red',
     transform: [{ scaleY: 0.76 }, { scaleX: 0.67 }],
