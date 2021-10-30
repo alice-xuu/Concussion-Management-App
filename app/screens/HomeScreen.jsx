@@ -63,12 +63,12 @@ function HomeScreen({ navigation }) {
           <Text style={uiStyle.buttonLabel}>View History</Text>
         </TouchableOpacity>
       </View>
-      <TouchableOpacity
-        onPress={() => navigation.navigate('Voms Start')}
-        style={uiStyle.bottomButton}
-      >
-        <Text style={uiStyle.buttonLabel}>Test</Text>
-      </TouchableOpacity>
+      {/*<TouchableOpacity*/}
+      {/*  onPress={() => navigation.navigate('Voms Start')}*/}
+      {/*  style={uiStyle.bottomButton}*/}
+      {/*>*/}
+      {/*  <Text style={uiStyle.buttonLabel}>Voms Start</Text>*/}
+      {/*</TouchableOpacity>*/}
     </SafeAreaView>
   );
 }
