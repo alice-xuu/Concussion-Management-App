@@ -77,14 +77,14 @@ function S6Response3({ navigation }) {
           incidentRepoContext
             .addVOMSSymptoms(
               reportId,
-              'Smooth Pursuits Vertical',
+              'Saccades Vertical',
               sliderOneValue,
               sliderTwoValue,
               sliderThreeValue,
               sliderFourValue,
             )
             .catch(console.log);
-          navigation.navigate('VOMS Row2Saccades 1');
+          navigation.navigate('VOMS VOR 1');
         }}
         style={uiStyle.bottomButton}
       >

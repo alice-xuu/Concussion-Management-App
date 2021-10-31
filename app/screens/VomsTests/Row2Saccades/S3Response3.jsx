@@ -14,7 +14,7 @@ import {
   ReportIdContext,
 } from '../../../components/GlobalContextProvider';
 
-function S6Response2({ navigation }) {
+function S3Response3({ navigation }) {
   const [reportId] = useContext(ReportIdContext);
   const incidentRepoContext = useContext(IncidentReportRepoContext);
 
@@ -77,14 +77,14 @@ function S6Response2({ navigation }) {
           incidentRepoContext
             .addVOMSSymptoms(
               reportId,
-              'Smooth Pursuits Vertical',
+              'Saccades Horizontal',
               sliderOneValue,
               sliderTwoValue,
               sliderThreeValue,
               sliderFourValue,
             )
             .catch(console.log);
-          navigation.navigate('VOMS Row2Saccades 1');
+          navigation.navigate('VOMS Saccades 4');
         }}
         style={uiStyle.bottomButton}
       >
@@ -118,4 +118,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default S6Response2;
+export default S3Response3;

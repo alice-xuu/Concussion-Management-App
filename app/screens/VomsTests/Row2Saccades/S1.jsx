@@ -19,7 +19,7 @@ function S1({ navigation }) {
         </Text>
       </ScrollView>
       <TouchableOpacity
-        onPress={() => navigation.navigate('VOMS Row2Saccades 2')}
+        onPress={() => navigation.navigate('VOMS Saccades 2')}
         style={uiStyle.bottomButton}
       >
         <Text style={uiStyle.buttonLabel}>Next</Text>

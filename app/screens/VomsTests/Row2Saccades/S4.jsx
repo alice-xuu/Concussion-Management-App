@@ -18,7 +18,7 @@ function S4({ navigation }) {
         as possible.
       </Text>
       <TouchableOpacity
-        onPress={() => navigation.navigate('VOMS Row2Saccades 5')}
+        onPress={() => navigation.navigate('VOMS Saccades 5')}
         style={uiStyle.bottomButton}
       >
         <Text style={uiStyle.buttonLabel}>Next</Text>

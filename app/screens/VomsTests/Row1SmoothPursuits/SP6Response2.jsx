@@ -84,7 +84,7 @@ function SP6Response2({ navigation }) {
               sliderFourValue,
             )
             .catch(console.log);
-          navigation.navigate('VOMS Row2Saccades 1');
+          navigation.navigate('VOMS Saccades 1');
         }}
         style={uiStyle.bottomButton}
       >

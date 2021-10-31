@@ -53,7 +53,7 @@ import SP6Response2 from './app/screens/VomsTests/Row1SmoothPursuits/SP6Response
 
 import S1 from './app/screens/VomsTests/Row2Saccades/S1';
 import S2 from './app/screens/VomsTests/Row2Saccades/S2';
-import S3Response2 from './app/screens/VomsTests/Row2Saccades/S3Response2';
+import S3Response2 from './app/screens/VomsTests/Row2Saccades/S3Response3';
 import S4 from './app/screens/VomsTests/Row2Saccades/S4';
 import S5 from './app/screens/VomsTests/Row2Saccades/S5';
 import S6 from './app/screens/VomsTests/Row2Saccades/S6Response3';
