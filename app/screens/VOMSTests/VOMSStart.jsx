@@ -3,7 +3,7 @@ import { Text, SafeAreaView, TouchableOpacity, ScrollView } from 'react-native';
 
 import uiStyle from '../../components/uiStyle';
 
-function VomsStart({ navigation }) {
+function VOMSStart({ navigation }) {
   return (
     <SafeAreaView style={uiStyle.container}>
       <Text style={uiStyle.titleText}>VOMS Instructions</Text>
@@ -23,4 +23,4 @@ function VomsStart({ navigation }) {
   );
 }
 
-export default VomsStart;
+export default VOMSStart;

@@ -14,7 +14,7 @@ import {
 } from '../../components/GlobalContextProvider';
 import { useContext } from 'react';
 
-function VomsInitialSymptoms({ navigation }) {
+function VOMSInitialSymptoms({ navigation }) {
   const [reportId] = useContext(ReportIdContext);
   const incidentRepoContext = useContext(IncidentReportRepoContext);
 
@@ -118,4 +118,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default VomsInitialSymptoms;
+export default VOMSInitialSymptoms;
