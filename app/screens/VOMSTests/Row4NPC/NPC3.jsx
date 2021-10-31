@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   Dimensions,
-  onChangeText,
   SafeAreaView,
   StyleSheet,
   Text,
@@ -10,11 +9,19 @@ import {
   View,
 } from 'react-native';
 import uiStyle from '../../../components/uiStyle';
+import {
+  IncidentReportRepoContext,
+  ReportIdContext,
+} from '../../../components/GlobalContextProvider';
+import { useContext } from 'react';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
-function NPC3(props) {
+function NPC3({ navigation }) {
+  const [reportId] = useContext(ReportIdContext);
+  const incidentRepoContext = useContext(IncidentReportRepoContext);
+
   const [value, onChangeText] = React.useState('');
 
   return (
@@ -35,7 +42,12 @@ function NPC3(props) {
       </View>
       <TouchableOpacity
         onPress={() => {
-          props.navigation.navigate('VOMS NPC 4 Response 7');
+          {
+            incidentRepoContext
+              .addVOMSNPCDistance(reportId, value)
+              .catch(console.log);
+            navigation.navigate('VOMS NPC 4 Response 7');
+          }
         }}
         style={uiStyle.bottomButton}
       >

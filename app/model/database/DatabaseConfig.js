@@ -96,7 +96,7 @@ CREATE TABLE IF NOT EXISTS VOMSSymptoms (
   // User responses for Near Point of Convergence distance input
   `
 CREATE TABLE IF NOT EXISTS VOMSNPCDistance (
-    vomsSymptoms_id INTEGER PRIMARY KEY,
+    vomsNPCDistance_id INTEGER PRIMARY KEY,
     report_id INTEGER REFERENCES IncidentReport(report_id),
     distance FLOAT,
 );

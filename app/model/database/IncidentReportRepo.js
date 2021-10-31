@@ -271,4 +271,25 @@ export class IncidentReportRepo {
     const rs = await this.da.runSqlStmt(sql, args);
     return rs.rows.item(0);
   }
+
+  async addVOMSNPCDistance(reportId, distance) {
+    const sql = `INSERT INTO VOMSSymptoms (report_Id, distance)
+        VALUES (?, ?)`;
+    const args = [reportId, distance];
+
+    const rs = await this.da.runSqlStmt(sql, args);
+    return rs.insertId;
+  }
+
+  async getVOMSNPCDistance(reportId) {
+    if (reportId === undefined || reportId === null) {
+      throw 'Invalid reportId';
+    }
+
+    const sql = `SELECT distance FROM VOMSSymptoms WHERE report_id = ?;`;
+    const args = [reportId];
+
+    const rs = await this.da.runSqlStmt(sql, args);
+    return rs.rows.item(0);
+  }
 }
