@@ -14,7 +14,7 @@ import {
   ReportIdContext,
 } from '../../../components/GlobalContextProvider';
 
-function VORResponse5({ navigation }) {
+function S6Response2({ navigation }) {
   const [reportId] = useContext(ReportIdContext);
   const incidentRepoContext = useContext(IncidentReportRepoContext);
 
@@ -84,7 +84,7 @@ function VORResponse5({ navigation }) {
               sliderFourValue,
             )
             .catch(console.log);
-          navigation.navigate('VOMS Saccades 1');
+          navigation.navigate('VOMS Row2Saccades 1');
         }}
         style={uiStyle.bottomButton}
       >
@@ -118,4 +118,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default VORResponse5;
+export default S6Response2;

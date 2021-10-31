@@ -1,20 +1,20 @@
 import * as React from 'react';
 import {
   SafeAreaView,
+  StyleSheet,
   Text,
   TouchableOpacity,
   View,
-  StyleSheet,
 } from 'react-native';
 import uiStyle from '../../../components/uiStyle';
 import Slider from '@react-native-community/slider';
-import { useContext } from 'react';
 import {
   IncidentReportRepoContext,
   ReportIdContext,
 } from '../../../components/GlobalContextProvider';
+import { useContext } from 'react';
 
-function SP5Response2({ navigation }) {
+function VomsVorThree({ navigation }) {
   const [reportId] = useContext(ReportIdContext);
   const incidentRepoContext = useContext(IncidentReportRepoContext);
 
@@ -77,14 +77,15 @@ function SP5Response2({ navigation }) {
           incidentRepoContext
             .addVOMSSymptoms(
               reportId,
-              'Smooth Pursuits Vertical',
+              'Vestibular Ocular Reflex',
               sliderOneValue,
               sliderTwoValue,
               sliderThreeValue,
               sliderFourValue,
             )
             .catch(console.log);
-          navigation.navigate('VOMS Saccades 1');
+
+          props.navigation.navigate('Voms Test Row3VOR Vertical');
         }}
         style={uiStyle.bottomButton}
       >
@@ -118,4 +119,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SP5Response2;
+export default VomsVorThree;

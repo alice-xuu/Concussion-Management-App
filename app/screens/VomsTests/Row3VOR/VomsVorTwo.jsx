@@ -1,20 +1,27 @@
 import * as React from 'react';
-import { SafeAreaView, StyleSheet, View } from 'react-native';
+import {
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import uiStyle from '../../../components/uiStyle';
 
-function S5({ navigation }) {
-  setTimeout(() => {
-    navigation.navigate('VOMS Saccades 6 Response 2');
-  }, 10000);
-
+function VomsVorTwo(props) {
   return (
     <SafeAreaView style={uiStyle.container}>
       <View style={styles.circleContainer}>
         <View style={uiStyle.vomsCircle} />
       </View>
-      <View style={styles.circleContainer}>
-        <View style={uiStyle.vomsCircle} />
-      </View>
+      <TouchableOpacity
+        onPress={() => {
+          props.navigation.navigate('Voms Test Row3VOR 3');
+        }}
+        style={uiStyle.bottomButton}
+      >
+        <Text style={uiStyle.buttonLabel}>Next</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 }
@@ -26,4 +33,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default S5;
+export default VomsVorTwo;
