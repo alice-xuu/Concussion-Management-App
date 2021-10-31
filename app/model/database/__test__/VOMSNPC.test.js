@@ -56,10 +56,7 @@ describe('NPCTest', () => {
         },
       };
       mockDa.runSqlStmt = jest.fn(() => Promise.resolve(mockRs));
-      let r = await vs.getVOMSSymptoms(
-        TEST_NPC_RESULTS.vs_id,
-        TEST_NPC_RESULTS.distance,
-      );
+      let r = await vs.getVOMSNPCDistance(TEST_NPC_RESULTS.vs_id);
 
       expect(r.vs_id).toBe(TEST_NPC_RESULTS.vs_id);
       expect(r.distance).toBe(TEST_NPC_RESULTS.distance);
