@@ -42,6 +42,9 @@ import VomsVorVertical from './app/screens/VomsTests/Vor/VomsVorVertical';
 import VomsVorVerticalFour from './app/screens/VomsTests/Vor/VomsVorVerticalFour';
 import VomsVorResponseFive from './app/screens/VomsTests/Vor/VomsVorResponseFive';
 
+import VomsTestSp2 from './app/screens/VomsTests/Row 1/VomsTestSp2';
+import VomsTestSp3 from './app/screens/VomsTests/Row 1/VomsTestSp3';
+import VomsTestSp4 from './app/screens/VomsTests/Row 1/VomsTestSp4';
 import SP1 from './app/screens/VomsTests/SmoothPursuits1/SP1';
 import SP2 from './app/screens/VomsTests/SmoothPursuits1/SP2';
 import SP3Response1 from './app/screens/VomsTests/SmoothPursuits1/SP3Response1';
@@ -60,7 +63,6 @@ import VomsNPC2 from './app/screens/VomsTests/Row4/VomsNPC2';
 import VomsNPC3 from './app/screens/VomsTests/Row4/VomsNPC3';
 import VomsResponse4 from './app/screens/VomsTests/Row4/VomsResponse4';
 import ChooseProfileScreen from './app/screens/ChooseProfileScreen';
-
 
 const RootStack = createNativeStackNavigator();
 /**
@@ -144,11 +146,20 @@ export default function App() {
             name="Voms Initial Symptoms"
             component={VomsInitialSymptoms}
           />
+          <RootStack.Screen name="Voms Test SP 2" component={VomsTestSp2} />
+          <RootStack.Screen name="Voms Test SP 3.1" component={VomsTestSp3} />
+          <RootStack.Screen name="Voms Test SP 4.1" component={VomsTestSp4} />
           <RootStack.Screen name="Voms SP 1" component={SP1} />
           <RootStack.Screen name="Voms SP 2" component={SP2} />
-          <RootStack.Screen name="Voms SP 3 Response 1" component={SP3Response1} />
+          <RootStack.Screen
+            name="Voms SP 3 Response 1"
+            component={SP3Response1}
+          />
           <RootStack.Screen name="Voms SP 4" component={SP4} />
-          <RootStack.Screen name="Voms SP 5 Response 2" component={SP5Response2} />
+          <RootStack.Screen
+            name="Voms SP 5 Response 2"
+            component={SP5Response2}
+          />
 
           <RootStack.Screen name="VOMS Saccades 1" component={S1} />
           <RootStack.Screen name="VOMS Saccades 2" component={S2} />
