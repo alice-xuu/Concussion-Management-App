@@ -2,7 +2,7 @@ import * as React from 'react';
 import { SafeAreaView, Text, TouchableOpacity, View } from 'react-native';
 import uiStyle from '../../../components/uiStyle';
 
-function VMSOne(props) {
+function VMS1(props) {
   return (
     <SafeAreaView style={uiStyle.container}>
       <View style={uiStyle.contentContainerCentered}>
@@ -19,7 +19,7 @@ function VMSOne(props) {
       </View>
       <TouchableOpacity
         onPress={() => {
-          props.navigation.navigate('Voms Test ROW5VMS 2');
+          props.navigation.navigate('VOMS VMS 2');
         }}
         style={uiStyle.bottomButton}
       >
@@ -29,4 +29,4 @@ function VMSOne(props) {
   );
 }
 
-export default VMSOne;
+export default VMS1;

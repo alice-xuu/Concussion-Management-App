@@ -77,7 +77,7 @@ function VOR3Response5({ navigation }) {
           incidentRepoContext
             .addVOMSSymptoms(
               reportId,
-              'Vestibular Ocular Reflex',
+              'Vestibular Ocular Reflex Horizontal',
               sliderOneValue,
               sliderTwoValue,
               sliderThreeValue,

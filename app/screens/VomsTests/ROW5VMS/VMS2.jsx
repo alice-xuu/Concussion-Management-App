@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import uiStyle from '../../../components/uiStyle';
 
-function VMSTwo(props) {
+function VMS2(props) {
   return (
     <SafeAreaView style={uiStyle.container}>
       <View style={styles.circleContainer}>
@@ -16,7 +16,7 @@ function VMSTwo(props) {
       </View>
       <TouchableOpacity
         onPress={() => {
-          props.navigation.navigate('Voms Test ROW5VMS 3');
+          props.navigation.navigate('VOMS VMS 3 Response 8');
         }}
         style={uiStyle.bottomButton}
       >
@@ -33,4 +33,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default VMSTwo;
+export default VMS2;

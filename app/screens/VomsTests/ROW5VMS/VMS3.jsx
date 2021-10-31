@@ -14,7 +14,7 @@ import {
 } from '../../../components/GlobalContextProvider';
 import { useContext } from 'react';
 
-function VMSThree({ navigation }) {
+function VMS3({ navigation }) {
   const [reportId] = useContext(ReportIdContext);
   const incidentRepoContext = useContext(IncidentReportRepoContext);
 
@@ -84,7 +84,7 @@ function VMSThree({ navigation }) {
               sliderFourValue,
             )
             .catch(console.log);
-          navigation.navigate('Home');
+          navigation.navigate('Memory Test 5');
         }}
         style={uiStyle.bottomButton}
       >
@@ -117,4 +117,4 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
   },
 });
-export default VMSThree;
+export default VMS3;

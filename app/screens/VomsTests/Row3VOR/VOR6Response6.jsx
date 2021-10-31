@@ -77,7 +77,7 @@ function VOR6Response6({ navigation }) {
           incidentRepoContext
             .addVOMSSymptoms(
               reportId,
-              'Smooth Pursuits Vertical',
+              'Vestibular Ocular Reflex Vertical',
               sliderOneValue,
               sliderTwoValue,
               sliderThreeValue,
