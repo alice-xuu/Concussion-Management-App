@@ -35,12 +35,12 @@ import BTThree from './app/screens/BalanceTests/BTThree';
 import VOMSStart from './app/screens/VOMSTests/VOMSStart';
 import VOMSInitialSymptoms from './app/screens/VOMSTests/VOMSInitialSymptoms';
 
-import VOMSVorOne from './app/screens/VomsTests/Row3VOR/VOMSVorOne';
-import VOMSVorTwo from './app/screens/VomsTests/Row3VOR/VOMSVorTwo';
-import VOMSVorThree from './app/screens/VomsTests/Row3VOR/VOMSVorThree';
-import VOMSVorVertical from './app/screens/VomsTests/Row3VOR/VOMSVorVertical';
-import VOMSVorVerticalFour from './app/screens/VomsTests/Row3VOR/VOMSVorVerticalFour';
-import VOMSVorResponseFive from './app/screens/VomsTests/Row3VOR/VOMSVorResponseFive';
+import VOMSVorOne from './app/screens/VomsTests/Row3VOR/VOR1';
+import VOMSVorTwo from './app/screens/VomsTests/Row3VOR/VOR2';
+import VOMSVorThree from './app/screens/VomsTests/Row3VOR/VOR3Response5';
+import VOMSVorVertical from './app/screens/VomsTests/Row3VOR/VOR4';
+import VOMSVorVerticalFour from './app/screens/VomsTests/Row3VOR/VOR5';
+import VOMSVorResponseFive from './app/screens/VomsTests/Row3VOR/VOR6Response6';
 
 import VOMSTestSp2 from './app/screens/VOMSTests/Row 1/VOMSTestSp2';
 import VOMSTestSp3 from './app/screens/VOMSTests/Row 1/VOMSTestSp3';

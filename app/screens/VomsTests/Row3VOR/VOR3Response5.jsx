@@ -14,7 +14,7 @@ import {
 } from '../../../components/GlobalContextProvider';
 import { useContext } from 'react';
 
-function VomsVorThree({ navigation }) {
+function VOR3Response5({ navigation }) {
   const [reportId] = useContext(ReportIdContext);
   const incidentRepoContext = useContext(IncidentReportRepoContext);
 
@@ -85,7 +85,7 @@ function VomsVorThree({ navigation }) {
             )
             .catch(console.log);
 
-          props.navigation.navigate('Voms Test Row3VOR Vertical');
+          props.navigation.navigate('VOMS VOR 4');
         }}
         style={uiStyle.bottomButton}
       >
@@ -119,4 +119,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default VomsVorThree;
+export default VOR3Response5;

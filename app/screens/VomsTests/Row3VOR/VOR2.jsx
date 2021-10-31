@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import uiStyle from '../../../components/uiStyle';
 
-function VomsVorTwo(props) {
+function VOR2(props) {
   return (
     <SafeAreaView style={uiStyle.container}>
       <View style={styles.circleContainer}>
@@ -16,7 +16,7 @@ function VomsVorTwo(props) {
       </View>
       <TouchableOpacity
         onPress={() => {
-          props.navigation.navigate('Voms Test Row3VOR Vertical Response');
+          props.navigation.navigate('VOMS VOR 3 Response 5');
         }}
         style={uiStyle.bottomButton}
       >
@@ -33,4 +33,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default VomsVorTwo;
+export default VOR2;
