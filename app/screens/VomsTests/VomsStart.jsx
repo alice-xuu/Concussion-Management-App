@@ -14,7 +14,7 @@ function VomsStart({ navigation }) {
         </Text>
       </ScrollView>
       <TouchableOpacity
-        onPress={() => navigation.navigate('Voms Initial Symptoms')}
+        onPress={() => navigation.navigate('VOMS Initial Symptoms')}
         style={uiStyle.bottomButton}
       >
         <Text style={uiStyle.buttonLabel}>Next</Text>

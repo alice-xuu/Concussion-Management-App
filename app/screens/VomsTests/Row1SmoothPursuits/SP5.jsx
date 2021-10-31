@@ -10,7 +10,7 @@ import {
 import uiStyle from '../../../components/uiStyle';
 import { useEffect, useRef } from 'react';
 
-function SP2({ navigation }) {
+function SP5({ navigation }) {
   const startValue = useRef(new Animated.Value(0)).current;
   const endRightValue = 320;
   const endLeftValue = -320;
@@ -38,7 +38,7 @@ function SP2({ navigation }) {
       ]),
       { iterations: 2 },
     ).start();
-  }, [startValue, endRightValue, endLeftValue, navigation]);
+  }, [startValue, endRightValue, endLeftValue]);
 
   return (
     <SafeAreaView style={uiStyle.container}>
@@ -57,8 +57,7 @@ function SP2({ navigation }) {
         />
       </View>
       <TouchableOpacity
-        // onPress={() => navigation.navigate('Voms SP 3 Response 1')}
-        onPress={() => navigation.navigate('VOMS Smooth Pursuits 3 Response 1')}
+        onPress={() => navigation.navigate('VOMS Smooth Pursuits 5 Response 2')}
         style={uiStyle.bottomButton}
       >
         <Text style={uiStyle.buttonLabel}>Next</Text>
@@ -74,4 +73,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SP2;
+export default SP5;

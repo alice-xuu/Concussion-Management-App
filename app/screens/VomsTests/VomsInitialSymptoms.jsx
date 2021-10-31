@@ -84,7 +84,7 @@ function VomsInitialSymptoms({ navigation }) {
               sliderFourValue,
             )
             .catch(console.log);
-          navigation.navigate('Voms SP 1');
+          navigation.navigate('VOMS Smooth Pursuits 1');
         }}
         style={uiStyle.bottomButton}
       >

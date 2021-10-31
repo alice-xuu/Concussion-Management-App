@@ -84,7 +84,7 @@ function SP3Response1({ navigation }) {
               sliderFourValue,
             )
             .catch(console.log);
-          navigation.navigate('Voms Test SP 4');
+          navigation.navigate('VOMS Smooth Pursuits 4');
         }}
         style={uiStyle.bottomButton}
       >

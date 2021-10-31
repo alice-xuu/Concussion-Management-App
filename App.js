@@ -48,8 +48,8 @@ import VOMSTestSp4 from './app/screens/VOMSTests/Row 1/VOMSTestSp4';
 import SP1 from './app/screens/VomsTests/Row1SmoothPursuits/SP1';
 import SP2 from './app/screens/VomsTests/Row1SmoothPursuits/SP2';
 import SP3Response1 from './app/screens/VomsTests/Row1SmoothPursuits/SP3Response1';
-import SP4 from './app/screens/VomsTests/Row1SmoothPursuits/SP4';
-import SP5Response2 from './app/screens/VomsTests/Row1SmoothPursuits/SP5Response2';
+import SP5 from './app/screens/VomsTests/Row1SmoothPursuits/SP5';
+import SP6Response2 from './app/screens/VomsTests/Row1SmoothPursuits/SP6Response2';
 
 import S1 from './app/screens/VomsTests/Row2Saccades/S1';
 import S2 from './app/screens/VomsTests/Row2Saccades/S2';
@@ -154,9 +154,10 @@ export default function App() {
             component={SP3Response1}
           />
           <RootStack.Screen name="VOMS Smooth Pursuits 4" component={SP4} />
+          <RootStack.Screen name="VOMS Smooth Pursuits 5" component={SP5} />
           <RootStack.Screen
             name="VOMS Smooth Pursuits 5 Response 2"
-            component={SP5Response2}
+            component={SP6Response2}
           />
 
           <RootStack.Screen name="VOMS Saccades 1" component={S1} />

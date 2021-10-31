@@ -14,7 +14,7 @@ import {
   ReportIdContext,
 } from '../../../components/GlobalContextProvider';
 
-function SP5Response2({ navigation }) {
+function SP6Response2({ navigation }) {
   const [reportId] = useContext(ReportIdContext);
   const incidentRepoContext = useContext(IncidentReportRepoContext);
 
@@ -118,4 +118,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SP5Response2;
+export default SP6Response2;
