@@ -25,7 +25,11 @@ DROP TABLE IF EXISTS ReactionTest;
 `,
   //TODO: remove
   `
-DROP TABLE IF EXISTS VOMSPart;
+DROP TABLE IF EXISTS VOMSSymptoms;
+  `,
+  //TODO: remove
+  `
+DROP TABLE IF EXISTS VOMSNPCDistance;
   `,
   `
 CREATE TABLE IF NOT EXISTS Patient (
