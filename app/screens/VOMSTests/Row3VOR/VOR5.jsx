@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import uiStyle from '../../../components/uiStyle';
 
-function VOR5(props) {
+function VOR5({ navigation }) {
   return (
     <SafeAreaView style={uiStyle.container}>
       <View style={styles.circleContainer}>
@@ -16,7 +16,7 @@ function VOR5(props) {
       </View>
       <TouchableOpacity
         onPress={() => {
-          props.navigation.navigate('VOMS VOR 6 Response 6');
+          navigation.navigate('VOMS VOR 6 Response 6');
         }}
         style={uiStyle.bottomButton}
       >

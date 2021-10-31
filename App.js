@@ -61,6 +61,9 @@ import NPC2 from './app/screens/VOMSTests/Row4NPC/NPC2';
 import NPC3 from './app/screens/VOMSTests/Row4NPC/NPC3';
 import NPC4 from './app/screens/VOMSTests/Row4NPC/NPC4Response7';
 import ChooseProfileScreen from './app/screens/ChooseProfileScreen';
+import VMS1 from './app/screens/VOMSTests/ROW5VMS/VMS1';
+import VMS2 from './app/screens/VOMSTests/ROW5VMS/VMS2';
+import VMS3 from './app/screens/VOMSTests/ROW5VMS/VMS3';
 
 const RootStack = createNativeStackNavigator();
 /**
@@ -180,9 +183,9 @@ export default function App() {
           <RootStack.Screen name="VOMS NPC 3" component={NPC3} />
           <RootStack.Screen name="VOMS NPC 4 Response 7" component={NPC4} />
 
-          <RootStack.Screen name="VOMS VMS 1" component={VOR1} />
-          <RootStack.Screen name="VOMS VMS 2" component={VOR2} />
-          <RootStack.Screen name="VOMS VMS 3 Response 8" component={VOR3} />
+          <RootStack.Screen name="VOMS VMS 1" component={VMS1} />
+          <RootStack.Screen name="VOMS VMS 2" component={VMS2} />
+          <RootStack.Screen name="VOMS VMS 3 Response 8" component={VMS3} />
         </RootStack.Navigator>
       </NavigationContainer>
     </GlobalContextProvider>

@@ -85,7 +85,7 @@ function VOR3Response5({ navigation }) {
             )
             .catch(console.log);
 
-          props.navigation.navigate('VOMS VOR 4');
+          navigation.navigate('VOMS VOR 4');
         }}
         style={uiStyle.bottomButton}
       >
