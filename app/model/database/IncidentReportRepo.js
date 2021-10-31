@@ -273,7 +273,7 @@ export class IncidentReportRepo {
   }
 
   async addVOMSNPCDistance(reportId, distance) {
-    const sql = `INSERT INTO VOMSSymptoms (report_Id, distance)
+    const sql = `INSERT INTO VOMSNPCDistance (report_Id, distance)
         VALUES (?, ?)`;
     const args = [reportId, distance];
 
@@ -286,7 +286,7 @@ export class IncidentReportRepo {
       throw 'Invalid reportId';
     }
 
-    const sql = `SELECT distance FROM VOMSSymptoms WHERE report_id = ?;`;
+    const sql = `SELECT distance FROM VOMSNPCDistance WHERE report_id = ?;`;
     const args = [reportId];
 
     const rs = await this.da.runSqlStmt(sql, args);
