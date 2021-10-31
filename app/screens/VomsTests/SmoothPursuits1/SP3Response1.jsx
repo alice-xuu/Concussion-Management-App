@@ -14,14 +14,9 @@ import {
   ReportIdContext,
 } from '../../../components/GlobalContextProvider';
 
-<<<<<<< HEAD:app/screens/VomsTests/Row 1/VomsResponse1.jsx
-function VomsResponse1({ navigation }) {
+function SP3Response1({ navigation }) {
   const [reportId] = useContext(ReportIdContext);
   const incidentRepoContext = useContext(IncidentReportRepoContext);
-=======
-function SP3Response1({ navigation }) {
-  const [sliderOneValue, setSliderOneValue] = React.useState(0);
->>>>>>> origin/develop:app/screens/VomsTests/SmoothPursuits1/SP3Response1.jsx
 
   const [sliderOneValue, setSliderOneValue] = React.useState(0);
   const [sliderTwoValue, setSliderTwoValue] = React.useState(0);
@@ -78,23 +73,19 @@ function SP3Response1({ navigation }) {
         </View>
       </View>
       <TouchableOpacity
-<<<<<<< HEAD:app/screens/VomsTests/Row 1/VomsResponse1.jsx
         onPress={() => {
           incidentRepoContext
             .addVOMSSymptoms(
               reportId,
-              'Saccades',
+              'Smooth Pursuits Horizontal',
               sliderOneValue,
               sliderTwoValue,
               sliderThreeValue,
               sliderFourValue,
             )
             .catch(console.log);
-          navigation.navigate('Home');
+          navigation.navigate('Voms Test SP 4');
         }}
-=======
-        onPress={() => navigation.navigate('Voms Test SP 4')}
->>>>>>> origin/develop:app/screens/VomsTests/SmoothPursuits1/SP3Response1.jsx
         style={uiStyle.bottomButton}
       >
         <Text style={uiStyle.buttonLabel}>Next</Text>

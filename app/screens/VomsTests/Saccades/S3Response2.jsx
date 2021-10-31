@@ -1,31 +1,91 @@
 import * as React from 'react';
-import { SafeAreaView, Text, TouchableOpacity, View } from 'react-native';
+import {
+  SafeAreaView,
+  Text,
+  TouchableOpacity,
+  View,
+  StyleSheet,
+} from 'react-native';
 import uiStyle from '../../../components/uiStyle';
-import { useState } from 'react';
-import DisplayOptions from '../../../components/MemoryTests/DisplayOptions';
+import Slider from '@react-native-community/slider';
+import { useContext } from 'react';
+import {
+  IncidentReportRepoContext,
+  ReportIdContext,
+} from '../../../components/GlobalContextProvider';
 
-function S3Response2({ navigation }) {
-  const [selected, setSelected] = useState(getOptionsObj());
+function S6Response2({ navigation }) {
+  const [reportId] = useContext(ReportIdContext);
+  const incidentRepoContext = useContext(IncidentReportRepoContext);
+
+  const [sliderOneValue, setSliderOneValue] = React.useState(0);
+  const [sliderTwoValue, setSliderTwoValue] = React.useState(0);
+  const [sliderThreeValue, setSliderThreeValue] = React.useState(0);
+  const [sliderFourValue, setSliderFourValue] = React.useState(0);
 
   return (
     <SafeAreaView style={uiStyle.container}>
+      <Text style={uiStyle.titleText}>
+        Does the affected person have any of these symptoms?
+      </Text>
       <View style={[uiStyle.contentContainer]}>
-        <Text style={uiStyle.text}>
-          Does the affected person have any of these symptoms?
-        </Text>
-        <DisplayOptions
-          options={options}
-          updateOption={(opt) => {
-            setSelected((prev) => {
-              const newSelected = { ...prev };
-              newSelected[opt] = !prev[opt];
-              return newSelected;
-            });
-          }}
-        />
+        <View style={styles.sliders}>
+          <View style={styles.sliderOne}>
+            <Text style={uiStyle.text}>Headache:</Text>
+            <Text style={[uiStyle.text]}>{sliderOneValue}</Text>
+          </View>
+          <Slider
+            minimumValue={0}
+            maximumValue={10}
+            step={1}
+            onValueChange={(val) => setSliderOneValue(val)}
+          />
+          <View style={styles.sliderOne}>
+            <Text style={uiStyle.text}>Nausea: </Text>
+            <Text style={[uiStyle.text]}>{sliderTwoValue}</Text>
+          </View>
+          <Slider
+            minimumValue={0}
+            maximumValue={10}
+            step={1}
+            onValueChange={(val) => setSliderTwoValue(val)}
+          />
+          <View style={styles.sliderOne}>
+            <Text style={uiStyle.text}>Dizziness:</Text>
+            <Text style={[uiStyle.text]}>{sliderThreeValue}</Text>
+          </View>
+          <Slider
+            minimumValue={0}
+            maximumValue={10}
+            step={1}
+            onValueChange={(val) => setSliderThreeValue(val)}
+          />
+          <View style={styles.sliderOne}>
+            <Text style={uiStyle.text}>Fogginess:</Text>
+            <Text style={[uiStyle.text]}>{sliderFourValue}</Text>
+          </View>
+          <Slider
+            minimumValue={0}
+            maximumValue={10}
+            step={1}
+            onValueChange={(val) => setSliderFourValue(val)}
+          />
+        </View>
       </View>
       <TouchableOpacity
-        onPress={() => navigation.navigate('VOMS Saccades 4')}
+        onPress={() => {
+          incidentRepoContext
+            .addVOMSSymptoms(
+              reportId,
+              'Smooth Pursuits Vertical',
+              sliderOneValue,
+              sliderTwoValue,
+              sliderThreeValue,
+              sliderFourValue,
+            )
+            .catch(console.log);
+          navigation.navigate('VOMS Saccades 1');
+        }}
         style={uiStyle.bottomButton}
       >
         <Text style={uiStyle.buttonLabel}>Next</Text>
@@ -34,13 +94,28 @@ function S3Response2({ navigation }) {
   );
 }
 
-const options = ['headache', 'nausea', 'dizzyness', 'foggyness'];
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  sliders: {
+    margin: 20,
+    width: 280,
+  },
+  text: {
+    alignSelf: 'center',
+    paddingVertical: 20,
+  },
+  title: {
+    fontSize: 30,
+  },
+  sliderOne: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+  },
+});
 
-const getOptionsObj = () => {
-  const obj = {};
-  options.forEach((opt) => (obj[opt] = false));
-
-  return obj;
-};
-
-export default S3Response2;
+export default S6Response2;

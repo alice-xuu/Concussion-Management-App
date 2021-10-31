@@ -73,7 +73,6 @@ function VomsInitialSymptoms({ navigation }) {
         </View>
       </View>
       <TouchableOpacity
-<<<<<<< HEAD:app/screens/VomsTests/Row 1/VomsInitialSymptoms.jsx
         onPress={() => {
           incidentRepoContext
             .addVOMSSymptoms(
@@ -85,11 +84,8 @@ function VomsInitialSymptoms({ navigation }) {
               sliderFourValue,
             )
             .catch(console.log);
-          navigation.navigate('Voms Test SP 1');
+          navigation.navigate('Voms SP 1');
         }}
-=======
-        onPress={() => navigation.navigate('Voms SP 1')}
->>>>>>> origin/develop:app/screens/VomsTests/VomsInitialSymptoms.jsx
         style={uiStyle.bottomButton}
       >
         <Text style={uiStyle.buttonLabel}>Next</Text>
