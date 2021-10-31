@@ -4,7 +4,7 @@ import uiStyle from '../../../components/uiStyle';
 import { useState } from 'react';
 import DisplayOptions from '../../../components/MemoryTests/DisplayOptions';
 
-function VomsResponse2({ navigation }) {
+function S6Response3({ navigation }) {
   const [selected, setSelected] = useState(getOptionsObj());
 
   return (
@@ -43,4 +43,4 @@ const getOptionsObj = () => {
   return obj;
 };
 
-export default VomsResponse2;
+export default S6Response3;

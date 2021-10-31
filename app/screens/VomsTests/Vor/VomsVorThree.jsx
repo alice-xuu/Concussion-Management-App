@@ -84,7 +84,8 @@ function VomsVorThree({ navigation }) {
               sliderFourValue,
             )
             .catch(console.log);
-          navigation.navigate('Home');
+
+          props.navigation.navigate('Voms Test Vor Vertical');
         }}
         style={uiStyle.bottomButton}
       >

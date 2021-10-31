@@ -8,14 +8,15 @@ import {
 } from 'react-native';
 import uiStyle from '../../../components/uiStyle';
 
-function VomsS5({ navigation }) {
+function VomsTestSp4({ navigation }) {
   return (
     <SafeAreaView style={uiStyle.container}>
-      <Text style={uiStyle.text}>
-        Please rotate your screen to horizontal/landscape mode.
-      </Text>
+      <View style={uiStyle.vomsCircle} />
+      <View style={styles.circleContainer}>
+        <View style={uiStyle.vomsCircle} />
+      </View>
       <TouchableOpacity
-        onPress={() => navigation.navigate('Voms Test SP 4')}
+        onPress={() => navigation.navigate('Voms Response 1')}
         style={uiStyle.bottomButton}
       >
         <Text style={uiStyle.buttonLabel}>Next</Text>
@@ -24,4 +25,11 @@ function VomsS5({ navigation }) {
   );
 }
 
-export default VomsS5;
+const styles = StyleSheet.create({
+  circleContainer: {
+    ...uiStyle.contentContainer,
+    justifyContent: 'center',
+  },
+});
+
+export default VomsTestSp4;

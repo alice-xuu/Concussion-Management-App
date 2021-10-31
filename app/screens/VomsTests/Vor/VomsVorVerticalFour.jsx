@@ -1,22 +1,23 @@
 import * as React from 'react';
 import {
   SafeAreaView,
-  TouchableOpacity,
   StyleSheet,
-  View,
   Text,
+  TouchableOpacity,
+  View,
 } from 'react-native';
 import uiStyle from '../../../components/uiStyle';
 
-function VomsTestSp2({ navigation }) {
+function VomsVorTwo(props) {
   return (
     <SafeAreaView style={uiStyle.container}>
-      <View style={uiStyle.vomsCircle} />
       <View style={styles.circleContainer}>
         <View style={uiStyle.vomsCircle} />
       </View>
       <TouchableOpacity
-        onPress={() => navigation.navigate('Voms Test SP 3.1')}
+        onPress={() => {
+          props.navigation.navigate('Voms Test Vor Vertical Response');
+        }}
         style={uiStyle.bottomButton}
       >
         <Text style={uiStyle.buttonLabel}>Next</Text>
@@ -32,4 +33,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default VomsTestSp2;
+export default VomsVorTwo;

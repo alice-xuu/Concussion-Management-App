@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Text, SafeAreaView, TouchableOpacity, ScrollView } from 'react-native';
 
-import uiStyle from '../../../components/uiStyle';
+import uiStyle from '../../components/uiStyle';
 
 function VomsStart({ navigation }) {
   return (

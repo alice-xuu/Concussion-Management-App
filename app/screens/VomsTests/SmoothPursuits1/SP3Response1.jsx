@@ -8,15 +8,20 @@ import {
 } from 'react-native';
 import uiStyle from '../../../components/uiStyle';
 import Slider from '@react-native-community/slider';
+import { useContext } from 'react';
 import {
   IncidentReportRepoContext,
   ReportIdContext,
 } from '../../../components/GlobalContextProvider';
-import { useContext } from 'react';
 
-function VomsInitialSymptoms({ navigation }) {
+<<<<<<< HEAD:app/screens/VomsTests/Row 1/VomsResponse1.jsx
+function VomsResponse1({ navigation }) {
   const [reportId] = useContext(ReportIdContext);
   const incidentRepoContext = useContext(IncidentReportRepoContext);
+=======
+function SP3Response1({ navigation }) {
+  const [sliderOneValue, setSliderOneValue] = React.useState(0);
+>>>>>>> origin/develop:app/screens/VomsTests/SmoothPursuits1/SP3Response1.jsx
 
   const [sliderOneValue, setSliderOneValue] = React.useState(0);
   const [sliderTwoValue, setSliderTwoValue] = React.useState(0);
@@ -73,19 +78,23 @@ function VomsInitialSymptoms({ navigation }) {
         </View>
       </View>
       <TouchableOpacity
+<<<<<<< HEAD:app/screens/VomsTests/Row 1/VomsResponse1.jsx
         onPress={() => {
           incidentRepoContext
             .addVOMSSymptoms(
               reportId,
-              'Initial',
+              'Saccades',
               sliderOneValue,
               sliderTwoValue,
               sliderThreeValue,
               sliderFourValue,
             )
             .catch(console.log);
-          navigation.navigate('Voms Test SP 1');
+          navigation.navigate('Home');
         }}
+=======
+        onPress={() => navigation.navigate('Voms Test SP 4')}
+>>>>>>> origin/develop:app/screens/VomsTests/SmoothPursuits1/SP3Response1.jsx
         style={uiStyle.bottomButton}
       >
         <Text style={uiStyle.buttonLabel}>Next</Text>
@@ -118,4 +127,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default VomsInitialSymptoms;
+export default SP3Response1;
