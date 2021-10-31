@@ -35,19 +35,17 @@ import BTThree from './app/screens/BalanceTests/BTThree';
 import VOMSStart from './app/screens/VOMSTests/VOMSStart';
 import VOMSInitialSymptoms from './app/screens/VOMSTests/VOMSInitialSymptoms';
 
-import VOMSVorOne from './app/screens/VomsTests/Row3VOR/VOR1';
-import VOMSVorTwo from './app/screens/VomsTests/Row3VOR/VOR2';
-import VOMSVorThree from './app/screens/VomsTests/Row3VOR/VOR3Response5';
-import VOMSVorVertical from './app/screens/VomsTests/Row3VOR/VOR4';
-import VOMSVorVerticalFour from './app/screens/VomsTests/Row3VOR/VOR5';
-import VOMSVorResponseFive from './app/screens/VomsTests/Row3VOR/VOR6Response6';
+import VOR1 from './app/screens/VomsTests/Row3VOR/VOR1';
+import VOR2 from './app/screens/VomsTests/Row3VOR/VOR2';
+import VOR3 from './app/screens/VomsTests/Row3VOR/VOR3Response5';
+import VOR4 from './app/screens/VomsTests/Row3VOR/VOR4';
+import VOR5 from './app/screens/VomsTests/Row3VOR/VOR5';
+import VOR6 from './app/screens/VomsTests/Row3VOR/VOR6Response6';
 
-import VOMSTestSp2 from './app/screens/VOMSTests/Row 1/VOMSTestSp2';
-import VOMSTestSp3 from './app/screens/VOMSTests/Row 1/VOMSTestSp3';
-import VOMSTestSp4 from './app/screens/VOMSTests/Row 1/VOMSTestSp4';
 import SP1 from './app/screens/VomsTests/Row1SmoothPursuits/SP1';
 import SP2 from './app/screens/VomsTests/Row1SmoothPursuits/SP2';
 import SP3Response1 from './app/screens/VomsTests/Row1SmoothPursuits/SP3Response1';
+import SP4 from './app/screens/VomsTests/Row1SmoothPursuits/SP4';
 import SP5 from './app/screens/VomsTests/Row1SmoothPursuits/SP5';
 import SP6Response2 from './app/screens/VomsTests/Row1SmoothPursuits/SP6Response2';
 
@@ -58,10 +56,10 @@ import S4 from './app/screens/VomsTests/Row2Saccades/S4';
 import S5 from './app/screens/VomsTests/Row2Saccades/S5';
 import S6 from './app/screens/VomsTests/Row2Saccades/S6Response3';
 import Disclaimer from './app/screens/Disclaimer';
-import VOMSNPC1 from './app/screens/VomsTests/Row4NPC/NPC1';
-import VOMSNPC2 from './app/screens/VomsTests/Row4NPC/NPC2';
-import VOMSNPC3 from './app/screens/VomsTests/Row4NPC/NPC3';
-import VOMSResponse4 from './app/screens/VomsTests/Row4NPC/NPC4Response7';
+import NPC1 from './app/screens/VomsTests/Row4NPC/NPC1';
+import NPC2 from './app/screens/VomsTests/Row4NPC/NPC2';
+import NPC3 from './app/screens/VomsTests/Row4NPC/NPC3';
+import NPC4 from './app/screens/VomsTests/Row4NPC/NPC4Response7';
 import ChooseProfileScreen from './app/screens/ChooseProfileScreen';
 
 const RootStack = createNativeStackNavigator();
@@ -170,33 +168,21 @@ export default function App() {
           <RootStack.Screen name="VOMS Saccades 5" component={S5} />
           <RootStack.Screen name="VOMS Saccades 6 Response 4" component={S6} />
 
-          <RootStack.Screen name="VOMS VOR 1" component={VOMSVorOne} />
-          <RootStack.Screen name="VOMS VOR 2" component={VOMSVorTwo} />
-          <RootStack.Screen
-            name="VOMS VOR 3 Response 5"
-            component={VOMSVorThree}
-          />
-          <RootStack.Screen name="VOMS VOR 4" component={VOMSVorVertical} />
-          <RootStack.Screen name="VOMS VOR 5" component={VOMSVorVerticalFour} />
-          <RootStack.Screen
-            name="VOMS VOR 6 Response 6"
-            component={VOMSVorResponseFive}
-          />
+          <RootStack.Screen name="VOMS VOR 1" component={VOR1} />
+          <RootStack.Screen name="VOMS VOR 2" component={VOR2} />
+          <RootStack.Screen name="VOMS VOR 3 Response 5" component={VOR3} />
+          <RootStack.Screen name="VOMS VOR 4" component={VOR4} />
+          <RootStack.Screen name="VOMS VOR 5" component={VOR5} />
+          <RootStack.Screen name="VOMS VOR 6 Response 6" component={VOR6} />
 
-          <RootStack.Screen name="VOMS NPC 1" component={VOMSNPC1} />
-          <RootStack.Screen name="VOMS NPC 2" component={VOMSNPC2} />
-          <RootStack.Screen name="VOMS NPC 3" component={VOMSNPC3} />
-          <RootStack.Screen
-            name="VOMS NPC 4 Response 7"
-            component={VOMSResponse4}
-          />
+          <RootStack.Screen name="VOMS NPC 1" component={NPC1} />
+          <RootStack.Screen name="VOMS NPC 2" component={NPC2} />
+          <RootStack.Screen name="VOMS NPC 3" component={NPC3} />
+          <RootStack.Screen name="VOMS NPC 4 Response 7" component={NPC4} />
 
-          <RootStack.Screen name="VOMS VMS 1" component={VOMSVorOne} />
-          <RootStack.Screen name="VOMS VMS 2" component={VOMSVorTwo} />
-          <RootStack.Screen
-            name="VOMS VMS 3 Response 8"
-            component={VOMSVorThree}
-          />
+          <RootStack.Screen name="VOMS VMS 1" component={VOR1} />
+          <RootStack.Screen name="VOMS VMS 2" component={VOR2} />
+          <RootStack.Screen name="VOMS VMS 3 Response 8" component={VOR3} />
         </RootStack.Navigator>
       </NavigationContainer>
     </GlobalContextProvider>
