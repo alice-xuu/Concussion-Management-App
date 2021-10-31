@@ -2,7 +2,7 @@ import * as React from 'react';
 import { SafeAreaView, Text, TouchableOpacity, View } from 'react-native';
 import uiStyle from '../../../components/uiStyle';
 
-function VomsNPC1(props) {
+function NPC1(props) {
   return (
     <SafeAreaView style={uiStyle.container}>
       <View style={uiStyle.contentContainerCentered}>
@@ -20,7 +20,7 @@ function VomsNPC1(props) {
       </View>
       <TouchableOpacity
         onPress={() => {
-          props.navigation.navigate('Voms Test NPC 2');
+          props.navigation.navigate('VOMS NPC 2');
         }}
         style={uiStyle.bottomButton}
       >
@@ -30,4 +30,4 @@ function VomsNPC1(props) {
   );
 }
 
-export default VomsNPC1;
+export default NPC1;

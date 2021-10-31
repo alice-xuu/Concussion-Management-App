@@ -14,7 +14,7 @@ import uiStyle from '../../../components/uiStyle';
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
-function VomsNPC3(props) {
+function NPC3(props) {
   const [value, onChangeText] = React.useState('');
 
   return (
@@ -35,7 +35,7 @@ function VomsNPC3(props) {
       </View>
       <TouchableOpacity
         onPress={() => {
-          props.navigation.navigate('Voms Test Response 4');
+          props.navigation.navigate('VOMS NPC 4 Response 7');
         }}
         style={uiStyle.bottomButton}
       >
@@ -59,4 +59,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default VomsNPC3;
+export default NPC3;

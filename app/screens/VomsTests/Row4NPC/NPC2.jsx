@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import uiStyle from '../../../components/uiStyle';
 
-function VomsTwo(props) {
+function NPC2(props) {
   return (
     <SafeAreaView style={uiStyle.container}>
       <View style={styles.circleContainer}>
@@ -16,7 +16,7 @@ function VomsTwo(props) {
       </View>
       <TouchableOpacity
         onPress={() => {
-          props.navigation.navigate('Voms Test NPC 3');
+          props.navigation.navigate('VOMS NPC 3');
         }}
         style={uiStyle.bottomButton}
       >
@@ -33,4 +33,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default VomsTwo;
+export default NPC2;

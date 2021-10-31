@@ -58,10 +58,10 @@ import S4 from './app/screens/VomsTests/Row2Saccades/S4';
 import S5 from './app/screens/VomsTests/Row2Saccades/S5';
 import S6 from './app/screens/VomsTests/Row2Saccades/S6Response3';
 import Disclaimer from './app/screens/Disclaimer';
-import VOMSNPC1 from './app/screens/VomsTests/Row4NPC/VOMSNPC1';
-import VOMSNPC2 from './app/screens/VomsTests/Row4NPC/VOMSNPC2';
-import VOMSNPC3 from './app/screens/VomsTests/Row4NPC/VOMSNPC3';
-import VOMSResponse4 from './app/screens/VomsTests/Row4NPC/VOMSResponse4';
+import VOMSNPC1 from './app/screens/VomsTests/Row4NPC/NPC1';
+import VOMSNPC2 from './app/screens/VomsTests/Row4NPC/NPC2';
+import VOMSNPC3 from './app/screens/VomsTests/Row4NPC/NPC3';
+import VOMSResponse4 from './app/screens/VomsTests/Row4NPC/NPC4Response7';
 import ChooseProfileScreen from './app/screens/ChooseProfileScreen';
 
 const RootStack = createNativeStackNavigator();

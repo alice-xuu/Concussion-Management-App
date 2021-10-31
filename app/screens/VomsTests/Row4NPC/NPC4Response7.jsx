@@ -14,7 +14,7 @@ import {
 } from '../../../components/GlobalContextProvider';
 import { useContext } from 'react';
 
-function VomsResponse4({ navigation }) {
+function NPC4Response7({ navigation }) {
   const [reportId] = useContext(ReportIdContext);
   const incidentRepoContext = useContext(IncidentReportRepoContext);
 
@@ -84,7 +84,7 @@ function VomsResponse4({ navigation }) {
               sliderFourValue,
             )
             .catch(console.log);
-          navigation.navigate('Home');
+          navigation.navigate('VOMS VMS 1');
         }}
         style={uiStyle.bottomButton}
       >
@@ -118,4 +118,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default VomsResponse4;
+export default NPC4Response7;
