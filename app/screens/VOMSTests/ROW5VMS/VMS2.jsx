@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+  Button,
   SafeAreaView,
   StyleSheet,
   Text,
@@ -10,9 +11,8 @@ import uiStyle from '../../../components/uiStyle';
 import { Audio } from 'expo-av';
 import { useEffect } from 'react';
 
-function VMS2(props) {
+function VMS2({ navigation }) {
   const [sound, setSound] = React.useState();
-  const [playing, setPlaying] = React.useState(false);
   const [repetition, setRepetition] = React.useState(20);
   const [intervalId, setIntervalId] = React.useState(null);
 
@@ -33,21 +33,6 @@ function VMS2(props) {
       : undefined;
   }, [sound]);
 
-  /*  function playRepetitions() {
-    for (let i = 0; i < 20; i++) {
-      setTimeout(() => {
-        playSound().then();
-      }, 1200 * i);
-    }
-  }
-
-  if (!playing) {
-    setTimeout(() => {
-      setPlaying(true);
-      playRepetitions();
-    }, 1200);
-  }*/
-
   useEffect(() => {
     if (repetition < 0) {
       return;
@@ -55,23 +40,10 @@ function VMS2(props) {
 
     const id = setInterval(function () {
       playSound().then();
-      console.log(repetition);
     }, 1200);
     setIntervalId(id);
     return () => clearInterval(id);
   }, [repetition]);
-
-  /*setPlaying(true);
-    var intevID = setInterval(function () {
-      if (repetition === 20) {
-      } else {
-        playSound().then();
-        setRepetition((repetition) => repetition + 1);
-      }
-      console.log(repetition);
-    }, 1200);
-    setIntervalId(intevID);
-  }*/
 
   return (
     <SafeAreaView style={uiStyle.container}>
@@ -81,7 +53,7 @@ function VMS2(props) {
       <TouchableOpacity
         onPress={() => {
           window.clearInterval(intervalId);
-          props.navigation.navigate('VOMS VMS 3 Response 8');
+          navigation.navigate('VOMS VMS 3 Response 8');
         }}
         style={uiStyle.bottomButton}
       >

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+  Button,
   SafeAreaView,
   StyleSheet,
   Text,
@@ -15,6 +16,17 @@ import {
 import { useContext } from 'react';
 
 function VMS3({ navigation }) {
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      headerLeft: () => (
+        <Button
+          onPress={() => navigation.navigate('VOMS VMS 1')}
+          title="< REDO Test"
+        />
+      ),
+    });
+  }, [navigation]);
+
   const [reportId] = useContext(ReportIdContext);
   const incidentRepoContext = useContext(IncidentReportRepoContext);
 
