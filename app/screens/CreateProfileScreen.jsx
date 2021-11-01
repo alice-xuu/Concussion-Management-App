@@ -21,8 +21,7 @@ import uiStyle from '../components/uiStyle';
  */
 function CreateProfileScreen({ navigation }) {
   // Context variables
-  const [patient, setPatient] = useContext(PatientContext);
-  const [reportId, setReportId] = useContext(ReportIdContext);
+  const [reportId] = useContext(ReportIdContext);
   const patientRepoContext = useContext(PatientRepoContext);
   const incidentRepoContext = useContext(IncidentReportRepoContext);
 
@@ -45,22 +44,15 @@ function CreateProfileScreen({ navigation }) {
     if (patientRepoContext !== null) {
       patientRepoContext.createPatient(firstName, lastName, age, weight).then(
         (patientId) => {
-          patientRepoContext.getPatient(patientId).then((patientRet) => {
-            setPatient(patientRet);
-          });
+          incidentRepoContext
+            .updateReport(patientId, reportId)
+            .catch(console.log);
         },
         (err) => console.log('Error: ' + err),
       );
     } else {
       console.log('null patientRepo');
     }
-  };
-
-  const handleUpdateReportNewPatient = () => {
-    incidentRepoContext.updateReport(patient.patientId, reportId).then(
-      (rowsAffected) => console.log(rowsAffected),
-      (err) => console.log(err),
-    );
   };
 
   return (
@@ -110,7 +102,6 @@ function CreateProfileScreen({ navigation }) {
               ageOfUser,
               weightOfUser,
             );
-            handleUpdateReportNewPatient();
             navigation.navigate('Home');
           }}
         >
