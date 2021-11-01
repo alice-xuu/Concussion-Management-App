@@ -17,15 +17,6 @@ function VMS2({ navigation }) {
   const [repetition, setRepetition] = React.useState(21);
   const [intervalId, setIntervalId] = React.useState(null);
 
-  async function playSound() {
-    const { sound } = await Audio.Sound.createAsync(
-      require('../../../../assets/beep.mp3'),
-    );
-    setSound(sound);
-    await sound.playAsync();
-    setRepetition(repetition - 1);
-  }
-
   React.useEffect(() => {
     return sound
       ? () => {
@@ -35,6 +26,15 @@ function VMS2({ navigation }) {
   }, [sound]);
 
   useEffect(() => {
+    async function playSound() {
+      const { sound } = await Audio.Sound.createAsync(
+        require('../../../../assets/beep.mp3'),
+      );
+      setSound(sound);
+      await sound.playAsync();
+      setRepetition(repetition - 1);
+    }
+
     if (repetition < 0) {
       return;
     }
@@ -45,7 +45,7 @@ function VMS2({ navigation }) {
     }, 1200);
     setIntervalId(id);
     return () => clearInterval(id);
-  }, [repetition, playSound]);
+  }, [repetition]);
 
   return (
     <SafeAreaView style={uiStyle.container}>
