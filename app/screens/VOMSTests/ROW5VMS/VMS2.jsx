@@ -45,7 +45,7 @@ function VMS2({ navigation }) {
     }, 1200);
     setIntervalId(id);
     return () => clearInterval(id);
-  }, [repetition]);
+  }, [repetition, playSound]);
 
   return (
     <SafeAreaView style={uiStyle.container}>
