@@ -79,12 +79,12 @@ function HomeScreen({ navigation }) {
         <Text style={uiStyle.buttonLabel}>sample database</Text>
       </TouchableOpacity>*/}
       {/*</View>*/}
-      {/*<TouchableOpacity*/}
-      {/*  onPress={() => navigation.navigate('Voms Start')}*/}
-      {/*  style={uiStyle.bottomButton}*/}
-      {/*>*/}
-      {/*  <Text style={uiStyle.buttonLabel}>Voms Start</Text>*/}
-      {/*</TouchableOpacity>*/}
+      <TouchableOpacity
+        onPress={() => navigation.navigate('VOMS VMS 1')}
+        style={uiStyle.bottomButton}
+      >
+        <Text style={uiStyle.buttonLabel}>Voms Start</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 }

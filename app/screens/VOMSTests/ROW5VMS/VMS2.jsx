@@ -7,8 +7,40 @@ import {
   View,
 } from 'react-native';
 import uiStyle from '../../../components/uiStyle';
+import { Audio } from 'expo-av';
 
 function VMS2(props) {
+  const [sound, setSound] = React.useState();
+  const [playing, setPlaying] = React.useState(false);
+  async function playSound() {
+    const { sound } = await Audio.Sound.createAsync(
+      require('../../../../assets/beep.mp3'),
+    );
+    setSound(sound);
+    await sound.playAsync();
+  }
+
+  React.useEffect(() => {
+    return sound
+      ? () => {
+          sound.unloadAsync();
+        }
+      : undefined;
+  }, [sound]);
+
+  function playRepetitions() {
+    for (let i = 0; i < 20; i++) {
+      setTimeout(() => {
+        playSound().then();
+      }, 1200 * i);
+    }
+  }
+
+  if (!playing) {
+    setPlaying(true);
+    playRepetitions();
+  }
+
   return (
     <SafeAreaView style={uiStyle.container}>
       <View style={styles.circleContainer}>
