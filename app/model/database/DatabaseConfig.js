@@ -25,7 +25,11 @@ DROP TABLE IF EXISTS ReactionTest;
 `,
   //TODO: remove
   `
-DROP TABLE IF EXISTS VOMSPart;
+DROP TABLE IF EXISTS VOMSSymptoms;
+  `,
+  //TODO: remove
+  `
+DROP TABLE IF EXISTS VOMSNPCDistance;
   `,
   `
 CREATE TABLE IF NOT EXISTS Patient (
@@ -90,6 +94,15 @@ CREATE TABLE IF NOT EXISTS VOMSSymptoms (
     nausea_rating INTEGER CHECK(nausea_rating >= 0 and nausea_rating <= 10),
     dizziness_rating INTEGER CHECK(dizziness_rating >= 0 and dizziness_rating <= 10),
     fogginess_rating INTEGER CHECK(fogginess_rating >= 0 and fogginess_rating <= 10)
+);
+`,
+
+  // User responses for Near Point of Convergence distance input
+  `
+CREATE TABLE IF NOT EXISTS VOMSNPCDistance (
+    vomsNPCDistance_id INTEGER PRIMARY KEY,
+    report_id INTEGER REFERENCES IncidentReport(report_id),
+    distance FLOAT(20),
 );
 `,
 ];

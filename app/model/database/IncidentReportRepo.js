@@ -245,7 +245,7 @@ export class IncidentReportRepo {
     dizziness_rating,
     fogginess_rating,
   ) {
-    const sql = `INSERT INTO VOMSSymptoms (reportId, description, headache_rating, nausea_rating, dizziness_rating, fogginess_rating)
+    const sql = `INSERT INTO VOMSSymptoms (report_Id, description, headache_rating, nausea_rating, dizziness_rating, fogginess_rating)
         VALUES (?, ?, ?, ?, ?, ?)`;
     const args = [
       reportId,
@@ -267,6 +267,27 @@ export class IncidentReportRepo {
 
     const sql = `SELECT headache_rating, nausea_rating, dizziness_rating, fogginess_rating FROM VOMSSymptoms WHERE report_id = ? AND description = ?;`;
     const args = [reportId, description];
+
+    const rs = await this.da.runSqlStmt(sql, args);
+    return rs.rows.item(0);
+  }
+
+  async addVOMSNPCDistance(reportId, distance) {
+    const sql = `INSERT INTO VOMSNPCDistance (report_Id, distance)
+        VALUES (?, ?)`;
+    const args = [reportId, distance];
+
+    const rs = await this.da.runSqlStmt(sql, args);
+    return rs.insertId;
+  }
+
+  async getVOMSNPCDistance(reportId) {
+    if (reportId === undefined || reportId === null) {
+      throw 'Invalid reportId';
+    }
+
+    const sql = `SELECT distance FROM VOMSNPCDistance WHERE report_id = ?;`;
+    const args = [reportId];
 
     const rs = await this.da.runSqlStmt(sql, args);
     return rs.rows.item(0);

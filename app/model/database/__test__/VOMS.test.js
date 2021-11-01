@@ -1,6 +1,6 @@
 import { IncidentReportRepo } from '../IncidentReportRepo';
 
-describe('ReactionTest', () => {
+describe('VOMSTest', () => {
   const TEST_VOMS_RESULTS = {
     vs_id: 1234,
     description: 'Initial',
@@ -10,7 +10,7 @@ describe('ReactionTest', () => {
     fogginess_rating: 0,
   };
 
-  const MOCK_RS = {
+  const MOCK_VOMS = {
     rows: {
       length: 2,
       _array: [{}, {}],
@@ -23,7 +23,7 @@ describe('ReactionTest', () => {
 
   beforeEach(() => {
     mockDa = {
-      runSqlStmt: jest.fn(() => Promise.resolve(MOCK_RS)),
+      runSqlStmt: jest.fn(() => Promise.resolve(MOCK_VOMS)),
     };
     vs = new IncidentReportRepo(mockDa);
   });
