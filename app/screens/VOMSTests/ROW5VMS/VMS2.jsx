@@ -13,7 +13,8 @@ import { useEffect } from 'react';
 
 function VMS2({ navigation }) {
   const [sound, setSound] = React.useState();
-  const [repetition, setRepetition] = React.useState(20);
+  // middle, right, middle, left x 5 repetitions
+  const [repetition, setRepetition] = React.useState(21);
   const [intervalId, setIntervalId] = React.useState(null);
 
   async function playSound() {
@@ -40,6 +41,7 @@ function VMS2({ navigation }) {
 
     const id = setInterval(function () {
       playSound().then();
+      console.log(repetition);
     }, 1200);
     setIntervalId(id);
     return () => clearInterval(id);
