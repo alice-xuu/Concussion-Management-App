@@ -6,14 +6,17 @@ import {
   StyleSheet,
   View,
   Text,
-} from 'react-native';
+  Dimensions,
+} from "react-native";
 import uiStyle from '../../../components/uiStyle';
 import { useEffect, useRef } from 'react';
 
+const height = Dimensions.get('screen').height;
+
 function SP2({ navigation }) {
   const startValue = useRef(new Animated.Value(0)).current;
-  const endRightValue = 320;
-  const endLeftValue = -320;
+  const endRightValue = height / 3;
+  const endLeftValue = -height / 3;
   const halfDuration = 1000;
   const fullDuration = 2000;
 

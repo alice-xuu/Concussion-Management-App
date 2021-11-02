@@ -71,13 +71,14 @@ function SecondCheckResults({ route, navigation }) {
     });
   }, [incidentRepoContext, reportId]);
 
-  if (responses !== null) {
+  useEffect(() => {
     responses.forEach((element) => {
       if (element === 'Yes') {
         setSymptoms((prevSymptoms) => ++prevSymptoms);
       }
     });
-  }
+  }, [responses]);
+
   if (symptoms > 0) {
     screen = (
       <ScrollView styles={styles.scroll}>

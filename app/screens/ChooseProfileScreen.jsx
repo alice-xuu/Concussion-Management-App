@@ -21,10 +21,8 @@ import uiStyle from '../components/uiStyle';
 function SelectProfileScreen({ navigation }) {
   // Context variables
   const [patients, setPatients] = useState([]);
-  const [patient, setPatient] = useContext(PatientContext);
-  const [reportId, setReportId] = useContext(ReportIdContext);
+  const [, setPatient] = useContext(PatientContext);
   const patientRepoContext = useContext(PatientRepoContext);
-  const incidentRepoContext = useContext(IncidentReportRepoContext);
   const mounted = useRef(false);
 
   useEffect(() => {
@@ -35,31 +33,13 @@ function SelectProfileScreen({ navigation }) {
     };
   }, []);
 
-  const parsePatients = (pts) => {
-    const patientsArray = [];
-    if (pts !== undefined) {
-      pts.forEach((element) => {
-        patientsArray.push(element.first_name);
-        patientsArray.push(element.last_name);
-        patientsArray.push(element.patient_id);
-      });
-    }
-    return patientsArray;
-  };
-
-  const handleGetPatient = (pid) => {
-    patientRepoContext.getPatient(pid).then((patientRet) => {
-      setPatient(patientRet);
-    });
-  };
-
   useEffect(() => {
     // Everytime there is a new patientRepoContext we
     // get patients from it.
     if (patientRepoContext !== null) {
       patientRepoContext.getAllPatients().then((pts) => {
         if (mounted.current) {
-          setPatients(parsePatients(pts));
+          setPatients(pts);
         }
       });
     } else {
@@ -69,15 +49,14 @@ function SelectProfileScreen({ navigation }) {
 
   let usersButtons = [];
   if (patients.length > 0) {
-    for (let i = 0; i < patients.length; i += 3) {
-      const username = patients[i] + ' ' + patients[i + 1];
-      const pid = patients[i + 2];
+    for (let i = 0; i < patients.length; i++) {
+      const username = patients[i].first_name + ' ' + patients[i].last_name;
       usersButtons.push(
         <TouchableOpacity
           key={i}
           style={styles.selectUserButton}
           onPress={() => {
-            handleGetPatient(pid);
+            setPatient(patients[i]);
             navigation.navigate('Profile Info');
           }}
         >
