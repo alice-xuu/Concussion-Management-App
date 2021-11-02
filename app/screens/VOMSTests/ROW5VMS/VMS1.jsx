@@ -13,8 +13,10 @@ function VMS1(props) {
           screen.
         </Text>
         <Text style={uiStyle.text}>
-          Ask them to rotate their body left and right 5 times while holding the
-          phone at eye level with arms straight while looking at the circle.
+          Ask them to hold the phone at eye level with arms straight in front.
+          While looking at the circle, on the beat, turn 80 degrees right, back
+          to the middle, turn 80 degrees left, back to the middle. Repeat 5
+          times.
         </Text>
       </View>
       <TouchableOpacity
