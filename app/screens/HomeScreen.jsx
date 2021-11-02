@@ -91,12 +91,12 @@ function HomeScreen({ navigation }) {
       {/*>*/}
       {/*  <Text style={uiStyle.buttonLabel}>sample database</Text>*/}
       {/*</TouchableOpacity>*/}
-      {/*<TouchableOpacity*/}
-      {/*  onPress={() => navigation.navigate('VOMS Start')}*/}
-      {/*  style={uiStyle.bottomButton}*/}
-      {/*>*/}
-      {/*  <Text style={uiStyle.buttonLabel}>Voms Start</Text>*/}
-      {/*</TouchableOpacity>*/}
+      <TouchableOpacity
+        onPress={() => navigation.navigate('VOMS Saccades 1')}
+        style={uiStyle.bottomButton}
+      >
+        <Text style={uiStyle.buttonLabel}>Voms Start</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 }
