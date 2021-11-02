@@ -63,24 +63,14 @@ function HomeScreen({ navigation }) {
           <Text style={uiStyle.buttonLabel}>View History</Text>
         </TouchableOpacity>
       </View>
-      {/*<View style={styles.container2}>*/}
-      {/*<TouchableOpacity
-        onPress={() => navigation.navigate('Voms Start')}
-        style={uiStyle.bottomButton}
-      >
-        <Text style={uiStyle.buttonLabel}>Test</Text>
-      </TouchableOpacity>
-      </View>
-      <View style={styles.container2}>
-      <TouchableOpacity
-        onPress={() => navigation.navigate('Sample Database')}
-        style={uiStyle.bottomButton}
-      >
-        <Text style={uiStyle.buttonLabel}>sample database</Text>
-      </TouchableOpacity>*/}
-      {/*</View>*/}
       {/*<TouchableOpacity*/}
-      {/*  onPress={() => navigation.navigate('Voms Start')}*/}
+      {/*  onPress={() => navigation.navigate('Sample Database')}*/}
+      {/*  style={uiStyle.bottomButton}*/}
+      {/*>*/}
+      {/*  <Text style={uiStyle.buttonLabel}>sample database</Text>*/}
+      {/*</TouchableOpacity>*/}
+      {/*<TouchableOpacity*/}
+      {/*  onPress={() => navigation.navigate('VOMS Start')}*/}
       {/*  style={uiStyle.bottomButton}*/}
       {/*>*/}
       {/*  <Text style={uiStyle.buttonLabel}>Voms Start</Text>*/}
