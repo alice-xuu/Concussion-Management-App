@@ -7,7 +7,7 @@ import {
   View,
   Text,
   Dimensions,
-} from "react-native";
+} from 'react-native';
 import uiStyle from '../../../components/uiStyle';
 import { useEffect, useRef } from 'react';
 
