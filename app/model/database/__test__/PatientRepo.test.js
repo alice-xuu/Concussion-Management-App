@@ -74,9 +74,9 @@ describe('PatientRepo', () => {
       let p = await pr.getPatient(TEST_PATIENT.patient_id);
 
       expect(p).toBeInstanceOf(Patient);
-      expect(p.patientId).toBe(TEST_PATIENT.patient_id);
-      expect(p.firstName).toBe(TEST_PATIENT.first_name);
-      expect(p.lastName).toBe(TEST_PATIENT.last_name);
+      expect(p.patient_id).toBe(TEST_PATIENT.patient_id);
+      expect(p.first_name).toBe(TEST_PATIENT.first_name);
+      expect(p.last_name).toBe(TEST_PATIENT.last_name);
       expect(p.age).toBe(TEST_PATIENT.age);
       expect(p.weight).toBe(TEST_PATIENT.weight);
 

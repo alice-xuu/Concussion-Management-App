@@ -54,7 +54,7 @@ export default function SampleDatabaseScreen() {
   // TODO: remove
   const handleCreateReport = () => {
     incidentRepoContext
-      .createReport(patient.patientId)
+      .createReport(patient.patient_id)
       .then((id) => setReportId(id));
   };
 
@@ -65,9 +65,9 @@ export default function SampleDatabaseScreen() {
 
   // TODO: remove
   const handleUpdateReport = () => {
-    console.log(patient.patientId);
+    console.log(patient.patient_id);
     console.log(reportId);
-    incidentRepoContext.updateReport(patient.patientId, reportId).then(
+    incidentRepoContext.updateReport(patient.patient_id, reportId).then(
       (rowsAffected) => console.log(rowsAffected),
       (err) => console.log(err),
     );
@@ -119,9 +119,9 @@ export default function SampleDatabaseScreen() {
       <Button title="Create Patient" onPress={onCreatePatient} />
 
       <Text>
-        {patient.firstName +
+        {patient.first_name +
           ' ' +
-          patient.lastName +
+          patient.last_name +
           patient.age +
           ' years old ' +
           patient.weight +

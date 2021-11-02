@@ -102,7 +102,7 @@ CREATE TABLE IF NOT EXISTS VOMSSymptoms (
 CREATE TABLE IF NOT EXISTS VOMSNPCDistance (
     vomsNPCDistance_id INTEGER PRIMARY KEY,
     report_id INTEGER REFERENCES IncidentReport(report_id),
-    distance FLOAT(20),
+    distance FLOAT(20)
 );
 `,
 ];
