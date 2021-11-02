@@ -22,8 +22,7 @@ function ProfileInfoScreen({ navigation }) {
   // Context variables
   const [reports, setReports] = useState([]);
   const [patientDetails, setPatientDetails] = useState([]);
-  const [reportId, setReportId] = useContext(ReportIdContext);
-  const [patient, setPatient] = useContext(PatientContext);
+  const [patient] = useContext(PatientContext);
   const patientRepoContext = useContext(PatientRepoContext);
   const incidentRepoContext = useContext(IncidentReportRepoContext);
   const mounted = useRef(false);
@@ -39,8 +38,8 @@ function ProfileInfoScreen({ navigation }) {
   const parsePatient = (pt) => {
     const patientArray = [];
     if (pt !== undefined) {
-      patientArray.push('First Name: ' + pt.firstName);
-      patientArray.push('Last Name: ' + pt.lastName);
+      patientArray.push('First Name: ' + pt.first_name);
+      patientArray.push('Last Name: ' + pt.last_name);
       patientArray.push('Age: ' + pt.age);
       patientArray.push('Weight: ' + pt.weight);
     }
@@ -59,11 +58,14 @@ function ProfileInfoScreen({ navigation }) {
 
   useEffect(() => {
     if (incidentRepoContext !== null) {
-      incidentRepoContext.getReports(patient.patientId).then((rps) => {
-        if (mounted.current) {
-          setReports(parseReports(rps));
-        }
-      });
+      incidentRepoContext.getReports(patient.patient_id).then(
+        (rps) => {
+          if (mounted.current) {
+            setReports(parseReports(rps));
+          }
+        },
+        (err) => console.log('ProfileInfoScreen getReport:', err),
+      );
     } else {
       console.log('null incidentReportRepo');
     }
