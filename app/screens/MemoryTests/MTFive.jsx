@@ -1,6 +1,12 @@
 import * as React from 'react';
 
-import { StyleSheet, Text, TouchableOpacity, SafeAreaView } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  SafeAreaView,
+  ScrollView,
+} from 'react-native';
 
 import uiStyle from '../../components/uiStyle.jsx';
 
@@ -51,9 +57,9 @@ function MTFive({ navigation }) {
       <Text style={uiStyle.text}>
         What three images does your patient remember?
       </Text>
-      <SafeAreaView style={styles.allCheckboxContainer}>
+      <ScrollView>
         <DisplayOptions options={options} updateOption={onUpdate} />
-      </SafeAreaView>
+      </ScrollView>
       <TouchableOpacity
         onPress={() => {
           handleCreateMultiResponse(chosenList);
