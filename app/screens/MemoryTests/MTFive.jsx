@@ -53,14 +53,12 @@ function MTFive({ navigation }) {
   const chosenList = [];
 
   return (
-    <SafeAreaView style={[{ flex: 1, backgroundColor: '#d5abff' }]}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
       <Text style={uiStyle.text}>
         What three images does your patient remember?
       </Text>
       <ScrollView style={{ margin: 10 }}>
-        <SafeAreaView
-          style={[uiStyle.container, { backgroundColor: '#eddbff' }]}
-        >
+        <SafeAreaView style={uiStyle.container}>
           <DisplayOptions options={options} updateOption={onUpdate} />
         </SafeAreaView>
       </ScrollView>
