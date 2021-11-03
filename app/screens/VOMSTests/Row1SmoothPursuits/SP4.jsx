@@ -12,7 +12,7 @@ function SP4({ navigation }) {
   return (
     <SafeAreaView style={uiStyle.container}>
       <Text style={uiStyle.text}>
-        Please rotate the screen so it's vertical.
+        Please hold the phone vertical at eye level, an arms length away.
         {'\n'} {'\n'}
         Ask the affected person to follow the circle while keeping their head
         still again.

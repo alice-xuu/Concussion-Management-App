@@ -12,10 +12,10 @@ function S4({ navigation }) {
   return (
     <SafeAreaView style={uiStyle.container}>
       <Text style={uiStyle.text}>
-        Please rotate the screen so it's vertical.
+        Please hold the phone vertical at eye level, an arms length away.
         {'\n'} {'\n'}
-        Ask the affected person to alternate top and bottom 10 times as quickly
-        as possible.
+        Ask the affected person to keep their head still and alternate looking
+        at the top and bottom dot 10 times as quickly as possible.
       </Text>
       <TouchableOpacity
         onPress={() => navigation.navigate('VOMS Saccades 5')}
