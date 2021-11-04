@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {
   SafeAreaView,
+  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -25,72 +26,74 @@ function VOR3Response5({ navigation }) {
 
   return (
     <SafeAreaView style={uiStyle.container}>
-      <Text style={uiStyle.titleText}>
-        Does the affected person have any of these symptoms?
-      </Text>
-      <View style={[uiStyle.contentContainer]}>
-        <View style={styles.sliders}>
-          <View style={styles.sliderOne}>
-            <Text style={uiStyle.text}>Headache:</Text>
-            <Text style={[uiStyle.text]}>{sliderOneValue}</Text>
+      <ScrollView>
+        <Text style={uiStyle.titleText}>
+          Does the affected person have any of these symptoms?
+        </Text>
+        <View style={[uiStyle.contentContainer]}>
+          <View style={styles.sliders}>
+            <View style={styles.sliderOne}>
+              <Text style={uiStyle.text}>Headache:</Text>
+              <Text style={[uiStyle.text]}>{sliderOneValue}</Text>
+            </View>
+            <Slider
+              minimumValue={0}
+              maximumValue={10}
+              step={1}
+              onValueChange={(val) => setSliderOneValue(val)}
+            />
+            <View style={styles.sliderOne}>
+              <Text style={uiStyle.text}>Nausea: </Text>
+              <Text style={[uiStyle.text]}>{sliderTwoValue}</Text>
+            </View>
+            <Slider
+              minimumValue={0}
+              maximumValue={10}
+              step={1}
+              onValueChange={(val) => setSliderTwoValue(val)}
+            />
+            <View style={styles.sliderOne}>
+              <Text style={uiStyle.text}>Dizziness:</Text>
+              <Text style={[uiStyle.text]}>{sliderThreeValue}</Text>
+            </View>
+            <Slider
+              minimumValue={0}
+              maximumValue={10}
+              step={1}
+              onValueChange={(val) => setSliderThreeValue(val)}
+            />
+            <View style={styles.sliderOne}>
+              <Text style={uiStyle.text}>Fogginess:</Text>
+              <Text style={[uiStyle.text]}>{sliderFourValue}</Text>
+            </View>
+            <Slider
+              minimumValue={0}
+              maximumValue={10}
+              step={1}
+              onValueChange={(val) => setSliderFourValue(val)}
+            />
           </View>
-          <Slider
-            minimumValue={0}
-            maximumValue={10}
-            step={1}
-            onValueChange={(val) => setSliderOneValue(val)}
-          />
-          <View style={styles.sliderOne}>
-            <Text style={uiStyle.text}>Nausea: </Text>
-            <Text style={[uiStyle.text]}>{sliderTwoValue}</Text>
-          </View>
-          <Slider
-            minimumValue={0}
-            maximumValue={10}
-            step={1}
-            onValueChange={(val) => setSliderTwoValue(val)}
-          />
-          <View style={styles.sliderOne}>
-            <Text style={uiStyle.text}>Dizziness:</Text>
-            <Text style={[uiStyle.text]}>{sliderThreeValue}</Text>
-          </View>
-          <Slider
-            minimumValue={0}
-            maximumValue={10}
-            step={1}
-            onValueChange={(val) => setSliderThreeValue(val)}
-          />
-          <View style={styles.sliderOne}>
-            <Text style={uiStyle.text}>Fogginess:</Text>
-            <Text style={[uiStyle.text]}>{sliderFourValue}</Text>
-          </View>
-          <Slider
-            minimumValue={0}
-            maximumValue={10}
-            step={1}
-            onValueChange={(val) => setSliderFourValue(val)}
-          />
         </View>
-      </View>
-      <TouchableOpacity
-        onPress={() => {
-          incidentRepoContext
-            .addVOMSSymptoms(
-              reportId,
-              'Vestibular Ocular Reflex Horizontal',
-              sliderOneValue,
-              sliderTwoValue,
-              sliderThreeValue,
-              sliderFourValue,
-            )
-            .catch(console.log);
+        <TouchableOpacity
+          onPress={() => {
+            incidentRepoContext
+              .addVOMSSymptoms(
+                reportId,
+                'Vestibular Ocular Reflex Horizontal',
+                sliderOneValue,
+                sliderTwoValue,
+                sliderThreeValue,
+                sliderFourValue,
+              )
+              .catch(console.log);
 
-          navigation.navigate('VOMS VOR 4');
-        }}
-        style={uiStyle.bottomButton}
-      >
-        <Text style={uiStyle.buttonLabel}>Next</Text>
-      </TouchableOpacity>
+            navigation.navigate('VOMS VOR 4');
+          }}
+          style={uiStyle.bottomButton}
+        >
+          <Text style={uiStyle.buttonLabel}>Next</Text>
+        </TouchableOpacity>
+      </ScrollView>
     </SafeAreaView>
   );
 }

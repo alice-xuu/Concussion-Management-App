@@ -6,7 +6,7 @@ import uiStyle from '../../../components/uiStyle';
 function S1({ navigation }) {
   return (
     <SafeAreaView style={uiStyle.container}>
-      <Text style={uiStyle.titleText}>Instructions</Text>
+      <Text style={uiStyle.titleText}>Saccades</Text>
       <ScrollView>
         <Text style={uiStyle.text}>
           The affected person will be shown two circles at either end of the

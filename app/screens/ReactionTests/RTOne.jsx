@@ -24,10 +24,9 @@ function RTOne({ navigation }) {
           Welcome to the reaction test.
           {'\n'}
           {'\n'}
-          Press the start button button on the next screen to begin the test.
-          The affected individual will be presented with a blue circle that will
-          turn yellow after a period of time. They should tap it the moment it
-          turns yellow.
+          On the next screen, press anywhere to begin the test. The affected
+          individual will be presented with a blue circle that will turn yellow
+          after a period of time. They should tap it the moment it turns yellow.
           {'\n'} {'\n'}
           The test will run three times.
           {'\n'} {'\n'}

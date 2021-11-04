@@ -60,32 +60,36 @@ function MTTwo({ navigation }) {
 
   return (
     <View style={uiStyle.container}>
-      <Text style={styles.text}>{imgs[index].title}</Text>
-      <Image
-        style={{ width: 300, height: 300, resizeMode: 'contain' }}
-        source={imgs[index].src}
-      />
-      <TouchableOpacity
-        onPress={() => {
-          if (index === 0) {
-            const correctAnswers = [];
-            correctAnswers.push(imgs[0].title);
-            correctAnswers.push(imgs[1].title);
-            correctAnswers.push(imgs[2].title);
-            handleCreateMultiResponse(correctAnswers);
-          }
-          if (index >= 2) {
-            navigation.navigate('Memory Test 3');
-          } else {
-            if (index < arr.length - 1) {
-              setState({ ...state, index: index + 1 });
+      <View style={[uiStyle.container, { justifyContent: 'center' }]}>
+        <Text style={styles.text}>{imgs[index].title}</Text>
+        <Image
+          style={{ width: 300, height: 300, resizeMode: 'contain' }}
+          source={imgs[index].src}
+        />
+      </View>
+      <View>
+        <TouchableOpacity
+          onPress={() => {
+            if (index === 0) {
+              const correctAnswers = [];
+              correctAnswers.push(imgs[0].title);
+              correctAnswers.push(imgs[1].title);
+              correctAnswers.push(imgs[2].title);
+              handleCreateMultiResponse(correctAnswers);
             }
-          }
-        }}
-        style={uiStyle.bottomButton}
-      >
-        <Text style={uiStyle.buttonLabel}>Next</Text>
-      </TouchableOpacity>
+            if (index >= 2) {
+              navigation.navigate('Memory Test 3');
+            } else {
+              if (index < arr.length - 1) {
+                setState({ ...state, index: index + 1 });
+              }
+            }
+          }}
+          style={uiStyle.bottomButton}
+        >
+          <Text style={uiStyle.buttonLabel}>Next</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }

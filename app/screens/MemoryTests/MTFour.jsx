@@ -53,12 +53,14 @@ function MTFour({ navigation }) {
   const chosenList = [];
 
   return (
-    <SafeAreaView style={uiStyle.container}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
       <Text style={uiStyle.text}>
         What three images does your patient remember?
       </Text>
-      <ScrollView>
-        <DisplayOptions options={options} updateOption={onUpdate} />
+      <ScrollView style={{ margin: 10 }}>
+        <SafeAreaView style={uiStyle.container}>
+          <DisplayOptions options={options} updateOption={onUpdate} />
+        </SafeAreaView>
       </ScrollView>
       <TouchableOpacity
         onPress={() => {

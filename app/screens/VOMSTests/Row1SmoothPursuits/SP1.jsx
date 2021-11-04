@@ -9,8 +9,6 @@ function SP1({ navigation }) {
       <Text style={uiStyle.titleText}>Smooth Pursuits</Text>
       <ScrollView>
         <Text style={uiStyle.text}>
-          Instructions
-          {'\n'} {'\n'}
           The affected person will be shown a circle slowly moving from left to
           right. Ask them to keep their head still and follow the circle.
           {'\n'} {'\n'}

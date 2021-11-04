@@ -18,18 +18,22 @@ import uiStyle from '../../components/uiStyle.jsx';
 function MTThree({ navigation }) {
   return (
     <View style={uiStyle.container}>
-      <Text style={uiStyle.text}>
-        Instructions {'\n'}
-        {'\n'}
-        Please pass the phone to your supervisor so they can input the results.
-      </Text>
-
-      <TouchableOpacity
-        onPress={() => navigation.navigate('Memory Test 4')}
-        style={uiStyle.bottomButton}
-      >
-        <Text style={uiStyle.buttonLabel}>Next</Text>
-      </TouchableOpacity>
+      <View style={uiStyle.container}>
+        <Text style={uiStyle.text}>
+          Instructions {'\n'}
+          {'\n'}
+          Please pass the phone to your supervisor so they can input the
+          results.
+        </Text>
+      </View>
+      <View>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Memory Test 4')}
+          style={uiStyle.bottomButton}
+        >
+          <Text style={uiStyle.buttonLabel}>Next</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
