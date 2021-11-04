@@ -182,7 +182,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     lineHeight: 30,
     letterSpacing: 0.25,
-    marginHorizontal: 50,
+    marginHorizontal: 20,
     marginVertical: 20,
   },
   container: {

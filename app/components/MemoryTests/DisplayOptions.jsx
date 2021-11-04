@@ -26,8 +26,10 @@ export default function DisplayOptions(props) {
 const styles = StyleSheet.create({
   allCheckboxContainer: {
     flexDirection: 'column',
+    flexGrow: 1,
     alignItems: 'flex-start',
     justifyContent: 'space-evenly',
+    margin: 10,
   },
   checkboxContainer: {
     flexDirection: 'row',
