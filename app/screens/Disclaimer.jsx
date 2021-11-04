@@ -1,25 +1,29 @@
 import * as React from 'react';
-import { Text, SafeAreaView, TouchableOpacity } from 'react-native';
+import { Text, SafeAreaView, TouchableOpacity, ScrollView } from 'react-native';
 import uiStyle from '../components/uiStyle';
 
 function Disclaimer({ navigation }) {
   return (
     <SafeAreaView style={uiStyle.container}>
-      <Text style={uiStyle.text}>
-        This App does not represent a substitute for expert medical attention.
-        You must not rely on the information on this App as an alternative to
-        medical advice from your doctor or other professional healthcare
-        provider. We strongly recommend that you consult your own physician or
-        another available health professional regarding any diagnosis, findings,
-        interpretation or course of treatment.
-      </Text>
-      <TouchableOpacity
-        // onPress={() => navigation.navigate('Voms Start')}
-        onPress={() => navigation.navigate('Home')}
-        style={uiStyle.startCheckButton}
-      >
-        <Text style={uiStyle.buttonLabel}>I understand</Text>
-      </TouchableOpacity>
+      <ScrollView>
+        <Text style={uiStyle.text}>
+          This App does not represent a substitute for expert medical attention.
+          You must not rely on the information on this App as an alternative to
+          medical advice from your doctor or other professional healthcare
+          provider. We strongly recommend that you consult your own physician or
+          another available health professional regarding any diagnosis,
+          findings, interpretation or course of treatment.
+        </Text>
+        <SafeAreaView style={uiStyle.contentContainerCentered}>
+          <TouchableOpacity
+            // onPress={() => navigation.navigate('Voms Start')}
+            onPress={() => navigation.navigate('Home')}
+            style={[uiStyle.startCheckButton]}
+          >
+            <Text style={uiStyle.buttonLabel}>I understand</Text>
+          </TouchableOpacity>
+        </SafeAreaView>
+      </ScrollView>
     </SafeAreaView>
   );
 }

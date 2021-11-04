@@ -83,12 +83,9 @@ function RTTwo({ navigation }) {
   }, [reportId, attemptResults, incidentRepoContext, navigation]);
 
   return (
-    <View style={uiStyle.textContainer}>
+    <View style={uiStyle.textContainer} onTouchStart={btnOnPress}>
       <View style={uiStyle.textContainer}>
-        <TouchableOpacity
-          style={[styles.reactionButton, btnStyle]}
-          onPress={btnOnPress}
-        >
+        <TouchableOpacity style={[styles.reactionButton, btnStyle]}>
           <Text style={btnTxtStyle}>{btnTxt}</Text>
         </TouchableOpacity>
       </View>

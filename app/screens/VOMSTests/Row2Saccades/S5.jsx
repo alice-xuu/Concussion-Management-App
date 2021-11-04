@@ -9,10 +9,10 @@ function S5({ navigation }) {
 
   return (
     <SafeAreaView style={uiStyle.container}>
-      <View style={styles.circleContainer}>
+      <View style={styles.circleContainerTop}>
         <View style={uiStyle.vomsCircle} />
       </View>
-      <View style={styles.circleContainer}>
+      <View style={styles.circleContainerBot}>
         <View style={uiStyle.vomsCircle} />
       </View>
     </SafeAreaView>
@@ -20,9 +20,13 @@ function S5({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  circleContainer: {
+  circleContainerTop: {
     ...uiStyle.contentContainer,
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
+  },
+  circleContainerBot: {
+    ...uiStyle.contentContainer,
+    justifyContent: 'flex-end',
   },
 });
 
