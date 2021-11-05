@@ -68,7 +68,7 @@ export function GlobalContextProvider(props) {
   useEffect(() => {
     DatabaseAdapter.initDatabase(SQLite.openDatabase(DB_FILE)).then((daNew) => {
       setDaContext(daNew);
-      setDaContext2(daNew);
+      // setDaContext2(daNew);
       setPatientRepoContext(new PatientRepo(daNew));
       setIncidentRepoContext(new IncidentReportRepo(daNew));
     });
