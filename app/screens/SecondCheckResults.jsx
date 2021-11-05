@@ -117,7 +117,7 @@ function SecondCheckResults({ route, navigation }) {
     screen = (
       <ScrollView styles={styles.scroll}>
         <View style={uiStyle.container}>
-          <Text style={styles.text}>
+          <Text style={uiStyle.stackedText}>
             There is a low probability of a concussion injury.
             {'\n'} {'\n'}
             However, we strongly recommend you immediately remove yourself from

@@ -41,22 +41,27 @@ function BTThree({ navigation }) {
   };
   const [data, setData] = useContext(dataContext);
   return (
-    <SafeAreaView style={styles.screen}>
+    <SafeAreaView style={uiStyle.container}>
       <ScrollView>
-        <Text style={uiStyle.text}>
-          Stability Grade {'\n'}
-          {'\n'}
-          Variation{'\n'}
-          {'\n'}
-          X: Y: Z: Average: {Math.round(Math.pow(data, 2) * 1000) / 1000} {'\n'}
-          {'\n'}
-          Deviation{'\n'}
-          {'\n'}
-          X: Y: Z: Average: {Math.round(data * 1000) / 1000} {'\n'}
-          {'\n'}
-          Please pass the phone to your supervisor {'\n'}
-        </Text>
+        <SafeAreaView style={uiStyle.container}>
+          <Text style={uiStyle.titleText}>Stability Grade</Text>
+          <Text style={uiStyle.stackedText}>
+            Variation:
+            {'\n'}
+            {'\n'}
+            X: Y: Z: Average: {Math.round(Math.pow(data, 2) * 1000) / 1000}{' '}
+            {'\n'}
+            {'\n'}
+            Deviation:
+            {'\n'}
+            {'\n'}
+            X: Y: Z: Average: {Math.round(data * 1000) / 1000} {'\n'}
+            {'\n'}
+            Please pass the phone to your supervisor {'\n'}
+          </Text>
+        </SafeAreaView>
       </ScrollView>
+
       <TouchableOpacity
         onPress={() => {
           navigation.navigate('VOMS Start');

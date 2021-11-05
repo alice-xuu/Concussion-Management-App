@@ -12,7 +12,7 @@ function SP4({ navigation }) {
   return (
     <SafeAreaView style={uiStyle.container}>
       <View style={uiStyle.container}>
-        <Text style={uiStyle.text}>
+        <Text style={uiStyle.stackedText}>
           Please rotate the screen so it's vertical.
           {'\n'} {'\n'}
           Ask the affected person to follow the circle while keeping their head

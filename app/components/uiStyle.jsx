@@ -19,18 +19,10 @@ export default StyleSheet.create({
   titleText: {
     color: '#000000',
     fontSize: 30,
-    margin: 10,
+    marginTop: 20,
     fontWeight: 'bold',
   },
 
-  text: {
-    // text for instructions in the concussion check
-    fontSize: 25,
-    lineHeight: 25,
-    letterSpacing: 0.3,
-    marginHorizontal: 20,
-    marginVertical: 20,
-  },
   textNoAbsolute: {
     // text for instructions in the concussion check
     fontSize: 25,
@@ -39,6 +31,25 @@ export default StyleSheet.create({
     marginHorizontal: 50,
     marginVertical: 10,
   },
+
+  text: {
+    // text for questions in the concussion check
+    fontSize: 25,
+    lineHeight: 25,
+    letterSpacing: 0.3,
+    marginHorizontal: 30,
+    marginTop: 30,
+  },
+
+  stackedText: {
+    // text for long instructions
+    fontSize: 20,
+    lineHeight: 25,
+    letterSpacing: 0.3,
+    marginHorizontal: 30,
+    marginVertical: 30,
+  },
+
   bottomButton: {
     // consistent with "View History" button on Home screen, i.e long red button on bottom
     width: 300,
@@ -49,6 +60,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 50,
+    marginTop: 20,
     alignSelf: 'center',
   },
   buttonLabel: {

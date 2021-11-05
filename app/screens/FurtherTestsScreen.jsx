@@ -21,7 +21,7 @@ function FurtherTests({ navigation }) {
     <View style={uiStyle.container}>
       <Text style={uiStyle.titleText}>Further Tests</Text>
       <ScrollView>
-        <Text style={uiStyle.text}>
+        <Text style={uiStyle.stackedText}>
           There are 5 more tests that will determine the likelihood of the
           affected person having a concussion
           {'\n'}

@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 10,
     borderRadius: 125,
-    backgroundColor: 'green',
+    backgroundColor: '#83cd49',
     margin: 10,
   },
   buttonNo: {
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 10,
     borderRadius: 125,
-    backgroundColor: 'red',
+    backgroundColor: '#ff7366',
     margin: 10,
   },
   buttonMaybe: {
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 10,
     borderRadius: 125,
-    backgroundColor: 'orange',
+    backgroundColor: '#f6993a',
     margin: 10,
   },
   label: {

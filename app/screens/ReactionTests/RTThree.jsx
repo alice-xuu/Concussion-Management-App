@@ -47,21 +47,25 @@ export default function RTThree({ navigation }) {
 
   if (reactionTest !== null) {
     resultComponent = (
-      <Text style={uiStyle.text}>
-        Results
-        {'\n'}
-        {'\n'}
-        Attempt 1: {reactionTest.time_attempt_1}
-        {'\n'}
-        Attempt 2: {reactionTest.time_attempt_2}
-        {'\n'}
-        Attempt 3: {reactionTest.time_attempt_3}
-        {'\n'}
-        Your average reaction time is {reactionTest.time_average.toFixed(2)}
-        {'\n'}
-        {'\n'}
-        Your overall grade is {reactionTest.grade}
-      </Text>
+      <View style={uiStyle.container}>
+        <Text style={uiStyle.titleText}>Results</Text>
+        <Text style={uiStyle.stackedText}>
+          Attempt 1: {reactionTest.time_attempt_1} ms
+          {'\n'}
+          Attempt 2: {reactionTest.time_attempt_2} ms
+          {'\n'}
+          Attempt 3: {reactionTest.time_attempt_3} ms
+          {'\n'}
+          {'\n'}
+          The average reaction time is: {reactionTest.time_average.toFixed(
+            2,
+          )}{' '}
+          ms
+          {'\n'}
+          {'\n'}
+          The overall grade is {reactionTest.grade}
+        </Text>
+      </View>
     );
   }
   return (

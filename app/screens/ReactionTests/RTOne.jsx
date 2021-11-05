@@ -20,13 +20,16 @@ function RTOne({ navigation }) {
   return (
     <View style={uiStyle.container}>
       <ScrollView>
-        <Text style={uiStyle.text}>
+        <Text style={uiStyle.stackedText}>
           Welcome to the reaction test.
           {'\n'}
           {'\n'}
-          On the next screen, press anywhere to begin the test. The affected
-          individual will be presented with a blue circle that will turn yellow
-          after a period of time. They should tap it the moment it turns yellow.
+          On the next screen, the affected individual will see a red start
+          button. Press anywhere to begin the test.
+          {'\n'}
+          {'\n'}
+          They will be presented with a blue circle that will turn yellow after
+          a period of time. They should tap it the moment it turns yellow.
           {'\n'} {'\n'}
           The test will run three times.
           {'\n'} {'\n'}

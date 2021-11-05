@@ -157,7 +157,7 @@ export default function App() {
           <RootStack.Screen name="VOMS Smooth Pursuits 4" component={SP4} />
           <RootStack.Screen name="VOMS Smooth Pursuits 5" component={SP5} />
           <RootStack.Screen
-            name="VOMS Smooth Pursuits 5 Response 2"
+            name="VOMS Smooth Pursuits 6 Response 2"
             component={SP6Response2}
           />
 

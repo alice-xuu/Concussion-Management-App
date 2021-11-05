@@ -6,7 +6,7 @@ function Disclaimer({ navigation }) {
   return (
     <SafeAreaView style={uiStyle.container}>
       <ScrollView>
-        <Text style={[uiStyle.text, { fontSize: 20 }]}>
+        <Text style={uiStyle.stackedText}>
           This App does not represent a substitute for expert medical attention.
           {'\n'} {'\n'}
           You must not rely on the information on this App as an alternative to

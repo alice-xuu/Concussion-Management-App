@@ -51,28 +51,30 @@ function BTTwo({ navigation }) {
   };
 
   return (
-    <SafeAreaView style={styles.screen}>
-      <Text style={uiStyle.text}>
-        Hold to chest for 10 seconds after clicking "Start!" {'\n'}
-        {'\n'}
-      </Text>
-      <TouchableOpacity
-        onPress={() => {
-          if (!subscription) {
-            _subscribe();
-          }
-          changeText();
-          setTimeout(() => {
-            Accelerometer.removeAllListeners();
-            Vibration.vibrate();
-            navigation.navigate('Balance Test 3');
-          }, 10000);
-        }}
-        style={styles.startCheckButton}
-      >
-        <Text style={styles.startCheckText}>{text}</Text>
-      </TouchableOpacity>
-      <View style={uiStyle.textContainer}>
+    <SafeAreaView style={uiStyle.container}>
+      <View style={uiStyle.container}>
+        <Text style={uiStyle.stackedText}>
+          Hold to chest for 10 seconds after clicking "Start!" {'\n'}
+          {'\n'}
+        </Text>
+        <TouchableOpacity
+          onPress={() => {
+            if (!subscription) {
+              _subscribe();
+            }
+            changeText();
+            setTimeout(() => {
+              Accelerometer.removeAllListeners();
+              Vibration.vibrate();
+              navigation.navigate('Balance Test 3');
+            }, 10000);
+          }}
+          style={styles.startCheckButton}
+        >
+          <Text style={styles.startCheckText}>{text}</Text>
+        </TouchableOpacity>
+      </View>
+      <View>
         <TouchableOpacity
           onPress={() => navigation.navigate('Balance Test 1')}
           style={uiStyle.bottomButton}

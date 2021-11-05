@@ -12,17 +12,19 @@ function VMS1(props) {
   return (
     <SafeAreaView style={uiStyle.container}>
       <View style={uiStyle.contentContainerCentered}>
-        <Text style={uiStyle.text}>Visual Motion Sensitivity</Text>
+        <Text style={uiStyle.titleText}>Visual Motion Sensitivity</Text>
         <ScrollView>
-          <Text style={uiStyle.text}>
+          <Text style={uiStyle.stackedText}>
             The affected person will be shown a fixed circle in the center of
             the screen.
             {'\n'}
             {'\n'}
-            Ask them to hold the phone at eye level with arms straight in front.
-            While looking at the circle, on the beat, turn 80 degrees right,
-            back to the middle, turn 80 degrees left, back to the middle. Repeat
-            5 times.
+            Ask them to hold the phone at eye level, keep arms straight, and
+            keep eyes on the circle the entire time.
+            {'\n'}
+            {'\n'}
+            On the beat, tell them to turn 80 degrees right, back to the middle,
+            turn 80 degrees left, back to the middle. Repeat 5 times.
           </Text>
         </ScrollView>
       </View>

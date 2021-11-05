@@ -27,12 +27,15 @@ function NPC3({ navigation }) {
 
   return (
     <SafeAreaView style={uiStyle.container}>
-      <ScrollView>
-        <Text style={uiStyle.titleText}>Please select the distance</Text>
+      <SafeAreaView style={uiStyle.container}>
+        <Text style={uiStyle.text}>
+          Please select the distance measured when the affected individual saw
+          double.
+        </Text>
         <View style={[uiStyle.contentContainer]}>
           <View style={styles.sliders}>
             <View style={styles.sliderOne}>
-              <Text style={uiStyle.text}>Distance: {sliderOneValue}</Text>
+              <Text style={uiStyle.text}>Distance: {sliderOneValue} cm</Text>
             </View>
             <Slider
               minimumValue={1}
@@ -42,6 +45,8 @@ function NPC3({ navigation }) {
             />
           </View>
         </View>
+      </SafeAreaView>
+      <SafeAreaView>
         <TouchableOpacity
           onPress={() => {
             incidentRepoContext
@@ -53,7 +58,7 @@ function NPC3({ navigation }) {
         >
           <Text style={uiStyle.buttonLabel}>Next</Text>
         </TouchableOpacity>
-      </ScrollView>
+      </SafeAreaView>
     </SafeAreaView>
   );
 }
@@ -62,20 +67,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   sliders: {
-    margin: 20,
-    width: 280,
+    width: '80%',
   },
-  text: {
-    alignSelf: 'center',
-    paddingVertical: 20,
-  },
-  title: {
-    fontSize: 30,
-  },
+
   sliderOne: {
     flexDirection: 'row',
     justifyContent: 'space-around',

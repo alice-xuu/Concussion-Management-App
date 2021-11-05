@@ -8,7 +8,7 @@ function VOMSStart({ navigation }) {
     <SafeAreaView style={uiStyle.container}>
       <Text style={uiStyle.titleText}>VOMS Instructions</Text>
       <ScrollView>
-        <Text style={uiStyle.text}>
+        <Text style={uiStyle.stackedText}>
           The affected person will now be doing a series of tests that track
           their eye movements.
         </Text>

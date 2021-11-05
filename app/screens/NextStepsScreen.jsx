@@ -16,7 +16,7 @@ function NextStepsScreen({ navigation }) {
     <SafeAreaView style={uiStyle.container}>
       <Text style={uiStyle.titleText}>Next Steps</Text>
       <ScrollView>
-        <Text style={uiStyle.text}>
+        <Text style={uiStyle.stackedText}>
           At this stage, the affected individual presents no symptoms
           necessitating hospitalisation.
           {'\n'} {'\n'}
