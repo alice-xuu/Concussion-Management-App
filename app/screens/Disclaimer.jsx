@@ -6,19 +6,22 @@ function Disclaimer({ navigation }) {
   return (
     <SafeAreaView style={uiStyle.container}>
       <ScrollView>
-        <Text style={uiStyle.text}>
+        <Text style={[uiStyle.text, { fontSize: 20 }]}>
           This App does not represent a substitute for expert medical attention.
+          {'\n'} {'\n'}
           You must not rely on the information on this App as an alternative to
           medical advice from your doctor or other professional healthcare
-          provider. We strongly recommend that you consult your own physician or
-          another available health professional regarding any diagnosis,
-          findings, interpretation or course of treatment.
+          provider.
+          {'\n'} {'\n'}
+          We strongly recommend that you consult your own physician or another
+          available health professional regarding any diagnosis, findings,
+          interpretation or course of treatment.
         </Text>
         <SafeAreaView style={uiStyle.contentContainerCentered}>
           <TouchableOpacity
             // onPress={() => navigation.navigate('Voms Start')}
             onPress={() => navigation.navigate('Home')}
-            style={[uiStyle.startCheckButton]}
+            style={[uiStyle.bottomButton]}
           >
             <Text style={uiStyle.buttonLabel}>I understand</Text>
           </TouchableOpacity>
