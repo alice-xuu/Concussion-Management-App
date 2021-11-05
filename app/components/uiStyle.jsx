@@ -38,7 +38,7 @@ export default StyleSheet.create({
     lineHeight: 25,
     letterSpacing: 0.3,
     marginHorizontal: 30,
-    marginTop: 30,
+    marginVertical: 20,
   },
 
   stackedText: {
