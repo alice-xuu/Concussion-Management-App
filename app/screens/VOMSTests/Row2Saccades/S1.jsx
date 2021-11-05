@@ -12,10 +12,12 @@ function S1({ navigation }) {
           The affected person will be shown two circles at either end of the
           screen.
           {'\n'} {'\n'}
-          Ask them to alternate left and right 10 times as quickly as possible.
-          {'\n'} {'\n'}
-          Please allow them to sit down and place the phone landscape at eye
-          level, 15cm away.
+          Ask the affected person to keep their head still and alternate looking
+          at the left and right dot 10 times as quickly as possible.
+          {'\n'}
+          {'\n'}
+          Please allow them to sit down and hold the phone landscape at eye
+          level, an arms length away.
         </Text>
       </ScrollView>
       <TouchableOpacity

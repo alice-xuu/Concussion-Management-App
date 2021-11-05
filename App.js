@@ -64,6 +64,8 @@ import ChooseProfileScreen from './app/screens/ChooseProfileScreen';
 import VMS1 from './app/screens/VOMSTests/ROW5VMS/VMS1';
 import VMS2 from './app/screens/VOMSTests/ROW5VMS/VMS2';
 import VMS3 from './app/screens/VOMSTests/ROW5VMS/VMS3';
+import BTFour from './app/screens/BalanceTests/BTFour';
+import BTFive from './app/screens/BalanceTests/BTFive';
 
 const RootStack = createNativeStackNavigator();
 /**
@@ -139,6 +141,8 @@ export default function App() {
           <RootStack.Screen name="Balance Test 1" component={BTOne} />
           <RootStack.Screen name="Balance Test 2" component={BTTwo} />
           <RootStack.Screen name="Balance Test 3" component={BTThree} />
+          <RootStack.Screen name="Balance Test 4" component={BTFour} />
+          <RootStack.Screen name="Balance Test 5" component={BTFive} />
 
           <RootStack.Screen name="Memory Test 5" component={MTFive} />
 

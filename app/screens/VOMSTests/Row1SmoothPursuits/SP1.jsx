@@ -12,8 +12,8 @@ function SP1({ navigation }) {
           The affected person will be shown a circle slowly moving from left to
           right. Ask them to keep their head still and follow the circle.
           {'\n'} {'\n'}
-          Please allow them to sit down and place the phone landscape at eye
-          level, 15cm away away.
+          Please allow them to sit down and hold the phone landscape at eye
+          level, an arms length away.
         </Text>
       </ScrollView>
       <TouchableOpacity

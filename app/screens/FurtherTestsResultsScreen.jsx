@@ -18,7 +18,8 @@ const parseMultiResponses = (mrs) => {
   const memoryTestCorrectAnswers = [];
   const memoryTest1Responses = [];
   const memoryTest2Responses = [];
-  const balanceTestResponses = [];
+  const balanceTest1Responses = [];
+  const balanceTest2Responses = [];
 
   const testResultsArray = [];
   if (mrs !== null) {
@@ -45,11 +46,20 @@ const parseMultiResponses = (mrs) => {
           memoryTest2Responses.push(mrp.response);
         });
       } else if (
-        mr.description === 'BalanceTest-response: first SD, second VAR' &&
+        mr.description ===
+          'BalanceTest-response: first SD, second VAR, one foot in front of the other' &&
         mr.MultiResponsePart !== undefined
       ) {
         mr.MultiResponsePart.forEach((mrp) => {
-          balanceTestResponses.push(mrp.response);
+          balanceTest1Responses.push(mrp.response);
+        });
+      } else if (
+        mr.description ===
+          'BalanceTest-response: first SD, second VAR, one leg up' &&
+        mr.MultiResponsePart !== undefined
+      ) {
+        mr.MultiResponsePart.forEach((mrp) => {
+          balanceTest2Responses.push(mrp.response);
         });
       }
     });
@@ -76,10 +86,15 @@ const parseMultiResponses = (mrs) => {
   } else {
     testResultsArray.push('Follow-up Memory Test Result: Failed');
   }
-  if (balanceTestResponses[0] < 3 && balanceTestResponses[1] < 2) {
-    testResultsArray.push('Balance Test Result: Passed');
+  if (balanceTest1Responses[0] < 3 && balanceTest1Responses[1] < 2) {
+    testResultsArray.push('Balance Test 1 Result: Passed');
   } else {
-    testResultsArray.push('Balance Test Result: Failed');
+    testResultsArray.push('Balance Test 1 Result: Failed');
+  }
+  if (balanceTest2Responses[0] < 3 && balanceTest2Responses[1] < 2) {
+    testResultsArray.push('Balance Test 2 Result: Passed');
+  } else {
+    testResultsArray.push('Balance Test 2 Result: Failed');
   }
   return testResultsArray;
 };
