@@ -17,11 +17,13 @@ function BTOne({ navigation }) {
         <Text style={uiStyle.text}>
           Instructions {'\n'}
           {'\n'}
-          Push 'Next' to navigate to the recording page, and hold the phone to
-          your chest while recording. {'\n'}
+          This section consists of 2 tests with 2 recordings. Read the
+          instructions carefully before starting each test.{'\n'}
           {'\n'}
-          Wait for the device to vibrate to indicate that recording has
-          finished.
+          Push 'Next' to navigate to the recording page, and hold the phone to
+          your chest while recording.{'\n'}
+          {'\n'}
+          The vibration indicates that the recording has started.
         </Text>
       </ScrollView>
       <TouchableOpacity

@@ -11,13 +11,7 @@ import { Accelerometer } from 'expo-sensors';
 
 import uiStyle from '../../components/uiStyle.jsx';
 import { useContext, useState } from 'react';
-import {
-  dataContext,
-  IncidentReportRepoContext,
-  PatientContext,
-  PatientRepoContext,
-  ReportIdContext,
-} from '../../components/GlobalContextProvider';
+import { dataContext } from '../../components/GlobalContextProvider';
 import getStandardDeviation from '../../model/standardDeviation';
 
 function BTTwo({ navigation }) {
@@ -28,11 +22,6 @@ function BTTwo({ navigation }) {
   const x_arr = [];
   const y_arr = [];
   const z_arr = [];
-
-  // const _slow = () => {
-  //   Accelerometer.setUpdateInterval(5000);
-  // };
-
   const _subscribe = () => {
     setSubscription(
       Accelerometer.addListener((accelerometerData) => {
