@@ -42,7 +42,8 @@ function BTTwo({ navigation }) {
   return (
     <SafeAreaView style={styles.screen}>
       <Text style={uiStyle.text}>
-        Hold to chest for 10 seconds after clicking "Start!" {'\n'}
+        Hold to chest for 10 seconds after clicking "Start!" while keeping one
+        foot in front of the other {'\n'}
         {'\n'}
       </Text>
       <TouchableOpacity
