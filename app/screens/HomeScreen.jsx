@@ -105,7 +105,7 @@ function HomeScreen({ navigation }) {
 const title = '#000000';
 const text = '#fff';
 const background = '#fff';
-const buttons = '#ff0000';
+const buttons = '#ff3333';
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
