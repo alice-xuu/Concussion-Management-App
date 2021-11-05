@@ -23,7 +23,7 @@ function BTOne({ navigation }) {
           Push 'Next' to navigate to the recording page, and hold the phone to
           your chest while recording.{'\n'}
           {'\n'}
-          The vibration indicates that the recording has started.
+          The vibration indicates that the recording has finished.
         </Text>
       </ScrollView>
       <TouchableOpacity
