@@ -37,10 +37,15 @@ describe('ReactionTest', () => {
       const avg = 100;
       const grade = 'pass';
 
-      await rt.addReactionTest(id, [ta1, ta2, ta3], avg, grade);
+      await rt.setReactionTest(id, [ta1, ta2, ta3], avg, grade);
 
-      expect(mockDa.runSqlStmt.mock.calls.length).toBe(1);
-      expect(mockDa.runSqlStmt.mock.calls[0][1]).toEqual([
+      expect(mockDa.runSqlStmt.mock.calls.length).toBe(2);
+
+      // Delete sql
+      expect(mockDa.runSqlStmt.mock.calls[0][1]).toEqual([id]);
+
+      // Insert sql
+      expect(mockDa.runSqlStmt.mock.calls[1][1]).toEqual([
         id,
         ta1,
         ta2,
@@ -56,7 +61,7 @@ describe('ReactionTest', () => {
 
       const sucCb = jest.fn(() => {});
 
-      await rt.addReactionTest(1234, [100, 100, 100], 'pass').then(sucCb);
+      await rt.setReactionTest(1234, [100, 100, 100], 'pass').then(sucCb);
 
       expect(sucCb.mock.calls.length).toBe(1);
       expect(sucCb.mock.calls[0][0]).toBe(id);

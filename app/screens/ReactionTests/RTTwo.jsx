@@ -24,7 +24,6 @@ function RTTwo({ navigation }) {
   const [attemptResults, setAttemptResults] = useState([]);
   const [reportId] = useContext(ReportIdContext);
   const incidentRepoContext = useContext(IncidentReportRepoContext);
-  const [reactionTest, setReactionTest] = useState(null);
 
   // Start time in milliseconds
   const [startMs, setStartMs] = useState(null);
@@ -72,24 +71,14 @@ function RTTwo({ navigation }) {
         grade = 'pass';
       }
       incidentRepoContext
-        .addReactionTest(reportId, attemptResults, avg, grade)
-        .catch(console.log);
-    }
-  }, [reportId, attemptResults, incidentRepoContext, reactionTest]);
-
-  useEffect(() => {
-    if (attemptResults.length === 3) {
-      const avg =
-        attemptResults.reduce((a, b) => a + b) / attemptResults.length;
-      let grade = 'fail';
-      if (avg < 500) {
-        grade = 'pass';
-      }
-      incidentRepoContext
-        .addReactionTest(reportId, attemptResults, avg, grade)
+        .setReactionTest(reportId, attemptResults, avg, grade)
         .catch(console.log);
       setAttemptResults([]);
-      navigation.navigate('Reaction Test 3');
+      navigation.navigate('Reaction Test 3', {
+        attemptResults: attemptResults,
+        avg: avg,
+        grade: grade,
+      });
     }
   }, [reportId, attemptResults, incidentRepoContext, navigation]);
 

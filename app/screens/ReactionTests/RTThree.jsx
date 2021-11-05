@@ -1,28 +1,20 @@
 import * as React from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Pressable,
-  TouchableOpacity,
-  Button,
-} from 'react-native';
+import { Text, View, TouchableOpacity, Button } from 'react-native';
 
 import uiStyle from '../../components/uiStyle.jsx';
-import { useContext, useEffect, useState } from 'react';
-import {
-  IncidentReportRepoContext,
-  ReportIdContext,
-} from '../../components/GlobalContextProvider';
 
 /**
  * The screen will be perform memory test.
  * This is the first test out of the Further Tests
  * After this test is completed, user needs to navigate to the next test which
  * is Reaction Test.
+ *
+ * @param {number[]} route.params.attemptResults time for each attempt
+ * @param {number} route.params.avg average time
+ * @param {string} route.params.grade pass or fail
  */
-
-export default function RTThree({ navigation }) {
+export default function RTThree({ route, navigation }) {
+  const reactionTest = route.params;
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerLeft: () => (
@@ -33,43 +25,28 @@ export default function RTThree({ navigation }) {
       ),
     });
   }, [navigation]);
-  const [reportId] = useContext(ReportIdContext);
-  const incidentRepoContext = useContext(IncidentReportRepoContext);
-  const [reactionTest, setReactionTest] = useState(null);
-
-  useEffect(() => {
-    incidentRepoContext.getReactionTest(reportId).then((rs) => {
-      setReactionTest(rs);
-    });
-  }, [reportId, incidentRepoContext]);
 
   let resultComponent = <></>;
 
-  if (reactionTest !== null) {
-    resultComponent = (
-      <View style={uiStyle.container}>
-        <Text style={uiStyle.titleText}>Results</Text>
-        <Text style={uiStyle.stackedText}>
-          Attempt 1: {reactionTest.time_attempt_1} ms
-          {'\n'}
-          Attempt 2: {reactionTest.time_attempt_2} ms
-          {'\n'}
-          Attempt 3: {reactionTest.time_attempt_3} ms
-          {'\n'}
-          {'\n'}
-          The average reaction time is: {reactionTest.time_average.toFixed(
-            2,
-          )}{' '}
-          ms
-          {'\n'}
-          {'\n'}
-          The overall grade is {reactionTest.grade}
-        </Text>
-      </View>
-    );
-  }
+  resultComponent = (
+    <Text style={uiStyle.stackedText}>
+      Attempt 1: {reactionTest.attemptResults[0]} ms
+      {'\n'}
+      Attempt 2: {reactionTest.attemptResults[1]} ms
+      {'\n'}
+      Attempt 3: {reactionTest.attemptResults[2]} ms
+      {'\n'}
+      {'\n'}
+      Your average reaction time is {reactionTest.avg.toFixed(2)} ms
+      {'\n'}
+      {'\n'}
+      Your overall grade is {reactionTest.grade}
+    </Text>
+  );
+
   return (
     <View style={uiStyle.container}>
+      <Text style={uiStyle.titleText}>Results</Text>
       <View style={uiStyle.container}>{resultComponent}</View>
       <TouchableOpacity
         onPress={() => navigation.navigate('Balance Test 1')}
