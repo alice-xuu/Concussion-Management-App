@@ -22,6 +22,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
  */
 function ProfileInfoScreen({ navigation }) {
   // Context variables
+  const [reportId, setReportId] = useContext(ReportIdContext);
   const [reports, setReports] = useState([]);
   const [patientDetails, setPatientDetails] = useState([]);
   const [patient] = useContext(PatientContext);
@@ -97,7 +98,8 @@ function ProfileInfoScreen({ navigation }) {
           key={i + 1}
           style={styles.selectUserButton}
           onPress={() => {
-            // navigation.navigate('Home');
+            setReportId(reports[i]);
+            navigation.navigate('Report Screen');
           }}
         >
           <Text style={uiStyle.buttonLabel}>REPORT {i + 1}</Text>
