@@ -2,13 +2,14 @@ import * as React from 'react';
 import {
   Dimensions,
   SafeAreaView,
+  ScrollView,
   StyleSheet,
   Text,
-  TextInput,
   TouchableOpacity,
   View,
 } from 'react-native';
 import uiStyle from '../../../components/uiStyle';
+import Slider from '@react-native-community/slider';
 import {
   IncidentReportRepoContext,
   ReportIdContext,
@@ -22,52 +23,62 @@ function NPC3({ navigation }) {
   const [reportId] = useContext(ReportIdContext);
   const incidentRepoContext = useContext(IncidentReportRepoContext);
 
-  const [value, onChangeText] = React.useState('');
+  const [sliderOneValue, setSliderOneValue] = React.useState(0);
 
   return (
     <SafeAreaView style={uiStyle.container}>
-      <View style={uiStyle.contentContainerCentered}>
-        <Text style={uiStyle.text}> Please input the distance.</Text>
-        <SafeAreaView style={uiStyle.textContainer}>
-          <TextInput
-            style={styles.content}
-            onChangeText={(text) => onChangeText(text)}
-            textDecorationLine={'none'}
-            value={value}
-            multiline={true}
-            numberOfLines={4}
-            textAlignVertical="top"
-          />
-        </SafeAreaView>
-      </View>
-      <TouchableOpacity
-        onPress={() => {
-          {
+      <ScrollView>
+        <Text style={uiStyle.titleText}>Please select the distance</Text>
+        <View style={[uiStyle.contentContainer]}>
+          <View style={styles.sliders}>
+            <View style={styles.sliderOne}>
+              <Text style={uiStyle.text}>Distance: {sliderOneValue}</Text>
+            </View>
+            <Slider
+              minimumValue={1}
+              maximumValue={30}
+              step={1}
+              onValueChange={(val) => setSliderOneValue(val)}
+            />
+          </View>
+        </View>
+        <TouchableOpacity
+          onPress={() => {
             incidentRepoContext
-              .addVOMSNPCDistance(reportId, value)
+              .addVOMSNPCDistance(reportId, sliderOneValue)
               .catch(console.log);
             navigation.navigate('VOMS NPC 4 Response 7');
-          }
-        }}
-        style={uiStyle.bottomButton}
-      >
-        <Text style={uiStyle.buttonLabel}>Next</Text>
-      </TouchableOpacity>
+          }}
+          style={uiStyle.bottomButton}
+        >
+          <Text style={uiStyle.buttonLabel}>Next</Text>
+        </TouchableOpacity>
+      </ScrollView>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  content: {
-    maxHeight: 200,
-    marginVertical: 0,
-    borderWidth: 3,
-    borderColor: 'black',
-    marginBottom: 50,
-    paddingLeft: 10,
-    padding: 0,
-    width: width - 40,
-    height: height - 700,
+  container: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  sliders: {
+    margin: 20,
+    width: 280,
+  },
+  text: {
+    alignSelf: 'center',
+    paddingVertical: 20,
+  },
+  title: {
+    fontSize: 30,
+  },
+  sliderOne: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
   },
 });
 
