@@ -8,7 +8,7 @@ function SP1({ navigation }) {
     <SafeAreaView style={uiStyle.container}>
       <Text style={uiStyle.titleText}>Smooth Pursuits</Text>
       <ScrollView>
-        <Text style={uiStyle.text}>
+        <Text style={uiStyle.stackedText}>
           The affected person will be shown a circle slowly moving from left to
           right. Ask them to keep their head still and follow the circle.
           {'\n'} {'\n'}

@@ -19,9 +19,8 @@ function MTThree({ navigation }) {
   return (
     <View style={uiStyle.container}>
       <View style={uiStyle.container}>
-        <Text style={uiStyle.text}>
-          Instructions {'\n'}
-          {'\n'}
+        <Text style={uiStyle.titleText}>Instructions</Text>
+        <Text style={uiStyle.stackedText}>
           Please pass the phone to your supervisor so they can input the
           results.
         </Text>

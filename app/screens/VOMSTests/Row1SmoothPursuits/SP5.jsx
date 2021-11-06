@@ -60,7 +60,7 @@ function SP5({ navigation }) {
         />
       </View>
       <TouchableOpacity
-        onPress={() => navigation.navigate('VOMS Smooth Pursuits 5 Response 2')}
+        onPress={() => navigation.navigate('VOMS Smooth Pursuits 6 Response 2')}
         style={uiStyle.bottomButton}
       >
         <Text style={uiStyle.buttonLabel}>Next</Text>

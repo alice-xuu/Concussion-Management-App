@@ -27,7 +27,7 @@ function S3Response3({ navigation }) {
   return (
     <SafeAreaView style={uiStyle.container}>
       <ScrollView>
-        <Text style={uiStyle.titleText}>
+        <Text style={uiStyle.text}>
           Does the affected person have any of these symptoms?
         </Text>
         <View style={[uiStyle.contentContainer]}>
@@ -101,20 +101,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   sliders: {
-    margin: 20,
-    width: 280,
+    width: '80%',
   },
-  text: {
-    alignSelf: 'center',
-    paddingVertical: 20,
-  },
-  title: {
-    fontSize: 30,
-  },
+
   sliderOne: {
     flexDirection: 'row',
     justifyContent: 'space-around',

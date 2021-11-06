@@ -14,10 +14,10 @@ import { useContext, useState } from 'react';
 import { dataContext } from '../../components/GlobalContextProvider';
 import getStandardDeviation from '../../model/standardDeviation';
 
-function BTTwo({ navigation }) {
+function BTFour({ navigation }) {
   const [text, setText] = useState('Start!');
   const changeText = () => setText('Recording!');
-  const [data, setData] = useContext(dataContext);
+  const [data2, setData2] = useContext(dataContext);
   const [subscription, setSubscription] = useState(null);
   const x_arr = [];
   const y_arr = [];
@@ -34,7 +34,7 @@ function BTTwo({ navigation }) {
         const y_sd = getStandardDeviation(y_arr);
         const z_sd = getStandardDeviation(z_arr);
         const sd = (x_sd + y_sd + z_sd) / 3;
-        setData(sd);
+        setData2(sd);
       }),
     );
   };
@@ -43,7 +43,7 @@ function BTTwo({ navigation }) {
     <SafeAreaView style={uiStyle.container}>
       <Text style={uiStyle.stackedText}>
         Hold to chest for 10 seconds after clicking "Start!" while keeping one
-        foot in front of the other {'\n'}
+        leg up in the air. {'\n'}
         {'\n'}
       </Text>
       <TouchableOpacity
@@ -55,7 +55,7 @@ function BTTwo({ navigation }) {
           setTimeout(() => {
             Accelerometer.removeAllListeners();
             Vibration.vibrate();
-            navigation.navigate('Balance Test 3');
+            navigation.navigate('Balance Test 5');
           }, 10000);
         }}
         style={styles.startCheckButton}
@@ -108,4 +108,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default BTTwo;
+export default BTFour;

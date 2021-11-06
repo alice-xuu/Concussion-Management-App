@@ -18,7 +18,7 @@ import {
   ReportIdContext,
 } from '../../components/GlobalContextProvider';
 
-function BTThree({ navigation }) {
+function BTFive({ navigation }) {
   // Context variables
   const [patient, setPatient] = useContext(PatientContext);
   const [reportId, setReportId] = useContext(ReportIdContext);
@@ -29,8 +29,7 @@ function BTThree({ navigation }) {
   const [responses, setResponses] = useState(null);
 
   const handleCreateMultiResponse = (answers) => {
-    const desc =
-      'BalanceTest-response: first SD, second VAR, one foot in front of the other';
+    const desc = 'BalanceTest-response: first SD, second VAR, one leg up';
     incidentRepoContext.setMultiResponse(reportId, desc, answers).then(
       () => {
         incidentRepoContext
@@ -40,33 +39,35 @@ function BTThree({ navigation }) {
       (err) => console.log(err),
     );
   };
-  const [data, setData] = useContext(dataContext);
+  const [data2, setData2] = useContext(dataContext);
   return (
     <SafeAreaView style={uiStyle.container}>
       <ScrollView>
         <SafeAreaView style={uiStyle.container}>
           <Text style={uiStyle.titleText}>Stability Grade</Text>
           <Text style={uiStyle.stackedText}>
-            Variation:
+            {'\n'}
+            Variation:{'\n'}
+            {'\n'}
+            X: Y: Z: Average: {Math.round(Math.pow(data2, 2) * 1000) /
+              1000}{' '}
             {'\n'}
             {'\n'}
-            X: Y: Z: Average: {Math.round(Math.pow(data, 2) * 1000) / 1000}{' '}
+            Deviation:{'\n'}
             {'\n'}
+            X: Y: Z: Average: {Math.round(data2 * 1000) / 1000} {'\n'}
             {'\n'}
-            Deviation:
-            {'\n'}
-            {'\n'}
-            X: Y: Z: Average: {Math.round(data * 1000) / 1000} {'\n'}
+            Please pass the phone to your supervisor {'\n'}
           </Text>
         </SafeAreaView>
       </ScrollView>
 
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate('Balance Test 4');
+          navigation.navigate('VOMS Start');
           handleCreateMultiResponse([
-            Math.round(data * 1000) / 1000,
-            Math.round(Math.pow(data, 2) * 1000) / 1000,
+            Math.round(data2 * 1000) / 1000,
+            Math.round(Math.pow(data2, 2) * 1000) / 1000,
           ]);
         }}
         style={uiStyle.bottomButton}
@@ -80,7 +81,7 @@ function BTThree({ navigation }) {
 const title = '#000000';
 const text = '#fff';
 const background = '#fff';
-const buttons = '#ff0000';
+const buttons = '#ff3333';
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
@@ -111,4 +112,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default BTThree;
+export default BTFive;

@@ -29,17 +29,15 @@ export default function RTThree({ route, navigation }) {
   let resultComponent = <></>;
 
   resultComponent = (
-    <Text style={uiStyle.text}>
-      Results
+    <Text style={uiStyle.stackedText}>
+      Attempt 1: {reactionTest.attemptResults[0]} ms
+      {'\n'}
+      Attempt 2: {reactionTest.attemptResults[1]} ms
+      {'\n'}
+      Attempt 3: {reactionTest.attemptResults[2]} ms
       {'\n'}
       {'\n'}
-      Attempt 1: {reactionTest.attemptResults[0]}
-      {'\n'}
-      Attempt 2: {reactionTest.attemptResults[1]}
-      {'\n'}
-      Attempt 3: {reactionTest.attemptResults[2]}
-      {'\n'}
-      Your average reaction time is {reactionTest.avg.toFixed(2)}
+      Your average reaction time is {reactionTest.avg.toFixed(2)} ms
       {'\n'}
       {'\n'}
       Your overall grade is {reactionTest.grade}
@@ -48,6 +46,7 @@ export default function RTThree({ route, navigation }) {
 
   return (
     <View style={uiStyle.container}>
+      <Text style={uiStyle.titleText}>Results</Text>
       <View style={uiStyle.container}>{resultComponent}</View>
       <TouchableOpacity
         onPress={() => navigation.navigate('Balance Test 1')}

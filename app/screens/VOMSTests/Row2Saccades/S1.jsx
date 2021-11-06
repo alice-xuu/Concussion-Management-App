@@ -8,7 +8,7 @@ function S1({ navigation }) {
     <SafeAreaView style={uiStyle.container}>
       <Text style={uiStyle.titleText}>Saccades</Text>
       <ScrollView>
-        <Text style={uiStyle.text}>
+        <Text style={uiStyle.stackedText}>
           The affected person will be shown two circles at either end of the
           screen.
           {'\n'} {'\n'}

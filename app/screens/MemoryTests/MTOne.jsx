@@ -20,11 +20,13 @@ function MTOne({ navigation }) {
   return (
     <View style={uiStyle.container}>
       <ScrollView>
-        <Text style={uiStyle.text}>
+        <Text style={uiStyle.stackedText}>
           Welcome to the first memory test. {'\n'}
           {'\n'}
-          The affected person will be presented with three images to remember,
-          they will be tested on these images once now and then again at the end
+          The affected person will be presented with three images to remember.
+          {'\n'}
+          {'\n'}
+          They will be tested on these images once now and then again at the end
           other assessments. {'\n'}
           {'\n'}
           Pass the phone to the affected person.

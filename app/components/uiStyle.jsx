@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 const title = '#000000';
 const text = '#fff';
 const background = '#fff';
-const buttons = '#ff0000';
+const buttons = '#ff3333';
 
 export default StyleSheet.create({
   container: {
@@ -19,18 +19,10 @@ export default StyleSheet.create({
   titleText: {
     color: '#000000',
     fontSize: 30,
-    margin: 10,
+    marginTop: 20,
     fontWeight: 'bold',
   },
 
-  text: {
-    // text for instructions in the concussion check
-    fontSize: 25,
-    lineHeight: 25,
-    letterSpacing: 0.3,
-    marginHorizontal: 20,
-    marginVertical: 20,
-  },
   textNoAbsolute: {
     // text for instructions in the concussion check
     fontSize: 25,
@@ -39,16 +31,36 @@ export default StyleSheet.create({
     marginHorizontal: 50,
     marginVertical: 10,
   },
+
+  text: {
+    // text for questions in the concussion check
+    fontSize: 25,
+    lineHeight: 25,
+    letterSpacing: 0.3,
+    marginHorizontal: 30,
+    marginVertical: 20,
+  },
+
+  stackedText: {
+    // text for long instructions
+    fontSize: 20,
+    lineHeight: 25,
+    letterSpacing: 0.3,
+    marginHorizontal: 30,
+    marginVertical: 30,
+  },
+
   bottomButton: {
     // consistent with "View History" button on Home screen, i.e long red button on bottom
     width: 300,
     height: 50,
     padding: 10,
     borderRadius: 100,
-    backgroundColor: '#ff0000',
+    backgroundColor: '#ff3333',
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 50,
+    marginTop: 20,
     alignSelf: 'center',
   },
   buttonLabel: {
@@ -93,7 +105,7 @@ export default StyleSheet.create({
     height: 20,
     // fontSize: 14,
     borderRadius: 50,
-    backgroundColor: 'red',
+    backgroundColor: '#ff3333',
     transform: [{ scaleY: 0.76 }, { scaleX: 0.67 }],
   },
 });

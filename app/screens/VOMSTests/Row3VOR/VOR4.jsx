@@ -11,15 +11,20 @@ import uiStyle from '../../../components/uiStyle';
 function VOR4(props) {
   return (
     <SafeAreaView style={uiStyle.container}>
-      <View style={uiStyle.contentContainerCentered}>
-        <ScrollView>
-          <Text style={uiStyle.text}>Vestibular Ocular Reflex (Vertical)</Text>
-          <Text style={uiStyle.text}>
-            Ask them to hold the phone in front of them and rotate their head up
-            and down 10 times while keeping their eyes on the circle.
+      <ScrollView>
+        <View style={uiStyle.contentContainerCentered}>
+          <Text style={uiStyle.titleText}>
+            Vestibular Ocular Reflex (Vertical)
           </Text>
-        </ScrollView>
-      </View>
+          <Text style={uiStyle.stackedText}>
+            Ask them to hold the phone in front of them.
+            {'\n'}
+            {'\n'}
+            Then, rotate their head up and down 10 times while keeping their
+            eyes on the circle.
+          </Text>
+        </View>
+      </ScrollView>
       <TouchableOpacity
         onPress={() => {
           props.navigation.navigate('VOMS VOR 5');

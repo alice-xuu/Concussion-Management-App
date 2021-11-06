@@ -11,10 +11,10 @@ import uiStyle from '../../../components/uiStyle';
 function VOR1(props) {
   return (
     <SafeAreaView style={uiStyle.container}>
-      <View style={uiStyle.contentContainerCentered}>
-        <Text style={uiStyle.text}>Vestibular Ocular Reflex</Text>
-        <ScrollView>
-          <Text style={uiStyle.text}>
+      <ScrollView>
+        <View style={uiStyle.contentContainerCentered}>
+          <Text style={uiStyle.titleText}>Vestibular Ocular Reflex</Text>
+          <Text style={uiStyle.stackedText}>
             The affected person will be shown a fixed circle in the center of
             the screen.
             {'\n'}
@@ -22,8 +22,9 @@ function VOR1(props) {
             Ask them to hold the phone in front of them and rotate their head
             left and right 10 times while keeping their eyes on the circle.
           </Text>
-        </ScrollView>
-      </View>
+        </View>
+      </ScrollView>
+
       <TouchableOpacity
         onPress={() => {
           props.navigation.navigate('VOMS VOR 2');

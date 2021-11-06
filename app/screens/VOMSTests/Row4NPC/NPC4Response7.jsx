@@ -27,7 +27,7 @@ function NPC4Response7({ navigation }) {
   return (
     <SafeAreaView style={uiStyle.container}>
       <ScrollView>
-        <Text style={uiStyle.titleText}>
+        <Text style={uiStyle.text}>
           Does the affected person have any of these symptoms?
         </Text>
         <View style={[uiStyle.contentContainer]}>

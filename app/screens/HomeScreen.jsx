@@ -91,12 +91,12 @@ function HomeScreen({ navigation }) {
       {/*>*/}
       {/*  <Text style={uiStyle.buttonLabel}>sample database</Text>*/}
       {/*</TouchableOpacity>*/}
-      {/*<TouchableOpacity
-        onPress={() => navigation.navigate('Memory Test 5')}
-        style={uiStyle.bottomButton}
-      >
-        <Text style={uiStyle.buttonLabel}>Voms Start</Text>
-      </TouchableOpacity>*/}
+      {/*<TouchableOpacity*/}
+      {/*  onPress={() => navigation.navigate('Balance Test 1')}*/}
+      {/*  style={uiStyle.bottomButton}*/}
+      {/*>*/}
+      {/*  <Text style={uiStyle.buttonLabel}>Test</Text>*/}
+      {/*</TouchableOpacity>*/}
     </SafeAreaView>
   );
 }
@@ -105,7 +105,7 @@ function HomeScreen({ navigation }) {
 const title = '#000000';
 const text = '#fff';
 const background = '#fff';
-const buttons = '#ff0000';
+const buttons = '#ff3333';
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
