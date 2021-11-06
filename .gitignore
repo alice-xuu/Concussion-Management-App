@@ -24,3 +24,6 @@ coverage/
 
 # generated docs
 doc/
+
+# we are using npm
+yarn.lock
