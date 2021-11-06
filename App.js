@@ -5,11 +5,9 @@ import HomeScreen from './app/screens/HomeScreen';
 import MechanismOfInjuryCheck from './app/screens/MechanismOfInjuryCheck';
 import CreateProfileScreen from './app/screens/CreateProfileScreen';
 import SelectProfileScreen from './app/screens/SelectProfileScreen';
-import ProfileInfoScreen from './app/screens/ProfileInfoScreen';
 import RedFlagsChecklist from './app/screens/RedFlagsChecklist';
 import BadCheckScreen from './app/screens/BadCheckScreen';
 import TextQuestionScreen from './app/screens/TextQuestionScreen';
-import ReactionTestScreen from './app/screens/ReactionTestScreen';
 import SecondCheckResults from './app/screens/SecondCheckResults';
 import SampleDatabaseScreen from './app/screens/SampleDatabaseScreen';
 import MTOne from './app/screens/MemoryTests/MTOne';
@@ -17,6 +15,10 @@ import MTTwo from './app/screens/MemoryTests/MTTwo';
 import MTThree from './app/screens/MemoryTests/MTThree';
 import MTFour from './app/screens/MemoryTests/MTFour';
 import MTFive from './app/screens/MemoryTests/MTFive';
+
+import ChooseProfileScreen from './app/screens/ChooseProfileScreen';
+import ProfileInfoScreen from './app/screens/ProfileInfoScreen';
+import ReportScreen from './app/screens/ReportScreen';
 
 import NextStepsScreen from './app/screens/NextStepsScreen';
 import ChecklistQuestionScreen from './app/screens/RedFlagsChecklist';
@@ -60,13 +62,12 @@ import NPC1 from './app/screens/VOMSTests/Row4NPC/NPC1';
 import NPC2 from './app/screens/VOMSTests/Row4NPC/NPC2';
 import NPC3 from './app/screens/VOMSTests/Row4NPC/NPC3';
 import NPC4 from './app/screens/VOMSTests/Row4NPC/NPC4Response7';
-import ChooseProfileScreen from './app/screens/ChooseProfileScreen';
+
 import VMS1 from './app/screens/VOMSTests/ROW5VMS/VMS1';
 import VMS2 from './app/screens/VOMSTests/ROW5VMS/VMS2';
 import VMS3 from './app/screens/VOMSTests/ROW5VMS/VMS3';
 import BTFour from './app/screens/BalanceTests/BTFour';
 import BTFive from './app/screens/BalanceTests/BTFive';
-import ReportScreen from "./app/screens/ReportScreen";
 
 const RootStack = createNativeStackNavigator();
 /**
@@ -98,6 +99,7 @@ export default function App() {
             component={SelectProfileScreen}
           />
           <RootStack.Screen name="Profile Info" component={ProfileInfoScreen} />
+          <RootStack.Screen name="Report Screen" component={ReportScreen} />
           <RootStack.Screen
             name="Red flags checklist"
             component={RedFlagsChecklist}
@@ -191,8 +193,6 @@ export default function App() {
           <RootStack.Screen name="VOMS VMS 1" component={VMS1} />
           <RootStack.Screen name="VOMS VMS 2" component={VMS2} />
           <RootStack.Screen name="VOMS VMS 3 Response 8" component={VMS3} />
-
-          <RootStack.Screen name="Report Screen" component={ReportScreen} />
         </RootStack.Navigator>
       </NavigationContainer>
     </GlobalContextProvider>

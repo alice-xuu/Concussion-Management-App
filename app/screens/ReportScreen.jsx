@@ -6,25 +6,222 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
+import {
+  IncidentReportRepoContext,
+  PatientContext,
+  PatientRepoContext,
+  ReportIdContext,
+} from '../components/GlobalContextProvider';
+import { useContext, useState, useRef, useEffect, useCallback } from 'react';
+import uiStyle from '../components/uiStyle.jsx';
 
-import uiStyle from '../../components/uiStyle.jsx';
+const parseMTBTMultiResponses = (mrs) => {
+  const memoryTestCorrectAnswers = [];
+  const memoryTest1Responses = [];
+  const memoryTest2Responses = [];
+  const balanceTest1Responses = [];
+  const balanceTest2Responses = [];
+
+  const testResultsArray = [];
+  if (mrs !== null) {
+    mrs.forEach((mr) => {
+      if (
+        mr.description === 'Memory Test Correct Answers' &&
+        mr.MultiResponsePart !== undefined
+      ) {
+        mr.MultiResponsePart.forEach((mrp) => {
+          memoryTestCorrectAnswers.push(mrp.response);
+        });
+      } else if (
+        mr.description === 'Memory Test Part 1' &&
+        mr.MultiResponsePart !== undefined
+      ) {
+        mr.MultiResponsePart.forEach((mrp) => {
+          memoryTest1Responses.push(mrp.response);
+        });
+      } else if (
+        mr.description === 'Memory Test Part 2' &&
+        mr.MultiResponsePart !== undefined
+      ) {
+        mr.MultiResponsePart.forEach((mrp) => {
+          memoryTest2Responses.push(mrp.response);
+        });
+      } else if (
+        mr.description ===
+          'BalanceTest-response: first SD, second VAR, one foot in front of the other' &&
+        mr.MultiResponsePart !== undefined
+      ) {
+        mr.MultiResponsePart.forEach((mrp) => {
+          balanceTest1Responses.push(mrp.response);
+        });
+      } else if (
+        mr.description ===
+          'BalanceTest-response: first SD, second VAR, one leg up' &&
+        mr.MultiResponsePart !== undefined
+      ) {
+        mr.MultiResponsePart.forEach((mrp) => {
+          balanceTest2Responses.push(mrp.response);
+        });
+      }
+    });
+  }
+  if (
+    memoryTest1Responses.length === 0 &&
+    memoryTest2Responses.length === 0 &&
+    balanceTest1Responses.length === 0 &&
+    balanceTest2Responses.length === 0
+  ) {
+    return [];
+  }
+  let memory1Correct = 0;
+  let memory2Correct = 0;
+  memoryTest1Responses.forEach((element) => {
+    if (memoryTestCorrectAnswers.includes(element)) {
+      memory1Correct++;
+    }
+  });
+  memoryTest2Responses.forEach((element) => {
+    if (memoryTestCorrectAnswers.includes(element)) {
+      memory2Correct++;
+    }
+  });
+  if (memory1Correct === 3) {
+    testResultsArray.push('Initial Memory Test Result: Passed');
+  } else {
+    testResultsArray.push('Initial Memory Test Result: Failed');
+  }
+  if (memory2Correct === 3) {
+    testResultsArray.push('Follow-up Memory Test Result: Passed');
+  } else {
+    testResultsArray.push('Follow-up Memory Test Result: Failed');
+  }
+  if (balanceTest1Responses[0] < 3 && balanceTest1Responses[1] < 2) {
+    testResultsArray.push('Balance Test 1 Result: Passed');
+  } else {
+    testResultsArray.push('Balance Test 1 Result: Failed');
+  }
+  if (balanceTest2Responses[0] < 3 && balanceTest2Responses[1] < 2) {
+    testResultsArray.push('Balance Test 2 Result: Passed');
+  } else {
+    testResultsArray.push('Balance Test 2 Result: Failed');
+  }
+  return testResultsArray;
+};
+const parseMultiResponses = (mrs) => {
+  console.log('parseMultiResponses');
+  const checkResponsesArray = [];
+  if (mrs !== null) {
+    console.log(mrs);
+    mrs.forEach((mr) => {
+      console.log(mr);
+      if (
+        mr.description === 'Red Flags' &&
+        mr.MultiResponsePart !== undefined
+      ) {
+        console.log('red flag');
+        checkResponsesArray.push('Red Flags Checklist');
+        mr.MultiResponsePart.forEach((mrp) => {
+          checkResponsesArray.push(mrp.response);
+        });
+      } else if (
+        mr.description === 'PCSS Checklist' &&
+        mr.MultiResponsePart !== undefined
+      ) {
+        console.log('PCSS');
+        checkResponsesArray.push('PCSS Checklist');
+        mr.MultiResponsePart.forEach((mrp) => {
+          checkResponsesArray.push(mrp.response);
+        });
+      }
+    });
+  }
+  return checkResponsesArray;
+};
+
+const parseReactionTest = (rt) => {
+  const reactionTestResponses = [];
+  if (rt === undefined) {
+    return reactionTestResponses;
+  }
+  if (
+    rt.time_attempt_1 < 500 &&
+    rt.time_attempt_2 < 500 &&
+    rt.time_attempt_3 < 500
+  ) {
+    reactionTestResponses.push('Reaction Test Result: Passed');
+  } else {
+    reactionTestResponses.push('Reaction Test Result: Failed');
+  }
+  return reactionTestResponses;
+};
 
 function ReportScreen({ navigation }) {
+  const incidentRepoContext = useContext(IncidentReportRepoContext);
+  const [reportId] = useContext(ReportIdContext);
+  const [mtAndBtResults, setMTBTResults] = useState([]);
+  const [responses, setResponses] = useState([]);
+  const [reactionTest, setReactionTest] = useState(null);
+  const mounted = useRef(false);
+
+  useEffect(() => {
+    mounted.current = true; // Component is mounted
+    return () => {
+      // Component is unmounted
+      mounted.current = false;
+    };
+  }, []);
+  useEffect(() => {
+    console.log('getting report id: ' + reportId);
+    incidentRepoContext
+      .getMultiResponses(reportId)
+      .then((mrs) => parseMTBTMultiResponses(mrs))
+      .then((res) => setMTBTResults(res));
+    incidentRepoContext
+      .getMultiResponses(reportId)
+      .then((mrs) => parseMultiResponses(mrs))
+      .then((res) => setResponses(res));
+    incidentRepoContext
+      .getReactionTest(reportId)
+      .then((rt) => parseReactionTest(rt))
+      .then((rs) => setReactionTest(rs));
+  }, [incidentRepoContext, reportId]);
+  let allTestResults = [];
+  if (responses.length > 0) {
+    let i = 0;
+    for (; i < responses.length; i++) {
+      allTestResults.push(
+        <Text key={i} style={uiStyle.text}>
+          {responses[i]}
+        </Text>,
+      );
+    }
+  }
+  if (reactionTest !== null && mtAndBtResults.length > 0) {
+    let i = 0;
+    for (; i < mtAndBtResults.length; i++) {
+      allTestResults.push(
+        <Text key={i + 77} style={uiStyle.text}>
+          {mtAndBtResults[i]}
+        </Text>,
+      );
+    }
+    allTestResults.push(
+      <Text key={i + 177} style={uiStyle.text}>
+        {reactionTest}
+      </Text>,
+    );
+  }
   return (
     <SafeAreaView style={styles.screen}>
-      <ScrollView>
-        <Text style={uiStyle.text}>
-          Report {'\n'}
-          {'\n'}
-        </Text>
-      </ScrollView>
+      <Text style={uiStyle.titleText}>Report</Text>
+      <ScrollView>{allTestResults}</ScrollView>
       <TouchableOpacity
         onPress={() => {
           navigation.navigate('Home');
         }}
-        style={uiStyle.startCheckButton}
+        style={uiStyle.bottomButton}
       >
-        <Text style={uiStyle.startCheckText}>Home</Text>
+        <Text style={uiStyle.buttonLabel}>Home</Text>
       </TouchableOpacity>
     </SafeAreaView>
   );

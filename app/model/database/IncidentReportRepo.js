@@ -139,7 +139,7 @@ export class IncidentReportRepo {
         [mrId, res],
       );
     }
-
+    console.log(responses);
     return mrId;
   }
 
