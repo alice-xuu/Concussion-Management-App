@@ -191,22 +191,28 @@ export class IncidentReportRepo {
   /**
    * Stores the reaction test results.
    *
+   * Removes existing reaction test result if it exists.
+   *
    * @param {number} reportId
    * @param {number[]} attempts 3 attempt results
    * @param {number} average
    * @param {string} grade
    * @return {Promise<number>}
    */
-  async addReactionTest(reportId, attempts, average, grade) {
+  async setReactionTest(reportId, attempts, average, grade) {
     if (attempts.length !== 3) {
       throw `given attempts has length ${attempts.length}, not 3`;
     }
 
-    const sql = `INSERT INTO ReactionTest (report_id, time_attempt_1, time_attempt_2, time_attempt_3, time_average, grade)
-        VALUES (?, ?, ?, ?, ?, ?)`;
-    const args = [reportId, ...attempts, average, grade];
+    await this.da.runSqlStmt(`DELETE FROM ReactionTest WHERE report_id = ?`, [
+      reportId,
+    ]);
 
-    const rs = await this.da.runSqlStmt(sql, args);
+    const rs = await this.da.runSqlStmt(
+      `INSERT INTO ReactionTest (report_id, time_attempt_1, time_attempt_2, time_attempt_3, time_average, grade)
+        VALUES (?, ?, ?, ?, ?, ?)`,
+      [reportId, ...attempts, average, grade],
+    );
     return rs.insertId;
   }
 
