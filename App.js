@@ -66,6 +66,7 @@ import VMS2 from './app/screens/VOMSTests/ROW5VMS/VMS2';
 import VMS3 from './app/screens/VOMSTests/ROW5VMS/VMS3';
 import BTFour from './app/screens/BalanceTests/BTFour';
 import BTFive from './app/screens/BalanceTests/BTFive';
+import ReportScreen from "./app/screens/ReportScreen";
 
 const RootStack = createNativeStackNavigator();
 /**
@@ -190,6 +191,8 @@ export default function App() {
           <RootStack.Screen name="VOMS VMS 1" component={VMS1} />
           <RootStack.Screen name="VOMS VMS 2" component={VMS2} />
           <RootStack.Screen name="VOMS VMS 3 Response 8" component={VMS3} />
+
+          <RootStack.Screen name="Report Screen" component={ReportScreen} />
         </RootStack.Navigator>
       </NavigationContainer>
     </GlobalContextProvider>
