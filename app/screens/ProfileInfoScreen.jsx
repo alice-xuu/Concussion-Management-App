@@ -98,10 +98,7 @@ function ProfileInfoScreen({ navigation }) {
           key={i + 1}
           style={styles.selectUserButton}
           onPress={() => {
-            console.log('before set report id: ' + reportId);
-            console.log('setting report id: ' + reports[i]);
             setReportId(reports[i]);
-            console.log('after set report id: ' + reportId);
             navigation.navigate('Report Screen');
           }}
         >

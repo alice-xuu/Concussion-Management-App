@@ -108,31 +108,30 @@ const parseMTBTMultiResponses = (mrs) => {
   return testResultsArray;
 };
 const parseMultiResponses = (mrs) => {
-  console.log('parseMultiResponses');
   const checkResponsesArray = [];
   if (mrs !== null) {
     console.log(mrs);
     mrs.forEach((mr) => {
-      console.log(mr);
-      if (
-        mr.description === 'Red Flags' &&
-        mr.MultiResponsePart !== undefined
-      ) {
-        console.log('red flag');
-        checkResponsesArray.push('Red Flags Checklist');
-        mr.MultiResponsePart.forEach((mrp) => {
-          checkResponsesArray.push(mrp.response);
-        });
-      } else if (
-        mr.description === 'PCSS Checklist' &&
-        mr.MultiResponsePart !== undefined
-      ) {
-        console.log('PCSS');
-        checkResponsesArray.push('PCSS Checklist');
-        mr.MultiResponsePart.forEach((mrp) => {
-          checkResponsesArray.push(mrp.response);
-        });
-      }
+      // console.log(mr);
+      // if (
+      //   mr.description === 'Red Flags' &&
+      //   mr.MultiResponsePart !== undefined
+      // ) {
+      //   console.log('red flag');
+      //   checkResponsesArray.push('Red Flags Checklist');
+      //   mr.MultiResponsePart.forEach((mrp) => {
+      //     checkResponsesArray.push(mrp.response);
+      //   });
+      // } else if (
+      //   mr.description === 'PCSS Checklist' &&
+      //   mr.MultiResponsePart !== undefined
+      // ) {
+      //   console.log('PCSS');
+      //   checkResponsesArray.push('PCSS Checklist:');
+      //   mr.MultiResponsePart.forEach((mrp) => {
+      //     checkResponsesArray.push(mrp.response);
+      //   });
+      // }
     });
   }
   return checkResponsesArray;
@@ -171,7 +170,6 @@ function ReportScreen({ navigation }) {
     };
   }, []);
   useEffect(() => {
-    console.log('getting report id: ' + reportId);
     incidentRepoContext
       .getMultiResponses(reportId)
       .then((mrs) => parseMTBTMultiResponses(mrs))

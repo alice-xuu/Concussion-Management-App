@@ -34,9 +34,14 @@ function PCSSChecklist({ navigation }) {
 
   const handleCreateMultiResponse = (answers) => {
     const desc = 'PCSS Checklist';
-    incidentRepoContext
-      .setMultiResponse(reportId, desc, answers)
-      .then(() => {});
+    incidentRepoContext.setMultiResponse(reportId, desc, answers).then(
+      () => {
+        incidentRepoContext
+          .getMultiResponses(reportId)
+          .then((mrs) => console.log(mrs));
+      },
+      (err) => console.log(err),
+    );
   };
 
   const MyCheckbox = (props) => {
