@@ -25,6 +25,9 @@ function VMS1(props) {
             {'\n'}
             On the beat, tell them to turn 80 degrees right, back to the middle,
             turn 80 degrees left, back to the middle. Repeat 5 times.
+            {'\n'}
+            {'\n'}
+            Please ensure the sound is on.
           </Text>
         </ScrollView>
       </View>
