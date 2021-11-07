@@ -37,10 +37,15 @@ function RedFlagsChecklist({ navigation }) {
   };
 
   const handleCreateMultiResponse = (answers) => {
-    const desc = 'Incident Report 4';
-    incidentRepoContext
-      .setMultiResponse(reportId, desc, answers)
-      .then(() => {});
+    const desc = 'Red Flags';
+    incidentRepoContext.setMultiResponse(reportId, desc, answers).then(
+      () => {
+        incidentRepoContext
+          .getMultiResponses(reportId)
+          .then((mrs) => console.log(mrs));
+      },
+      (err) => console.log(err),
+    );
   };
 
   const MyCheckbox = (props) => {

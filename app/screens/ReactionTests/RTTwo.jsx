@@ -34,8 +34,6 @@ function RTTwo({ navigation }) {
   let btnStyle;
   let btnOnPress = () => {};
   let btnTxt;
-  let btnTxtStyle;
-
   if (stage === 0) {
     btnStyle = styles.startButton;
     btnOnPress = () => {
@@ -45,11 +43,12 @@ function RTTwo({ navigation }) {
         setStage(2);
       }, getRandomInt(2000, 5000)); // wait between 2 and 5 seconds, then set to next stage
     };
-    btnTxt = 'Start!';
-    btnTxtStyle = styles.startText;
+    btnTxt = 'Start';
   } else if (stage === 1) {
+    btnTxt = 'Wait...';
     btnStyle = styles.waitButton;
   } else if (stage === 2) {
+    btnTxt = 'Press!';
     btnStyle = styles.pressButton;
     btnOnPress = () => {
       setAttemptResults((prevAttemptResults) => [
@@ -86,7 +85,7 @@ function RTTwo({ navigation }) {
     <View style={uiStyle.textContainer} onTouchStart={btnOnPress}>
       <View style={uiStyle.textContainer}>
         <TouchableOpacity style={[styles.reactionButton, btnStyle]}>
-          <Text style={btnTxtStyle}>{btnTxt}</Text>
+          <Text style={styles.startText}>{btnTxt}</Text>
         </TouchableOpacity>
       </View>
     </View>

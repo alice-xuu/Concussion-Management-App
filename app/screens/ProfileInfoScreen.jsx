@@ -12,14 +12,17 @@ import {
   PatientRepoContext,
   ReportIdContext,
 } from '../components/GlobalContextProvider';
-import { useContext, useState, useRef, useEffect } from 'react';
+import { useContext, useState, useRef, useEffect, useCallback } from 'react';
 import uiStyle from '../components/uiStyle';
+import exportAsCsv from '../model/exportAsCsv';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 /**
  * The screen will ask user to choose an existing profile to save the result to
  * their account.
  */
 function ProfileInfoScreen({ navigation }) {
   // Context variables
+  const [reportId, setReportId] = useContext(ReportIdContext);
   const [reports, setReports] = useState([]);
   const [patientDetails, setPatientDetails] = useState([]);
   const [patient] = useContext(PatientContext);
@@ -95,7 +98,8 @@ function ProfileInfoScreen({ navigation }) {
           key={i + 1}
           style={styles.selectUserButton}
           onPress={() => {
-            // navigation.navigate('Home');
+            setReportId(reports[i]);
+            navigation.navigate('Report Screen');
           }}
         >
           <Text style={uiStyle.buttonLabel}>REPORT {i + 1}</Text>
@@ -109,11 +113,27 @@ function ProfileInfoScreen({ navigation }) {
       </Text>,
     );
   }
+
+  const handleExport = useCallback(() => {
+    const fileName = `${patient.first_name}Details`;
+    exportAsCsv(fileName, patient, 'Share profile csv file').catch(alert);
+  }, [patient]);
+
   return (
     <SafeAreaView style={uiStyle.container}>
       <ScrollView contentContainerStyle={styles.scrollView}>
         <Text style={styles.text}>User Profile</Text>
         {patientDetailsText}
+        <TouchableOpacity
+          style={{ alignSelf: 'flex-end' }}
+          onPress={handleExport}
+        >
+          <MaterialCommunityIcons
+            name="share-variant"
+            size={32}
+            color="black"
+          />
+        </TouchableOpacity>
         <Text>You can select reports to view</Text>
         {reportsButtons}
         <TouchableOpacity
