@@ -14,6 +14,8 @@ import {
 } from '../components/GlobalContextProvider';
 import { useContext, useState, useRef, useEffect, useCallback } from 'react';
 import uiStyle from '../components/uiStyle.jsx';
+import exportObjectAsCsv, { exportMapAsCsv } from '../model/exportAsCsv';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const parseMTBTMultiResponses = (mrs) => {
   const memoryTestCorrectAnswers = [];
@@ -95,12 +97,12 @@ const parseMTBTMultiResponses = (mrs) => {
   } else {
     testResultsArray.push('Follow-up Memory Test Result: Failed');
   }
-  if (balanceTest1Responses[0] < 3 && balanceTest1Responses[1] < 2) {
+  if (balanceTest1Responses[0] < 0.2 && balanceTest1Responses[1] < 0.05) {
     testResultsArray.push('Balance Test 1 Result: Passed');
   } else {
     testResultsArray.push('Balance Test 1 Result: Failed');
   }
-  if (balanceTest2Responses[0] < 3 && balanceTest2Responses[1] < 2) {
+  if (balanceTest2Responses[0] < 0.2 && balanceTest2Responses[1] < 0.05) {
     testResultsArray.push('Balance Test 2 Result: Passed');
   } else {
     testResultsArray.push('Balance Test 2 Result: Failed');
@@ -110,7 +112,6 @@ const parseMTBTMultiResponses = (mrs) => {
 const parseMultiResponses = (mrs) => {
   const checkResponsesArray = [];
   if (mrs !== null) {
-    console.log(mrs);
     mrs.forEach((mr) => {
       // console.log(mr);
       // if (
@@ -142,11 +143,7 @@ const parseReactionTest = (rt) => {
   if (rt === undefined) {
     return reactionTestResponses;
   }
-  if (
-    rt.time_attempt_1 < 500 &&
-    rt.time_attempt_2 < 500 &&
-    rt.time_attempt_3 < 500
-  ) {
+  if ((rt.time_attempt_1 + rt.time_attempt_2 + rt.time_attempt_3) / 3 < 500) {
     reactionTestResponses.push('Reaction Test Result: Passed');
   } else {
     reactionTestResponses.push('Reaction Test Result: Failed');
@@ -160,6 +157,7 @@ function ReportScreen({ navigation }) {
   const [mtAndBtResults, setMTBTResults] = useState([]);
   const [responses, setResponses] = useState([]);
   const [reactionTest, setReactionTest] = useState(null);
+  const [patient] = useContext(PatientContext);
   const mounted = useRef(false);
 
   useEffect(() => {
@@ -209,10 +207,50 @@ function ReportScreen({ navigation }) {
       </Text>,
     );
   }
+  const handleExport = useCallback(() => {
+    let results = [];
+
+    if (reactionTest !== null && mtAndBtResults.length > 0) {
+      results.push(...mtAndBtResults);
+      results.push(...reactionTest);
+    }
+
+    if (results.length === 0) {
+      return;
+    }
+    const fileName = `${patient.first_name}Report${reportId}Results`;
+
+    let mapEntries = [
+      ['report_id', reportId],
+      ['patient_id', patient.patient_id],
+      ...results.map((res) => {
+        let split = res.split(': ');
+
+        return [split[0].trim(), split[1].trim()];
+      }),
+    ];
+
+    const map = new Map(mapEntries);
+
+    exportMapAsCsv(fileName, map, 'Share profile csv file').catch(alert);
+  }, [
+    reactionTest,
+    mtAndBtResults,
+    patient.first_name,
+    patient.patient_id,
+    reportId,
+  ]);
+
   return (
     <SafeAreaView style={styles.screen}>
       <Text style={uiStyle.titleText}>Report</Text>
       <ScrollView>{allTestResults}</ScrollView>
+      <TouchableOpacity
+        style={{ alignSelf: 'flex-end' }}
+        onPress={handleExport}
+      >
+        <MaterialCommunityIcons name="share-variant" size={32} color="black" />
+      </TouchableOpacity>
       <TouchableOpacity
         onPress={() => {
           navigation.navigate('Home');

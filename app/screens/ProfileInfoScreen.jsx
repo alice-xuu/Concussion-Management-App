@@ -14,8 +14,9 @@ import {
 } from '../components/GlobalContextProvider';
 import { useContext, useState, useRef, useEffect, useCallback } from 'react';
 import uiStyle from '../components/uiStyle';
-import exportAsCsv from '../model/exportAsCsv';
+import { exportMapAsCsv } from '../model/exportAsCsv';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+
 /**
  * The screen will ask user to choose an existing profile to save the result to
  * their account.
@@ -116,7 +117,9 @@ function ProfileInfoScreen({ navigation }) {
 
   const handleExport = useCallback(() => {
     const fileName = `${patient.first_name}Details`;
-    exportAsCsv(fileName, patient, 'Share profile csv file').catch(alert);
+    const map = new Map(Object.entries(patient));
+
+    exportMapAsCsv(fileName, map, 'Share profile csv file').catch(alert);
   }, [patient]);
 
   return (

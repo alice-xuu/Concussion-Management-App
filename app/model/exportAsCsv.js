@@ -3,12 +3,12 @@ import * as Sharing from 'expo-sharing';
 
 /**
  *
- * @param {string} fileName
- * @param {Object} obj
- * @param {string} shareDialog dialog to display in share prompt (android only)
+ * @param fileName local file to write map contents to
+ * @param mapping mapping of column headings to values
+ * @param shareDialog dialog is share prompt on Android
  * @return {Promise<void>}
  */
-const exportAsCsv = async (fileName, obj, shareDialog) => {
+const exportMapAsCsv = async (fileName, mapping, shareDialog) => {
   if (!(await Sharing.isAvailableAsync())) {
     // eslint-disable-next-line no-alert
     alert(`Sharing files isn't available on your platform`);
@@ -18,29 +18,25 @@ const exportAsCsv = async (fileName, obj, shareDialog) => {
   // Write csv file using object
   const filePath = `${FileSystem.cacheDirectory}/${fileName}.csv`;
 
-  let keys = Object.keys(obj).map((k, i) => {
-    let s = '';
-    if (i > 0) {
-      s = ',';
+  let attributes = '';
+  let values = '';
+  let first = true;
+  mapping.forEach((v, k) => {
+    let sep = ',';
+    if (first) {
+      sep = '';
+      first = false;
     }
-    s += k;
-    return s;
+    attributes = attributes.concat(sep, k);
+    values = values.concat(sep, v);
   });
 
-  let values = Object.values(obj).map((v, i) => {
-    let s = '';
-    if (i > 0) {
-      s = ',';
-    }
-    s += v;
-    return s;
-  });
+  const contents = ''.concat(attributes, '\n', values);
 
-  const contents = ''.concat(...keys, '\n', ...values);
   await FileSystem.writeAsStringAsync(filePath, contents);
 
   // Share file
   await Sharing.shareAsync(filePath, { dialogTitle: shareDialog });
 };
 
-export default exportAsCsv;
+export { exportMapAsCsv };
