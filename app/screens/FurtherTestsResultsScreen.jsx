@@ -86,12 +86,12 @@ const parseMultiResponses = (mrs) => {
   } else {
     testResultsArray.push('Follow-up Memory Test Result: Failed');
   }
-  if (balanceTest1Responses[0] < 3 && balanceTest1Responses[1] < 2) {
+  if (balanceTest1Responses[0] < 0.2 && balanceTest1Responses[1] < 0.05) {
     testResultsArray.push('Balance Test 1 Result: Passed');
   } else {
     testResultsArray.push('Balance Test 1 Result: Failed');
   }
-  if (balanceTest2Responses[0] < 3 && balanceTest2Responses[1] < 2) {
+  if (balanceTest2Responses[0] < 0.2 && balanceTest2Responses[1] < 0.05) {
     testResultsArray.push('Balance Test 2 Result: Passed');
   } else {
     testResultsArray.push('Balance Test 2 Result: Failed');
@@ -101,11 +101,7 @@ const parseMultiResponses = (mrs) => {
 
 const parseReactionTest = (rt) => {
   const reactionTestResponses = [];
-  if (
-    rt.time_attempt_1 < 500 &&
-    rt.time_attempt_2 < 500 &&
-    rt.time_attempt_3 < 500
-  ) {
+  if ((rt.time_attempt_1 + rt.time_attempt_2 + rt.time_attempt_3) / 3 < 500) {
     reactionTestResponses.push('Reaction Test Result: Passed');
   } else {
     reactionTestResponses.push('Reaction Test Result: Failed');
