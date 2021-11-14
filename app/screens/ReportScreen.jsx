@@ -287,7 +287,6 @@ function ReportScreen({ navigation }) {
 
     let vomsMapEntries = [
       ...vomsResults.map((res) => {
-        console.log(res);
         if (res !== null) {
           let split = res.split(': ');
 
@@ -321,6 +320,8 @@ function ReportScreen({ navigation }) {
     patient.first_name,
     patient.patient_id,
     reportId,
+    npcDistance,
+    vomsR,
   ]);
 
   return (
