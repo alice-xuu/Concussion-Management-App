@@ -91,4 +91,24 @@ describe('VOMSTest', () => {
       expect(r.fogginess_rating).toBe(TEST_VOMS_RESULTS.fogginess_rating);
     });
   });
+
+  describe('getAllVOMSSymptoms', () => {
+    it('returns existing results', async () => {
+      const mockRs = {
+        rows: {
+          length: 1,
+          item: jest.fn(() => TEST_VOMS_RESULTS),
+        },
+      };
+      mockDa.runSqlStmt = jest.fn(() => Promise.resolve(mockRs));
+      let r = await vs.getAllVOMSSymptoms(TEST_VOMS_RESULTS.vs_id);
+
+      expect(r.vs_id).toBe(TEST_VOMS_RESULTS.vs_id);
+      expect(r.description).toBe(TEST_VOMS_RESULTS.description);
+      expect(r.headache_rating).toBe(TEST_VOMS_RESULTS.headache_rating);
+      expect(r.nausea_rating).toBe(TEST_VOMS_RESULTS.nausea_rating);
+      expect(r.dizziness_rating).toBe(TEST_VOMS_RESULTS.dizziness_rating);
+      expect(r.fogginess_rating).toBe(TEST_VOMS_RESULTS.fogginess_rating);
+    });
+  });
 });
