@@ -9,7 +9,13 @@ import * as Sharing from 'expo-sharing';
  * @param shareDialog dialog is share prompt on Android
  * @return {Promise<void>}
  */
-const exportMapAsCsv = async (fileName, mapping, vomsMapping, shareDialog) => {
+const exportMapAsCsv = async (
+  fileName,
+  mapping,
+  vomsMapping,
+  npcDistance,
+  shareDialog,
+) => {
   if (!(await Sharing.isAvailableAsync())) {
     // eslint-disable-next-line no-alert
     alert(`Sharing files isn't available on your platform`);

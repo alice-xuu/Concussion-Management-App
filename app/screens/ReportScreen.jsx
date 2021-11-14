@@ -164,12 +164,22 @@ const parseVOMSTest = (vts) => {
   return vomsR;
 };
 
+const parseVOMSNPCDistance = (npc) => {
+  const npcDist = null;
+  if (npc === undefined) {
+    return npcDist;
+  }
+  npc = `Near point of convergence distance: ${npc.distance}`;
+  return npc;
+};
+
 function ReportScreen({ navigation }) {
   const incidentRepoContext = useContext(IncidentReportRepoContext);
   const [reportId] = useContext(ReportIdContext);
   const [mtAndBtResults, setMTBTResults] = useState([]);
   const [responses, setResponses] = useState([]);
   const [vomsR, setVomsR] = useState([]);
+  const [npcDistance, setNPCDistance] = useState(null);
 
   const [reactionTest, setReactionTest] = useState(null);
   const [patient] = useContext(PatientContext);
@@ -199,6 +209,10 @@ function ReportScreen({ navigation }) {
       .getAllVOMSSymptoms(reportId)
       .then((sym) => parseVOMSTest(sym))
       .then((res) => setVomsR(res));
+    incidentRepoContext
+      .getVOMSNPCDistance(reportId)
+      .then((npc) => parseVOMSNPCDistance(npc))
+      .then((res) => setNPCDistance(res));
   }, [incidentRepoContext, reportId]);
   let allTestResults = [];
   if (responses.length > 0) {
@@ -239,11 +253,19 @@ function ReportScreen({ navigation }) {
       vomsResults.push(...vomsR);
     }
 
+    if (npcDistance !== null) {
+      results.push(npcDistance);
+    }
+
     if (results.length === 0) {
       return;
     }
 
     if (vomsR.length === 0) {
+      return;
+    }
+
+    if (npcDistance === null) {
       return;
     }
 
@@ -290,6 +312,7 @@ function ReportScreen({ navigation }) {
       fileName,
       map,
       vomsMapEntries,
+      npcDistance,
       'Share profile csv file',
     ).catch(alert);
   }, [
