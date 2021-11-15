@@ -20,9 +20,9 @@ export class IncidentReportRepo {
     const sql = 'INSERT INTO IncidentReport (patient_id) VALUES (?);';
     const args = [patientId];
 
-    return new Promise((resolve, reject) => {
-      this.da.runSqlStmt(sql, args).then((rs) => resolve(rs.insertId), reject);
-    });
+    let rs = await this.da.runSqlStmt(sql, args);
+
+    return rs.insertId;
   }
 
   /**
@@ -139,7 +139,7 @@ export class IncidentReportRepo {
         [mrId, res],
       );
     }
-    console.log(responses);
+
     return mrId;
   }
 
@@ -182,6 +182,8 @@ export class IncidentReportRepo {
         return new Promise((resolve, reject) => reject(error));
       }
     }
+
+    console.log(mrs);
 
     return new Promise((resolve) => {
       resolve(mrs);

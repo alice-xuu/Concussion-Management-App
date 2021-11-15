@@ -23,12 +23,6 @@ import {
  * @param navigation used to move to the other screens
  */
 function HomeScreen({ navigation }) {
-  const [reportId, setReportId] = useContext(ReportIdContext);
-  const incidentRepoContext = useContext(IncidentReportRepoContext);
-  const handleCreateReport = () => {
-    incidentRepoContext.createReport(null).then((id) => setReportId(id));
-  };
-
   const createAlert = () =>
     Alert.alert(
       'Alert',
