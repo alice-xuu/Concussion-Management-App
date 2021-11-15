@@ -51,7 +51,6 @@ export const dataContext2 = React.createContext(0);
 export function GlobalContextProvider(props) {
   //Global x,y,z
   const [data, setData] = useState(0);
-  // const [data2, setData2] = useState(0);
 
   // Global patient
   const [patient, setPatient] = useState(new Patient(null, 'John', null));
@@ -62,22 +61,15 @@ export function GlobalContextProvider(props) {
   // Global Repositories
   const [patientRepoContext, setPatientRepoContext] = useState(null);
   const [daContext, setDaContext] = useState(null);
-  // const [daContext2, setDaContext2] = useState(null);
   const [incidentRepoContext, setIncidentRepoContext] = useState(null);
 
   useEffect(() => {
     DatabaseAdapter.initDatabase(SQLite.openDatabase(DB_FILE)).then((daNew) => {
       setDaContext(daNew);
-      // setDaContext2(daNew);
       setPatientRepoContext(new PatientRepo(daNew));
       setIncidentRepoContext(new IncidentReportRepo(daNew));
     });
   }, []);
-
-  // useEffect(() => {
-  //   console.log(`setPatient: ${patientContext.setPatient}`);
-  //   // console.log(`context: ${JSON.stringify(patientContext)}`);
-  // }, [patientContext]);
 
   return (
     <ReportIdContext.Provider value={[reportId, setReportId]}>
@@ -89,11 +81,6 @@ export function GlobalContextProvider(props) {
                 {props.children}
               </dataContext.Provider>
             </DaContext.Provider>
-            {/*<DaContext2.Provider value={daContext2}>*/}
-            {/*  <dataContext2.Provider value={[data2, setData2]}>*/}
-            {/*    /!*{props.children}*!/*/}
-            {/*  </dataContext2.Provider>*/}
-            {/*</DaContext2.Provider>*/}
           </IncidentReportRepoContext.Provider>
         </PatientRepoContext.Provider>
       </PatientContext.Provider>

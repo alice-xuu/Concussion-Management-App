@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
   StyleSheet,
   Text,
-  View,
   Pressable,
   TouchableOpacity,
   SafeAreaView,
@@ -15,42 +14,16 @@ import cbStyle from '../components/checkboxStyle';
 
 import {
   IncidentReportRepoContext,
-  PatientContext,
-  PatientRepoContext,
   ReportIdContext,
 } from '../components/GlobalContextProvider';
-import * as target from 'react-native';
 
 /**
  * The screen will ask user for details about concussion in checklist form.
  */
 
 function RedFlagsChecklist({ navigation }) {
-  const [reportId, setReportId] = useContext(ReportIdContext);
-  const patientRepoContext = useContext(PatientRepoContext);
+  const [, setReportId] = useContext(ReportIdContext);
   const incidentRepoContext = useContext(IncidentReportRepoContext);
-
-  const [responses, setResponses] = useState(null);
-
-  const handleCreateReport = () => {
-    incidentRepoContext
-      .createReport(null)
-      .then((id) => setReportId(id))
-      .then(() => console.log('set report id: ' + reportId));
-  };
-
-  const handleCreateMultiResponse = (answers) => {
-    const desc = 'Red Flags';
-    console.log(reportId);
-    incidentRepoContext.setMultiResponse(reportId, desc, answers).then(
-      () => {
-        incidentRepoContext
-          .getMultiResponses(reportId)
-          .then((mrs) => console.log(mrs));
-      },
-      (err) => console.log(err),
-    );
-  };
 
   const MyCheckbox = (props) => {
     const [checked, onChange] = useState(false);
@@ -145,8 +118,17 @@ function RedFlagsChecklist({ navigation }) {
       </ScrollView>
       <TouchableOpacity
         onPress={() => {
-          handleCreateReport();
-          handleCreateMultiResponse(chosenList);
+          incidentRepoContext.createReport(null).then((id) => {
+            // Update ReportId context;
+            setReportId(id);
+
+            // Create MultiResponse in db
+            const desc = 'Red Flags';
+            incidentRepoContext
+              .setMultiResponse(id, desc, chosenList)
+              .catch(console.log);
+          });
+
           if (chosenList.length === 0) {
             navigation.navigate('Next Steps');
           } else {
