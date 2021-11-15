@@ -129,8 +129,6 @@ function RedFlagsChecklist({ navigation }) {
               .catch(console.log);
           });
 
-          console.log(chosenList);
-
           if (chosenList.length === 0) {
             navigation.navigate('Next Steps');
           } else {

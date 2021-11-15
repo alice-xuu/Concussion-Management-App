@@ -132,6 +132,10 @@ export class IncidentReportRepo {
     );
     const mrId = rs.insertId;
 
+    await this.da.runSqlStmt('DELETE FROM MultiResponsePart WHERE mr_id = ?;', [
+      mrId,
+    ]);
+
     // Add each part of the response
     for (let res of responses) {
       await this.da.runSqlStmt(

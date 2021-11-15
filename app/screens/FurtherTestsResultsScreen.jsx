@@ -14,10 +14,9 @@ import {
 } from '../components/GlobalContextProvider';
 import uiStyle from '../components/uiStyle.jsx';
 
-const parseMultiResponses = (mrs) => {
+const parseMultiResponses = (mrs, memoryTest2Responses) => {
   const memoryTestCorrectAnswers = [];
   const memoryTest1Responses = [];
-  const memoryTest2Responses = [];
   const balanceTest1Responses = [];
   const balanceTest2Responses = [];
 
@@ -37,13 +36,6 @@ const parseMultiResponses = (mrs) => {
       ) {
         mr.MultiResponsePart.forEach((mrp) => {
           memoryTest1Responses.push(mrp.response);
-        });
-      } else if (
-        mr.description === 'Memory Test Part 2' &&
-        mr.MultiResponsePart !== undefined
-      ) {
-        mr.MultiResponsePart.forEach((mrp) => {
-          memoryTest2Responses.push(mrp.response);
         });
       } else if (
         mr.description ===
@@ -114,8 +106,10 @@ const parseReactionTest = (rt) => {
  * This is the first test out of the Further Tests
  * After this test is completed, user needs to navigate to the next test which
  * is Reaction Test.
+ * @param {boolean} route.params.secondMemoryTestResponses response of the second memory test. Inserting from the
+ * previous screen tends to be too slow.
  */
-function FurtherTestsResultsScreen({ navigation }) {
+function FurtherTestsResultsScreen({ route, navigation }) {
   const incidentRepoContext = useContext(IncidentReportRepoContext);
   const [reportId] = useContext(ReportIdContext);
   const [mtAndBtResults, setMTBTResults] = useState([]);
@@ -132,13 +126,15 @@ function FurtherTestsResultsScreen({ navigation }) {
   useEffect(() => {
     incidentRepoContext
       .getMultiResponses(reportId)
-      .then((mrs) => parseMultiResponses(mrs))
+      .then((mrs) =>
+        parseMultiResponses(mrs, route.params.secondMemoryTestResponses),
+      )
       .then((res) => setMTBTResults(res));
     incidentRepoContext
       .getReactionTest(reportId)
       .then((rt) => parseReactionTest(rt))
       .then((rs) => setReactionTest(rs));
-  }, [incidentRepoContext, reportId]);
+  }, [incidentRepoContext, reportId, route.params.secondMemoryTestResponses]);
   let allTestResults = [];
   if (reactionTest !== null && mtAndBtResults.length > 0) {
     let i = 0;
