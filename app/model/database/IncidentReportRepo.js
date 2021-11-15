@@ -143,7 +143,6 @@ export class IncidentReportRepo {
         [mrId, res],
       );
     }
-
     return mrId;
   }
 
