@@ -67,7 +67,7 @@ function RedFlagsChecklist({ navigation }) {
             >{`Neck pain or tenderness`}</Text>
           </SafeAreaView>
           <SafeAreaView style={cbStyle.checkboxContainer}>
-            <MyCheckbox value="Neck pain or tenderness" />
+            <MyCheckbox value="Double vision" />
             <Text style={cbStyle.checkboxLabel}>{`Double vision`}</Text>
           </SafeAreaView>
           <SafeAreaView style={cbStyle.checkboxContainer}>
@@ -128,6 +128,8 @@ function RedFlagsChecklist({ navigation }) {
               .setMultiResponse(id, desc, chosenList)
               .catch(console.log);
           });
+
+          console.log(chosenList);
 
           if (chosenList.length === 0) {
             navigation.navigate('Next Steps');
