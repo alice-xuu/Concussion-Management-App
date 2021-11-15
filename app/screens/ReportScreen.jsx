@@ -113,26 +113,33 @@ const parseMultiResponses = (mrs) => {
   const checkResponsesArray = [];
   if (mrs !== null) {
     mrs.forEach((mr) => {
-      // console.log(mr);
-      // if (
-      //   mr.description === 'Red Flags' &&
-      //   mr.MultiResponsePart !== undefined
-      // ) {
-      //   console.log('red flag');
-      //   checkResponsesArray.push('Red Flags Checklist');
-      //   mr.MultiResponsePart.forEach((mrp) => {
-      //     checkResponsesArray.push(mrp.response);
-      //   });
-      // } else if (
-      //   mr.description === 'PCSS Checklist' &&
-      //   mr.MultiResponsePart !== undefined
-      // ) {
-      //   console.log('PCSS');
-      //   checkResponsesArray.push('PCSS Checklist:');
-      //   mr.MultiResponsePart.forEach((mrp) => {
-      //     checkResponsesArray.push(mrp.response);
-      //   });
-      // }
+      if (
+        mr.description === 'Red Flags' &&
+        mr.MultiResponsePart !== undefined
+      ) {
+        checkResponsesArray.push('Red Flags Checklist');
+        let counter = 0;
+        mr.MultiResponsePart.forEach((mrp) => {
+          counter++;
+          checkResponsesArray.push(mrp.response);
+        });
+        if (counter === 0) {
+          checkResponsesArray.push('No symptoms');
+        }
+      } else if (
+        mr.description === 'PCSS Checklist' &&
+        mr.MultiResponsePart !== undefined
+      ) {
+        checkResponsesArray.push('PCSS Checklist:');
+        let counter = 0;
+        mr.MultiResponsePart.forEach((mrp) => {
+          counter++;
+          checkResponsesArray.push(mrp.response);
+        });
+        if (counter === 0) {
+          checkResponsesArray.push('No symptoms');
+        }
+      }
     });
   }
   return checkResponsesArray;
