@@ -33,11 +33,15 @@ function RedFlagsChecklist({ navigation }) {
   const [responses, setResponses] = useState(null);
 
   const handleCreateReport = () => {
-    incidentRepoContext.createReport(null).then((id) => setReportId(id));
+    incidentRepoContext
+      .createReport(null)
+      .then((id) => setReportId(id))
+      .then(() => console.log('set report id: ' + reportId));
   };
 
   const handleCreateMultiResponse = (answers) => {
     const desc = 'Red Flags';
+    console.log(reportId);
     incidentRepoContext.setMultiResponse(reportId, desc, answers).then(
       () => {
         incidentRepoContext
