@@ -249,15 +249,10 @@ function ReportScreen({ navigation }) {
   }
   const handleExport = useCallback(() => {
     let results = [];
-    let vomsResults = [];
 
     if (reactionTest !== null && mtAndBtResults.length > 0) {
       results.push(...mtAndBtResults);
       results.push(...reactionTest);
-    }
-
-    if (vomsR.length > 0) {
-      vomsResults.push(...vomsR);
     }
 
     if (npcDistance !== null) {
@@ -293,7 +288,7 @@ function ReportScreen({ navigation }) {
     const map = new Map(mapEntries);
 
     let vomsMapEntries = [
-      ...vomsResults.map((res) => {
+      ...vomsR.map((res) => {
         if (res !== null) {
           let split = res.split(': ');
 
@@ -312,14 +307,12 @@ function ReportScreen({ navigation }) {
       }),
     ];
 
-    const vomsMap = new Map(vomsMapEntries);
-
     exportMapAsCsv(
       fileName,
       map,
       vomsMapEntries,
       npcDistance,
-      'Share profile csv file',
+      'Share report csv file',
     ).catch(alert);
   }, [
     reactionTest,
