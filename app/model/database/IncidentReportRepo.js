@@ -271,6 +271,18 @@ export class IncidentReportRepo {
     return rs.insertId;
   }
 
+  async getAllVOMSSymptoms(reportId) {
+    if (reportId === undefined || reportId === null) {
+      throw 'Invalid reportId';
+    }
+
+    const sql = `SELECT description, headache_rating, nausea_rating, dizziness_rating, fogginess_rating FROM VOMSSymptoms WHERE report_id = ?;`;
+    const args = [reportId];
+
+    const rs = await this.da.runSqlStmt(sql, args);
+    return rs.rows._array;
+  }
+
   async getVOMSSymptoms(reportId, description) {
     if (reportId === undefined || reportId === null) {
       throw 'Invalid reportId';

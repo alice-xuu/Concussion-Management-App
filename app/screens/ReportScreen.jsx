@@ -158,11 +158,36 @@ const parseReactionTest = (rt) => {
   return reactionTestResponses;
 };
 
+const parseVOMSTest = (vts) => {
+  const vomsR = [];
+  if (vts === undefined) {
+    return vomsR;
+  }
+  vts.forEach((vt) => {
+    const r = `${vt.description}: headache: ${vt.headache_rating}: nausea: ${vt.nausea_rating}: dizziness: ${vt.dizziness_rating}: fogginess: ${vt.fogginess_rating} `;
+    vomsR.push(r);
+  });
+
+  return vomsR;
+};
+
+const parseVOMSNPCDistance = (npc) => {
+  const npcDist = null;
+  if (npc === undefined) {
+    return npcDist;
+  }
+  npc = `Near point of convergence distance: ${npc.distance}`;
+  return npc;
+};
+
 function ReportScreen({ navigation }) {
   const incidentRepoContext = useContext(IncidentReportRepoContext);
   const [reportId] = useContext(ReportIdContext);
   const [mtAndBtResults, setMTBTResults] = useState([]);
   const [responses, setResponses] = useState([]);
+  const [vomsR, setVomsR] = useState([]);
+  const [npcDistance, setNPCDistance] = useState(null);
+
   const [reactionTest, setReactionTest] = useState(null);
   const [patient] = useContext(PatientContext);
   const mounted = useRef(false);
@@ -187,6 +212,14 @@ function ReportScreen({ navigation }) {
       .getReactionTest(reportId)
       .then((rt) => parseReactionTest(rt))
       .then((rs) => setReactionTest(rs));
+    incidentRepoContext
+      .getAllVOMSSymptoms(reportId)
+      .then((sym) => parseVOMSTest(sym))
+      .then((res) => setVomsR(res));
+    incidentRepoContext
+      .getVOMSNPCDistance(reportId)
+      .then((npc) => parseVOMSNPCDistance(npc))
+      .then((res) => setNPCDistance(res));
   }, [incidentRepoContext, reportId]);
   let allTestResults = [];
   if (responses.length > 0) {
@@ -222,30 +255,73 @@ function ReportScreen({ navigation }) {
       results.push(...reactionTest);
     }
 
+    if (npcDistance !== null) {
+      results.push(npcDistance);
+    }
+
     if (results.length === 0) {
       return;
     }
+
+    if (vomsR.length === 0) {
+      return;
+    }
+
+    if (npcDistance === null) {
+      return;
+    }
+
     const fileName = `${patient.first_name}Report${reportId}Results`;
 
     let mapEntries = [
       ['report_id', reportId],
       ['patient_id', patient.patient_id],
       ...results.map((res) => {
-        let split = res.split(': ');
+        if (res !== null) {
+          let split = res.split(': ');
 
-        return [split[0].trim(), split[1].trim()];
+          return [split[0].trim(), split[1].trim()];
+        }
       }),
     ];
 
     const map = new Map(mapEntries);
 
-    exportMapAsCsv(fileName, map, 'Share profile csv file').catch(alert);
+    let vomsMapEntries = [
+      ...vomsR.map((res) => {
+        if (res !== null) {
+          let split = res.split(': ');
+
+          return [
+            split[0].trim(),
+            split[1].trim(),
+            split[2].trim(),
+            split[3].trim(),
+            split[4].trim(),
+            split[5].trim(),
+            split[6].trim(),
+            split[7].trim(),
+            split[8].trim(),
+          ];
+        }
+      }),
+    ];
+
+    exportMapAsCsv(
+      fileName,
+      map,
+      vomsMapEntries,
+      npcDistance,
+      'Share report csv file',
+    ).catch(alert);
   }, [
     reactionTest,
     mtAndBtResults,
     patient.first_name,
     patient.patient_id,
     reportId,
+    npcDistance,
+    vomsR,
   ]);
 
   return (

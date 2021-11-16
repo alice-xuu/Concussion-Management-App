@@ -91,4 +91,28 @@ describe('VOMSTest', () => {
       expect(r.fogginess_rating).toBe(TEST_VOMS_RESULTS.fogginess_rating);
     });
   });
+
+  describe('getAllVOMSSymptoms', () => {
+    it('correctly resolves', async () => {
+      const mockVS = {
+        rows: {
+          length: 1,
+          _array: [
+            {
+              description: '',
+              headache_rating: 0,
+              nausea_rating: 0,
+              dizziness_rating: 0,
+              fogginess_rating: 0,
+            },
+          ],
+        },
+      };
+
+      const ret = await vs.getAllVOMSSymptoms(TEST_VOMS_RESULTS.vs_id);
+      const exp = [{}, {}];
+
+      expect(ret).toEqual(exp);
+    });
+  });
 });
