@@ -97,7 +97,7 @@ describe('IncidentReportRepo', () => {
       const resp = ['response 1', 'response 2', 'response 3'];
 
       await iRR.setMultiResponse(REP_ID, desc, resp).then(sucCb, errCb);
-      expect(mockDa.runSqlStmt.mock.calls.length).toBe(5);
+      expect(mockDa.runSqlStmt.mock.calls.length).toBe(6);
 
       expect(errCb.mock.calls.length).toBe(0);
       expect(sucCb.mock.calls.length).toBe(1);
