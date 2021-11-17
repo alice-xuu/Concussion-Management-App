@@ -119,7 +119,13 @@ function ProfileInfoScreen({ navigation }) {
     const fileName = `${patient.first_name}Details`;
     const map = new Map(Object.entries(patient));
 
-    exportMapAsCsv(fileName, map, 'Share profile csv file').catch(alert);
+    exportMapAsCsv(
+      fileName,
+      map,
+      new Map(),
+      new Map(),
+      'Share profile csv file',
+    ).catch(alert);
   }, [patient]);
 
   return (
