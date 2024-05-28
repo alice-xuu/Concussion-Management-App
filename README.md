@@ -2,8 +2,12 @@ Mobile application that individuals can use immediately after an accident to ass
 
 Sample screens:
 
- ![image](https://github.com/alice-xuu/Concussion-Management-App/assets/61668791/bfe4b60b-1c25-43c6-a44b-2e6d1160d7b5)
+<img width="415" alt="Screen Shot 2024-05-28 at 9 25 17 pm" src="https://github.com/alice-xuu/Concussion-Management-App/assets/61668791/6005f40c-aaee-45fe-b5f6-64d20b181357">
+<img width="416" alt="Screen Shot 2024-05-28 at 9 24 51 pm" src="https://github.com/alice-xuu/Concussion-Management-App/assets/61668791/59ff64a5-706a-4a01-bd25-564592db726f">
+<img width="417" alt="Screen Shot 2024-05-28 at 9 24 00 pm" src="https://github.com/alice-xuu/Concussion-Management-App/assets/61668791/3d8883ea-4c5f-4910-a5f9-9ba20d084c34">
+
 
 Prototype:
 
- ![image](https://github.com/alice-xuu/Concussion-Management-App/assets/61668791/fa01b3ab-76d8-4402-a457-f22b806a3ee6)
+<img width="722" alt="Screen Shot 2024-05-28 at 9 29 04 pm" src="https://github.com/alice-xuu/Concussion-Management-App/assets/61668791/57f071f6-4c87-4053-bfcd-a1aaa318b8cb">
+
