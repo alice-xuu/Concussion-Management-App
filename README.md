@@ -1,4 +1,4 @@
-Mobile appkucation that individuals can use immediately after an accident to assess the likelihood of them, or a dependent, having a concussion.
+Mobile application that individuals can use immediately after an accident to assess the likelihood of them, or a dependent, having a concussion.
 
 Sample screens:
 
